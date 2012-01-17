@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">连连看</string>
+    <string name="btn_new_game">新游戏</string>
+    <string name="btn_re_arrange">重排列</string>
+    <string name="btn_tips">提示</string>
+    <string name="btn_theme">主题</string>
+    <string name="btn_next">下一关</string>
+</resources>

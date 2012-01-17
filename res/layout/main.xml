@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:background="@drawable/game_bg" >
+    
+    <RelativeLayout
+        android:id="@+id/button_region"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true" >
+
+        <ImageButton
+            android:id="@+id/newGame"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_bg"
+			android:src="@drawable/restart"
+			android:layout_marginLeft="10dp"
+			android:layout_alignParentLeft="true" />
+
+        <ImageButton
+            android:id="@+id/arrange"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+			android:background="@drawable/refresh_button_bg"
+			android:layout_alignParentRight="true"
+			android:layout_marginRight="10dp" />
+
+        <ImageButton
+            android:id="@+id/hint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/find_button_bg"
+            android:layout_toLeftOf="@id/arrange"
+            android:layout_marginRight="8dp"
+            android:layout_alignTop="@id/arrange" />
+        
+        <!-- Button
+            android:id="@+id/next"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_next"
+            android:layout_weight="1" / -->
+    </RelativeLayout>
+    
+    <com.tinygame.lianliankan.LLKView
+        android:id="@+id/llk"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_above="@id/button_region" />"
+
+</RelativeLayout>
