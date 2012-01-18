@@ -38,7 +38,7 @@ public class SoundEffectUtils {
     }
     
     public void playDisapperSound() {
-        gSoundNotifySoundPool.play(mConnectPlayID, (float) 0.2, (float) 0.3, 0, 0, 1);
+        gSoundNotifySoundPool.play(mConnectPlayID, (float) 0.5, (float) 0.5, 0, 0, 1);
     }
     
     public void playReadySound() {
