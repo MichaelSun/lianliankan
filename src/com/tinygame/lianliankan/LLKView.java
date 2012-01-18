@@ -223,7 +223,6 @@ public class LLKView extends View {
                         mLLViewActionListener.onFinishOnTime();
                     }
                 } else {
-                    SoundEffectUtils.getInstance().playDisapperSound();
                     LLKView.this.postInvalidate();
                     Tile[] hint = new Hint(getChart()).findHint();
                     if (hint == null && mLLViewActionListener != null) {
@@ -246,6 +245,7 @@ public class LLKView extends View {
                 if (selectTile.getImageIndex() == newTile.getImageIndex()) {
                     ConnectiveInfo ci = chart.connectvie(selectTile, newTile);
                     if (ci.getResult()) {
+                        SoundEffectUtils.getInstance().playDisapperSound();
                         selectTile = null;
                         routes.add(ci.getRoute().dismissing());
                         LLKView.this.postDelayed(runable, 150);
