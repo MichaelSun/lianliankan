@@ -6,4 +6,9 @@
     <string name="btn_tips">提示</string>
     <string name="btn_theme">主题</string>
     <string name="btn_next">下一关</string>
+    <string name="btn_quit">退出</string>
+    <string name="btn_retry">重试</string>
+    
+    <string name="perf_last_diff">last_diff</string>
+    <string name="perf_last_cate">last_cate</string>
 </resources>

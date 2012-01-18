@@ -5,6 +5,20 @@
     android:orientation="vertical"
     android:background="@drawable/game_bg" >
     
+	<com.tinygame.lianliankan.LLKView
+        android:id="@+id/llk"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="20dp" />
+
+	<com.tinygame.lianliankan.view.LevelView
+	    android:id="@+id/level"
+	 	android:layout_width="fill_parent"
+	 	android:layout_height="60dp"
+	 	android:layout_alignParentTop="true"/>
+
     <RelativeLayout
         android:id="@+id/button_region"
         android:layout_width="fill_parent"
@@ -39,19 +53,26 @@
             android:layout_marginRight="8dp"
             android:layout_alignTop="@id/arrange" />
         
-        <!-- Button
-            android:id="@+id/next"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/btn_next"
-            android:layout_weight="1" / -->
     </RelativeLayout>
     
-    <com.tinygame.lianliankan.LLKView
-        android:id="@+id/llk"
-        android:layout_width="fill_parent"
+    <com.tinygame.lianliankan.view.TimeProgressView 
+        android:id="@+id/time"
+        android:layout_width="20dp"
         android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_above="@id/button_region" />"
-
+        android:layout_above="@id/button_region"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="15dp" />
+ 
+    <ImageButton 
+        android:id="@+id/next"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/next"
+        android:background="@drawable/button_bg"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp" />
 </RelativeLayout>

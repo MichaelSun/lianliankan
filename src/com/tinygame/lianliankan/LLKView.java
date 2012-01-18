@@ -22,6 +22,7 @@ import com.tinygame.lianliankan.engine.Direction;
 import com.tinygame.lianliankan.engine.DirectionPath;
 import com.tinygame.lianliankan.engine.Hint;
 import com.tinygame.lianliankan.engine.Tile;
+import com.tinygame.lianliankan.utils.ImageSplitUtils;
 import com.tinygame.lianliankan.utils.SoundEffectUtils;
 
 public class LLKView extends View {
@@ -92,15 +93,21 @@ public class LLKView extends View {
 
         LOGD("[[onDraw]] width = " + width + " height = " + height);
 
-        xStart = span;
-        yStart = span;
-        
         if (!Env.ICON_REGION_INIT) {
             int sideLength = Math.min(width, height) - 2 * span;
             Env.ICON_REGION_INIT = true;
             Env.ICON_WIDTH = sideLength / chart.xSize;
             LOGD("[[onDraw]] sideLength = "+ sideLength + " icon size = " + chart.xSize 
                     + " icon width = " + Env.ICON_WIDTH + " >>>>>>>>>>>>>>>>>");
+            int imageWidth = ImageSplitUtils.getInstance().getCurrentImageWidth();
+            if (imageWidth < Env.ICON_WIDTH) {
+                Env.ICON_WIDTH = imageWidth;
+                xStart = (width - (chart.xSize * imageWidth)) / 2;
+                yStart = (height - (chart.ySize * imageWidth)) / 2;
+            } else {
+                xStart = span;
+                yStart = span;
+            }
         }
 
         for (int yIndex = 0; yIndex < chart.ySize; yIndex++) {
@@ -216,6 +223,7 @@ public class LLKView extends View {
                         mLLViewActionListener.onFinishOnTime();
                     }
                 } else {
+                    SoundEffectUtils.getInstance().playDisapperSound();
                     LLKView.this.postInvalidate();
                     Tile[] hint = new Hint(getChart()).findHint();
                     if (hint == null && mLLViewActionListener != null) {
@@ -223,7 +231,7 @@ public class LLKView extends View {
                     }
                 }
             } catch (Exception ex) {
-                Log.e("cosina1985", ex.toString());
+                ex.printStackTrace();
             }
         }
     };
@@ -238,7 +246,6 @@ public class LLKView extends View {
                 if (selectTile.getImageIndex() == newTile.getImageIndex()) {
                     ConnectiveInfo ci = chart.connectvie(selectTile, newTile);
                     if (ci.getResult()) {
-                        SoundEffectUtils.getInstance().playDisapperSound();
                         selectTile = null;
                         routes.add(ci.getRoute().dismissing());
                         LLKView.this.postDelayed(runable, 150);

@@ -24,6 +24,8 @@ public class ImageSplitUtils {
     private static ImageSplitUtils gImageSplitUtils = new ImageSplitUtils();
     private Context mContext;
     private ArrayList<BitmapSiplited> mCurrentRes;
+    private ArrayList<Bitmap> mNumberList;
+    private int mCurrentImageWidth;
     
     public static ImageSplitUtils getInstance() {
         return gImageSplitUtils;
@@ -44,6 +46,54 @@ public class ImageSplitUtils {
         }
     }
     
+    public int getCurrentImageWidth() {
+        return mCurrentImageWidth;
+    }
+    
+    public ArrayList<Bitmap> getTimeNumberBtList() {
+        mNumberList = new ArrayList<Bitmap>();
+        Bitmap src = loadBitmapFromAsset(mContext, "image/time_number.png");
+        int height = src.getHeight();
+        int width = src.getWidth();
+        int retBtWidth = width / 10;
+        Bitmap bt = null;
+        for (int i = 0; i < 10; ++i) {
+            bt = Bitmap.createBitmap(src
+                                    , i * retBtWidth 
+                                    , 0
+                                    , retBtWidth
+                                    , height);
+            if (bt != null) {
+                bt.setDensity(160);
+                mNumberList.add(bt);
+            }
+        }
+        
+        return mNumberList;
+    }
+    
+    public ArrayList<Bitmap> getLevelNumberBtList() {
+        mNumberList = new ArrayList<Bitmap>();
+        Bitmap src = loadBitmapFromAsset(mContext, "image/number.png");
+        int height = src.getHeight();
+        int width = src.getWidth();
+        int retBtWidth = width / 10;
+        Bitmap bt = null;
+        for (int i = 0; i < 10; ++i) {
+            bt = Bitmap.createBitmap(src
+                                    , i * retBtWidth 
+                                    , 0
+                                    , retBtWidth
+                                    , height);
+            if (bt != null) {
+                bt.setDensity(160);
+                mNumberList.add(bt);
+            }
+        }
+        
+        return mNumberList;
+    }
+    
     public ArrayList<BitmapSiplited> splitBitmapInAssests(String path) {
         mCurrentRes = new ArrayList<BitmapSiplited>();
         Bitmap src = loadBitmapFromAsset(mContext, path);
@@ -52,7 +102,9 @@ public class ImageSplitUtils {
         }
         int pos = path.lastIndexOf("_");
         if (pos != -1) {
+            mCurrentImageWidth = 0;
             int icon_width = Integer.valueOf(path.substring(pos + 1));
+            mCurrentImageWidth = icon_width;
             int src_width = src.getWidth();
             int src_height = src.getHeight();
             
@@ -69,6 +121,7 @@ public class ImageSplitUtils {
                                                 , y * icon_width
                                                 , icon_width
                                                 , icon_width);
+                        bts.bitmap.setDensity(160);
                         bts.id = index;
                         index++;
                         mCurrentRes.add(bts);

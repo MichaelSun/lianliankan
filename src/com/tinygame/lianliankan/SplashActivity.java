@@ -43,6 +43,7 @@ public class SplashActivity extends Activity {
         protected Integer doInBackground(String...params) {
             try {
                 SoundEffectUtils.getInstance().init(SplashActivity.this);
+                SettingManager.getInstance().init(getApplicationContext());
                 Thread.sleep(2 * 1000);
             } catch (Exception e) {
             }

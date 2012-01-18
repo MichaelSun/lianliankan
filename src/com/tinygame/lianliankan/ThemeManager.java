@@ -1,10 +1,10 @@
 package com.tinygame.lianliankan;
 
 import java.util.ArrayList;
-import java.util.Random;
+import java.util.HashMap;
 
 import android.content.Context;
-import android.graphics.Color;
+import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 
@@ -19,6 +19,7 @@ public class ThemeManager {
     private static ThemeManager gThemeManager = new ThemeManager();
     private Drawable[] mResArray;
     private Context mContext;
+    private HashMap<Integer, Bitmap> mNumberMap;
 
     public static ThemeManager getInstance() {
         return gThemeManager;
@@ -42,6 +43,18 @@ public class ThemeManager {
         }
         
         return null;
+    }
+   
+    public Bitmap getTimeNumberBtByNumber(int number) {
+        if (mNumberMap == null) {
+            mNumberMap = new HashMap<Integer, Bitmap>();
+            ArrayList<Bitmap> ret = ImageSplitUtils.getInstance().getTimeNumberBtList();
+            for (int i = 0; i < 10; ++i) {
+                mNumberMap.put(i, ret.get(i));
+            }
+        }
+        
+        return mNumberMap.get(number);
     }
     
     public void loadImageByCategary(String cate) {

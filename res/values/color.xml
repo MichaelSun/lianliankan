@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<drawable name="white">#FFFFFF</drawable>
+	<drawable name="black">#000000</drawable>
+		
+	<drawable name="gray1">#AAAAAA</drawable>
+	<drawable name="gray2">#999999</drawable>
+	<drawable name="gray3">#BBBBBB</drawable>
+	<drawable name="gray4">#333333</drawable>
+	<drawable name="gray5">#666666</drawable>
+	<drawable name="gray6">#F2F2F2</drawable>
+	<drawable name="gray7">#DEDEDE</drawable>
+	<drawable name="gray8">#c3c3c1</drawable>
+	
+	<color name="welcome_begin">#5A5A5A</color>
+	<color name="welcome_end">#282828</color>
+	<color name="warning_color">#7f00ff00</color>
+	
+    <color name="solidbackground">#ff00476D</color>
+
+    <!-- list entry alternate colors odd/even -->
+    <drawable name="listbackground0">#FF37561d</drawable>
+    <drawable name="listbackground1">#FF37561d</drawable>
+
+    <!-- the radial spread used to denote a selected list item -->
+    <color name="listSelectedEndColor">#ff3f5e01</color>
+    <color name="listSelectedStartColor">#ff8A9F02</color>
+
+    <!-- used for header/footer areas -->
+    <color name="headerColorEnd">#ff00476D</color>
+    <color name="headerColorStart">#ff006B87</color>
+    <color name="headerColorMiddle">#ff2A4314</color>
+
+    <!-- large shaded area -->
+    <color name="gradationAreaStart">#ff0099B9</color>
+    <color name="gradationAreaEnd">#ff3CBCDE</color>
+    <color name="backgound_bottom">#ff56C9E5</color>
+
+    <!--  text colors -->
+    <color name="weatherConditions">#ffFFC621</color>
+    <color name="weatherConditions_end">#ffFFa621</color>
+    <color name="hightemp">#ffffffff</color>
+    <color name="lowtemp">#ffffffff</color>
+    <color name="notify_label">#ffffffff</color>
+    <color name="notify_text">#ffffffff</color>
+
+    <color name="city_list_item">#ff0099B9</color>
+    <color name="city_list_item_one">#ff00507A</color>
+
+    <color name="city_list_item_in">#ff0497b8</color>
+    <color name="city_list_item_out">#ff036b86</color>
+    <color name="city_list_item1_in">#ff006986</color>
+    <color name="city_list_item1_out">#ff004a6f</color>
+
+    <color name="header_default_in">#ff028eaf</color>
+    <color name="header_default_out">#ff024e72</color>
+
+    <color name="city_larger_view_in">#ff008BAD</color>
+    <color name="city_larger_view_out">#ff006B87</color>
+    <color name="nday_alert_bg">#ff006B87</color>
+
+    <color name="large_cc_text">#FFE2E9EB</color>
+    <color name="text_gray">#FFE2E9EB</color>
+    <color name="bg_black">#FF000000</color>
+
+    <color name="app_default_bg">#ff004469</color>
+    <color name="twitter_footer">#ff686868</color>
+    <color name="sns_footer">#ffd0d0d0</color>
+
+</resources>
