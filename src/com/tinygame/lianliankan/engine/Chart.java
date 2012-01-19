@@ -65,7 +65,7 @@ public class Chart {
 		return info;
 	}
 
-	public Tile get(int x, int y) {
+	public Tile getTile(int x, int y) {
 		if (null == tiles)
 			throw new IllegalStateException("game is not start!");
 

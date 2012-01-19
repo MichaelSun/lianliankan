@@ -45,13 +45,13 @@ public class Tile {
 			return UN_EXIST_TILE;
 
 		if (Direction.north == direction) {
-			return belongChart.get(x, y - 1);
+			return belongChart.getTile(x, y - 1);
 		} else if (Direction.east == direction) {
-			return belongChart.get(x + 1, y);
+			return belongChart.getTile(x + 1, y);
 		} else if (Direction.south == direction) {
-			return belongChart.get(x, y + 1);
+			return belongChart.getTile(x, y + 1);
 		} else if (Direction.west == direction) {
-			return belongChart.get(x - 1, y);
+			return belongChart.getTile(x - 1, y);
 		}
 		throw new IllegalArgumentException("which direction? are you crazy!!");
 	}
@@ -60,7 +60,7 @@ public class Tile {
 		int min = Math.min(this.x, other.x);
 		int max = Math.max(this.x, other.x);
 		for (int index = min + 1; index < max; index++) {
-			if (this.belongChart.get(index, y).isBlank() == false) {
+			if (this.belongChart.getTile(index, y).isBlank() == false) {
 				return false;
 			}
 		}
@@ -71,7 +71,7 @@ public class Tile {
 		int min = Math.min(this.y, other.y);
 		int max = Math.max(this.y, other.y);
 		for (int index = min + 1; index < max; index++) {
-			if (this.belongChart.get(x, index).isBlank() == false) {
+			if (this.belongChart.getTile(x, index).isBlank() == false) {
 				return false;
 			}
 		}

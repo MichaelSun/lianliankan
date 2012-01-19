@@ -25,6 +25,8 @@ public class ImageSplitUtils {
     private Context mContext;
     private ArrayList<BitmapSiplited> mCurrentRes;
     private ArrayList<Bitmap> mNumberList;
+    private ArrayList<Bitmap> mLevelNumberList;
+    private ArrayList<Bitmap> mBoomList;
     private int mCurrentImageWidth;
     
     public static ImageSplitUtils getInstance() {
@@ -73,7 +75,7 @@ public class ImageSplitUtils {
     }
     
     public ArrayList<Bitmap> getLevelNumberBtList() {
-        mNumberList = new ArrayList<Bitmap>();
+        mLevelNumberList = new ArrayList<Bitmap>();
         Bitmap src = loadBitmapFromAsset(mContext, "image/number.png");
         int height = src.getHeight();
         int width = src.getWidth();
@@ -87,11 +89,33 @@ public class ImageSplitUtils {
                                     , height);
             if (bt != null) {
                 bt.setDensity(160);
-                mNumberList.add(bt);
+                mLevelNumberList.add(bt);
             }
         }
         
-        return mNumberList;
+        return mLevelNumberList;
+    }
+    
+    public ArrayList<Bitmap> getBoomBtList() {
+        mBoomList = new ArrayList<Bitmap>();
+        Bitmap src = loadBitmapFromAsset(mContext, "image/boom.png");
+        int height = src.getHeight();
+        int width = src.getWidth();
+        int retBtWidth = width / 6;
+        Bitmap bt = null;
+        for (int i = 0; i < 6; ++i) {
+            bt = Bitmap.createBitmap(src
+                                    , i * retBtWidth 
+                                    , 0
+                                    , retBtWidth
+                                    , height);
+            if (bt != null) {
+                bt.setDensity(160);
+                mBoomList.add(bt);
+            }
+        }
+        
+        return mBoomList;
     }
     
     public ArrayList<BitmapSiplited> splitBitmapInAssests(String path) {

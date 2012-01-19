@@ -18,6 +18,7 @@ import android.view.View;
 
 public class TimeProgressView extends View {
     private static final String TAG = "TimeProgressView";
+    private static final boolean DEBUG = false;
     
     public interface TimeProgressListener {
         void onTimeCostFinish();
@@ -139,7 +140,7 @@ public class TimeProgressView extends View {
         }
         
         if (mProgressing) {
-            this.postInvalidate();
+            this.invalidate();
         }
     }
     
@@ -194,7 +195,7 @@ public class TimeProgressView extends View {
     }
     
     private void LOGD(String msg) {
-        if (com.tinygame.lianliankan.config.Config.DEBUG) {
+        if (DEBUG) {
             Log.d(TAG, msg);
         }
     }

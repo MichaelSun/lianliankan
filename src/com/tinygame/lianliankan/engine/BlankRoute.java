@@ -25,13 +25,13 @@ public class BlankRoute {
 	}
 	
 	public DirectionPath[] getpath(){
-		int routeBodySize = routes.size() - 2;
-		
-		DirectionPath[] result = new DirectionPath[routeBodySize];
-		for(int i=0; i<routeBodySize; i++){
-			result[i] = new DirectionPath(routes.get(i),routes.get(i+1),routes.get(i+2));
-		}
-		return result;
+        int routeBodySize = routes.size() - 2;
+
+        DirectionPath[] result = new DirectionPath[routeBodySize];
+        for (int i = 0; i < routeBodySize; i++) {
+            result[i] = new DirectionPath(routes.get(i), routes.get(i + 1), routes.get(i + 2));
+        }
+        return result;
 	}
 	
 	public boolean isInPath(Tile someTile){

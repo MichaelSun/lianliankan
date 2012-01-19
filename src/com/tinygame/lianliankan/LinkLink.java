@@ -28,7 +28,7 @@ import com.tinygame.lianliankan.view.TimeProgressView.TimeProgressListener;
 public class LinkLink extends Activity implements LLViewActionListener, TimeProgressListener {
     private static final String TAG = "LinkLink";
     
-    LLKView llk;
+    private LLKView mLLView;
     private View newGameButton, arrangeButton, hintButton;
     private View mNext;
     private TimeProgressView mTimeView;
@@ -88,8 +88,8 @@ public class LinkLink extends Activity implements LLViewActionListener, TimeProg
 
     public void resetContent() {
         setContentView(R.layout.main);
-        llk = (LLKView) findViewById(R.id.llk);
-        llk.setLLViewActionListener(this);
+        mLLView = (LLKView) findViewById(R.id.llk);
+        mLLView.setLLViewActionListener(this);
         
 //        reloadCurrentLevel();
 
@@ -112,16 +112,16 @@ public class LinkLink extends Activity implements LLViewActionListener, TimeProg
         arrangeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Chart chart = llk.getChart();
+                Chart chart = mLLView.getChart();
                 chart.reArrange();
-                llk.invalidate();
+                mLLView.invalidate();
             }
         });
         hintButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Tile[] hint = new Hint(llk.getChart()).findHint();
-                llk.showHint(hint);
+                Tile[] hint = new Hint(mLLView.getChart()).findHint();
+                mLLView.showHint(hint);
             }
         });
         mNext.setOnClickListener(new View.OnClickListener() {
@@ -150,9 +150,9 @@ public class LinkLink extends Activity implements LLViewActionListener, TimeProg
 
     @Override
     public void onNoHintToConnect() {
-        Chart chart = llk.getChart();
+        Chart chart = mLLView.getChart();
         chart.reArrange();
-        llk.invalidate();
+        mLLView.invalidate();
     }
 
     @Override
@@ -228,13 +228,13 @@ public class LinkLink extends Activity implements LLViewActionListener, TimeProg
             ThemeManager.getInstance().loadImageByCategary(cate);
             Chart c = new Chart(FillContent.getRandomWithDiff(diff
                                 , ThemeManager.getInstance().getCurrentImageCount() - 1));
-            llk.setChart(c);
+            mLLView.setChart(c);
             mCurrentTimeProgress = Categary_diff_selector.getInstance().getCurrentTime();
             mHandler.sendEmptyMessageDelayed(PLAY_READY_SOUND, 200);
             mHandler.removeMessages(START_PROGRESS_TIME_VIEW);
             mHandler.sendEmptyMessage(RESET_PROGRESS_TIME_VIEW);
             mHandler.sendEmptyMessageDelayed(START_PROGRESS_TIME_VIEW, 1000);
-            llk.invalidate();
+            mLLView.invalidate();
         }
     }
     
@@ -254,8 +254,8 @@ public class LinkLink extends Activity implements LLViewActionListener, TimeProg
             ThemeManager.getInstance().loadImageByCategary(cate);
             Chart c = new Chart(FillContent.getRandomWithDiff(diff
                                 , ThemeManager.getInstance().getCurrentImageCount() - 1));
-            llk.setChart(c);
-            llk.invalidate();
+            mLLView.setChart(c);
+            mLLView.invalidate();
             mCurrentTimeProgress = Categary_diff_selector.getInstance().getCurrentTime();
             mHandler.sendEmptyMessageDelayed(PLAY_READY_SOUND, 200);
             mHandler.removeMessages(START_PROGRESS_TIME_VIEW);

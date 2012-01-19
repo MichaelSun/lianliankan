@@ -4,7 +4,7 @@ public class Config {
 
     public static final boolean DEBUG = true;
     
-    public static final boolean SOUND_DEBUG = false;
+    public static final boolean SOUND_DEBUG = true;
     
     public static final String DIFF_1 = "5x5";
     public static final String DIFF_2 = "5x6";

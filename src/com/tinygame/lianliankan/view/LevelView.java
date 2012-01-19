@@ -88,7 +88,7 @@ public class LevelView extends View {
 //                , numberStartY
 //                , mPaint);
         
-        LOGD("[[onDraw]] numberWidth = " + numberWidth + " >>>>>>>>>>>>>>");
+//        LOGD("[[onDraw]] numberWidth = " + numberWidth + " >>>>>>>>>>>>>>");
     }
     
     private void init(Context context) {
