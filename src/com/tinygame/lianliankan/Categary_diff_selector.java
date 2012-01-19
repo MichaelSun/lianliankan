@@ -16,11 +16,13 @@ public class Categary_diff_selector {
     
     private ArrayList<Diff> mDiffArryList = new ArrayList<Diff>();
     private ArrayList<String> mCateSmallArryList = new ArrayList<String>();
+    private ArrayList<String> mCateSmallTwoArryList = new ArrayList<String>();
     private ArrayList<String> mCateMeduimArryList = new ArrayList<String>();
     private ArrayList<String> mCateLargeArryList = new ArrayList<String>();
     
     private static final String LITTLE_WIDTH = "5";
     private static final String MEDUIM_WIDTH = "6";
+    private static final String SMALL_WIDTH = "8";
     private static Categary_diff_selector gCategary_diff_selector = new Categary_diff_selector();
 
     private int mCurrentCategary;
@@ -38,6 +40,8 @@ public class Categary_diff_selector {
                     return mCateLargeArryList.get(mCurrentCategary);
                 } else if (diff.startsWith(MEDUIM_WIDTH)) {
                     return mCateMeduimArryList.get(mCurrentCategary);
+                } else if (diff.startsWith(SMALL_WIDTH)) { 
+                    return mCateSmallTwoArryList.get(mCurrentCategary);
                 } else {
                     return mCateSmallArryList.get(mCurrentCategary);
                 }
@@ -101,6 +105,12 @@ public class Categary_diff_selector {
         mCateSmallArryList.add("image/4_40.png");
         mCateSmallArryList.add("image/5_40.png");
         
+        mCateSmallTwoArryList.add("image/1_48.png");
+        mCateSmallTwoArryList.add("image/2_48.png");
+        mCateSmallTwoArryList.add("image/3_48.png");
+        mCateSmallTwoArryList.add("image/4_48.png");
+        mCateSmallTwoArryList.add("image/5_48.png");
+        
         mCateMeduimArryList.add("image/1_64.png");
         mCateMeduimArryList.add("image/2_64.png");
         mCateMeduimArryList.add("image/3_64.png");
@@ -126,7 +136,7 @@ public class Categary_diff_selector {
         mDiffArryList.add(new Diff("8x10", 55));
         mDiffArryList.add(new Diff("8x12", 57));
         mDiffArryList.add(new Diff("8x14", 60));
-        mDiffArryList.add(new Diff("8x16", 60));
+        mDiffArryList.add(new Diff("8x15", 60));
         
         mDiffArryList.add(new Diff("10x10", 64));
         mDiffArryList.add(new Diff("10x12", 68));

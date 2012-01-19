@@ -13,7 +13,6 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
-import com.tinygame.lianliankan.LLKView.LLViewActionListener;
 import com.tinygame.lianliankan.config.Env;
 import com.tinygame.lianliankan.engine.Chart;
 import com.tinygame.lianliankan.engine.FillContent;
@@ -22,13 +21,15 @@ import com.tinygame.lianliankan.engine.Tile;
 import com.tinygame.lianliankan.utils.ImageSplitUtils;
 import com.tinygame.lianliankan.utils.SoundEffectUtils;
 import com.tinygame.lianliankan.view.LevelView;
+import com.tinygame.lianliankan.view.LinkLinkSurfaceView;
+import com.tinygame.lianliankan.view.LinkLinkSurfaceView.LLViewActionListener;
 import com.tinygame.lianliankan.view.TimeProgressView;
 import com.tinygame.lianliankan.view.TimeProgressView.TimeProgressListener;
 
 public class LinkLink extends Activity implements LLViewActionListener, TimeProgressListener {
     private static final String TAG = "LinkLink";
     
-    private LLKView mLLView;
+    private LinkLinkSurfaceView mLLView;
     private View newGameButton, arrangeButton, hintButton;
     private View mNext;
     private TimeProgressView mTimeView;
@@ -42,6 +43,8 @@ public class LinkLink extends Activity implements LLViewActionListener, TimeProg
     private static final int PLAY_BACKGROUND_SOUND = 1;
     private static final int START_PROGRESS_TIME_VIEW = 2;
     private static final int RESET_PROGRESS_TIME_VIEW = 3;
+    private static final int SHOW_FINISH_ONE_TIME = 4;
+    private static final int SHOW_FAILED_DIALOG = 5;
     private Handler mHandler = new Handler() {
         public void handleMessage(Message msg) {
             switch (msg.what) {
@@ -57,6 +60,12 @@ public class LinkLink extends Activity implements LLViewActionListener, TimeProg
                 break;
             case RESET_PROGRESS_TIME_VIEW:
                 mTimeView.reset();
+                break;
+            case SHOW_FINISH_ONE_TIME:
+                showFinishDialog();
+                break;
+            case SHOW_FAILED_DIALOG:
+                showFailedDialog();
                 break;
             }
         }
@@ -88,7 +97,7 @@ public class LinkLink extends Activity implements LLViewActionListener, TimeProg
 
     public void resetContent() {
         setContentView(R.layout.main);
-        mLLView = (LLKView) findViewById(R.id.llk);
+        mLLView = (LinkLinkSurfaceView) findViewById(R.id.llk);
         mLLView.setLLViewActionListener(this);
         
 //        reloadCurrentLevel();
@@ -114,7 +123,7 @@ public class LinkLink extends Activity implements LLViewActionListener, TimeProg
             public void onClick(View v) {
                 Chart chart = mLLView.getChart();
                 chart.reArrange();
-                mLLView.invalidate();
+                mLLView.forceRefresh();
             }
         });
         hintButton.setOnClickListener(new View.OnClickListener() {
@@ -152,11 +161,15 @@ public class LinkLink extends Activity implements LLViewActionListener, TimeProg
     public void onNoHintToConnect() {
         Chart chart = mLLView.getChart();
         chart.reArrange();
-        mLLView.invalidate();
+//        mLLView.invalidate();
     }
 
     @Override
     public void onFinishOnTime() {
+        mHandler.sendEmptyMessage(SHOW_FINISH_ONE_TIME);
+    }
+    
+    private void showFinishDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         View showView = mInflater.inflate(R.layout.win_view, null);
         View next = showView.findViewById(R.id.next);
@@ -170,6 +183,20 @@ public class LinkLink extends Activity implements LLViewActionListener, TimeProg
                 }
             }
         });
+        
+        View retry = showView.findViewById(R.id.retry);
+        retry.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Env.ICON_REGION_INIT = false;
+                reloadCurrentLevel();   
+                if (mWinDialog != null) {
+                    mWinDialog.dismiss();
+                    mWinDialog = null;
+                }
+            }
+        });
+        
         View quit = showView.findViewById(R.id.quit);
         quit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -184,9 +211,10 @@ public class LinkLink extends Activity implements LLViewActionListener, TimeProg
         
         builder.setView(showView);
         mWinDialog = builder.create();
+        mWinDialog.setCancelable(false);
         mWinDialog.show();
         mHandler.removeMessages(START_PROGRESS_TIME_VIEW);
-        mHandler.sendEmptyMessage(RESET_PROGRESS_TIME_VIEW);
+        mHandler.sendEmptyMessage(RESET_PROGRESS_TIME_VIEW);   
     }
     
     private void showFailedDialog() {
@@ -218,6 +246,7 @@ public class LinkLink extends Activity implements LLViewActionListener, TimeProg
         
         builder.setView(showView);
         mLoseDialog = builder.create();
+        mLoseDialog.setCancelable(false);
         mLoseDialog.show();
     }
     
@@ -234,7 +263,7 @@ public class LinkLink extends Activity implements LLViewActionListener, TimeProg
             mHandler.removeMessages(START_PROGRESS_TIME_VIEW);
             mHandler.sendEmptyMessage(RESET_PROGRESS_TIME_VIEW);
             mHandler.sendEmptyMessageDelayed(START_PROGRESS_TIME_VIEW, 1000);
-            mLLView.invalidate();
+            mLLView.forceRefresh();
         }
     }
     
@@ -255,7 +284,7 @@ public class LinkLink extends Activity implements LLViewActionListener, TimeProg
             Chart c = new Chart(FillContent.getRandomWithDiff(diff
                                 , ThemeManager.getInstance().getCurrentImageCount() - 1));
             mLLView.setChart(c);
-            mLLView.invalidate();
+            mLLView.forceRefresh();
             mCurrentTimeProgress = Categary_diff_selector.getInstance().getCurrentTime();
             mHandler.sendEmptyMessageDelayed(PLAY_READY_SOUND, 200);
             mHandler.removeMessages(START_PROGRESS_TIME_VIEW);
@@ -268,7 +297,7 @@ public class LinkLink extends Activity implements LLViewActionListener, TimeProg
     
     @Override
     public void onTimeCostFinish() {
-        showFailedDialog();
+        mHandler.sendEmptyMessage(SHOW_FAILED_DIALOG);
     }
     
     private void LOGD(String msg) {

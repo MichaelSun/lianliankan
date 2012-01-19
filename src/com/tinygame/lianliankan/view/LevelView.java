@@ -27,8 +27,9 @@ public class LevelView extends View {
     private int mCurrentLevel;
     private int mLowNumber;
     private int mHeightNumber;
-    private Paint mPaint = new Paint()
-;    
+    private Paint mPaint = new Paint();
+    private Drawable mTopBgDrawable;
+    
     public LevelView(Context context) {
         super(context);
         init(context);
@@ -49,6 +50,9 @@ public class LevelView extends View {
     protected void onDraw(Canvas canvas) {
         int width = getWidth();
         int height = getHeight();
+        
+        mTopBgDrawable.setBounds(0, 0, width, height);
+        mTopBgDrawable.draw(canvas);
         
         int logoWidth = mLevelLogo.getIntrinsicWidth();
         int numberWidth = mNumberMap.get(0).getWidth();
@@ -101,6 +105,7 @@ public class LevelView extends View {
             }
         }
         mLevelLogo = mContext.getResources().getDrawable(R.drawable.level);
+        mTopBgDrawable = mContext.getResources().getDrawable(R.drawable.top_bg);
     }
     
     private void LOGD(String msg) {
