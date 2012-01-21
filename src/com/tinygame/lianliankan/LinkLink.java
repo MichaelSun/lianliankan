@@ -12,6 +12,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.AnimationUtils;
 
 import com.tinygame.lianliankan.config.Env;
 import com.tinygame.lianliankan.engine.Chart;
@@ -26,11 +29,14 @@ import com.tinygame.lianliankan.view.LinkLinkSurfaceView.LLViewActionListener;
 import com.tinygame.lianliankan.view.TimeProgressView;
 import com.tinygame.lianliankan.view.TimeProgressView.TimeProgressListener;
 
-public class LinkLink extends Activity implements LLViewActionListener, TimeProgressListener {
+public class LinkLink extends Activity implements LLViewActionListener
+                                            , TimeProgressListener
+                                            , AnimationListener {
     private static final String TAG = "LinkLink";
     
     private LinkLinkSurfaceView mLLView;
     private View newGameButton, arrangeButton, hintButton;
+    private View mNoMoreTipsView;
     private View mNext;
     private TimeProgressView mTimeView;
     private LevelView mLevelView;
@@ -45,6 +51,7 @@ public class LinkLink extends Activity implements LLViewActionListener, TimeProg
     private static final int RESET_PROGRESS_TIME_VIEW = 3;
     private static final int SHOW_FINISH_ONE_TIME = 4;
     private static final int SHOW_FAILED_DIALOG = 5;
+    private static final int SHOW_NO_MORE_TIPS = 6;
     private Handler mHandler = new Handler() {
         public void handleMessage(Message msg) {
             switch (msg.what) {
@@ -66,6 +73,9 @@ public class LinkLink extends Activity implements LLViewActionListener, TimeProg
                 break;
             case SHOW_FAILED_DIALOG:
                 showFailedDialog();
+                break;
+            case SHOW_NO_MORE_TIPS:
+                showNoMoreTipsView();
                 break;
             }
         }
@@ -93,6 +103,8 @@ public class LinkLink extends Activity implements LLViewActionListener, TimeProg
     public void onStart() {
         super.onStart();
         reloadCurrentLevel();
+        //test code
+//        mHandler.sendEmptyMessageDelayed(SHOW_NO_MORE_TIPS, 1500);
     }
 
     public void resetContent() {
@@ -110,6 +122,8 @@ public class LinkLink extends Activity implements LLViewActionListener, TimeProg
         mTimeView.setTimeProgressListener(this);
         mLevelView = (LevelView) findViewById(R.id.level);
         mLevelView.setLevel(Categary_diff_selector.getInstance().getCurrentLevel());
+        
+        mNoMoreTipsView = findViewById(R.id.no_more_tips);
         
         newGameButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -159,6 +173,7 @@ public class LinkLink extends Activity implements LLViewActionListener, TimeProg
 
     @Override
     public void onNoHintToConnect() {
+        mHandler.sendEmptyMessage(SHOW_NO_MORE_TIPS);
         Chart chart = mLLView.getChart();
         chart.reArrange();
 //        mLLView.invalidate();
@@ -167,6 +182,15 @@ public class LinkLink extends Activity implements LLViewActionListener, TimeProg
     @Override
     public void onFinishOnTime() {
         mHandler.sendEmptyMessage(SHOW_FINISH_ONE_TIME);
+    }
+    
+    private void showNoMoreTipsView() {
+        if (mNoMoreTipsView.getVisibility() == View.GONE) {
+            mNoMoreTipsView.setVisibility(View.VISIBLE);
+            Animation anim = AnimationUtils.loadAnimation(this, R.anim.no_more_tips_anim);
+            anim.setAnimationListener(this);
+            mNoMoreTipsView.startAnimation(anim);
+        }
     }
     
     private void showFinishDialog() {
@@ -298,6 +322,24 @@ public class LinkLink extends Activity implements LLViewActionListener, TimeProg
     @Override
     public void onTimeCostFinish() {
         mHandler.sendEmptyMessage(SHOW_FAILED_DIALOG);
+    }
+
+    @Override
+    public void onAnimationEnd(Animation animation) {
+        LOGD("[[onAnimationEnd]] >>>>>>>>>");
+        if (mNoMoreTipsView != null) {
+            mNoMoreTipsView.setVisibility(View.GONE);
+        }
+    }
+
+    @Override
+    public void onAnimationRepeat(Animation animation) {
+        
+    }
+
+    @Override
+    public void onAnimationStart(Animation animation) {
+        
     }
     
     private void LOGD(String msg) {

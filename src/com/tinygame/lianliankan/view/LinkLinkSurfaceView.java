@@ -8,6 +8,7 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Point;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
@@ -17,7 +18,6 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceHolder.Callback;
 import android.view.SurfaceView;
 
-import com.tinygame.lianliankan.LLKView;
 import com.tinygame.lianliankan.R;
 import com.tinygame.lianliankan.ThemeManager;
 import com.tinygame.lianliankan.config.Env;
@@ -28,6 +28,7 @@ import com.tinygame.lianliankan.engine.Direction;
 import com.tinygame.lianliankan.engine.DirectionPath;
 import com.tinygame.lianliankan.engine.Hint;
 import com.tinygame.lianliankan.engine.Tile;
+import com.tinygame.lianliankan.utils.AssetsImageLoader;
 import com.tinygame.lianliankan.utils.ImageSplitUtils;
 import com.tinygame.lianliankan.utils.SoundEffectUtils;
 
@@ -50,6 +51,8 @@ public class LinkLinkSurfaceView extends SurfaceView implements Callback {
     private int mStartX;
     private int mStartY;
     private Drawable mBackgroundDrawable;
+    private Bitmap mLightHBt;
+    private Bitmap mLightVBt;
     
     private SurfaceHolder mHolder;
     
@@ -288,12 +291,14 @@ public class LinkLinkSurfaceView extends SurfaceView implements Callback {
         
         mPaintPath = new Paint();
         mPaintPath.setColor(Color.RED);
-        mPaintPath.setStrokeWidth(5);
+        mPaintPath.setStrokeWidth(1);
         
         mPaintDismissing = new Paint();
         mPaintDismissing.setAlpha(80);
         
         mBackgroundDrawable = mContext.getResources().getDrawable(R.drawable.game_bg);
+        mLightHBt = AssetsImageLoader.loadBitmapFromAsset(mContext, "image/light_h");
+        mLightVBt = AssetsImageLoader.loadBitmapFromAsset(mContext, "image/light_v");
         
         getHolder().addCallback(this);
         mHolder = getHolder();
@@ -347,7 +352,30 @@ public class LinkLinkSurfaceView extends SurfaceView implements Callback {
                 int yPoint = mStartY + (eachTile.y) * Env.ICON_WIDTH + Env.ICON_WIDTH / 2;
 
                 for (Direction eachDirection : each.getDirection()) {
-                    LOGD("[[onDrawFullView]] draw link path >>>>>>>>>");
+//                    int startX = xPoint;
+//                    int startY = yPoint;
+//                    int endX = xPoint + eachDirection.padding(true, Env.ICON_WIDTH);
+//                    int endY = yPoint + eachDirection.padding(false, Env.ICON_WIDTH);
+//                    LOGD("[[onDrawFullView]] draw link path, startX = " + startX
+//                            + " startY = " + startY + " endX = " + endX + " endY = " + endY);
+//                    if (startX == endX) {
+//                        int w = mLightVBt.getWidth();
+//                        Rect src = new Rect(0, 0, w, mLightVBt.getHeight());
+//                        Rect dest = new Rect((startX - w / 2), startY
+//                                                , (startX + w / 2), endY);
+//                        canvas.drawBitmap(mLightVBt, src, dest, mPaintPic);
+//                        canvas.drawRect(dest, mPaintPath);
+//                        LOGD("[[onDrawFullView]] draw link path, drawable V : " + dest.toString());
+//                    } else if (startY == endY) {
+//                        int h = mLightHBt.getHeight();
+//                        Rect src = new Rect(0, 0, mLightHBt.getWidth(), h);
+//                        Rect dest = new Rect(startX, startY - h / 2
+//                                                , endX, startY + h / 2);
+//                        canvas.drawBitmap(mLightHBt, src, dest, mPaintPic);
+//                        canvas.drawRect(dest, mPaintPath);
+//                        LOGD("[[onDrawFullView]] draw link path, drawable H : " + dest.toString());
+//                    }
+                    
                     canvas.drawLine(xPoint, yPoint, xPoint + eachDirection.padding(true, Env.ICON_WIDTH),
                             yPoint + eachDirection.padding(false, Env.ICON_WIDTH), mPaintPath);
                 }

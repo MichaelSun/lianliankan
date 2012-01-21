@@ -74,4 +74,12 @@
         android:layout_alignParentRight="true"
         android:layout_marginTop="10dp"
         android:layout_marginRight="10dp" />
+    
+	<ImageView 
+	    android:id="@+id/no_more_tips"
+	    android:layout_width="150dp"
+	    android:layout_height="150dp"
+	    android:src="@drawable/no_more_tips"
+	    android:layout_centerInParent="true"
+	    android:visibility="gone" />
 </RelativeLayout>
