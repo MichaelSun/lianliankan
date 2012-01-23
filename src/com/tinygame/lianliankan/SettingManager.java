@@ -33,6 +33,15 @@ public class SettingManager {
         mEditor.commit();
     }
     
+    public boolean getSoundOpen() {
+        return mSharedPreferences.getBoolean(mContext.getString(R.string.perf_sound_open), true);
+    }
+    
+    public void setSoundOpen(boolean open) {
+        mEditor.putBoolean(mContext.getString(R.string.perf_sound_open), open);
+        mEditor.commit();        
+    }
+    
     public void init(Context context) {
         mContext = context;
         mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(mContext);

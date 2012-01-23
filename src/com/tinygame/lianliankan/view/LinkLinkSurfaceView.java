@@ -8,7 +8,6 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.graphics.Point;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
@@ -38,9 +37,11 @@ public class LinkLinkSurfaceView extends SurfaceView implements Callback {
     public static interface LLViewActionListener {
         void onNoHintToConnect();
         void onFinishOnTime();
+        void onDismissTouch();
     }
     
-    private static final int PADDING_LEFT = 5;
+    private static final int PADDING_LEFT = 3;
+    private static final int REFRESH_DELAY = 300;
     
     private Context mContext;
     private Paint mPaintHint;
@@ -53,6 +54,8 @@ public class LinkLinkSurfaceView extends SurfaceView implements Callback {
     private Drawable mBackgroundDrawable;
     private Bitmap mLightHBt;
     private Bitmap mLightVBt;
+    private Drawable mSelectorDrawable;
+    private Drawable mHintDrawable;
     
     private SurfaceHolder mHolder;
     
@@ -70,8 +73,19 @@ public class LinkLinkSurfaceView extends SurfaceView implements Callback {
     private boolean mShowTouch;
     private boolean mShowHint;
     private boolean mForceRefresh;
+    private int mTileDataChangedCount;
     
     private DrawTread mDrawTread;
+    
+    public Runnable mRefreshRunnable = new Runnable() {
+        public void run() {
+            try {
+                mTileDataChanged = true;
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    };
 
     public LinkLinkSurfaceView(Context context) {
         super(context);
@@ -133,6 +147,7 @@ public class LinkLinkSurfaceView extends SurfaceView implements Callback {
             }
             break;
         case MotionEvent.ACTION_UP:
+//            this.postDelayed(mRefreshRunnable, REFRESH_DELAY);
             break;
         }
         return true;
@@ -156,6 +171,7 @@ public class LinkLinkSurfaceView extends SurfaceView implements Callback {
     }
     
     public void forceRefresh() {
+        LOGD("[[forceRefresh]] <<<<>>>> <<<<>>>>>");
         mForceRefresh = true;    
     }
     
@@ -170,12 +186,19 @@ public class LinkLinkSurfaceView extends SurfaceView implements Callback {
                     ConnectiveInfo ci = mChart.connectvie(mSelectTileCur, newTile);
                     if (ci.getResult()) {
                         SoundEffectUtils.getInstance().playDisapperSound();
+                        
+                        if (mLLViewActionListener != null) {
+                            mLLViewActionListener.onDismissTouch();
+                        }
+                        
                         mSelectTileOne = mSelectTileCur;
                         mSelectTileTwo = newTile;
                         mSelectTileCur = null;
                         mRoutes.add(ci.getRoute().dismissing());
-                        mTileDataChanged = true;
-                        
+                        synchronized (LinkLinkSurfaceView.this) {
+                            mTileDataChangedCount++;
+                            mTileDataChanged = true;
+                        }
                         return ;
                     } else {
                         mSelectTileCur = newTile;
@@ -270,7 +293,15 @@ public class LinkLinkSurfaceView extends SurfaceView implements Callback {
                     mShowTouch = false;
                     mForceRefresh = false;
                     mShowHint = false;
-                    mTileDataChanged = false;
+//                    mTileDataChanged = false;
+                    synchronized (LinkLinkSurfaceView.this) {
+                        if (mTileDataChangedCount > 0) {
+                            mTileDataChangedCount--;
+                        }
+                        if (mTileDataChangedCount == 0) {
+                            mTileDataChanged = false;
+                        }
+                    }
                 }
             }
         }
@@ -281,7 +312,7 @@ public class LinkLinkSurfaceView extends SurfaceView implements Callback {
         
         mPaintHint = new Paint();
         mPaintHint.setColor(Color.RED);
-        mPaintHint.setStrokeWidth(2);
+        mPaintHint.setStrokeWidth(4);
         mPaintHint.setStyle(Paint.Style.STROKE);
         
         mPaintSelect = new Paint();
@@ -291,12 +322,15 @@ public class LinkLinkSurfaceView extends SurfaceView implements Callback {
         
         mPaintPath = new Paint();
         mPaintPath.setColor(Color.RED);
-        mPaintPath.setStrokeWidth(1);
+        mPaintPath.setStrokeWidth(4);
         
         mPaintDismissing = new Paint();
         mPaintDismissing.setAlpha(80);
         
         mBackgroundDrawable = mContext.getResources().getDrawable(R.drawable.game_bg);
+        mHintDrawable = mContext.getResources().getDrawable(R.drawable.hint_icon);
+        mSelectorDrawable = mContext.getResources().getDrawable(R.drawable.selector);
+        
         mLightHBt = AssetsImageLoader.loadBitmapFromAsset(mContext, "image/light_h");
         mLightVBt = AssetsImageLoader.loadBitmapFromAsset(mContext, "image/light_v");
         
@@ -417,7 +451,7 @@ public class LinkLinkSurfaceView extends SurfaceView implements Callback {
                 mStartY = (height - (mChart.ySize * imageWidth)) / 2;
             } else {
                 mStartX = PADDING_LEFT;
-                mStartY = PADDING_LEFT;
+                mStartY = (height - (mChart.ySize * Env.ICON_WIDTH)) / 2;
             }
         }
 
@@ -441,11 +475,16 @@ public class LinkLinkSurfaceView extends SurfaceView implements Callback {
         }
 
         if (mSelectTileCur != null) {
-            canvas.drawRect(mStartX + (mSelectTileCur.x) * Env.ICON_WIDTH
+//            canvas.drawRect(mStartX + (mSelectTileCur.x) * Env.ICON_WIDTH
+//                        , mStartY + (mSelectTileCur.y) * Env.ICON_WIDTH
+//                        , mStartX + (mSelectTileCur.x + 1) * Env.ICON_WIDTH
+//                        , mStartY + (mSelectTileCur.y + 1) * Env.ICON_WIDTH
+//                        , mPaintSelect);
+            mSelectorDrawable.setBounds(mStartX + (mSelectTileCur.x) * Env.ICON_WIDTH
                         , mStartY + (mSelectTileCur.y) * Env.ICON_WIDTH
                         , mStartX + (mSelectTileCur.x + 1) * Env.ICON_WIDTH
-                        , mStartY + (mSelectTileCur.y + 1) * Env.ICON_WIDTH
-                        , mPaintSelect);
+                        , mStartY + (mSelectTileCur.y + 1) * Env.ICON_WIDTH);
+            mSelectorDrawable.draw(canvas);
         }
 
         if (null != mHint) {
@@ -458,11 +497,16 @@ public class LinkLinkSurfaceView extends SurfaceView implements Callback {
             }
             if (blank == false) {
                 for (Tile tile : mHint) {
-                    canvas.drawRect(mStartX + tile.x * Env.ICON_WIDTH
+//                    canvas.drawRect(mStartX + tile.x * Env.ICON_WIDTH
+//                                , mStartY + tile.y * Env.ICON_WIDTH
+//                                , mStartX + (tile.x + 1) * Env.ICON_WIDTH
+//                                , mStartY + (tile.y + 1) * Env.ICON_WIDTH
+//                                , mPaintHint);
+                    mHintDrawable.setBounds(mStartX + tile.x * Env.ICON_WIDTH
                                 , mStartY + tile.y * Env.ICON_WIDTH
                                 , mStartX + (tile.x + 1) * Env.ICON_WIDTH
-                                , mStartY + (tile.y + 1) * Env.ICON_WIDTH
-                                , mPaintHint);
+                                , mStartY + (tile.y + 1) * Env.ICON_WIDTH);
+                    mHintDrawable.draw(canvas);
                 }
             }
         }

@@ -15,6 +15,8 @@ import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
 import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.tinygame.lianliankan.config.Env;
 import com.tinygame.lianliankan.engine.Chart;
@@ -37,6 +39,8 @@ public class LinkLink extends Activity implements LLViewActionListener
     private LinkLinkSurfaceView mLLView;
     private View newGameButton, arrangeButton, hintButton;
     private View mNoMoreTipsView;
+    private TextView mArrangeCount;
+    private TextView mHintCount;
     private View mNext;
     private TimeProgressView mTimeView;
     private LevelView mLevelView;
@@ -44,6 +48,10 @@ public class LinkLink extends Activity implements LLViewActionListener
     private LayoutInflater mInflater;
     private Dialog mWinDialog;
     private Dialog mLoseDialog;
+    private Dialog mResetDialog;
+    private int mCurDiffArrangeCount;
+    private int mCurDiffHintCount;
+    private boolean mFinishDialogShow;
     
     private static final int PLAY_READY_SOUND = 0;
     private static final int PLAY_BACKGROUND_SOUND = 1;
@@ -56,10 +64,18 @@ public class LinkLink extends Activity implements LLViewActionListener
         public void handleMessage(Message msg) {
             switch (msg.what) {
             case PLAY_READY_SOUND:
-                SoundEffectUtils.getInstance().playReadySound();
+                {
+                    boolean soundOpen = SettingManager.getInstance().getSoundOpen();
+                    if (soundOpen) {
+                        SoundEffectUtils.getInstance().playReadySound();
+                    }
+                }
                 break;
             case PLAY_BACKGROUND_SOUND:
-                SoundEffectUtils.getInstance().playSpeedSound();
+                boolean soundOpen = SettingManager.getInstance().getSoundOpen();
+                if (soundOpen) {
+                    SoundEffectUtils.getInstance().playSpeedSound();
+                }
                 break;
             case START_PROGRESS_TIME_VIEW:
                 mTimeView.setTotalTime(mCurrentTimeProgress);
@@ -103,10 +119,23 @@ public class LinkLink extends Activity implements LLViewActionListener
     public void onStart() {
         super.onStart();
         reloadCurrentLevel();
-        //test code
-//        mHandler.sendEmptyMessageDelayed(SHOW_NO_MORE_TIPS, 1500);
+        updateToolsCount();
     }
 
+    private void updateToolsCountView() {
+        if (mArrangeCount != null) {
+            mArrangeCount.setText(String.valueOf(mCurDiffArrangeCount)); 
+        }
+        if (mHintCount != null) {
+            mHintCount.setText(String.valueOf(mCurDiffHintCount)); 
+        }         
+    }
+    
+    private void updateToolsCount() {
+        mCurDiffArrangeCount = Categary_diff_selector.getInstance().getCurrentDiffArrange();
+        mCurDiffHintCount = Categary_diff_selector.getInstance().getCurrentDiffHint();
+    }
+    
     public void resetContent() {
         setContentView(R.layout.main);
         mLLView = (LinkLinkSurfaceView) findViewById(R.id.llk);
@@ -122,6 +151,8 @@ public class LinkLink extends Activity implements LLViewActionListener
         mTimeView.setTimeProgressListener(this);
         mLevelView = (LevelView) findViewById(R.id.level);
         mLevelView.setLevel(Categary_diff_selector.getInstance().getCurrentLevel());
+        mArrangeCount = (TextView) findViewById(R.id.arrage_count);
+        mHintCount = (TextView) findViewById(R.id.hint_count);
         
         mNoMoreTipsView = findViewById(R.id.no_more_tips);
         
@@ -135,16 +166,39 @@ public class LinkLink extends Activity implements LLViewActionListener
         arrangeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (mCurDiffArrangeCount == 0) {
+                    return;
+                }
+                
                 Chart chart = mLLView.getChart();
                 chart.reArrange();
+                
+                Tile[] hint = new Hint(chart).findHint();
+                if (hint == null) {
+                    noMoreConnectChanged();
+                }
+                
                 mLLView.forceRefresh();
+                if (mCurDiffArrangeCount > 0) {
+                    mCurDiffArrangeCount--;
+                }
+                updateToolsCountView();
             }
         });
         hintButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (mCurDiffHintCount == 0) {
+                    return;
+                }
+                
                 Tile[] hint = new Hint(mLLView.getChart()).findHint();
                 mLLView.showHint(hint);
+                
+                if (mCurDiffHintCount > 0) {
+                    mCurDiffHintCount--;
+                }
+                updateToolsCountView();
             }
         });
         mNext.setOnClickListener(new View.OnClickListener() {
@@ -153,13 +207,17 @@ public class LinkLink extends Activity implements LLViewActionListener
                 tryUpdateDiffAndCategory();
             }
         });
+//        mNext.setVisibility(View.GONE);
     }
     
     @Override
     public void onStop() {
         super.onStop();
         LOGD("[[onStop]]");
-        SoundEffectUtils.getInstance().stopSpeedSound();
+        boolean soundOpen = SettingManager.getInstance().getSoundOpen();
+        if (soundOpen) {
+            SoundEffectUtils.getInstance().stopSpeedSound();
+        }
         Categary_diff_selector.getInstance().saveCurretInfo();
     }
     
@@ -173,14 +231,31 @@ public class LinkLink extends Activity implements LLViewActionListener
 
     @Override
     public void onNoHintToConnect() {
-        mHandler.sendEmptyMessage(SHOW_NO_MORE_TIPS);
+        noMoreConnectChanged();
+    }
+    
+    @Override
+    public void onDismissTouch() {
+        if (mTimeView != null) {
+            mTimeView.onDissmisTouch();
+        }
+    }
+    
+    private void noMoreConnectChanged() {
+        mHandler.removeMessages(SHOW_NO_MORE_TIPS);
         Chart chart = mLLView.getChart();
         chart.reArrange();
-//        mLLView.invalidate();
+        Tile[] hint = new Hint(chart).findHint();
+        if (hint != null) {
+            mHandler.sendEmptyMessage(SHOW_NO_MORE_TIPS);
+        } else {
+            noMoreConnectChanged();
+        }
     }
 
     @Override
     public void onFinishOnTime() {
+        mFinishDialogShow = true;
         mHandler.sendEmptyMessage(SHOW_FINISH_ONE_TIME);
     }
     
@@ -202,6 +277,7 @@ public class LinkLink extends Activity implements LLViewActionListener
             public void onClick(View v) {
                 tryUpdateDiffAndCategory();
                 if (mWinDialog != null) {
+                    mFinishDialogShow = false;
                     mWinDialog.dismiss();
                     mWinDialog = null;
                 }
@@ -215,6 +291,7 @@ public class LinkLink extends Activity implements LLViewActionListener
                 Env.ICON_REGION_INIT = false;
                 reloadCurrentLevel();   
                 if (mWinDialog != null) {
+                    mFinishDialogShow = false;
                     mWinDialog.dismiss();
                     mWinDialog = null;
                 }
@@ -226,6 +303,7 @@ public class LinkLink extends Activity implements LLViewActionListener
             @Override
             public void onClick(View v) {
                 if (mWinDialog != null) {
+                    mFinishDialogShow = false;
                     mWinDialog.dismiss();
                     mWinDialog = null;
                 }
@@ -277,6 +355,7 @@ public class LinkLink extends Activity implements LLViewActionListener
     private void reloadCurrentLevel() {
         String diff = Categary_diff_selector.getInstance().getCurrentDiff();
         String cate = Categary_diff_selector.getInstance().getCurrentCategary();
+        LOGD("[[reloadCurrentLevel]] diff = " + diff + " cate = " + cate + " >>>>>>>>>");
         if (cate != null && diff != null) {
             ThemeManager.getInstance().loadImageByCategary(cate);
             Chart c = new Chart(FillContent.getRandomWithDiff(diff
@@ -288,13 +367,56 @@ public class LinkLink extends Activity implements LLViewActionListener
             mHandler.sendEmptyMessage(RESET_PROGRESS_TIME_VIEW);
             mHandler.sendEmptyMessageDelayed(START_PROGRESS_TIME_VIEW, 1000);
             mLLView.forceRefresh();
+            
+            updateToolsCount();
+            updateToolsCountView();
+        } else {
+            showResetGameDialog();
         }
     }
     
+    private void showResetGameDialog() {
+        LOGD("[[showResetGameDialog]] >>>>>>>>>>>>>>>");
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        View showView = mInflater.inflate(R.layout.reset_game_view, null);
+        View next = showView.findViewById(R.id.retry);
+        next.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SettingManager.getInstance().setLastCategory(0);
+                SettingManager.getInstance().setLastDiff(0);
+                Categary_diff_selector.getInstance().restDiff();
+                Categary_diff_selector.getInstance().resetCategory();
+                Env.ICON_REGION_INIT = false;
+                reloadCurrentLevel();
+                if (mResetDialog != null) {
+                    mResetDialog.dismiss();
+                    mResetDialog = null;
+                }
+            }
+        });
+        View quit = showView.findViewById(R.id.quit);
+        quit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mResetDialog != null) {
+                    mResetDialog.dismiss();
+                    mResetDialog = null;
+                }
+                finish();
+            }
+        });
+        
+        builder.setView(showView);
+        mResetDialog = builder.create();
+        mResetDialog.setCancelable(false);
+        mResetDialog.show();
+    }
+    
     private void tryUpdateDiffAndCategory() {
-        LOGD("tryUpdateDiffAndCategory >>>>>>>>>>");
         String diff = Categary_diff_selector.getInstance().updateDiff();
         String cate = Categary_diff_selector.getInstance().getCurrentCategary();
+        LOGD("tryUpdateDiffAndCategory >>>>> diff = " + diff + " cate = " + cate + " >>>>>>>");
         if (diff == null) {
             cate = Categary_diff_selector.getInstance().updateCategory();
             if (cate != null) {
@@ -316,12 +438,19 @@ public class LinkLink extends Activity implements LLViewActionListener
             mHandler.sendEmptyMessageDelayed(START_PROGRESS_TIME_VIEW, 1000);
             
             mLevelView.setLevel(Categary_diff_selector.getInstance().getCurrentLevel());
+            
+            updateToolsCount();
+            updateToolsCountView();
+        } else {
+            showResetGameDialog();
         }
     }
     
     @Override
     public void onTimeCostFinish() {
-        mHandler.sendEmptyMessage(SHOW_FAILED_DIALOG);
+        if (!mFinishDialogShow) {
+            mHandler.sendEmptyMessage(SHOW_FAILED_DIALOG);
+        }
     }
 
     @Override

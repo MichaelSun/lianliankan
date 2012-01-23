@@ -41,17 +41,35 @@
             android:layout_height="wrap_content"
 			android:background="@drawable/refresh_button_bg"
 			android:layout_alignParentRight="true"
-			android:layout_marginRight="10dp" />
-
+			android:layout_marginRight="25dp" />
+		<TextView 
+            android:id="@+id/arrage_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16dp"
+            android:textColor="@drawable/white"
+            android:layout_alignLeft="@id/arrange"
+            android:layout_centerVertical="true"
+            android:paddingLeft="55dp" />
+        
         <ImageButton
             android:id="@+id/hint"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/find_button_bg"
             android:layout_toLeftOf="@id/arrange"
-            android:layout_marginRight="8dp"
+            android:layout_marginRight="20dp"
             android:layout_alignTop="@id/arrange" />
-        
+		<TextView 
+            android:id="@+id/hint_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16dp"
+            android:textColor="@drawable/white"
+            android:layout_alignLeft="@id/hint"
+            android:layout_centerVertical="true"
+            android:paddingLeft="46dp" />
+		        
     </RelativeLayout>
     
     <com.tinygame.lianliankan.view.TimeProgressView 

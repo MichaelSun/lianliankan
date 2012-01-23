@@ -10,16 +10,18 @@
         android:id="@+id/tips_icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/lost"
+        android:background="@drawable/win1"
         android:layout_centerHorizontal="true" />
     
-    <ImageView 
+    <TextView 
         android:id="@+id/tips"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/lose"
         android:layout_below="@id/tips_icon"
         android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:textSize="18dp"
+        android:text="@string/reset_game_tips"
         android:layout_marginTop="10dp" />
     
     <LinearLayout 

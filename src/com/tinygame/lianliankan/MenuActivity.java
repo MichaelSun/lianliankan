@@ -8,11 +8,14 @@ import android.os.Message;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ImageView;
 
 import com.tinygame.lianliankan.utils.SoundEffectUtils;
 
 public class MenuActivity extends Activity {
 
+    private ImageView mSoundImageView;
+    
     private static final int ENTRY_GAME = 0;
     private Handler mHandler = new Handler() {
         public void handleMessage(Message msg) {
@@ -40,13 +43,19 @@ public class MenuActivity extends Activity {
     @Override
     public void onStart() {
         super.onStart();
-        SoundEffectUtils.getInstance().playMenuSound();        
+        boolean soundOpen = SettingManager.getInstance().getSoundOpen();
+        if (soundOpen) {
+            SoundEffectUtils.getInstance().playMenuSound();        
+        }
     }
     
     @Override
     public void onStop() {
         super.onStop();
-        SoundEffectUtils.getInstance().stopMenuSound();
+        boolean soundOpen = SettingManager.getInstance().getSoundOpen();
+        if (soundOpen) {
+            SoundEffectUtils.getInstance().stopMenuSound();
+        }
     }
     
     private void initView() {
@@ -56,6 +65,31 @@ public class MenuActivity extends Activity {
             public void onClick(View v) {
                 SoundEffectUtils.getInstance().playClickSound();
                 mHandler.sendEmptyMessageDelayed(ENTRY_GAME, 100);
+            }
+        });
+        
+        mSoundImageView = (ImageView) findViewById(R.id.setting);
+        boolean open = SettingManager.getInstance().getSoundOpen();
+        if (open) {
+            mSoundImageView.setImageDrawable(this.getResources().getDrawable(R.drawable.sound_white));
+        } else {
+            mSoundImageView.setImageDrawable(this.getResources().getDrawable(R.drawable.close));
+        }
+        mSoundImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                boolean curOpen = SettingManager.getInstance().getSoundOpen();
+                if (curOpen) {
+                    mSoundImageView.setImageDrawable(getResources().getDrawable(R.drawable.close));
+                    SettingManager.getInstance().setSoundOpen(false);
+                    
+                    SoundEffectUtils.getInstance().stopMenuSound();
+                } else {
+                    mSoundImageView.setImageDrawable(getResources().getDrawable(R.drawable.sound_white));
+                    SettingManager.getInstance().setSoundOpen(true);
+                    
+                    SoundEffectUtils.getInstance().playMenuSound();
+                }
             }
         });
     }
