@@ -322,7 +322,8 @@ public class LinkLinkSurfaceView extends SurfaceView implements Callback {
         
         mPaintPath = new Paint();
         mPaintPath.setColor(Color.RED);
-        mPaintPath.setStrokeWidth(4);
+        mPaintPath.setStrokeWidth(6);
+        mPaintPath.setAlpha(150);
         
         mPaintDismissing = new Paint();
         mPaintDismissing.setAlpha(80);

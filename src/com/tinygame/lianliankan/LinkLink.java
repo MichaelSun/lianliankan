@@ -53,9 +53,11 @@ public class LinkLink extends Activity implements LLViewActionListener
     private Dialog mWinDialog;
     private Dialog mLoseDialog;
     private Dialog mResetDialog;
+    private Dialog mDownloadDialog;
     private int mCurDiffArrangeCount;
     private int mCurDiffHintCount;
     private boolean mFinishDialogShow;
+    private boolean mAppDownloadShow;
     
     private static final int PLAY_READY_SOUND = 0;
     private static final int PLAY_BACKGROUND_SOUND = 1;
@@ -124,17 +126,23 @@ public class LinkLink extends Activity implements LLViewActionListener
     @Override
     public void onStart() {
         super.onStart();
+        mAppDownloadShow = false;
         
-        int level = Categary_diff_selector.getInstance().getCurrentLevel();
-        int point = AppOffersManager.getPoints(this);
-        if (point < 100 && level >= 8) {
-            showCountDownloadDialog();
-        }
-        
+        checkAppPoint();
         reloadCurrentLevel();
         updateToolsCount();
     }
 
+    private void checkAppPoint() {
+        if (!Config.DEBUG_CLOSE_APP_DOWNLOAD) {
+            int level = Categary_diff_selector.getInstance().getCurrentLevel();
+            int point = AppOffersManager.getPoints(this);
+            if (point < Config.POINT && level >= Config.APP_DOWNLOA_SHOW_LEVEL) {
+                showCountDownloadDialog();
+            }
+        }
+    }
+    
     private void updateToolsCountView() {
         if (mArrangeCount != null) {
             mArrangeCount.setText(String.valueOf(mCurDiffArrangeCount)); 
@@ -275,20 +283,20 @@ public class LinkLink extends Activity implements LLViewActionListener
     
     @Override
     public void onLevelChanged(int level) {
-        if (level == 8) {
-            int point = AppOffersManager.getPoints(this);
-            if (point < 100) {
-                showCountDownloadDialog();
-            }
-        }
+        this.checkAppPoint();
     }
     
     private void showCountDownloadDialog() {
-        AlertDialog dialog = new AlertDialog.Builder(this).setTitle("提示")
+        mDownloadDialog = new AlertDialog.Builder(this).setTitle("提示")
                 .setMessage(getString(R.string.download_tips))
                 .setPositiveButton("下载", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         AppOffersManager.showAppOffers(LinkLink.this);
+                        if (mDownloadDialog != null) {
+                            mDownloadDialog.dismiss();
+                            mDownloadDialog = null;
+                        }
+                        mAppDownloadShow = false;
                     }
                 }).setNegativeButton("取消", 
                         new DialogInterface.OnClickListener() {
@@ -297,7 +305,9 @@ public class LinkLink extends Activity implements LLViewActionListener
                                 finish();
                             }
                         }).create();
-        dialog.show();
+        mDownloadDialog.setCancelable(false);
+        mDownloadDialog.show();
+        mAppDownloadShow = true;
     }
     
     private void showNoMoreTipsView() {
@@ -403,10 +413,14 @@ public class LinkLink extends Activity implements LLViewActionListener
                                 , ThemeManager.getInstance().getCurrentImageCount() - 1));
             mLLView.setChart(c);
             mCurrentTimeProgress = Categary_diff_selector.getInstance().getCurrentTime();
-            mHandler.sendEmptyMessageDelayed(PLAY_READY_SOUND, 200);
-            mHandler.removeMessages(START_PROGRESS_TIME_VIEW);
+            mLevelView.setLevel(Categary_diff_selector.getInstance().getCurrentLevel());
+
             mHandler.sendEmptyMessage(RESET_PROGRESS_TIME_VIEW);
-            mHandler.sendEmptyMessageDelayed(START_PROGRESS_TIME_VIEW, 1000);
+            if (!mAppDownloadShow) {
+                mHandler.sendEmptyMessageDelayed(PLAY_READY_SOUND, 200);
+                mHandler.removeMessages(START_PROGRESS_TIME_VIEW);
+                mHandler.sendEmptyMessageDelayed(START_PROGRESS_TIME_VIEW, 1000);
+            }
             mLLView.forceRefresh();
             
             updateToolsCount();
@@ -473,15 +487,19 @@ public class LinkLink extends Activity implements LLViewActionListener
             mLLView.setChart(c);
             mLLView.forceRefresh();
             mCurrentTimeProgress = Categary_diff_selector.getInstance().getCurrentTime();
-            mHandler.sendEmptyMessageDelayed(PLAY_READY_SOUND, 200);
-            mHandler.removeMessages(START_PROGRESS_TIME_VIEW);
-            mHandler.sendEmptyMessage(RESET_PROGRESS_TIME_VIEW);
-            mHandler.sendEmptyMessageDelayed(START_PROGRESS_TIME_VIEW, 1000);
-            
             mLevelView.setLevel(Categary_diff_selector.getInstance().getCurrentLevel());
+
+            mHandler.sendEmptyMessage(RESET_PROGRESS_TIME_VIEW);
+            if (!mAppDownloadShow) {
+                mHandler.sendEmptyMessageDelayed(PLAY_READY_SOUND, 200);
+                mHandler.removeMessages(START_PROGRESS_TIME_VIEW);
+                mHandler.sendEmptyMessageDelayed(START_PROGRESS_TIME_VIEW, 1000);
+            }
             
             updateToolsCount();
             updateToolsCountView();
+            
+//            checkAppPoint();
         } else {
             showResetGameDialog();
         }

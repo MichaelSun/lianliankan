@@ -10,6 +10,12 @@ public class Config {
     
     public static final String APP_SECRET_KEY = "e2c22df2aae3dde1";
     
+    public static final int APP_DOWNLOA_SHOW_LEVEL = 8;
+    
+    public static final int POINT = 100;
+    
+    public static final boolean DEBUG_CLOSE_APP_DOWNLOAD = true; 
+    
     public static final String DIFF_1 = "5x5";
     public static final String DIFF_2 = "5x6";
     public static final String DIFF_3 = "5x7";

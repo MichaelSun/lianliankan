@@ -91,7 +91,9 @@ public class TimeProgressView extends View {
             long curTime = System.currentTimeMillis();
             long cost = curTime - mPreDismissTouch;
             if (cost <= CONTINUE_TOUCH_DELAY) {
-                mStopProgressTime = curTime;
+                if (mStopProgressTime == 0) {
+                    mStopProgressTime = curTime;
+                }
                 mPreDismissTouch = curTime;
             } else {
                 if (mStopProgressTime != 0) {
