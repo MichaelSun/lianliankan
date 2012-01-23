@@ -20,6 +20,10 @@ public class LevelView extends View {
     private static final String TAG = "LevelView";
     
     private static final int PADDING = 20;
+
+    public interface LevelChangedListener {
+        void onLevelChanged(int level);
+    }
     
     private Context mContext;
     private HashMap<Integer, Bitmap> mNumberMap;
@@ -29,6 +33,7 @@ public class LevelView extends View {
     private int mHeightNumber;
     private Paint mPaint = new Paint();
     private Drawable mTopBgDrawable;
+    private LevelChangedListener mLevelChangedListener;
     
     public LevelView(Context context) {
         super(context);
@@ -40,8 +45,16 @@ public class LevelView extends View {
         init(context);
     }
     
+    public void setLevelChangedListener(LevelChangedListener l) {
+        mLevelChangedListener = l;
+    }
+    
     public void setLevel(int level) {
         mCurrentLevel = level;
+        
+        if (mLevelChangedListener != null) {
+            mLevelChangedListener.onLevelChanged(mCurrentLevel);
+        }
         
         this.invalidate();
     }

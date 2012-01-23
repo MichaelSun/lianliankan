@@ -6,6 +6,10 @@ public class Config {
     
     public static final boolean SOUND_DEBUG = false;
     
+    public static final String APP_ID = "7faeab4a03696da8";
+    
+    public static final String APP_SECRET_KEY = "e2c22df2aae3dde1";
+    
     public static final String DIFF_1 = "5x5";
     public static final String DIFF_2 = "5x6";
     public static final String DIFF_3 = "5x7";

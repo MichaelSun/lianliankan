@@ -1,9 +1,11 @@
 package com.tinygame.lianliankan;
 
+import net.youmi.android.appoffers.AppOffersManager;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -15,9 +17,9 @@ import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
 import android.view.animation.AnimationUtils;
-import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.tinygame.lianliankan.config.Config;
 import com.tinygame.lianliankan.config.Env;
 import com.tinygame.lianliankan.engine.Chart;
 import com.tinygame.lianliankan.engine.FillContent;
@@ -26,6 +28,7 @@ import com.tinygame.lianliankan.engine.Tile;
 import com.tinygame.lianliankan.utils.ImageSplitUtils;
 import com.tinygame.lianliankan.utils.SoundEffectUtils;
 import com.tinygame.lianliankan.view.LevelView;
+import com.tinygame.lianliankan.view.LevelView.LevelChangedListener;
 import com.tinygame.lianliankan.view.LinkLinkSurfaceView;
 import com.tinygame.lianliankan.view.LinkLinkSurfaceView.LLViewActionListener;
 import com.tinygame.lianliankan.view.TimeProgressView;
@@ -33,7 +36,8 @@ import com.tinygame.lianliankan.view.TimeProgressView.TimeProgressListener;
 
 public class LinkLink extends Activity implements LLViewActionListener
                                             , TimeProgressListener
-                                            , AnimationListener {
+                                            , AnimationListener
+                                            , LevelChangedListener {
     private static final String TAG = "LinkLink";
     
     private LinkLinkSurfaceView mLLView;
@@ -113,11 +117,20 @@ public class LinkLink extends Activity implements LLViewActionListener
         
         resetContent();
         mHandler.sendEmptyMessageDelayed(PLAY_BACKGROUND_SOUND, 500);
+        
+        AppOffersManager.init(this, Config.APP_ID, Config.APP_SECRET_KEY, true);
     }
 
     @Override
     public void onStart() {
         super.onStart();
+        
+        int level = Categary_diff_selector.getInstance().getCurrentLevel();
+        int point = AppOffersManager.getPoints(this);
+        if (point < 100 && level >= 8) {
+            showCountDownloadDialog();
+        }
+        
         reloadCurrentLevel();
         updateToolsCount();
     }
@@ -150,6 +163,7 @@ public class LinkLink extends Activity implements LLViewActionListener
         mTimeView = (TimeProgressView) findViewById(R.id.time);
         mTimeView.setTimeProgressListener(this);
         mLevelView = (LevelView) findViewById(R.id.level);
+        mLevelView.setLevelChangedListener(this);
         mLevelView.setLevel(Categary_diff_selector.getInstance().getCurrentLevel());
         mArrangeCount = (TextView) findViewById(R.id.arrage_count);
         mHintCount = (TextView) findViewById(R.id.hint_count);
@@ -257,6 +271,33 @@ public class LinkLink extends Activity implements LLViewActionListener
     public void onFinishOnTime() {
         mFinishDialogShow = true;
         mHandler.sendEmptyMessage(SHOW_FINISH_ONE_TIME);
+    }
+    
+    @Override
+    public void onLevelChanged(int level) {
+        if (level == 8) {
+            int point = AppOffersManager.getPoints(this);
+            if (point < 100) {
+                showCountDownloadDialog();
+            }
+        }
+    }
+    
+    private void showCountDownloadDialog() {
+        AlertDialog dialog = new AlertDialog.Builder(this).setTitle("提示")
+                .setMessage(getString(R.string.download_tips))
+                .setPositiveButton("下载", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        AppOffersManager.showAppOffers(LinkLink.this);
+                    }
+                }).setNegativeButton("取消", 
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                finish();
+                            }
+                        }).create();
+        dialog.show();
     }
     
     private void showNoMoreTipsView() {
