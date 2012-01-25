@@ -12,7 +12,10 @@ public class Config {
     
     public static final int APP_DOWNLOA_SHOW_LEVEL = 8;
     
+    public static final int APP_DOWNLOA_SHOW_LEVEL_ONE = 31;
+    
     public static final int POINT = 100;
+    public static final int POINT_200 = 200;
     
     public static final boolean DEBUG_CLOSE_APP_DOWNLOAD = false; 
     

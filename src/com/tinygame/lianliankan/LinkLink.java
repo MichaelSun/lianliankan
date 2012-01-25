@@ -139,6 +139,13 @@ public class LinkLink extends Activity implements LLViewActionListener
             int point = AppOffersManager.getPoints(this);
             if (point < Config.POINT && level >= Config.APP_DOWNLOA_SHOW_LEVEL) {
                 showCountDownloadDialog();
+            } else if (point < Config.POINT_200 && level >= Config.APP_DOWNLOA_SHOW_LEVEL_ONE) {
+                showCountDownloadDialog();
+            } else {
+                if (mDownloadDialog != null) {
+                    mDownloadDialog.dismiss();
+                    mDownloadDialog = null;
+                }
             }
         }
     }
@@ -229,7 +236,7 @@ public class LinkLink extends Activity implements LLViewActionListener
                 tryUpdateDiffAndCategory();
             }
         });
-//        mNext.setVisibility(View.GONE);
+        mNext.setVisibility(View.GONE);
     }
     
     @Override
