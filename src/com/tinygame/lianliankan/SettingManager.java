@@ -42,6 +42,15 @@ public class SettingManager {
         mEditor.commit();        
     }
     
+    public void setOpenLevel(int level) {
+        mEditor.putInt(mContext.getString(R.string.perf_level_opened), level);
+        mEditor.commit();
+    }
+    
+    public int getOpenLevel() {
+        return mSharedPreferences.getInt(mContext.getString(R.string.perf_level_opened), 1);
+    }
+    
     public void init(Context context) {
         mContext = context;
         mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(mContext);

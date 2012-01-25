@@ -6,15 +6,15 @@ public class Config {
     
     public static final boolean SOUND_DEBUG = false;
     
-    public static final String APP_ID = "7faeab4a03696da8";
+    public static final String APP_ID = "53e13f6906527b33";
     
-    public static final String APP_SECRET_KEY = "e2c22df2aae3dde1";
+    public static final String APP_SECRET_KEY = "e1703eadcc64253b";
     
     public static final int APP_DOWNLOA_SHOW_LEVEL = 8;
     
     public static final int POINT = 100;
     
-    public static final boolean DEBUG_CLOSE_APP_DOWNLOAD = true; 
+    public static final boolean DEBUG_CLOSE_APP_DOWNLOAD = false; 
     
     public static final String DIFF_1 = "5x5";
     public static final String DIFF_2 = "5x6";

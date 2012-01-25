@@ -120,7 +120,7 @@ public class LinkLink extends Activity implements LLViewActionListener
         resetContent();
         mHandler.sendEmptyMessageDelayed(PLAY_BACKGROUND_SOUND, 500);
         
-        AppOffersManager.init(this, Config.APP_ID, Config.APP_SECRET_KEY, true);
+        AppOffersManager.init(this, Config.APP_ID, Config.APP_SECRET_KEY, false);
     }
 
     @Override
@@ -241,6 +241,7 @@ public class LinkLink extends Activity implements LLViewActionListener
             SoundEffectUtils.getInstance().stopSpeedSound();
         }
         Categary_diff_selector.getInstance().saveCurretInfo();
+//        SettingManager.getInstance().setOpenLevel(Categary_diff_selector.getInstance().getCurrentLevel());
     }
     
     @Override
@@ -249,6 +250,7 @@ public class LinkLink extends Activity implements LLViewActionListener
         LOGD("[[onDestroy]]");
         mHandler.sendEmptyMessage(RESET_PROGRESS_TIME_VIEW);
         Categary_diff_selector.getInstance().saveCurretInfo();
+//        SettingManager.getInstance().setOpenLevel(Categary_diff_selector.getInstance().getCurrentLevel());
     }
 
     @Override
@@ -499,6 +501,7 @@ public class LinkLink extends Activity implements LLViewActionListener
             updateToolsCount();
             updateToolsCountView();
             
+            SettingManager.getInstance().setOpenLevel(Categary_diff_selector.getInstance().getCurrentLevel());
 //            checkAppPoint();
         } else {
             showResetGameDialog();

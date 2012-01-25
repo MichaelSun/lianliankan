@@ -34,7 +34,7 @@ public class SoundEffectUtils {
     }
     
     public void playClickSound() {
-        gSoundNotifySoundPool.play(mClickPlayID, (float) 0.2, (float) 0.3, 0, 0, 1);
+        gSoundNotifySoundPool.play(mClickPlayID, (float) 0.3, (float) 0.5, 0, 0, 1);
     }
     
     public void playDisapperSound() {

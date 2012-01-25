@@ -2,13 +2,17 @@ package com.tinygame.lianliankan;
 
 import java.util.ArrayList;
 
+import android.util.Log;
+
 public class Categary_diff_selector {
+    private static final String TAG = "Categary_diff_selector";
     
-    private static class Diff {
+    public static class Diff {
         public String diff;
         public int time;
         public int hint;
         public int rerange;
+        public int level;
         
         public Diff(String diff, int time, int hint, int rerange) {
             this.diff = diff;
@@ -115,6 +119,26 @@ public class Categary_diff_selector {
         return this.getCurrentDiff();
     }
     
+    public ArrayList<Diff> getDiffLevels() {
+        return mDiffArryList;
+    }
+    
+    public int getAllCategory() {
+        return 5;
+    }
+    
+    public void updateLevelInfo(int level) {
+        int diffCount = mDiffArryList.size();
+        int category = (level - 1) / diffCount;
+        int diff = (level - 1) % diffCount;
+        
+        LOGD("[[updateLevelInfo]] level = " + level + " category = " + category
+                + " diff = " + diff);
+        
+        mCurrentCategary = category;
+        mCurrentDiff = diff;
+    }
+    
     public void saveCurretInfo() {
         SettingManager.getInstance().setLastCategory(mCurrentCategary);
         SettingManager.getInstance().setLastDiff(mCurrentDiff);
@@ -167,5 +191,11 @@ public class Categary_diff_selector {
         mDiffArryList.add(new Diff("10x11", 68, 5, 3));
         mDiffArryList.add(new Diff("10x12", 70, 5, 3));
         mDiffArryList.add(new Diff("10x14", 80, 5, 3));
+    }
+    
+    private void LOGD(String msg) {
+        if (com.tinygame.lianliankan.config.Config.DEBUG) {
+            Log.d(TAG, msg);
+        }
     }
 }

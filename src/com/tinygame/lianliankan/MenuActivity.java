@@ -22,7 +22,8 @@ public class MenuActivity extends Activity {
             switch (msg.what) {
             case ENTRY_GAME:
                 Intent mainviewIntent = new Intent();
-                mainviewIntent.setClass(getApplicationContext(), LinkLink.class);
+//                mainviewIntent.setClass(getApplicationContext(), LinkLink.class);
+                mainviewIntent.setClass(getApplicationContext(), LevelActivity.class);
                 startActivity(mainviewIntent);
                 break;
             }
