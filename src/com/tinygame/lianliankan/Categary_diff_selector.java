@@ -172,20 +172,24 @@ public class Categary_diff_selector {
         mCateLargeArryList.add("image/4_80.png");
         mCateLargeArryList.add("image/5_80.png");
         
-        mDiffArryList.add(new Diff("5x6", 30, 1, 1));
-        mDiffArryList.add(new Diff("5x6", 30, 1, 1));
-        mDiffArryList.add(new Diff("5x8", 34, 1, 1));
-        mDiffArryList.add(new Diff("5x8", 34, 1, 1));
+        mDiffArryList.add(new Diff("5x6", 25, 1, 1));
+        mDiffArryList.add(new Diff("5x6", 25, 1, 1));
+        mDiffArryList.add(new Diff("5x8", 28, 1, 1));
+        mDiffArryList.add(new Diff("5x8", 28, 1, 1));
         
-        mDiffArryList.add(new Diff("6x8", 34, 2, 1));
-        mDiffArryList.add(new Diff("6x9", 38, 2, 1));
-        mDiffArryList.add(new Diff("6x10", 45, 3, 1));
-        mDiffArryList.add(new Diff("6x11", 48, 4, 1));
+        mDiffArryList.add(new Diff("6x6", 28, 2, 1));
+        mDiffArryList.add(new Diff("6x7", 29, 2, 1));
+        mDiffArryList.add(new Diff("6x8", 30, 2, 1));
+        mDiffArryList.add(new Diff("6x9", 32, 2, 1));
+        mDiffArryList.add(new Diff("6x10", 35, 3, 1));
+        mDiffArryList.add(new Diff("6x11", 37, 4, 1));
         
-        mDiffArryList.add(new Diff("8x9", 55, 4, 2));
-        mDiffArryList.add(new Diff("8x10", 57, 4, 2));
-        mDiffArryList.add(new Diff("8x11", 60, 4, 2));
-        mDiffArryList.add(new Diff("8x13", 60, 4, 2));
+        mDiffArryList.add(new Diff("8x8", 40, 4, 2));
+        mDiffArryList.add(new Diff("8x9", 44, 4, 2));
+        mDiffArryList.add(new Diff("8x10", 46, 4, 2));
+        mDiffArryList.add(new Diff("8x11", 46, 4, 2));
+        mDiffArryList.add(new Diff("8x12", 48, 4, 2));
+        mDiffArryList.add(new Diff("8x13", 50, 4, 2));
         
         mDiffArryList.add(new Diff("10x10", 64, 5, 3));
         mDiffArryList.add(new Diff("10x11", 68, 5, 3));
