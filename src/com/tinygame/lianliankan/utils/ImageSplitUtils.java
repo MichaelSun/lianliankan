@@ -120,6 +120,28 @@ public class ImageSplitUtils {
         return mBoomList;
     }
     
+    public ArrayList<Bitmap> getTimeProgressBtList() {
+        ArrayList<Bitmap> ret = new ArrayList<Bitmap>();
+        Bitmap src = loadBitmapFromAsset(mContext, "image/time_progress.png");
+        int height = src.getHeight();
+        int width = src.getWidth();
+        int retBtWidth = width / 3;
+        Bitmap bt = null;
+        for (int i = 0; i < 3; ++i) {
+            bt = Bitmap.createBitmap(src
+                                    , i * retBtWidth 
+                                    , 0
+                                    , retBtWidth
+                                    , height);
+            if (bt != null) {
+                bt.setDensity(160);
+                ret.add(bt);
+            }
+        }
+        
+        return ret;
+    }
+    
     public ArrayList<BitmapSiplited> splitBitmapInAssests(String path) {
         mCurrentRes = new ArrayList<BitmapSiplited>();
         Bitmap src = loadBitmapFromAsset(mContext, path);

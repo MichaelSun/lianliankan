@@ -382,7 +382,7 @@ public class LinkLinkSurfaceView extends SurfaceView implements Callback {
                 }
             }
             try {
-                Thread.sleep(30);
+                Thread.sleep(20);
             } catch(Exception e) {
                 e.printStackTrace();
             }

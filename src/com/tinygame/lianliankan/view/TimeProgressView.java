@@ -17,6 +17,7 @@ import android.view.View;
 
 import com.tinygame.lianliankan.R;
 import com.tinygame.lianliankan.ThemeManager;
+import com.tinygame.lianliankan.utils.ImageSplitUtils;
 
 public class TimeProgressView extends View {
     private static final String TAG = "TimeProgressView";
@@ -30,6 +31,7 @@ public class TimeProgressView extends View {
     private static final int BACKGROUND_TOP_PADDING = 17;
     private static final int BACKGROUND_HEIGHT = 840;
     private static final int CONTINUE_TOUCH_DELAY = 1000;
+    private static final int PROGRESS_ICON_CHANGED_DELAY = 500;
     
     private Bitmap mProgressBt;
     private Bitmap mProgressBg;
@@ -44,6 +46,11 @@ public class TimeProgressView extends View {
     private long mPreDismissTouch;
     private int mProgressLeave;
     private long mStopProgressTime;
+    private int mCurTimeProgreeIconIndex;
+    private ArrayList<Bitmap> mTimeProgressList;
+    private int mTimeProgressIconWidth;
+    private int mTimeProgressIconHeight;
+    private long mPreDrawTime;
     
     public TimeProgressView(Context context) {
         super(context);
@@ -80,6 +87,8 @@ public class TimeProgressView extends View {
         mStartTime = 0;
         mEffectTime = 0;
         mProgressing = false;
+        mCurTimeProgreeIconIndex = 0;
+        mPreDrawTime = 0;
         
         this.invalidate();
     }
@@ -166,17 +175,45 @@ public class TimeProgressView extends View {
             canvas.drawBitmap(mProgressBt, btSrc, btDest, mPaint);
             
             canvas.restore();
-            mProgressIcon.setBounds(0, progressLeft + curTopPadding + topStart - 15
-                                , progressBgWidth, progressLeft + curTopPadding + topStart + 15);
-            mProgressIcon.draw(canvas);
+//            mProgressIcon.setBounds(0, progressLeft + curTopPadding + topStart - 15
+//                                , progressBgWidth, progressLeft + curTopPadding + topStart + 15);
+//            mProgressIcon.draw(canvas);
+            if (mCurTimeProgreeIconIndex < mTimeProgressList.size()) {
+                Bitmap drawIcon = mTimeProgressList.get(mCurTimeProgreeIconIndex);
+                Rect iconSrc = new Rect(0, 0, mTimeProgressIconWidth, mTimeProgressIconHeight);
+                Rect iconDest = new Rect(0, progressLeft + curTopPadding + topStart - 15
+                                    , progressBgWidth, progressLeft + curTopPadding + topStart + 15);
+                canvas.drawBitmap(drawIcon, iconSrc, iconDest, mPaint);
+                
+                if (mPreDrawTime == 0) {
+                    mPreDrawTime = System.currentTimeMillis();
+                }
+                
+                long time = System.currentTimeMillis();
+                if ((time - mPreDrawTime) >= PROGRESS_ICON_CHANGED_DELAY) {
+                    mCurTimeProgreeIconIndex++;
+                    if (mCurTimeProgreeIconIndex >= mTimeProgressList.size()) {
+                        mCurTimeProgreeIconIndex = 0;
+                    }
+                    mPreDrawTime = System.currentTimeMillis();
+                }
+            }
         } else {
             Rect btSrc = new Rect(0, 0, progressBtWidth, mProgressBt.getHeight());
             Rect btDest = new Rect(btX, topStart, btX + progressBtWidth, height);
             canvas.drawBitmap(mProgressBt, btSrc, btDest, mPaint);
             
-            mProgressIcon.setBounds(0, topStart + curTopPadding - 15
-                            , progressBgWidth, topStart + curTopPadding + 15);
-            mProgressIcon.draw(canvas);
+//            mProgressIcon.setBounds(0, topStart + curTopPadding - 15
+//                            , progressBgWidth, topStart + curTopPadding + 15);
+//            mProgressIcon.draw(canvas);
+            mCurTimeProgreeIconIndex = 0;
+            if (mCurTimeProgreeIconIndex < mTimeProgressList.size()) {
+                Bitmap drawIcon = mTimeProgressList.get(mCurTimeProgreeIconIndex);
+                Rect iconSrc = new Rect(0, 0, mTimeProgressIconWidth, mTimeProgressIconHeight);
+                Rect iconDest = new Rect(0, topStart + curTopPadding - 15
+                                        , progressBgWidth, topStart + curTopPadding + 15);
+                canvas.drawBitmap(drawIcon, iconSrc, iconDest, mPaint);
+            }
         }
         
         if (mProgressing) {
@@ -220,6 +257,11 @@ public class TimeProgressView extends View {
         mProgressBt = loadBitmapFromAsset(mContext, "image/time_bar.png");
         mProgressBg = loadBitmapFromAsset(mContext, "image/process_bg.png");
         mProgressIcon = mContext.getResources().getDrawable(R.drawable.progress_icon);
+        mTimeProgressList = ImageSplitUtils.getInstance().getTimeProgressBtList();
+        if (mTimeProgressList.size() > 0) {
+            mTimeProgressIconWidth = mTimeProgressList.get(0).getWidth();
+            mTimeProgressIconHeight = mTimeProgressList.get(0).getHeight();
+        }
     }
     
     private Bitmap loadBitmapFromAsset (Context context, String resName) {

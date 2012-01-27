@@ -181,12 +181,11 @@ public class Categary_diff_selector {
         mDiffArryList.add(new Diff("6x7", 29, 2, 1));
         mDiffArryList.add(new Diff("6x8", 30, 2, 1));
         mDiffArryList.add(new Diff("6x9", 32, 2, 1));
-        mDiffArryList.add(new Diff("6x10", 35, 3, 1));
-        mDiffArryList.add(new Diff("6x11", 37, 4, 1));
+        mDiffArryList.add(new Diff("6x9", 30, 3, 1));
         
         mDiffArryList.add(new Diff("8x7", 40, 4, 2));
         mDiffArryList.add(new Diff("8x8", 44, 4, 2));
-        mDiffArryList.add(new Diff("8x19", 46, 4, 2));
+        mDiffArryList.add(new Diff("8x9", 46, 4, 2));
         mDiffArryList.add(new Diff("8x10", 46, 4, 2));
         mDiffArryList.add(new Diff("8x11", 48, 4, 2));
         
