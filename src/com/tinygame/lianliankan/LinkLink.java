@@ -164,7 +164,7 @@ public class LinkLink extends Activity implements LLViewActionListener
         mCurDiffHintCount = Categary_diff_selector.getInstance().getCurrentDiffHint();
     }
     
-    public void resetContent() {
+    private void resetContent() {
         setContentView(R.layout.main);
         mLLView = (LinkLinkSurfaceView) findViewById(R.id.llk);
         mLLView.setLLViewActionListener(this);
@@ -236,7 +236,7 @@ public class LinkLink extends Activity implements LLViewActionListener
                 tryUpdateDiffAndCategory();
             }
         });
-        mNext.setVisibility(View.GONE);
+//        mNext.setVisibility(View.GONE);
     }
     
     @Override
@@ -508,7 +508,11 @@ public class LinkLink extends Activity implements LLViewActionListener
             updateToolsCount();
             updateToolsCountView();
             
-            SettingManager.getInstance().setOpenLevel(Categary_diff_selector.getInstance().getCurrentLevel());
+            int openLevel = SettingManager.getInstance().getOpenLevel();
+            int curLevel = Categary_diff_selector.getInstance().getCurrentLevel();
+            if (curLevel >= openLevel) {
+                SettingManager.getInstance().setOpenLevel(curLevel);
+            }
 //            checkAppPoint();
         } else {
             showResetGameDialog();

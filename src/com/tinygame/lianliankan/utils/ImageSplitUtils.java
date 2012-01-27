@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Paint;
 import android.graphics.Rect;
 import android.util.Log;
 
@@ -136,6 +138,8 @@ public class ImageSplitUtils {
             int x_length  = src_width / icon_width;
             int y_length  = src_height / icon_width;
             int index = 0;
+            Canvas canvas = new Canvas();
+            Paint paint = new Paint();
             for (int x = 0; x < x_length; ++x) {
                 for (int y = 0; y < y_length; ++y) {
                     try {
@@ -146,6 +150,17 @@ public class ImageSplitUtils {
                                                 , icon_width
                                                 , icon_width);
                         bts.bitmap.setDensity(160);
+                        
+                        Bitmap image = Bitmap.createBitmap(mCurrentImageWidth + 2, mCurrentImageWidth + 2
+                                                        , Bitmap.Config.ARGB_8888);
+                        image.eraseColor(0x000000);
+                        canvas.setBitmap(image);
+                        Rect srcRect = new Rect(0, 0, mCurrentImageWidth, mCurrentImageWidth);
+                        Rect destRect = new Rect(1, 1, mCurrentImageWidth, mCurrentImageWidth);
+                        canvas.drawBitmap(bts.bitmap, srcRect, destRect, paint);
+                        
+                        image.setDensity(160);
+                        bts.bitmap = image;
                         bts.id = index;
                         index++;
                         mCurrentRes.add(bts);
@@ -154,6 +169,7 @@ public class ImageSplitUtils {
                     }
                 }
             }
+            mCurrentImageWidth += 2;
         }
         
         return mCurrentRes;

@@ -48,7 +48,7 @@ public class Categary_diff_selector {
                     return mCateLargeArryList.get(mCurrentCategary);
                 } else if (diff.startsWith(MEDUIM_WIDTH)) {
                     return mCateMeduimArryList.get(mCurrentCategary);
-                } else if (diff.startsWith(SMALL_WIDTH)) { 
+                } else if (diff.startsWith(SMALL_WIDTH)) {
                     return mCateSmallTwoArryList.get(mCurrentCategary);
                 } else {
 //                    return mCateSmallArryList.get(mCurrentCategary);
@@ -184,17 +184,20 @@ public class Categary_diff_selector {
         mDiffArryList.add(new Diff("6x10", 35, 3, 1));
         mDiffArryList.add(new Diff("6x11", 37, 4, 1));
         
-        mDiffArryList.add(new Diff("8x8", 40, 4, 2));
-        mDiffArryList.add(new Diff("8x9", 44, 4, 2));
+        mDiffArryList.add(new Diff("8x7", 40, 4, 2));
+        mDiffArryList.add(new Diff("8x8", 44, 4, 2));
+        mDiffArryList.add(new Diff("8x19", 46, 4, 2));
         mDiffArryList.add(new Diff("8x10", 46, 4, 2));
-        mDiffArryList.add(new Diff("8x11", 46, 4, 2));
-        mDiffArryList.add(new Diff("8x12", 48, 4, 2));
-        mDiffArryList.add(new Diff("8x13", 50, 4, 2));
+        mDiffArryList.add(new Diff("8x11", 48, 4, 2));
         
-        mDiffArryList.add(new Diff("10x10", 64, 5, 3));
-        mDiffArryList.add(new Diff("10x11", 68, 5, 3));
-        mDiffArryList.add(new Diff("10x12", 70, 5, 3));
-        mDiffArryList.add(new Diff("10x14", 80, 5, 3));
+        mDiffArryList.add(new Diff("9x8", 55, 4, 2));
+        mDiffArryList.add(new Diff("9x10", 60, 5, 3));
+        mDiffArryList.add(new Diff("9x12", 65, 5, 3));
+        
+        mDiffArryList.add(new Diff("10x10", 75, 5, 3));
+        mDiffArryList.add(new Diff("10x11", 85, 5, 3));
+        mDiffArryList.add(new Diff("10x12", 90, 5, 3));
+        mDiffArryList.add(new Diff("10x14", 100, 5, 3));
     }
     
     private void LOGD(String msg) {
