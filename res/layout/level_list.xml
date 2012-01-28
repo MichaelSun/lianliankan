@@ -2,28 +2,21 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:orientation="vertical"
-    android:background="@drawable/menu_bg" >
-    
-    <!-- ListView 
-        android:id="@+id/level_list"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentBottom="true" / -->
- 
-<GridView 
-    android:id="@+id/level_grid"
-	android:layout_width="fill_parent" 
-	android:layout_height="fill_parent"
-    android:padding="10dp"
-    android:verticalSpacing="10dp"
-    android:horizontalSpacing="10dp"
-    android:numColumns="auto_fit"
-    android:columnWidth="60dp"
-    android:stretchMode="columnWidth"
-    android:gravity="center"
-    android:scrollbars="none"
-    android:listSelector="@drawable/egg" />
+    android:background="@drawable/menu_bg"
+    android:orientation="vertical" >
+
+    <GridView
+        android:id="@+id/level_grid"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:columnWidth="60dp"
+        android:gravity="center"
+        android:horizontalSpacing="10dp"
+        android:listSelector="@drawable/egg"
+        android:numColumns="auto_fit"
+        android:padding="10dp"
+        android:scrollbars="none"
+        android:stretchMode="columnWidth"
+        android:verticalSpacing="10dp" />
 
 </RelativeLayout>

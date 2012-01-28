@@ -54,10 +54,13 @@ public class LinkLink extends Activity implements LLViewActionListener
     private Dialog mLoseDialog;
     private Dialog mResetDialog;
     private Dialog mDownloadDialog;
+    private Dialog mStopDialog;
     private int mCurDiffArrangeCount;
     private int mCurDiffHintCount;
     private boolean mFinishDialogShow;
     private boolean mAppDownloadShow;
+    
+    private boolean mStopDialogShow;
     
     private static final int PLAY_READY_SOUND = 0;
     private static final int PLAY_BACKGROUND_SOUND = 1;
@@ -86,6 +89,9 @@ public class LinkLink extends Activity implements LLViewActionListener
             case START_PROGRESS_TIME_VIEW:
                 mTimeView.setTotalTime(mCurrentTimeProgress);
                 mTimeView.startProgress();
+                if (mStopDialogShow) {
+                    mTimeView.stop();
+                }
                 break;
             case RESET_PROGRESS_TIME_VIEW:
                 mTimeView.reset();
@@ -118,7 +124,6 @@ public class LinkLink extends Activity implements LLViewActionListener
         mInflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         
         resetContent();
-        mHandler.sendEmptyMessageDelayed(PLAY_BACKGROUND_SOUND, 500);
         
         AppOffersManager.init(this, Config.APP_ID, Config.APP_SECRET_KEY, false);
     }
@@ -126,11 +131,18 @@ public class LinkLink extends Activity implements LLViewActionListener
     @Override
     public void onStart() {
         super.onStart();
-        mAppDownloadShow = false;
+        mHandler.sendEmptyMessageDelayed(PLAY_BACKGROUND_SOUND, 500);
         
+        mAppDownloadShow = false;
         checkAppPoint();
         reloadCurrentLevel();
         updateToolsCount();
+        
+        if (mStopDialogShow && mStopDialog != null) {
+            mStopDialog.dismiss();
+            mStopDialog = null;
+            mStopDialogShow = false;
+        }
     }
 
     private void checkAppPoint() {
@@ -189,6 +201,16 @@ public class LinkLink extends Activity implements LLViewActionListener
         
         mNoMoreTipsView = findViewById(R.id.no_more_tips);
         
+        View stopView = findViewById(R.id.stop);
+        if (stopView != null) {
+            stopView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    showStopDialog();
+                }
+            });
+        }
+        
         newGameButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -246,22 +268,30 @@ public class LinkLink extends Activity implements LLViewActionListener
     @Override
     public void onStop() {
         super.onStop();
+//        if (!mStopDialogShow) {
+//            this.showStopDialog();
+//        }
+        
         LOGD("[[onStop]]");
         boolean soundOpen = SettingManager.getInstance().getSoundOpen();
         if (soundOpen) {
             SoundEffectUtils.getInstance().stopSpeedSound();
         }
         Categary_diff_selector.getInstance().saveCurretInfo();
-//        SettingManager.getInstance().setOpenLevel(Categary_diff_selector.getInstance().getCurrentLevel());
     }
     
     @Override
     public void onDestroy() {
         super.onDestroy();
         LOGD("[[onDestroy]]");
+        
+        if (mStopDialog != null) {
+            mStopDialog.dismiss();
+            mStopDialog = null;
+        }
+        
         mHandler.sendEmptyMessage(RESET_PROGRESS_TIME_VIEW);
         Categary_diff_selector.getInstance().saveCurretInfo();
-//        SettingManager.getInstance().setOpenLevel(Categary_diff_selector.getInstance().getCurrentLevel());
     }
 
     @Override
@@ -300,6 +330,11 @@ public class LinkLink extends Activity implements LLViewActionListener
     }
     
     private void showCountDownloadDialog() {
+        if (mDownloadDialog != null && mDownloadDialog.isShowing()) {
+            mDownloadDialog.dismiss();
+            mDownloadDialog = null;
+        }
+        
         mDownloadDialog = new AlertDialog.Builder(this).setTitle(getString(R.string.tips))
                 .setMessage(getString(R.string.download_tips))
                 .setPositiveButton(R.string.btn_download
@@ -331,6 +366,57 @@ public class LinkLink extends Activity implements LLViewActionListener
             anim.setAnimationListener(this);
             mNoMoreTipsView.startAnimation(anim);
         }
+    }
+    
+    private void showStopDialog() {
+        mTimeView.stop();
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        View showView = mInflater.inflate(R.layout.stop_view, null);
+        View retry = showView.findViewById(R.id.retry);
+        retry.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Env.ICON_REGION_INIT = false;
+                reloadCurrentLevel();   
+                if (mStopDialog != null) {
+                    mStopDialog.dismiss();
+                    mStopDialog = null;
+                }
+                mStopDialogShow = false;
+            }
+        });
+        
+        View quit = showView.findViewById(R.id.quit);
+        quit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mStopDialog != null) {
+                    mStopDialog.dismiss();
+                    mStopDialog = null;
+                }
+                mStopDialogShow = false;
+                finish();
+            }
+        });
+        
+        View play = showView.findViewById(R.id.play);
+        play.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mStopDialog != null) {
+                    mStopDialog.dismiss();
+                    mStopDialog = null;
+                }
+                mStopDialogShow = false;
+                mTimeView.resume();
+            }
+        });
+        
+        builder.setView(showView);
+        mStopDialog = builder.create();
+        mStopDialog.setCancelable(false);
+        mStopDialog.show();
+        mStopDialogShow = true;
     }
     
     private void showFinishDialog() {
