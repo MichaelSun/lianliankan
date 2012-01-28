@@ -236,7 +236,7 @@ public class LinkLink extends Activity implements LLViewActionListener
                 tryUpdateDiffAndCategory();
             }
         });
-//        mNext.setVisibility(View.GONE);
+        mNext.setVisibility(View.GONE);
     }
     
     @Override
