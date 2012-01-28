@@ -29,8 +29,7 @@ public class LevelView extends View {
     private HashMap<Integer, Bitmap> mNumberMap;
     private Drawable mLevelLogo;
     private int mCurrentLevel;
-    private int mLowNumber;
-    private int mHeightNumber;
+    private ArrayList<Integer> mLevelNumList;
     private Paint mPaint = new Paint();
     private Drawable mTopBgDrawable;
     private LevelChangedListener mLevelChangedListener;
@@ -51,6 +50,11 @@ public class LevelView extends View {
     
     public void setLevel(int level) {
         mCurrentLevel = level;
+        mLevelNumList.clear();
+        while (mCurrentLevel != 0) {
+            mLevelNumList.add(0, mCurrentLevel % 10);
+            mCurrentLevel = mCurrentLevel / 10;
+        }
         
         if (mLevelChangedListener != null) {
             mLevelChangedListener.onLevelChanged(mCurrentLevel);
@@ -70,7 +74,7 @@ public class LevelView extends View {
         int logoWidth = mLevelLogo.getIntrinsicWidth();
         int numberWidth = mNumberMap.get(0).getWidth();
         int numberHeight = mNumberMap.get(0).getHeight();
-        int totalWidth = logoWidth + PADDING + numberWidth * 2;
+        int totalWidth = logoWidth + PADDING + numberWidth * mLevelNumList.size();
         
         int startX = (width - totalWidth) / 2;
         int logStartY = (height - mLevelLogo.getIntrinsicHeight()) / 2;
@@ -81,31 +85,15 @@ public class LevelView extends View {
                         , logStartY + mLevelLogo.getIntrinsicHeight());
         mLevelLogo.draw(canvas);
         
-        mLowNumber = mCurrentLevel % 10;
-        mHeightNumber = (mCurrentLevel / 10) % 10;
-        
-//        canvas.drawBitmap(mNumberMap.get(mHeightNumber)
-//                            , startX + mLevelLogo.getIntrinsicWidth() + PADDING
-//                            , numberStartY
-//                            , mPaint);
         Rect src = new Rect(0, 0, numberWidth, numberHeight);
-        Rect destLarget = new Rect(startX + mLevelLogo.getIntrinsicWidth() + PADDING
-                                , numberStartY
-                                , numberWidth + startX + mLevelLogo.getIntrinsicWidth() + PADDING
-                                , numberStartY + numberHeight);
-        canvas.drawBitmap(mNumberMap.get(mHeightNumber), src, destLarget, mPaint);
-        
-        Rect destLow = new Rect(startX + mLevelLogo.getIntrinsicWidth() + PADDING + numberWidth
-                , numberStartY
-                , numberWidth * 2 + startX + mLevelLogo.getIntrinsicWidth() + PADDING
-                , numberStartY + numberHeight);
-        canvas.drawBitmap(mNumberMap.get(mLowNumber), src, destLow, mPaint);
-//        canvas.drawBitmap(mNumberMap.get(mLowNumber)
-//                , startX + mLevelLogo.getIntrinsicWidth() + PADDING + numberWidth
-//                , numberStartY
-//                , mPaint);
-        
-//        LOGD("[[onDraw]] numberWidth = " + numberWidth + " >>>>>>>>>>>>>>");
+        Rect destTarget = null;
+        for (int i = 0; i < mLevelNumList.size(); ++i) {
+            destTarget = new Rect(startX + mLevelLogo.getIntrinsicWidth() + PADDING + numberWidth * i
+                    , numberStartY
+                    , numberWidth * (i + 1) + startX + mLevelLogo.getIntrinsicWidth() + PADDING
+                    , numberStartY + numberHeight);
+            canvas.drawBitmap(mNumberMap.get(mLevelNumList.get(i)), src, destTarget, mPaint);
+        }
     }
     
     private void init(Context context) {
@@ -119,6 +107,7 @@ public class LevelView extends View {
         }
         mLevelLogo = mContext.getResources().getDrawable(R.drawable.level);
         mTopBgDrawable = mContext.getResources().getDrawable(R.drawable.top_bg);
+        mLevelNumList = new ArrayList<Integer>();
     }
     
     private void LOGD(String msg) {

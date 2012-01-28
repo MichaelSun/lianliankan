@@ -300,12 +300,12 @@ public class LinkLink extends Activity implements LLViewActionListener
                 .setMessage(getString(R.string.download_tips))
                 .setPositiveButton("下载", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
-                        AppOffersManager.showAppOffers(LinkLink.this);
                         if (mDownloadDialog != null) {
                             mDownloadDialog.dismiss();
                             mDownloadDialog = null;
                         }
                         mAppDownloadShow = false;
+                        AppOffersManager.showAppOffers(LinkLink.this);
                     }
                 }).setNegativeButton("取消", 
                         new DialogInterface.OnClickListener() {

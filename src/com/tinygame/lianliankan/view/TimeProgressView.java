@@ -30,7 +30,7 @@ public class TimeProgressView extends View {
     private static final int PADDING_TOP = 30;
     private static final int BACKGROUND_TOP_PADDING = 17;
     private static final int BACKGROUND_HEIGHT = 840;
-    private static final int CONTINUE_TOUCH_DELAY = 1000;
+    private static final int CONTINUE_TOUCH_DELAY = 1500;
     private static final int PROGRESS_ICON_CHANGED_DELAY = 500;
     
     private Bitmap mProgressBt;
@@ -71,14 +71,18 @@ public class TimeProgressView extends View {
         mProgressing = false;
         mStartTime = 0;
         mEffectTime = 0;
+        mPreDismissTouch = 0;
+        mStopProgressTime = 0;
         
         this.invalidate();
     }
     
     public void startProgress() {
-        mProgressing = true;
         mStartTime = System.currentTimeMillis();
         mEffectTime = mStartTime;
+        mPreDismissTouch = 0;
+        mStopProgressTime = 0;
+        mProgressing = true;
         
         this.invalidate();
     }
@@ -89,6 +93,9 @@ public class TimeProgressView extends View {
         mProgressing = false;
         mCurTimeProgreeIconIndex = 0;
         mPreDrawTime = 0;
+        mProgressLeave = 0;
+        mPreDismissTouch = 0;
+        mStopProgressTime = 0;
         
         this.invalidate();
     }
@@ -145,6 +152,9 @@ public class TimeProgressView extends View {
         canvas.drawBitmap(mProgressBg, src, dest, mPaint);
 
         int progressLeft = topStart;
+        if (mProgressLeave == 0) {
+            mProgressLeave = topStart;
+        }
         
         if (mStopProgressTime == 0) {
             if (mProgressing) {
