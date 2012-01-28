@@ -42,7 +42,6 @@ public class TimeProgressView extends View {
     private long mEffectTime;
     private boolean mProgressing;
     private TimeProgressListener mTimeProgressListener;
-    private Drawable mProgressIcon;
     private long mPreDismissTouch;
     private int mProgressLeave;
     private long mStopProgressTime;
@@ -98,6 +97,14 @@ public class TimeProgressView extends View {
         mStopProgressTime = 0;
         
         this.invalidate();
+    }
+    
+    public int getCurCostTime() {
+        if (mStartTime != 0) {
+            return (int) (System.currentTimeMillis() - mStartTime) / 1000;
+        }
+        
+        return 0;
     }
 
     public void onDissmisTouch() {
@@ -266,7 +273,6 @@ public class TimeProgressView extends View {
         mContext = context;
         mProgressBt = loadBitmapFromAsset(mContext, "image/time_bar.png");
         mProgressBg = loadBitmapFromAsset(mContext, "image/process_bg.png");
-        mProgressIcon = mContext.getResources().getDrawable(R.drawable.progress_icon);
         mTimeProgressList = ImageSplitUtils.getInstance().getTimeProgressBtList();
         if (mTimeProgressList.size() > 0) {
             mTimeProgressIconWidth = mTimeProgressList.get(0).getWidth();

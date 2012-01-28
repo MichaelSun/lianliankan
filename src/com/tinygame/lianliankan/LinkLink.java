@@ -140,6 +140,10 @@ public class LinkLink extends Activity implements LLViewActionListener
             if (point < Config.POINT && level >= Config.APP_DOWNLOA_SHOW_LEVEL) {
                 showCountDownloadDialog();
             } else if (point < Config.POINT_200 && level >= Config.APP_DOWNLOA_SHOW_LEVEL_ONE) {
+                AppOffersManager.spendPoints(this, Config.POINT);
+                showCountDownloadDialog();
+            } else if (point < Config.POINT_300 && level >= Config.APP_DOWNLOA_SHOW_LEVEL_TWO) {
+                AppOffersManager.spendPoints(this, Config.POINT);
                 showCountDownloadDialog();
             } else {
                 if (mDownloadDialog != null) {
@@ -296,19 +300,20 @@ public class LinkLink extends Activity implements LLViewActionListener
     }
     
     private void showCountDownloadDialog() {
-        mDownloadDialog = new AlertDialog.Builder(this).setTitle("提示")
+        mDownloadDialog = new AlertDialog.Builder(this).setTitle(getString(R.string.tips))
                 .setMessage(getString(R.string.download_tips))
-                .setPositiveButton("下载", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        if (mDownloadDialog != null) {
-                            mDownloadDialog.dismiss();
-                            mDownloadDialog = null;
-                        }
-                        mAppDownloadShow = false;
-                        AppOffersManager.showAppOffers(LinkLink.this);
-                    }
-                }).setNegativeButton("取消", 
-                        new DialogInterface.OnClickListener() {
+                .setPositiveButton(R.string.btn_download
+                        , new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                if (mDownloadDialog != null) {
+                                    mDownloadDialog.dismiss();
+                                    mDownloadDialog = null;
+                                }
+                                mAppDownloadShow = false;
+                                AppOffersManager.showAppOffers(LinkLink.this);
+                            }
+                }).setNegativeButton(R.string.btn_cancel
+                        , new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 finish();
@@ -332,6 +337,9 @@ public class LinkLink extends Activity implements LLViewActionListener
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         View showView = mInflater.inflate(R.layout.win_view, null);
         View next = showView.findViewById(R.id.next);
+        TextView contentTV = (TextView) showView.findViewById(R.id.content);
+        String showContent = String.format(getString(R.string.win_content), mTimeView.getCurCostTime());
+        contentTV.setText(showContent);
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

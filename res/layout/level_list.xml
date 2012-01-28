@@ -23,6 +23,7 @@
     android:columnWidth="60dp"
     android:stretchMode="columnWidth"
     android:gravity="center"
-    android:scrollbars="none" />
+    android:scrollbars="none"
+    android:listSelector="@drawable/egg" />
 
 </RelativeLayout>

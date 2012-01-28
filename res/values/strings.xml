@@ -8,9 +8,13 @@
     <string name="btn_next">下一关</string>
     <string name="btn_quit">退出</string>
     <string name="btn_retry">重试</string>
+    <string name="btn_download">下载</string>
+    <string name="btn_cancel">取消</string>
     <string name="reset_game_tips">恭喜您已经通过了所有的关卡，是否要重玩所有关卡？</string>
     <string name="download_tips">"您的游戏金币已经不足100,需要下载软件获得100金币才能继续阅读,下载软件不会收取您的费用,请放心下载"</string>
     <string name="level" formatted="false">第%s关</string>
+    <string name="tips">提示</string>
+    <string name="win_content" formatted="false">共耗时 : %s 秒</string>
     
     <string name="perf_last_diff">last_diff</string>
     <string name="perf_last_cate">last_cate</string>
