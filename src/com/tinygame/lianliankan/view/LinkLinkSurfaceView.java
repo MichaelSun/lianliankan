@@ -52,7 +52,8 @@ public class LinkLinkSurfaceView extends SurfaceView implements Callback {
     private Paint mPaintDismissing;
     private int mStartX;
     private int mStartY;
-    private Drawable mBackgroundDrawable;
+//    private Drawable mBackgroundDrawable;
+    private Bitmap mBackgroundBt;
     private Bitmap mLightHBt;
     private Bitmap mLightVBt;
     private Drawable mSelectorDrawable;
@@ -339,7 +340,8 @@ public class LinkLinkSurfaceView extends SurfaceView implements Callback {
         mPaintDismissing = new Paint();
         mPaintDismissing.setAlpha(80);
         
-        mBackgroundDrawable = mContext.getResources().getDrawable(R.drawable.game_bg);
+//        mBackgroundDrawable = mContext.getResources().getDrawable(R.drawable.game_bg);
+        mBackgroundBt = AssetsImageLoader.loadBitmapFromAsset(mContext, "image/game_bg");
         mHintDrawable = mContext.getResources().getDrawable(R.drawable.hint_icon);
         mSelectorDrawable = mContext.getResources().getDrawable(R.drawable.selector);
         
@@ -574,16 +576,27 @@ public class LinkLinkSurfaceView extends SurfaceView implements Callback {
         int height = getHeight();
 
         mCurRoundClipTile = false;
-        LOGD("[[onDrawFullView]] entry into  >>>>>>> width = " + width + " height = " + height);
+        LOGD("[[onDrawFullView]] entry into  >>>>>>> width = " + width + " height = " + height
+                + " mBackgroundDrawable = " + mBackgroundBt
+                + " canvas = " + canvas);
         canvas.drawColor(Color.BLACK);
-        mBackgroundDrawable.setBounds(0, 0, width, height);
-        mBackgroundDrawable.draw(canvas);
+        
+        if (mBackgroundBt == null) {
+            mBackgroundBt = AssetsImageLoader.loadBitmapFromAsset(mContext, "image/game_bg");
+        }
+        
+        if (mBackgroundBt != null) {
+            Rect bgSrc = new Rect(0, 0, mBackgroundBt.getWidth(), mBackgroundBt.getHeight());
+            Rect bgDest = new Rect(0, 0, width, height);
+            canvas.drawBitmap(mBackgroundBt, bgSrc, bgDest, mPaintPic);
+        }
         
         if (mChart == null) {
             LOGD("[[onDrawFullView]] return because chart invalid!");
             return;
         }
 
+        LOGD("[[onDrawFullView]] before check init  >>>>>>>");
         if (!Env.ICON_REGION_INIT) {
             int sideLength = Math.min(width, height) - 2 * PADDING_LEFT;
             Env.ICON_REGION_INIT = true;
@@ -600,6 +613,8 @@ public class LinkLinkSurfaceView extends SurfaceView implements Callback {
                 mStartY = (height - (mChart.ySize * Env.ICON_WIDTH)) / 2;
             }
         }
+        
+        LOGD("[[onDrawFullView]] before draw all tile  >>>>>>>");
 
         for (int yIndex = 0; yIndex < mChart.ySize; yIndex++) {
             for (int xIndex = 0; xIndex < mChart.xSize; xIndex++) {
@@ -620,6 +635,8 @@ public class LinkLinkSurfaceView extends SurfaceView implements Callback {
             }
         }
 
+        
+        LOGD("[[onDrawFullView]] before draw all selector tile  >>>>>>>");
         if (mSelectTileCur != null) {
             mSelectorDrawable.setBounds(mStartX + (mSelectTileCur.x) * Env.ICON_WIDTH
                         , mStartY + (mSelectTileCur.y) * Env.ICON_WIDTH
@@ -628,6 +645,7 @@ public class LinkLinkSurfaceView extends SurfaceView implements Callback {
             mSelectorDrawable.draw(canvas);
         }
 
+        LOGD("[[onDrawFullView]] before draw all Hint tile  >>>>>>>");
         if (null != mHint) {
             boolean blank = false;
 
