@@ -2,7 +2,7 @@ package com.tinygame.lianliankan.config;
 
 public class Config {
 
-    public static final boolean DEBUG = true;
+    public static final boolean DEBUG = false;
     
     public static final boolean SOUND_DEBUG = false;
     
@@ -10,8 +10,8 @@ public class Config {
     
     public static final String APP_SECRET_KEY = "e1703eadcc64253b";
     
-    public static final int APP_DOWNLOA_SHOW_LEVEL = 8;
-    public static final int APP_DOWNLOA_SHOW_LEVEL_ONE = 31;
+    public static final int APP_DOWNLOA_SHOW_LEVEL = 16;
+    public static final int APP_DOWNLOA_SHOW_LEVEL_ONE = 37;
     public static final int APP_DOWNLOA_SHOW_LEVEL_TWO = 80;
     
     public static final int POINT = 100;
