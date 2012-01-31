@@ -6,6 +6,12 @@ public class Config {
     
     public static final boolean SOUND_DEBUG = false;
     
+    public static final String ACTION_CLICK_LABEL = "action_click";
+    public static final String ACTION_OFFER_LABEL = "offer_click";
+    public static final String ACTION_OFFER_CANCEL_LABEL = "offer_cancel";
+    public static final String ACTION_LEVEL = "level";
+    public static final String ACTION_START = "start";
+    
     public static final String APP_ID = "53e13f6906527b33";
     
     public static final String APP_SECRET_KEY = "e1703eadcc64253b";

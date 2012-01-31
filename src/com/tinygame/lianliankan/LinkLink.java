@@ -19,6 +19,7 @@ import android.view.animation.Animation.AnimationListener;
 import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 
+import com.mobclick.android.MobclickAgent;
 import com.tinygame.lianliankan.config.Config;
 import com.tinygame.lianliankan.config.Env;
 import com.tinygame.lianliankan.engine.Chart;
@@ -61,6 +62,8 @@ public class LinkLink extends Activity implements LLViewActionListener
     private boolean mAppDownloadShow;
     
     private boolean mStopDialogShow;
+    
+    private Context mContext;
     
     private static final int PLAY_READY_SOUND = 0;
     private static final int PLAY_BACKGROUND_SOUND = 1;
@@ -114,7 +117,9 @@ public class LinkLink extends Activity implements LLViewActionListener
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN ,    
-                WindowManager.LayoutParams.FLAG_FULLSCREEN);    
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);  
+        
+        mContext = this;
         SettingManager.getInstance().init(getApplicationContext());
         SoundEffectUtils.getInstance().init(this);
         ImageSplitUtils.getInstance().init(this);
@@ -126,6 +131,10 @@ public class LinkLink extends Activity implements LLViewActionListener
         resetContent();
         
         AppOffersManager.init(this, Config.APP_ID, Config.APP_SECRET_KEY, false);
+        
+        //test umeng config
+        MobclickAgent.setSessionContinueMillis(2 * 60 * 1000);
+        MobclickAgent.setUpdateOnlyWifi(false);
     }
 
     @Override
@@ -143,6 +152,18 @@ public class LinkLink extends Activity implements LLViewActionListener
             mStopDialog = null;
             mStopDialogShow = false;
         }
+    }
+    
+    @Override
+    public void onResume() {
+        super.onResume();
+        MobclickAgent.onResume(this);
+    }
+    
+    @Override
+    public void onPause() {
+        super.onPause();
+        MobclickAgent.onPause(this);
     }
 
     private void checkAppPoint() {
@@ -207,6 +228,7 @@ public class LinkLink extends Activity implements LLViewActionListener
                 @Override
                 public void onClick(View v) {
                     showStopDialog();
+                    MobclickAgent.onEvent(mContext, Config.ACTION_CLICK_LABEL, "paused_game");
                 }
             });
         }
@@ -216,6 +238,7 @@ public class LinkLink extends Activity implements LLViewActionListener
             public void onClick(View v) {
                 Env.ICON_REGION_INIT = false;
                 reloadCurrentLevel();
+                MobclickAgent.onEvent(mContext, Config.ACTION_CLICK_LABEL, "new_game");
             }
         });
         arrangeButton.setOnClickListener(new View.OnClickListener() {
@@ -238,6 +261,8 @@ public class LinkLink extends Activity implements LLViewActionListener
                     mCurDiffArrangeCount--;
                 }
                 updateToolsCountView();
+                
+                MobclickAgent.onEvent(mContext, Config.ACTION_CLICK_LABEL, "arrange");
             }
         });
         hintButton.setOnClickListener(new View.OnClickListener() {
@@ -254,6 +279,8 @@ public class LinkLink extends Activity implements LLViewActionListener
                     mCurDiffHintCount--;
                 }
                 updateToolsCountView();
+                
+                MobclickAgent.onEvent(mContext, Config.ACTION_CLICK_LABEL, "hint");
             }
         });
         mNext.setOnClickListener(new View.OnClickListener() {
@@ -346,11 +373,15 @@ public class LinkLink extends Activity implements LLViewActionListener
                                 }
                                 mAppDownloadShow = false;
                                 AppOffersManager.showAppOffers(LinkLink.this);
+                                
+                                MobclickAgent.onEvent(mContext, Config.ACTION_OFFER_LABEL);
                             }
                 }).setNegativeButton(R.string.btn_cancel
                         , new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
+                                MobclickAgent.onEvent(mContext, Config.ACTION_OFFER_CANCEL_LABEL);
+                                
                                 finish();
                             }
                         }).create();
@@ -516,7 +547,8 @@ public class LinkLink extends Activity implements LLViewActionListener
                                 , ThemeManager.getInstance().getCurrentImageCount() - 1));
             mLLView.setChart(c);
             mCurrentTimeProgress = Categary_diff_selector.getInstance().getCurrentTime();
-            mLevelView.setLevel(Categary_diff_selector.getInstance().getCurrentLevel());
+            int curLevel = Categary_diff_selector.getInstance().getCurrentLevel();
+            mLevelView.setLevel(curLevel);
 
             mHandler.sendEmptyMessage(RESET_PROGRESS_TIME_VIEW);
             if (!mAppDownloadShow) {
@@ -528,6 +560,8 @@ public class LinkLink extends Activity implements LLViewActionListener
             
             updateToolsCount();
             updateToolsCountView();
+            
+            MobclickAgent.onEvent(this, Config.ACTION_START, String.valueOf(curLevel));
         } else {
             showResetGameDialog();
         }
@@ -608,6 +642,8 @@ public class LinkLink extends Activity implements LLViewActionListener
                 SettingManager.getInstance().setOpenLevel(curLevel);
             }
 //            checkAppPoint();
+            
+            MobclickAgent.onEvent(mContext, Config.ACTION_LEVEL, String.valueOf(curLevel));
         } else {
             showResetGameDialog();
         }
