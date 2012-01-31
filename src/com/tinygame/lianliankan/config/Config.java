@@ -11,6 +11,7 @@ public class Config {
     public static final String ACTION_OFFER_CANCEL_LABEL = "offer_cancel";
     public static final String ACTION_LEVEL = "level";
     public static final String ACTION_START = "start";
+    public static final String ACTION_START_LAUNCH = "launch";
     
     public static final String APP_ID = "53e13f6906527b33";
     

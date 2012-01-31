@@ -34,13 +34,14 @@ public class LevelActivity extends Activity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-        SettingManager.getInstance().init(this);
         this.setContentView(R.layout.level_list);
     }
     
     @Override
     public void onStart() {
         super.onStart();
+        
+        SettingManager.getInstance().init(this);
         initView();
     }
     

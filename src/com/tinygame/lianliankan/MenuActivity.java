@@ -10,6 +10,9 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
 
+import com.mobclick.android.MobclickAgent;
+import com.mobclick.android.ReportPolicy;
+import com.tinygame.lianliankan.config.Config;
 import com.tinygame.lianliankan.utils.SoundEffectUtils;
 
 public class MenuActivity extends Activity {
@@ -38,6 +41,7 @@ public class MenuActivity extends Activity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);  
         
         this.setContentView(R.layout.menu_view);
+        MobclickAgent.onError(this);
         initView();
     }
     
@@ -48,6 +52,21 @@ public class MenuActivity extends Activity {
         if (soundOpen) {
             SoundEffectUtils.getInstance().playMenuSound();        
         }
+    }
+    
+    @Override
+    public void onResume() {
+        super.onResume();
+        MobclickAgent.onResume(this);
+        MobclickAgent.onEvent(this, Config.ACTION_START_LAUNCH, "MenuActiviy_resume");
+    }
+    
+    @Override
+    public void onPause() {
+        super.onPause();
+        
+        MobclickAgent.onEvent(this, Config.ACTION_START_LAUNCH, "MenuActiviy_pause");
+        MobclickAgent.onPause(this);
     }
     
     @Override

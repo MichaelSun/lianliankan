@@ -20,6 +20,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 
 import com.mobclick.android.MobclickAgent;
+import com.mobclick.android.ReportPolicy;
 import com.tinygame.lianliankan.config.Config;
 import com.tinygame.lianliankan.config.Env;
 import com.tinygame.lianliankan.engine.Chart;
@@ -133,8 +134,8 @@ public class LinkLink extends Activity implements LLViewActionListener
         AppOffersManager.init(this, Config.APP_ID, Config.APP_SECRET_KEY, false);
         
         //test umeng config
-        MobclickAgent.setSessionContinueMillis(2 * 60 * 1000);
-        MobclickAgent.setUpdateOnlyWifi(false);
+        MobclickAgent.setSessionContinueMillis(1 * 60 * 1000);
+        MobclickAgent.onError(this);
     }
 
     @Override
