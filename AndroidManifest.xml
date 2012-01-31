@@ -25,7 +25,7 @@
         android:label="@string/app_name" >
         
      	<meta-data android:value="4f26afbe52701526bc0000be" android:name="UMENG_APPKEY" />  
-     	<meta-data android:value="mumayi" android:name="UMENG_CHANNEL"/>
+     	<meta-data android:value="google" android:name="UMENG_CHANNEL"/>
      	
         <activity
             android:configChanges="keyboard|keyboardHidden|orientation"
