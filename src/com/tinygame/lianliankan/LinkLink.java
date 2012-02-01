@@ -262,6 +262,7 @@ public class LinkLink extends Activity implements LLViewActionListener
                 }
                 
                 mLLView.forceRefresh();
+                mLLView.clearSelectOverlay();
                 if (mCurDiffArrangeCount > 0) {
                     mCurDiffArrangeCount--;
                 }

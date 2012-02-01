@@ -63,6 +63,9 @@ public class LinkLinkSurfaceView extends SurfaceView implements Callback {
     private Drawable mHintDrawable;
     private ArrayList<ArrayList<Point>> mLinePoints = null;
     
+    private int mSelectorRoundIndex;
+    private int mHintRoundIndex;
+    
     private SurfaceHolder mHolder;
     
     private LLViewActionListener mLLViewActionListener;
@@ -76,12 +79,13 @@ public class LinkLinkSurfaceView extends SurfaceView implements Callback {
     
     private boolean mCurRoundClipTile;
     private boolean mTileDataChanged = true;
-    private boolean mShowTouch;
-    private boolean mShowHint;
     private boolean mForceRefresh;
     private int mTileDataChangedCount;
     
+    private Bitmap mFullOverLayBitmap;
+    
     private DrawTread mDrawTread;
+    private SelectThread mSelectorThread;
     
     public Runnable mRefreshRunnable = new Runnable() {
         public void run() {
@@ -111,6 +115,7 @@ public class LinkLinkSurfaceView extends SurfaceView implements Callback {
     @Override
     public void surfaceCreated(SurfaceHolder holder) {
         LOGD("[[surfaceCreated]] <<<<<<<< >>>>>>>>");
+        
         if (mDrawTread != null) {
             mDrawTread.mRunning = false;
             mDrawTread = null;
@@ -118,6 +123,14 @@ public class LinkLinkSurfaceView extends SurfaceView implements Callback {
         
         mDrawTread = new DrawTread();
         mDrawTread.start();
+        
+        if (mSelectorThread != null) {
+            mSelectorThread .mRunning = false;
+            mSelectorThread = null;
+        }
+        
+        mSelectorThread = new SelectThread();
+        mSelectorThread.start();
     }
 
     @Override
@@ -126,6 +139,16 @@ public class LinkLinkSurfaceView extends SurfaceView implements Callback {
         if (mDrawTread != null) {
             mDrawTread.mRunning = false;
             mDrawTread = null;
+        }
+        
+        if (mSelectorThread != null) {
+            mSelectorThread.mRunning = false;
+            mSelectorThread = null;
+        }
+        
+        if (mFullOverLayBitmap != null && !mFullOverLayBitmap.isRecycled()) {
+            mFullOverLayBitmap.recycle();
+            mFullOverLayBitmap = null;
         }
     }
     
@@ -169,6 +192,8 @@ public class LinkLinkSurfaceView extends SurfaceView implements Callback {
     
     public void setChart(Chart chart) {
         mChart = chart;
+        mHint = null;
+        mSelectTileCur = null;
     }
     
     public void changeBackground() {
@@ -177,8 +202,15 @@ public class LinkLinkSurfaceView extends SurfaceView implements Callback {
     }
     
     public void showHint(Tile[] hint) {
+        mHintRoundIndex = 0;
         mHint = hint;
-        mShowHint = true;
+    }
+    
+    public void clearSelectOverlay() {
+        mSelectTileCur = null;
+        mHint = null;
+        mHintRoundIndex = 0;
+        mSelectorRoundIndex = 0;
     }
     
     public void forceRefresh() {
@@ -219,7 +251,7 @@ public class LinkLinkSurfaceView extends SurfaceView implements Callback {
                 }
             }
         }
-        mShowTouch = true;
+        mSelectorRoundIndex = 0;
     }
     
     private void doRoutes() {
@@ -246,6 +278,83 @@ public class LinkLinkSurfaceView extends SurfaceView implements Callback {
         }
     }
     
+    private class SelectThread extends Thread {
+        private boolean mRunning;
+        
+        SelectThread() {
+            mRunning = true;
+        }
+        
+        public void run() {
+            while (mRunning) {
+                if (mSelectTileCur != null || mHint != null) {
+                    Canvas canvas = mHolder.lockCanvas();
+                    try {
+                        if (canvas != null) {
+                            canvas.drawColor(Color.BLACK);
+                            if (mFullOverLayBitmap != null) {
+                                Rect src = new Rect(0, 0
+                                        , mFullOverLayBitmap.getWidth()
+                                        , mFullOverLayBitmap.getHeight());
+                                Rect dst = new Rect(0, 0, getWidth(), getHeight());
+                                canvas.drawBitmap(mFullOverLayBitmap, src, dst, mPaintPic);
+                            }
+                            
+                            LOGD("[[onDrawFullView]] before draw all selector tile  >>>>>>>");
+                            if (mSelectTileCur != null) {
+                                mSelectorDrawable.setBounds(
+                                        mStartX + (mSelectTileCur.x) * Env.ICON_WIDTH - mSelectorRoundIndex
+                                        , mStartY + (mSelectTileCur.y) * Env.ICON_WIDTH - mSelectorRoundIndex
+                                        , mStartX + (mSelectTileCur.x + 1) * Env.ICON_WIDTH + mSelectorRoundIndex
+                                        , mStartY + (mSelectTileCur.y + 1) * Env.ICON_WIDTH + mSelectorRoundIndex);
+                                mSelectorDrawable.draw(canvas);
+
+                                mSelectorRoundIndex++;
+                                mSelectorRoundIndex = mSelectorRoundIndex % 4;
+                            }
+                        
+                            LOGD("[[onDrawFullView]] before draw all Hint tile  >>>>>>>");
+                            if (mHint != null) {
+                                boolean blank = false;
+    
+                                for (Tile tile : mHint) {
+                                    if (tile.isBlank()) {
+                                        blank = true;
+                                    }
+                                }
+                                if (blank == false) {
+                                    for (Tile tile : mHint) {
+                                        mHintDrawable.setBounds(
+                                                mStartX + tile.x * Env.ICON_WIDTH - 2 - mHintRoundIndex
+                                                    , mStartY + tile.y * Env.ICON_WIDTH - 2 - mHintRoundIndex
+                                                    , mStartX + (tile.x + 1) * Env.ICON_WIDTH + 2 +mHintRoundIndex
+                                                    , mStartY + (tile.y + 1) * Env.ICON_WIDTH + 2 +mHintRoundIndex);
+                                        mHintDrawable.draw(canvas);
+                                    }
+                                    
+                                    mHintRoundIndex++;
+                                    mHintRoundIndex = mHintRoundIndex % 4;
+                                }
+                            }
+                        }
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    } finally {
+                        if (canvas != null) {
+                            mHolder.unlockCanvasAndPost(canvas);
+                        }
+                    }
+                }
+                
+                try {
+                    Thread.sleep(200);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+    
     private class DrawTread extends Thread {
         private boolean mRunning;
         
@@ -255,10 +364,8 @@ public class LinkLinkSurfaceView extends SurfaceView implements Callback {
         
         public void run() {
             while (mRunning) {
-                if (mTileDataChanged || mShowHint 
-                        || mForceRefresh
-                        || mShowTouch) {
-                    if (mShowHint || mForceRefresh || mShowTouch) {
+                if (mTileDataChanged || mForceRefresh) {
+                    if (mForceRefresh) {
                         Canvas canvas = mHolder.lockCanvas();
                         try {
                             if (canvas != null) {
@@ -310,10 +417,7 @@ public class LinkLinkSurfaceView extends SurfaceView implements Callback {
                         e.printStackTrace();
                     }
                     
-                    mShowTouch = false;
                     mForceRefresh = false;
-                    mShowHint = false;
-//                    mTileDataChanged = false;
                     synchronized (LinkLinkSurfaceView.this) {
                         if (mTileDataChangedCount > 0) {
                             mTileDataChangedCount--;
@@ -355,7 +459,7 @@ public class LinkLinkSurfaceView extends SurfaceView implements Callback {
         mCurBackgroundIndex = 0;
         mRandom = new Random();
         
-        mHintDrawable = mContext.getResources().getDrawable(R.drawable.hint_icon);
+        mHintDrawable = mContext.getResources().getDrawable(R.drawable.hint1);
         mSelectorDrawable = mContext.getResources().getDrawable(R.drawable.selector);
         
         mLightHBt = AssetsImageLoader.loadBitmapFromAsset(mContext, "image/light_h");
@@ -584,14 +688,21 @@ public class LinkLinkSurfaceView extends SurfaceView implements Callback {
         return false;
     }
     
-    private void onDrawFullView(Canvas canvas) {
+    private void onDrawFullView(Canvas canvasOrg) {
         int width = getWidth();
         int height = getHeight();
+        
+        Canvas canvas = new Canvas();
+        if (mFullOverLayBitmap == null) {
+            mFullOverLayBitmap = Bitmap.createBitmap(width, height, android.graphics.Bitmap.Config.ARGB_8888);
+        }
+        mFullOverLayBitmap.eraseColor(0x00000000);
+        canvas.setBitmap(mFullOverLayBitmap);
 
         mCurRoundClipTile = false;
         LOGD("[[onDrawFullView]] entry into  >>>>>>> width = " + width + " height = " + height
                 + " canvas = " + canvas);
-        canvas.drawColor(Color.BLACK);
+//        canvas.drawColor(Color.BLACK);
         
         Bitmap curBg = mBackgroundBtList.get(mCurBackgroundIndex);
         
@@ -646,33 +757,19 @@ public class LinkLinkSurfaceView extends SurfaceView implements Callback {
         }
 
         
-        LOGD("[[onDrawFullView]] before draw all selector tile  >>>>>>>");
-        if (mSelectTileCur != null) {
-            mSelectorDrawable.setBounds(mStartX + (mSelectTileCur.x) * Env.ICON_WIDTH
-                        , mStartY + (mSelectTileCur.y) * Env.ICON_WIDTH
-                        , mStartX + (mSelectTileCur.x + 1) * Env.ICON_WIDTH
-                        , mStartY + (mSelectTileCur.y + 1) * Env.ICON_WIDTH);
-            mSelectorDrawable.draw(canvas);
-        }
+//        LOGD("[[onDrawFullView]] before draw all selector tile  >>>>>>>");
+//        if (mSelectTileCur != null) {
+//            mSelectorDrawable.setBounds(mStartX + (mSelectTileCur.x) * Env.ICON_WIDTH
+//                        , mStartY + (mSelectTileCur.y) * Env.ICON_WIDTH
+//                        , mStartX + (mSelectTileCur.x + 1) * Env.ICON_WIDTH
+//                        , mStartY + (mSelectTileCur.y + 1) * Env.ICON_WIDTH);
+//            mSelectorDrawable.draw(canvas);
+//        }
 
-        LOGD("[[onDrawFullView]] before draw all Hint tile  >>>>>>>");
-        if (null != mHint) {
-            boolean blank = false;
-
-            for (Tile tile : mHint) {
-                if (tile.isBlank()) {
-                    blank = true;
-                }
-            }
-            if (blank == false) {
-                for (Tile tile : mHint) {
-                    mHintDrawable.setBounds(mStartX + tile.x * Env.ICON_WIDTH
-                                , mStartY + tile.y * Env.ICON_WIDTH
-                                , mStartX + (tile.x + 1) * Env.ICON_WIDTH
-                                , mStartY + (tile.y + 1) * Env.ICON_WIDTH);
-                    mHintDrawable.draw(canvas);
-                }
-            }
+        if (mFullOverLayBitmap != null) {
+            Rect src = new Rect(0, 0, mFullOverLayBitmap.getWidth(), mFullOverLayBitmap.getHeight());
+            Rect dest = new Rect(0, 0, width, height);
+            canvasOrg.drawBitmap(mFullOverLayBitmap, src, dest, this.mPaintPic);
         }
         
         LOGD("[[onDrawFullView]] leva <<<<<<< width = " + width + " height = " + height);
