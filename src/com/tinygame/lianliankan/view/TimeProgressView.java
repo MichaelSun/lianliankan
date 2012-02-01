@@ -160,16 +160,16 @@ public class TimeProgressView extends View {
     
     @Override
     protected void onDraw(Canvas canvas) {
-        if (mHasStop) {
-            return;
-        }
+//        if (mHasStop) {
+//            return;
+//        }
         
         int width = getWidth();
         int height = getHeight();
         int topStart = PADDING_TOP;
         long curTime = System.currentTimeMillis();
         
-        if (mPreDismissTouch != 0) {
+        if (!mHasStop && mPreDismissTouch != 0) {
             long cost = curTime - mPreDismissTouch;
             if (cost > CONTINUE_TOUCH_DELAY) {
                 if (mStopProgressTime != 0) {
@@ -197,7 +197,7 @@ public class TimeProgressView extends View {
             mProgressLeave = topStart;
         }
         
-        if (mStopProgressTime == 0) {
+        if (!mHasStop && mStopProgressTime == 0) {
             if (mProgressing) {
                 if (curTime > mEffectTime && mTotalTime > 0) {
                     if ((curTime - mEffectTime) <= mTotalTime * 1000) {
@@ -261,7 +261,7 @@ public class TimeProgressView extends View {
             }
         }
         
-        if (mProgressing) {
+        if (!mHasStop && mProgressing) {
             int time = (int) ((curTime - mEffectTime) / 1000);
             int left = mTotalTime >= time ? (mTotalTime - time) : 0;
             ArrayList<Bitmap> numbers = getTimeNumberBt(left);

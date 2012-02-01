@@ -2,6 +2,7 @@ package com.tinygame.lianliankan.view;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.Random;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -52,8 +53,10 @@ public class LinkLinkSurfaceView extends SurfaceView implements Callback {
     private Paint mPaintDismissing;
     private int mStartX;
     private int mStartY;
-//    private Drawable mBackgroundDrawable;
-    private Bitmap mBackgroundBt;
+    
+    private Random mRandom;
+    private int mCurBackgroundIndex;
+    private ArrayList<Bitmap> mBackgroundBtList;
     private Bitmap mLightHBt;
     private Bitmap mLightVBt;
     private Drawable mSelectorDrawable;
@@ -166,6 +169,11 @@ public class LinkLinkSurfaceView extends SurfaceView implements Callback {
     
     public void setChart(Chart chart) {
         mChart = chart;
+    }
+    
+    public void changeBackground() {
+        int random = mRandom.nextInt(100);
+        mCurBackgroundIndex = random % mBackgroundBtList.size();
     }
     
     public void showHint(Tile[] hint) {
@@ -340,8 +348,13 @@ public class LinkLinkSurfaceView extends SurfaceView implements Callback {
         mPaintDismissing = new Paint();
         mPaintDismissing.setAlpha(80);
         
-//        mBackgroundDrawable = mContext.getResources().getDrawable(R.drawable.game_bg);
-        mBackgroundBt = AssetsImageLoader.loadBitmapFromAsset(mContext, "image/game_bg");
+        mBackgroundBtList = new ArrayList<Bitmap>();
+        mBackgroundBtList.add(AssetsImageLoader.loadBitmapFromAsset(mContext, "background/game_bg"));
+        mBackgroundBtList.add(AssetsImageLoader.loadBitmapFromAsset(mContext, "background/game_bg1"));
+        mBackgroundBtList.add(AssetsImageLoader.loadBitmapFromAsset(mContext, "background/game_bg2"));
+        mCurBackgroundIndex = 0;
+        mRandom = new Random();
+        
         mHintDrawable = mContext.getResources().getDrawable(R.drawable.hint_icon);
         mSelectorDrawable = mContext.getResources().getDrawable(R.drawable.selector);
         
@@ -577,18 +590,15 @@ public class LinkLinkSurfaceView extends SurfaceView implements Callback {
 
         mCurRoundClipTile = false;
         LOGD("[[onDrawFullView]] entry into  >>>>>>> width = " + width + " height = " + height
-                + " mBackgroundDrawable = " + mBackgroundBt
                 + " canvas = " + canvas);
         canvas.drawColor(Color.BLACK);
         
-        if (mBackgroundBt == null) {
-            mBackgroundBt = AssetsImageLoader.loadBitmapFromAsset(mContext, "image/game_bg");
-        }
+        Bitmap curBg = mBackgroundBtList.get(mCurBackgroundIndex);
         
-        if (mBackgroundBt != null) {
-            Rect bgSrc = new Rect(0, 0, mBackgroundBt.getWidth(), mBackgroundBt.getHeight());
+        if (curBg != null) {
+            Rect bgSrc = new Rect(0, 0, curBg.getWidth(), curBg.getHeight());
             Rect bgDest = new Rect(0, 0, width, height);
-            canvas.drawBitmap(mBackgroundBt, bgSrc, bgDest, mPaintPic);
+            canvas.drawBitmap(curBg, bgSrc, bgDest, mPaintPic);
         }
         
         if (mChart == null) {

@@ -97,15 +97,29 @@ public class LevelActivity extends Activity {
             View ret = convertView;
             if (ret == null) {
                 ret = mInflater.inflate(mResourceID, null);
-            } else {
-                View lock = ret.findViewById(R.id.lock_icon);
-                lock.setVisibility(View.VISIBLE);
             }
 
             EachLevelInfo info = this.getItem(position);
             if (info.hasFinished) {
                 View lock = ret.findViewById(R.id.lock_icon);
                 lock.setVisibility(View.GONE);
+                
+                View egg = ret.findViewById(R.id.egg_point);
+                egg.setVisibility(View.VISIBLE);
+                View eggTwo = ret.findViewById(R.id.egg_point_two);
+                eggTwo.setVisibility(View.VISIBLE);
+                View eggThree = ret.findViewById(R.id.egg_point_three);
+                eggThree.setVisibility(View.VISIBLE);
+            } else {
+                View lock = ret.findViewById(R.id.lock_icon);
+                lock.setVisibility(View.VISIBLE);
+
+                View egg = ret.findViewById(R.id.egg_point);
+                egg.setVisibility(View.GONE);
+                View eggTwo = ret.findViewById(R.id.egg_point_two);
+                eggTwo.setVisibility(View.GONE);
+                View eggThree = ret.findViewById(R.id.egg_point_three);
+                eggThree.setVisibility(View.GONE);
             }
             
             TextView levelTV = (TextView) ret.findViewById(R.id.level_icon);

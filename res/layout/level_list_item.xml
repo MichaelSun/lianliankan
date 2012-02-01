@@ -22,5 +22,35 @@
         android:src="@drawable/smalllock"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true" />
-   
+
+	<ImageView 
+        android:id="@+id/egg_point_three"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:src="@drawable/egg_one"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="5dp"
+        android:layout_marginRight="20dp"
+        android:layout_alignParentRight="true"
+        android:visibility="gone" />
+	<ImageView 
+        android:id="@+id/egg_point_two"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:src="@drawable/egg_one"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="5dp"
+		android:layout_marginRight="10dp"
+        android:layout_alignParentRight="true"
+        android:visibility="gone" />
+    <ImageView 
+        android:id="@+id/egg_point"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:src="@drawable/egg_one"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="5dp"
+        android:visibility="gone" />
+    
 </RelativeLayout>

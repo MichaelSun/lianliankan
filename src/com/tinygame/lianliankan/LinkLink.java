@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.Animation;
+import android.view.animation.TranslateAnimation;
 import android.view.animation.Animation.AnimationListener;
 import android.view.animation.AnimationUtils;
 import android.widget.TextView;
@@ -45,6 +46,7 @@ public class LinkLink extends Activity implements LLViewActionListener
     private LinkLinkSurfaceView mLLView;
     private View newGameButton, arrangeButton, hintButton;
     private View mNoMoreTipsView;
+    private View mNoMoreTextView;
     private TextView mArrangeCount;
     private TextView mHintCount;
     private View mNext;
@@ -222,6 +224,7 @@ public class LinkLink extends Activity implements LLViewActionListener
         mHintCount = (TextView) findViewById(R.id.hint_count);
         
         mNoMoreTipsView = findViewById(R.id.no_more_tips);
+        mNoMoreTextView = findViewById(R.id.no_more_text);
         
         View stopView = findViewById(R.id.stop);
         if (stopView != null) {
@@ -230,6 +233,7 @@ public class LinkLink extends Activity implements LLViewActionListener
                 public void onClick(View v) {
                     showStopDialog();
                     MobclickAgent.onEvent(mContext, Config.ACTION_CLICK_LABEL, "paused_game");
+//                    showNoMoreTipsView();
                 }
             });
         }
@@ -394,9 +398,20 @@ public class LinkLink extends Activity implements LLViewActionListener
     private void showNoMoreTipsView() {
         if (mNoMoreTipsView.getVisibility() == View.GONE) {
             mNoMoreTipsView.setVisibility(View.VISIBLE);
-            Animation anim = AnimationUtils.loadAnimation(this, R.anim.no_more_tips_anim);
-            anim.setAnimationListener(this);
-            mNoMoreTipsView.startAnimation(anim);
+            mNoMoreTextView.setVisibility(View.VISIBLE);
+//            Animation anim = AnimationUtils.loadAnimation(this, R.anim.no_more_tips_anim);
+//            anim.setAnimationListener(this);
+//            mNoMoreTipsView.startAnimation(anim);
+            
+            Animation a = new TranslateAnimation(0.0f, 0.0f, -200.0f, 0.0f);
+            a.setDuration(2000);
+            a.setStartOffset(100);
+//            a.setRepeatMode(Animation.RESTART);
+//            a.setRepeatCount(Animation.INFINITE);
+            a.setInterpolator(AnimationUtils.loadInterpolator(this,
+                    android.R.anim.bounce_interpolator));
+            a.setAnimationListener(this);
+            mNoMoreTipsView.startAnimation(a);
         }
     }
     
@@ -622,6 +637,7 @@ public class LinkLink extends Activity implements LLViewActionListener
             ThemeManager.getInstance().loadImageByCategary(cate);
             Chart c = new Chart(FillContent.getRandomWithDiff(diff
                                 , ThemeManager.getInstance().getCurrentImageCount() - 1));
+            mLLView.changeBackground();
             mLLView.setChart(c);
             mLLView.forceRefresh();
             mCurrentTimeProgress = Categary_diff_selector.getInstance().getCurrentTime();
@@ -663,6 +679,11 @@ public class LinkLink extends Activity implements LLViewActionListener
         if (mNoMoreTipsView != null) {
             mNoMoreTipsView.setVisibility(View.GONE);
         }
+        if (mNoMoreTextView != null) {
+            mNoMoreTextView.setVisibility(View.GONE);
+        }
+        
+        mTimeView.resume();
     }
 
     @Override
@@ -672,7 +693,7 @@ public class LinkLink extends Activity implements LLViewActionListener
 
     @Override
     public void onAnimationStart(Animation animation) {
-        
+        mTimeView.stop();
     }
     
     private void LOGD(String msg) {
