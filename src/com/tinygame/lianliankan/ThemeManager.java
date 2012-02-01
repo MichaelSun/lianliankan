@@ -20,6 +20,7 @@ public class ThemeManager {
     private Drawable[] mResArray;
     private Context mContext;
     private HashMap<Integer, Bitmap> mNumberMap;
+    private String mCurCategory;
 
     public static ThemeManager getInstance() {
         return gThemeManager;
@@ -58,19 +59,22 @@ public class ThemeManager {
     }
     
     public void loadImageByCategary(String cate) {
-        String imagePath = cate;
-        
-        ImageSplitUtils.getInstance().clearCurrentRes();
-        mResArray = null;
-        ArrayList<BitmapSiplited> ret = ImageSplitUtils.getInstance().splitBitmapInAssests(imagePath);
-        if (ret.size() > 0) {
-            if (mResArray == null) {
-                mResArray = new Drawable[ret.size()];
+        if (mCurCategory == null 
+                || ((mCurCategory != null) 
+                        && !mCurCategory.equals(cate))) {
+            mCurCategory = cate;
+            ImageSplitUtils.getInstance().clearCurrentRes();
+            mResArray = null;
+            ArrayList<BitmapSiplited> ret = ImageSplitUtils.getInstance().splitBitmapInAssests(mCurCategory);
+            if (ret.size() > 0) {
+                if (mResArray == null) {
+                    mResArray = new Drawable[ret.size()];
+                }
+                for (BitmapSiplited bts : ret) {
+                    mResArray[bts.id] = new BitmapDrawable(bts.bitmap);
+                }
+                mCurrentImageCount = ret.size();
             }
-            for (BitmapSiplited bts : ret) {
-                mResArray[bts.id] = new BitmapDrawable(bts.bitmap);
-            }
-            mCurrentImageCount = ret.size();
         }
     }
 

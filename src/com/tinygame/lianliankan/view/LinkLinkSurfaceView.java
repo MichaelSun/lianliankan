@@ -57,12 +57,14 @@ public class LinkLinkSurfaceView extends SurfaceView implements Callback {
     private Random mRandom;
     private int mCurBackgroundIndex;
     private ArrayList<Bitmap> mBackgroundBtList;
-    private Bitmap mLightHBt;
-    private Bitmap mLightVBt;
+    private ArrayList<Bitmap> mLightHBtList;
+    private ArrayList<Bitmap> mLightVBtList;
+    private int mLightIndex;
     private Drawable mSelectorDrawable;
     private Drawable mHintDrawable;
     private ArrayList<ArrayList<Point>> mLinePoints = null;
     
+//    private ArrayList<Drawable> mSelectorDrawableList;
     private int mSelectorRoundIndex;
     private int mHintRoundIndex;
     
@@ -71,7 +73,7 @@ public class LinkLinkSurfaceView extends SurfaceView implements Callback {
     private LLViewActionListener mLLViewActionListener;
     
     private Chart mChart;
-    private LinkedList<BlankRoute> mRoutes = new LinkedList<BlankRoute>();
+    private ArrayList<BlankRoute> mRoutes = new ArrayList<BlankRoute>();
     private Tile[] mHint;
     private Tile mSelectTileCur;
     private Tile mSelectTileOne;
@@ -237,7 +239,9 @@ public class LinkLinkSurfaceView extends SurfaceView implements Callback {
                         mSelectTileOne = mSelectTileCur;
                         mSelectTileTwo = newTile;
                         mSelectTileCur = null;
-                        mRoutes.add(ci.getRoute().dismissing());
+                        synchronized (mRoutes) {
+                            mRoutes.add(ci.getRoute().dismissing());
+                        }
                         synchronized (LinkLinkSurfaceView.this) {
                             mTileDataChangedCount++;
                             mTileDataChanged = true;
@@ -257,11 +261,17 @@ public class LinkLinkSurfaceView extends SurfaceView implements Callback {
     private void doRoutes() {
         LOGD("[[doRoutes]] >>>>>> <<<<<<<");
         try {
-            BlankRoute blankRoute = mRoutes.removeFirst();
-            blankRoute.start.dismiss();
-            blankRoute.end.dismiss();
-            if (blankRoute.start == mSelectTileCur || blankRoute.end == mSelectTileCur) {
-                mSelectTileCur = null;
+            synchronized (mRoutes) {
+                if (mRoutes != null && mRoutes.size() > 0) {
+                    for (BlankRoute blankRoute : mRoutes) {
+                        blankRoute.start.dismiss();
+                        blankRoute.end.dismiss();
+                        if (blankRoute.start == mSelectTileCur || blankRoute.end == mSelectTileCur) {
+                            mSelectTileCur = null;
+                        }
+                    }
+                    mRoutes.clear();
+                }
             }
             if (mChart.isAllBlank()) {
                 if (mLLViewActionListener != null) {
@@ -308,6 +318,15 @@ public class LinkLinkSurfaceView extends SurfaceView implements Callback {
                                         , mStartX + (mSelectTileCur.x + 1) * Env.ICON_WIDTH + mSelectorRoundIndex
                                         , mStartY + (mSelectTileCur.y + 1) * Env.ICON_WIDTH + mSelectorRoundIndex);
                                 mSelectorDrawable.draw(canvas);
+//                                Drawable cur = mSelectorDrawableList.get(mSelectorRoundIndex);
+//                                if (cur != null) {
+//                                    cur.setBounds(
+//                                            mStartX + (mSelectTileCur.x) * Env.ICON_WIDTH - 3
+//                                            , mStartY + (mSelectTileCur.y) * Env.ICON_WIDTH - 3
+//                                            , mStartX + (mSelectTileCur.x + 1) * Env.ICON_WIDTH + 3
+//                                            , mStartY + (mSelectTileCur.y + 1) * Env.ICON_WIDTH + 3);
+//                                    cur.draw(canvas);
+//                                }
 
                                 mSelectorRoundIndex++;
                                 mSelectorRoundIndex = mSelectorRoundIndex % 4;
@@ -365,15 +384,20 @@ public class LinkLinkSurfaceView extends SurfaceView implements Callback {
         public void run() {
             while (mRunning) {
                 if (mTileDataChanged || mForceRefresh) {
+//                    mInDrawingProgress = true;
                     if (mForceRefresh) {
                         Canvas canvas = mHolder.lockCanvas();
                         try {
                             if (canvas != null) {
                                 try {
-                                    if (mRoutes != null && mRoutes.size() > 0) {
-                                        BlankRoute blankRoute = mRoutes.removeFirst();
-                                        blankRoute.start.dismiss();
-                                        blankRoute.end.dismiss();
+                                    synchronized (mRoutes) {
+                                        if (mRoutes != null && mRoutes.size() > 0) {
+                                            for (BlankRoute blankRoute : mRoutes) {
+                                                blankRoute.start.dismiss();
+                                                blankRoute.end.dismiss();
+                                            }
+                                            mRoutes.clear();
+                                        }
                                     }
                                 } catch (Exception e) {
                                 }
@@ -456,14 +480,30 @@ public class LinkLinkSurfaceView extends SurfaceView implements Callback {
         mBackgroundBtList.add(AssetsImageLoader.loadBitmapFromAsset(mContext, "background/game_bg"));
         mBackgroundBtList.add(AssetsImageLoader.loadBitmapFromAsset(mContext, "background/game_bg1"));
         mBackgroundBtList.add(AssetsImageLoader.loadBitmapFromAsset(mContext, "background/game_bg2"));
+        mBackgroundBtList.add(AssetsImageLoader.loadBitmapFromAsset(mContext, "background/game_bg3"));
+        mBackgroundBtList.add(AssetsImageLoader.loadBitmapFromAsset(mContext, "background/game_bg4"));
         mCurBackgroundIndex = 0;
         mRandom = new Random();
         
         mHintDrawable = mContext.getResources().getDrawable(R.drawable.hint1);
         mSelectorDrawable = mContext.getResources().getDrawable(R.drawable.selector);
         
-        mLightHBt = AssetsImageLoader.loadBitmapFromAsset(mContext, "image/light_h");
-        mLightVBt = AssetsImageLoader.loadBitmapFromAsset(mContext, "image/light_v");
+//        mSelectorDrawableList = new ArrayList<Drawable>();
+//        mSelectorDrawableList.add(mContext.getResources().getDrawable(R.drawable.selector1));
+//        mSelectorDrawableList.add(mContext.getResources().getDrawable(R.drawable.selector2));
+//        mSelectorDrawableList.add(mContext.getResources().getDrawable(R.drawable.selector3));
+//        mSelectorDrawableList.add(mContext.getResources().getDrawable(R.drawable.selector4));
+//        mSelectorDrawableList.add(mContext.getResources().getDrawable(R.drawable.selector5));
+        
+        mLightIndex = 0;
+        mLightHBtList = new ArrayList<Bitmap>();
+        mLightHBtList.add(AssetsImageLoader.loadBitmapFromAsset(mContext, "image/light_h"));
+        mLightHBtList.add(AssetsImageLoader.loadBitmapFromAsset(mContext, "image/light_h1"));
+        mLightHBtList.add(AssetsImageLoader.loadBitmapFromAsset(mContext, "image/light_h2"));
+        mLightVBtList = new ArrayList<Bitmap>();
+        mLightVBtList.add(AssetsImageLoader.loadBitmapFromAsset(mContext, "image/light_v"));
+        mLightVBtList.add(AssetsImageLoader.loadBitmapFromAsset(mContext, "image/light_v1"));
+        mLightVBtList.add(AssetsImageLoader.loadBitmapFromAsset(mContext, "image/light_v2"));
         
         getHolder().addCallback(this);
         mHolder = getHolder();
@@ -473,6 +513,7 @@ public class LinkLinkSurfaceView extends SurfaceView implements Callback {
         ArrayList<Bitmap> ret = ImageSplitUtils.getInstance().getBoomBtList();
         LOGD(">>>>> draw boom >>>>>>>");
         mLinePoints = null;
+        mLightIndex = 0;
         for (Bitmap bt : ret) {
             Canvas canvas = mHolder.lockCanvas();
             LOGD(">>>>> draw boom for bt = " + bt + ">>>>>>>");
@@ -491,8 +532,10 @@ public class LinkLinkSurfaceView extends SurfaceView implements Callback {
                                             , mStartX + (mSelectTileTwo.x + 1) * Env.ICON_WIDTH
                                             , mStartY + (mSelectTileTwo.y + 1) * Env.ICON_WIDTH);
                 canvas.drawBitmap(bt, src, destTwo, mPaintPic);
-                        
                 onDrawPathLine(canvas);
+                
+                mLightIndex++;
+                mLightIndex = mLightIndex % mLightHBtList.size();
             } catch (Exception e) {
                 e.printStackTrace();
             } finally {
@@ -501,7 +544,7 @@ public class LinkLinkSurfaceView extends SurfaceView implements Callback {
                 }
             }
             try {
-                Thread.sleep(20);
+                Thread.sleep(25);
             } catch(Exception e) {
                 e.printStackTrace();
             }
@@ -514,97 +557,99 @@ public class LinkLinkSurfaceView extends SurfaceView implements Callback {
         //test code 
         if (mLinePoints == null) {
             mLinePoints = new ArrayList<ArrayList<Point>>();
-            for (BlankRoute eachRoute : mRoutes) {
-                LOGD("[[onDrawPathLine]] on entry into onDrawPathLine <<<<>>>>>");
-                ArrayList<Point> src = new ArrayList<Point>();
-                Point mStartTileSildePointOne = null;
-                Point mStartTileSildePointTwo = null;
-                Point mEndTileSildePointOne = null;
-                Point mEndTileSildePointTwo = null;
-                for (DirectionPath each : eachRoute.getpath()) {
-                    Tile eachTile = each.getTile();
-                    int xPoint = mStartX + (eachTile.x) * Env.ICON_WIDTH + Env.ICON_WIDTH / 2;
-                    int yPoint = mStartY + (eachTile.y) * Env.ICON_WIDTH + Env.ICON_WIDTH / 2;
-                    src.add(new Point(xPoint, yPoint));
-    
-                    LOGD("[[onDrawPathLine]] src size = " + src.size()
-                            + " eachRoute.getpath() size = " + eachRoute.getpath().length
-                            + " >>>>>>>>>>><<<<<<<<<<");
+            synchronized (mRoutes) {
+                for (BlankRoute eachRoute : mRoutes) {
+                    LOGD("[[onDrawPathLine]] on entry into onDrawPathLine <<<<>>>>>");
+                    ArrayList<Point> src = new ArrayList<Point>();
+                    Point mStartTileSildePointOne = null;
+                    Point mStartTileSildePointTwo = null;
+                    Point mEndTileSildePointOne = null;
+                    Point mEndTileSildePointTwo = null;
+                    for (DirectionPath each : eachRoute.getpath()) {
+                        Tile eachTile = each.getTile();
+                        int xPoint = mStartX + (eachTile.x) * Env.ICON_WIDTH + Env.ICON_WIDTH / 2;
+                        int yPoint = mStartY + (eachTile.y) * Env.ICON_WIDTH + Env.ICON_WIDTH / 2;
+                        src.add(new Point(xPoint, yPoint));
+        
+                        LOGD("[[onDrawPathLine]] src size = " + src.size()
+                                + " eachRoute.getpath() size = " + eachRoute.getpath().length
+                                + " >>>>>>>>>>><<<<<<<<<<");
+                        
+                        for (Direction eachDirection : each.getDirection()) {
+        //                    canvas.drawLine(xPoint, yPoint, xPoint + eachDirection.padding(true, Env.ICON_WIDTH),
+        //                            yPoint + eachDirection.padding(false, Env.ICON_WIDTH), mPaintPath);
+                            Point curPoint = new Point(xPoint + eachDirection.padding(true, Env.ICON_WIDTH),
+                                    yPoint + eachDirection.padding(false, Env.ICON_WIDTH));
+                            if (src.size() == 1) {
+                                if (mStartTileSildePointOne == null) {
+                                    mStartTileSildePointOne = curPoint;
+                                } else if (mStartTileSildePointTwo == null) {
+                                    mStartTileSildePointTwo = curPoint;
+                                }
+                            } else if (src.size() == eachRoute.getpath().length) {
+                                if (mEndTileSildePointOne == null) {
+                                    mEndTileSildePointOne = curPoint;
+                                } else if (mEndTileSildePointTwo == null) {
+                                    mEndTileSildePointTwo = curPoint;
+                                }
+                            }
+                            
+                            LOGD("[[onDrawPathLine]] cutPoint info = " + curPoint.toString() + " >>>>>>><<<<<<");
+                        }
+                    }
                     
-                    for (Direction eachDirection : each.getDirection()) {
-    //                    canvas.drawLine(xPoint, yPoint, xPoint + eachDirection.padding(true, Env.ICON_WIDTH),
-    //                            yPoint + eachDirection.padding(false, Env.ICON_WIDTH), mPaintPath);
-                        Point curPoint = new Point(xPoint + eachDirection.padding(true, Env.ICON_WIDTH),
-                                yPoint + eachDirection.padding(false, Env.ICON_WIDTH));
-                        if (src.size() == 1) {
-                            if (mStartTileSildePointOne == null) {
-                                mStartTileSildePointOne = curPoint;
-                            } else if (mStartTileSildePointTwo == null) {
-                                mStartTileSildePointTwo = curPoint;
-                            }
-                        } else if (src.size() == eachRoute.getpath().length) {
-                            if (mEndTileSildePointOne == null) {
-                                mEndTileSildePointOne = curPoint;
-                            } else if (mEndTileSildePointTwo == null) {
-                                mEndTileSildePointTwo = curPoint;
-                            }
+                    LOGD("[[onDrawPathLine]] >>>>> src point data = " + src + " >>>>>><<<<<<<");
+                    
+                    if (src.size() == 1) {
+                        src.add(0, mStartTileSildePointOne);
+                        src.add(mStartTileSildePointTwo);
+                    } else {
+                        if (mStartTileSildePointOne != null && !pointInPath(mStartTileSildePointOne, src)) {
+                            src.add(0, mStartTileSildePointOne);
+                        }
+                        if (mStartTileSildePointTwo != null && !pointInPath(mStartTileSildePointTwo, src)) {
+                            src.add(0, mStartTileSildePointTwo);
+                        }
+                        if (mEndTileSildePointOne != null && !pointInPath(mEndTileSildePointOne, src)) {
+                            src.add(mEndTileSildePointOne);
+                        }
+                        if (mEndTileSildePointTwo != null && !pointInPath(mEndTileSildePointTwo, src)) {
+                            src.add(mEndTileSildePointTwo);
+                        }
+                    }
+                    
+                    ArrayList<Point> drawPoint = new ArrayList<Point>();
+                    if (src.size() > 2) {
+                        drawPoint.add(src.get(0));
+                        drawPoint.add(src.get(1));
+                    }
+                    for (int i = 2; i < src.size(); ++i) {
+                        int drawSize = drawPoint.size();
+                        if (pointInExternLine(src.get(i), drawPoint.get(drawSize - 1), drawPoint.get(drawSize - 2))) {
+                            drawPoint.remove(drawSize - 1);
+                            drawPoint.add(src.get(i));
+                        } else {
+                            drawPoint.add(src.get(i));
+                        }
+                    }
+                    
+                    if (drawPoint.size() > 1) {
+                        for (int i = 1; i < drawPoint.size(); ++i) {
+                            Point start = drawPoint.get(i - 1);
+                            Point end = drawPoint.get(i);
+                            drawLight(canvas, start, end);
                         }
                         
-                        LOGD("[[onDrawPathLine]] cutPoint info = " + curPoint.toString() + " >>>>>>><<<<<<");
+                        mLinePoints.add(drawPoint);
                     }
+                    LOGD("[[onDrawPathLine]] mEndTileSildePointOne = " + mEndTileSildePointOne
+                            + " mEndTileSildePointTwo = " + mEndTileSildePointTwo
+                            + " mStartTileSildePointOne = " + mStartTileSildePointOne
+                            + " mStartTileSildePointTwo = " + mStartTileSildePointTwo
+                            + " array Point list = " + src.toString()
+                            + " >>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<"
+                            + " drawPoint = " + drawPoint.toString());
                 }
-                
-                LOGD("[[onDrawPathLine]] >>>>> src point data = " + src + " >>>>>><<<<<<<");
-                
-                if (src.size() == 1) {
-                    src.add(0, mStartTileSildePointOne);
-                    src.add(mStartTileSildePointTwo);
-                } else {
-                    if (mStartTileSildePointOne != null && !pointInPath(mStartTileSildePointOne, src)) {
-                        src.add(0, mStartTileSildePointOne);
-                    }
-                    if (mStartTileSildePointTwo != null && !pointInPath(mStartTileSildePointTwo, src)) {
-                        src.add(0, mStartTileSildePointTwo);
-                    }
-                    if (mEndTileSildePointOne != null && !pointInPath(mEndTileSildePointOne, src)) {
-                        src.add(mEndTileSildePointOne);
-                    }
-                    if (mEndTileSildePointTwo != null && !pointInPath(mEndTileSildePointTwo, src)) {
-                        src.add(mEndTileSildePointTwo);
-                    }
-                }
-                
-                ArrayList<Point> drawPoint = new ArrayList<Point>();
-                if (src.size() > 2) {
-                    drawPoint.add(src.get(0));
-                    drawPoint.add(src.get(1));
-                }
-                for (int i = 2; i < src.size(); ++i) {
-                    int drawSize = drawPoint.size();
-                    if (pointInExternLine(src.get(i), drawPoint.get(drawSize - 1), drawPoint.get(drawSize - 2))) {
-                        drawPoint.remove(drawSize - 1);
-                        drawPoint.add(src.get(i));
-                    } else {
-                        drawPoint.add(src.get(i));
-                    }
-                }
-                
-                if (drawPoint.size() > 1) {
-                    for (int i = 1; i < drawPoint.size(); ++i) {
-                        Point start = drawPoint.get(i - 1);
-                        Point end = drawPoint.get(i);
-                        drawLight(canvas, start, end);
-                    }
-                    
-                    mLinePoints.add(drawPoint);
-                }
-                LOGD("[[onDrawPathLine]] mEndTileSildePointOne = " + mEndTileSildePointOne
-                        + " mEndTileSildePointTwo = " + mEndTileSildePointTwo
-                        + " mStartTileSildePointOne = " + mStartTileSildePointOne
-                        + " mStartTileSildePointTwo = " + mStartTileSildePointTwo
-                        + " array Point list = " + src.toString()
-                        + " >>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<"
-                        + " drawPoint = " + drawPoint.toString());
             }
         } else {
             for (ArrayList<Point> list : mLinePoints) {
@@ -624,19 +669,25 @@ public class LinkLinkSurfaceView extends SurfaceView implements Callback {
             if (p1.x == p2.x) {
                 int miny = Math.min(p1.y, p2.y);
                 int maxy = Math.max(p1.y, p2.y);
-                int width = mLightVBt.getWidth();
-                int height = mLightVBt.getHeight();
-                Rect src = new Rect(0, 0, width, height);
-                Rect dest = new Rect(p1.x - width / 2, miny, p1.x + width / 2, maxy);
-                canvas.drawBitmap(mLightVBt, src, dest, mPaintPic);
+                Bitmap curBt = mLightVBtList.get(mLightIndex);
+                if (curBt != null) {
+                    int width = curBt.getWidth();
+                    int height = curBt.getHeight();
+                    Rect src = new Rect(0, 0, width, height);
+                    Rect dest = new Rect(p1.x - width / 2, miny, p1.x + width / 2, maxy);
+                    canvas.drawBitmap(curBt, src, dest, mPaintPic);
+                }
             } else if (p1.y == p2.y) {
                 int minx = Math.min(p1.x, p2.x);
                 int maxx = Math.max(p1.x, p2.x);
-                int width = mLightHBt.getWidth();
-                int height = mLightHBt.getHeight();
-                Rect src = new Rect(0, 0, width, height);
-                Rect dest = new Rect(minx, p1.y - height / 2, maxx, p1.y + height / 2);
-                canvas.drawBitmap(mLightHBt, src, dest, mPaintPic);
+                Bitmap curBt = mLightHBtList.get(mLightIndex);
+                if (curBt != null) {
+                    int width = curBt.getWidth();
+                    int height = curBt.getHeight();
+                    Rect src = new Rect(0, 0, width, height);
+                    Rect dest = new Rect(minx, p1.y - height / 2, maxx, p1.y + height / 2);
+                    canvas.drawBitmap(curBt, src, dest, mPaintPic);
+                }
             }
         }
     }

@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -33,15 +35,15 @@ public class LevelActivity extends Activity {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
+        SettingManager.getInstance().init(getApplicationContext());
         this.setContentView(R.layout.level_list);
     }
     
     @Override
     public void onStart() {
         super.onStart();
-        
-        SettingManager.getInstance().init(this);
+        SettingManager.getInstance().init(getApplicationContext());        
+
         initView();
     }
     
@@ -65,6 +67,12 @@ public class LevelActivity extends Activity {
         mAdapter = new InfoAdapter(this, R.layout.level_list_item, mLevelPointList);
         mGridView.setAdapter(mAdapter);
 
+        Drawable egg = this.getResources().getDrawable(R.drawable.egg);
+        Drawable bg = Utils.getPressDrawable(this, ((BitmapDrawable) egg).getBitmap());
+        if (mGridView != null && bg != null) {
+            mGridView.setSelector(bg);
+        }
+        
         mGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 EachLevelInfo info = mLevelPointList.get(position);

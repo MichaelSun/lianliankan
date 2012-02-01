@@ -144,6 +144,7 @@ public class LinkLink extends Activity implements LLViewActionListener
     public void onStart() {
         super.onStart();
         mHandler.sendEmptyMessageDelayed(PLAY_BACKGROUND_SOUND, 500);
+        SettingManager.getInstance().init(getApplicationContext());
         
         mAppDownloadShow = false;
         checkAppPoint();

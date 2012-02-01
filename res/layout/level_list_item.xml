@@ -3,8 +3,13 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="horizontal"
-    android:background="@drawable/button_egg" >
-
+    android:padding="2dp" >
+    
+    <ImageView 
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@drawable/egg" />
+    
     <TextView 
         android:id="@+id/level_icon"
         android:layout_width="wrap_content"

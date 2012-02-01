@@ -42,9 +42,9 @@ public class SplashActivity extends Activity {
     private class StartTask extends AsyncTask<String, Void, Integer> {
         protected Integer doInBackground(String...params) {
             try {
-                SoundEffectUtils.getInstance().init(SplashActivity.this);
+                SoundEffectUtils.getInstance().init(SplashActivity.this.getApplicationContext());
                 SettingManager.getInstance().init(getApplicationContext());
-                Thread.sleep(1500);
+                Thread.sleep(1200);
             } catch (Exception e) {
             }
             

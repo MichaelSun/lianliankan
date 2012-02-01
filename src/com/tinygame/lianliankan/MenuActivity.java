@@ -2,6 +2,8 @@ package com.tinygame.lianliankan;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -11,7 +13,6 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 
 import com.mobclick.android.MobclickAgent;
-import com.mobclick.android.ReportPolicy;
 import com.tinygame.lianliankan.config.Config;
 import com.tinygame.lianliankan.utils.SoundEffectUtils;
 
@@ -38,8 +39,8 @@ public class MenuActivity extends Activity {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN ,    
-                WindowManager.LayoutParams.FLAG_FULLSCREEN);  
-        
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        SettingManager.getInstance().init(getApplicationContext());
         this.setContentView(R.layout.menu_view);
         MobclickAgent.onError(this);
         initView();
@@ -48,6 +49,8 @@ public class MenuActivity extends Activity {
     @Override
     public void onStart() {
         super.onStart();
+        SettingManager.getInstance().init(getApplicationContext());
+        
         boolean soundOpen = SettingManager.getInstance().getSoundOpen();
         if (soundOpen) {
             SoundEffectUtils.getInstance().playMenuSound();        
@@ -79,7 +82,14 @@ public class MenuActivity extends Activity {
     }
     
     private void initView() {
+        Drawable classDrawable = this.getResources().getDrawable(R.drawable.classic_model);
+        Drawable bg = Utils.getPressDrawable(this, ((BitmapDrawable) classDrawable).getBitmap());
+        
         View classic = findViewById(R.id.classic);
+        if (bg != null) {
+            classic.setBackgroundDrawable(bg);
+        }
+        
         classic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
