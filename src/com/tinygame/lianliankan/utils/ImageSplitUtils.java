@@ -9,7 +9,10 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
+import android.graphics.RectF;
+import android.graphics.PorterDuff.Mode;
 import android.util.Log;
 
 import com.tinygame.lianliankan.config.Config;
@@ -173,14 +176,15 @@ public class ImageSplitUtils {
                                                 , icon_width);
                         bts.bitmap.setDensity(160);
                         
-                        Bitmap image = Bitmap.createBitmap(mCurrentImageWidth + 2, mCurrentImageWidth + 2
-                                                        , Bitmap.Config.ARGB_8888);
-                        image.eraseColor(0x000000);
-                        canvas.setBitmap(image);
-                        Rect srcRect = new Rect(0, 0, mCurrentImageWidth, mCurrentImageWidth);
-                        Rect destRect = new Rect(1, 1, mCurrentImageWidth, mCurrentImageWidth);
-                        canvas.drawBitmap(bts.bitmap, srcRect, destRect, paint);
+//                        Bitmap image = Bitmap.createBitmap(mCurrentImageWidth + 2, mCurrentImageWidth + 2
+//                                                        , Bitmap.Config.ARGB_8888);
+//                        image.eraseColor(0x000000);
+//                        canvas.setBitmap(image);
+//                        Rect srcRect = new Rect(0, 0, mCurrentImageWidth, mCurrentImageWidth);
+//                        Rect destRect = new Rect(1, 1, mCurrentImageWidth, mCurrentImageWidth);
+//                        canvas.drawBitmap(bts.bitmap, srcRect, destRect, paint);
                         
+                        Bitmap image = getRoundedCornerBitmap(bts.bitmap, 10.0f, 1, mCurrentImageWidth);
                         image.setDensity(160);
                         bts.bitmap = image;
                         bts.id = index;
@@ -195,6 +199,27 @@ public class ImageSplitUtils {
         }
         
         return mCurrentRes;
+    }
+    
+    private static Bitmap getRoundedCornerBitmap(Bitmap bitmap, float roundPx, int padding, int width) {
+        int size = width;
+        roundPx = size * roundPx / 60;
+
+        Bitmap output = Bitmap.createBitmap(size + padding * 2, size + padding * 2, Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(output);
+        final Paint paint = new Paint();
+        final RectF rectF = new RectF(padding, padding, size, size);
+        paint.setAntiAlias(true);
+        canvas.drawARGB(0, 0, 0, 0);
+        paint.setColor(0xfffffce7);
+//        paint.setColor(0xff000000);
+        canvas.drawRoundRect(rectF, roundPx, roundPx, paint);
+        paint.setXfermode(new PorterDuffXfermode(Mode.SRC_IN));
+        canvas.drawBitmap(bitmap
+                    , new Rect(0, 0, bitmap.getWidth(), bitmap.getHeight())
+                    , new Rect(padding, padding, size, size)
+                    , paint);
+        return output;
     }
     
     private Bitmap loadBitmapFromAsset (Context context, String resName) {

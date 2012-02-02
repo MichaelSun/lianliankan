@@ -28,6 +28,11 @@ public class SoundEffectUtils {
     public void init(Context context) {
         mContext = context;
         gSoundNotifySoundPool = new SoundPool(3, AudioManager.STREAM_MUSIC, 0);
+        
+        gSoundNotifySoundPool.unload(R.raw.click);
+        gSoundNotifySoundPool.unload(R.raw.disappear);
+        gSoundNotifySoundPool.unload(R.raw.ready_go);
+        
         mClickPlayID = gSoundNotifySoundPool.load(mContext, R.raw.click, 0);
         mConnectPlayID = gSoundNotifySoundPool.load(mContext, R.raw.disappear, 0);
         mReadyGoID = gSoundNotifySoundPool.load(mContext, R.raw.ready_go, 0);

@@ -7,10 +7,12 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.mobclick.android.MobclickAgent;
 import com.tinygame.lianliankan.config.Config;
@@ -88,6 +90,15 @@ public class MenuActivity extends Activity {
         View classic = findViewById(R.id.classic);
         if (bg != null) {
             classic.setBackgroundDrawable(bg);
+        }
+        
+        TextView versionTV = (TextView) findViewById(R.id.version);
+        if (versionTV != null) {
+            String versionName = Utils.getVersionName(this);
+            if (!TextUtils.isEmpty(versionName)) {
+                versionTV.setText(String.format(this.getResources().getString(R.string.version)
+                                    , versionName));
+            }
         }
         
         classic.setOnClickListener(new View.OnClickListener() {

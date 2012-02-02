@@ -64,6 +64,7 @@ public class LinkLinkSurfaceView extends SurfaceView implements Callback {
     private Drawable mHintDrawable;
     private ArrayList<ArrayList<Point>> mLinePoints = null;
     
+//    private Drawable mItemBg;
 //    private ArrayList<Drawable> mSelectorDrawableList;
     private int mSelectorRoundIndex;
     private int mHintRoundIndex;
@@ -488,6 +489,8 @@ public class LinkLinkSurfaceView extends SurfaceView implements Callback {
         mHintDrawable = mContext.getResources().getDrawable(R.drawable.hint1);
         mSelectorDrawable = mContext.getResources().getDrawable(R.drawable.selector);
         
+//        mItemBg = mContext.getResources().getDrawable(R.drawable.item_bg);
+        
 //        mSelectorDrawableList = new ArrayList<Drawable>();
 //        mSelectorDrawableList.add(mContext.getResources().getDrawable(R.drawable.selector1));
 //        mSelectorDrawableList.add(mContext.getResources().getDrawable(R.drawable.selector2));
@@ -794,6 +797,11 @@ public class LinkLinkSurfaceView extends SurfaceView implements Callback {
                     Tile tileTemp = mChart.getTile(xIndex, yIndex);
                     Drawable drawable = ThemeManager.getInstance().getImage(mChart.getTile(xIndex, yIndex).getImageIndex());
                     if (tileTemp != mSelectTileTwo && tileTemp != mSelectTileOne && drawable != null) {
+//                        mItemBg.setBounds(mStartX + xIndex * Env.ICON_WIDTH
+//                                        , mStartY + yIndex * Env.ICON_WIDTH
+//                                        , mStartX + (xIndex + 1) * Env.ICON_WIDTH
+//                                        , mStartY + (yIndex + 1) * Env.ICON_WIDTH);
+//                        mItemBg.draw(canvas);
                         drawable.setBounds(mStartX + xIndex * Env.ICON_WIDTH
                                         , mStartY + yIndex * Env.ICON_WIDTH
                                         , mStartX + (xIndex + 1) * Env.ICON_WIDTH
