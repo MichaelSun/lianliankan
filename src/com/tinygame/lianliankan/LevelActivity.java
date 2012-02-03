@@ -2,7 +2,6 @@ package com.tinygame.lianliankan;
 
 import java.util.ArrayList;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.BitmapDrawable;
@@ -18,17 +17,26 @@ import android.widget.ArrayAdapter;
 import android.widget.GridView;
 import android.widget.TextView;
 
-public class LevelActivity extends Activity {
+import com.tinygame.lianliankan.screen.ScrollScreen;
+import com.tinygame.lianliankan.screen.ScrollScreen.OnScreenChangeListener;
+import com.tinygame.lianliankan.screen.ScrollScreen.ScreenContentFactory;
+import com.tinygame.lianliankan.screen.ScrollScreenActivity;
+import com.tinygame.lianliankan.utils.Utils;
+
+public class LevelActivity extends ScrollScreenActivity
+                implements ScreenContentFactory, OnScreenChangeListener {
 
     private class EachLevelInfo {
         int startPoint;
         boolean hasFinished;
     }
 
-    private GridView mGridView;
-    private InfoAdapter mAdapter;
-    private int mTotalLevel;
-    private ArrayList<EachLevelInfo> mLevelPointList;
+    private static final int SCREEN_COUNT = 5;
+    
+    private ScrollScreen mScrollScreen;
+    private LayoutInflater mInflater;
+    private int mCurCategory;
+    private GridView[] mGridViewList;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -36,55 +44,102 @@ public class LevelActivity extends Activity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         SettingManager.getInstance().init(getApplicationContext());
-        this.setContentView(R.layout.level_list);
+//        this.setContentView(R.layout.level_list);
+        
+        mInflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        mGridViewList = new GridView[SCREEN_COUNT];
+        
+        mScrollScreen = getScrollScreen();
+        mScrollScreen.addScreen(SCREEN_COUNT, this);
+        mScrollScreen.setOnScreenChangedListener(this);
     }
     
     @Override
     public void onStart() {
         super.onStart();
         SettingManager.getInstance().init(getApplicationContext());        
-
-        initView();
+        
+        if (mCurCategory < mGridViewList.length) {
+            GridView gview = mGridViewList[mCurCategory];
+            if (gview != null) {
+                ArrayList<EachLevelInfo> ret = resetListData();
+                InfoAdapter adapter = new InfoAdapter(this, R.layout.level_list_item, ret);
+                gview.setAdapter(adapter);
+            }
+        }
     }
     
-    private void initView() {
-        mTotalLevel = Categary_diff_selector.getInstance().getDiffLevels().size()
-                * Categary_diff_selector.getInstance().getAllCategory();
-        int curLevel = SettingManager.getInstance().getOpenLevel();
-
-        mLevelPointList = new ArrayList<EachLevelInfo>();
+    @Override
+    public void onScreenChanged(int index) {
+        mCurCategory = index;
+    }
+    
+    @Override
+    public View createScreenContent(int index) {
+        View ret = mInflater.inflate(R.layout.level_list, null);
+        initView(ret, index);
+        
+        return ret;
+    }
+    
+    private ArrayList<EachLevelInfo> resetListData() {
+        int level = Categary_diff_selector.getInstance().getDiffLevels().size();
+        int curLevel = SettingManager.getInstance().getOpenLevelByCategory(mCurCategory);
+        ArrayList<EachLevelInfo> levelPointList = new ArrayList<EachLevelInfo>();
         // init each level point
-        for (int i = 0; i < mTotalLevel; ++i) {
+        for (int i = 0; i < level; ++i) {
             EachLevelInfo info = new EachLevelInfo();
             if (i < curLevel) {
                 info.hasFinished = true;
             }
             info.startPoint = 1;
-            mLevelPointList.add(info);
-        }
-
-        mGridView = (GridView) findViewById(R.id.level_grid);
-        mAdapter = new InfoAdapter(this, R.layout.level_list_item, mLevelPointList);
-        mGridView.setAdapter(mAdapter);
-
-        Drawable egg = this.getResources().getDrawable(R.drawable.egg);
-        Drawable bg = Utils.getPressDrawable(this, ((BitmapDrawable) egg).getBitmap());
-        if (mGridView != null && bg != null) {
-            mGridView.setSelector(bg);
+            levelPointList.add(info);
         }
         
-        mGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        return levelPointList;
+    }
+    
+    private void initView(View view, int category) {
+        int level = Categary_diff_selector.getInstance().getDiffLevels().size();
+        int curLevel = SettingManager.getInstance().getOpenLevelByCategory(category);
+
+        ArrayList<EachLevelInfo> levelPointList = new ArrayList<EachLevelInfo>();
+        // init each level point
+        for (int i = 0; i < level; ++i) {
+            EachLevelInfo info = new EachLevelInfo();
+            if (i < curLevel) {
+                info.hasFinished = true;
+            }
+            info.startPoint = 1;
+            levelPointList.add(info);
+        }
+
+        GridView gridView = (GridView) view.findViewById(R.id.level_grid);
+        InfoAdapter adapter = new InfoAdapter(this, R.layout.level_list_item, levelPointList);
+        gridView.setAdapter(adapter);
+        
+        mGridViewList[category] = gridView;
+        
+        Drawable egg = this.getResources().getDrawable(R.drawable.egg);
+        Drawable bg = Utils.getPressDrawable(this, ((BitmapDrawable) egg).getBitmap());
+        if (gridView != null && bg != null) {
+            gridView.setSelector(bg);
+        }
+        
+        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                EachLevelInfo info = mLevelPointList.get(position);
-                if (!info.hasFinished) {
+                if (view == null) {
                     return;
                 }
                 
-                Categary_diff_selector.getInstance().updateLevelInfo(position + 1);
-
-                Intent mainviewIntent = new Intent();
-                mainviewIntent.setClass(getApplicationContext(), LinkLink.class);
-                startActivity(mainviewIntent);
+                View lock = view.findViewById(R.id.lock_icon);
+                if (lock.getVisibility() == View.GONE) {
+                
+                    Categary_diff_selector.getInstance().updateLevelInfo(position + 1, mCurCategory);
+                    Intent mainviewIntent = new Intent();
+                    mainviewIntent.setClass(getApplicationContext(), LinkLink.class);
+                    startActivity(mainviewIntent);
+                }
             }
         });
     }

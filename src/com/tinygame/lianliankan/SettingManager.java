@@ -51,6 +51,15 @@ public class SettingManager {
         return mSharedPreferences.getInt(mContext.getString(R.string.perf_level_opened), 1);
     }
     
+    public void setOpenLevelWithCategory(int level, int category) {
+        mEditor.putInt(mContext.getString(R.string.perf_level_opened) + String.valueOf(category), level);
+        mEditor.commit();
+    }
+    
+    public int getOpenLevelByCategory(int category) {
+        return mSharedPreferences.getInt(mContext.getString(R.string.perf_level_opened) + String.valueOf(category), 1);
+    }
+    
     public void init(Context context) {
         mContext = context;
         mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(mContext);

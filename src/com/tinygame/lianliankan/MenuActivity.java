@@ -17,6 +17,7 @@ import android.widget.TextView;
 import com.mobclick.android.MobclickAgent;
 import com.tinygame.lianliankan.config.Config;
 import com.tinygame.lianliankan.utils.SoundEffectUtils;
+import com.tinygame.lianliankan.utils.Utils;
 
 public class MenuActivity extends Activity {
 

@@ -172,7 +172,7 @@ public class LinkLink extends Activity implements LLViewActionListener
 
     private void checkAppPoint() {
         if (!Config.DEBUG_CLOSE_APP_DOWNLOAD) {
-            int level = Categary_diff_selector.getInstance().getCurrentLevel();
+            int level = Categary_diff_selector.getInstance().getCurrentDiffLevel();
             int point = AppOffersManager.getPoints(this);
             if (point < Config.POINT && level >= Config.APP_DOWNLOA_SHOW_LEVEL) {
                 showCountDownloadDialog();
@@ -220,7 +220,7 @@ public class LinkLink extends Activity implements LLViewActionListener
         mTimeView.setTimeProgressListener(this);
         mLevelView = (LevelView) findViewById(R.id.level);
         mLevelView.setLevelChangedListener(this);
-        mLevelView.setLevel(Categary_diff_selector.getInstance().getCurrentLevel());
+        mLevelView.setLevel(Categary_diff_selector.getInstance().getCurrentDiffLevel());
         mArrangeCount = (TextView) findViewById(R.id.arrage_count);
         mHintCount = (TextView) findViewById(R.id.hint_count);
         
@@ -565,7 +565,7 @@ public class LinkLink extends Activity implements LLViewActionListener
                                 , ThemeManager.getInstance().getCurrentImageCount() - 1));
             mLLView.setChart(c);
             mCurrentTimeProgress = Categary_diff_selector.getInstance().getCurrentTime();
-            int curLevel = Categary_diff_selector.getInstance().getCurrentLevel();
+            int curLevel = Categary_diff_selector.getInstance().getCurrentDiffLevel();
             mLevelView.setLevel(curLevel);
 
             mHandler.sendEmptyMessage(RESET_PROGRESS_TIME_VIEW);
@@ -587,53 +587,55 @@ public class LinkLink extends Activity implements LLViewActionListener
     
     private void showResetGameDialog() {
         LOGD("[[showResetGameDialog]] >>>>>>>>>>>>>>>");
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        View showView = mInflater.inflate(R.layout.reset_game_view, null);
-        View next = showView.findViewById(R.id.retry);
-        next.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                SettingManager.getInstance().setLastCategory(0);
-                SettingManager.getInstance().setLastDiff(0);
-                Categary_diff_selector.getInstance().restDiff();
-                Categary_diff_selector.getInstance().resetCategory();
-                Env.ICON_REGION_INIT = false;
-                reloadCurrentLevel();
-                if (mResetDialog != null) {
-                    mResetDialog.dismiss();
-                    mResetDialog = null;
-                }
-            }
-        });
-        View quit = showView.findViewById(R.id.quit);
-        quit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (mResetDialog != null) {
-                    mResetDialog.dismiss();
-                    mResetDialog = null;
-                }
-                finish();
-            }
-        });
         
-        builder.setView(showView);
-        mResetDialog = builder.create();
-        mResetDialog.setCancelable(false);
-        mResetDialog.show();
+        finish();
+//        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+//        View showView = mInflater.inflate(R.layout.reset_game_view, null);
+//        View next = showView.findViewById(R.id.retry);
+//        next.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                SettingManager.getInstance().setLastCategory(0);
+//                SettingManager.getInstance().setLastDiff(0);
+//                Categary_diff_selector.getInstance().restDiff();
+//                Categary_diff_selector.getInstance().resetCategory();
+//                Env.ICON_REGION_INIT = false;
+//                reloadCurrentLevel();
+//                if (mResetDialog != null) {
+//                    mResetDialog.dismiss();
+//                    mResetDialog = null;
+//                }
+//            }
+//        });
+//        View quit = showView.findViewById(R.id.quit);
+//        quit.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if (mResetDialog != null) {
+//                    mResetDialog.dismiss();
+//                    mResetDialog = null;
+//                }
+//                finish();
+//            }
+//        });
+//        
+//        builder.setView(showView);
+//        mResetDialog = builder.create();
+//        mResetDialog.setCancelable(false);
+//        mResetDialog.show();
     }
     
     private void tryUpdateDiffAndCategory() {
         String diff = Categary_diff_selector.getInstance().updateDiff();
         String cate = Categary_diff_selector.getInstance().getCurrentCategary();
         LOGD("tryUpdateDiffAndCategory >>>>> diff = " + diff + " cate = " + cate + " >>>>>>>");
-        if (diff == null) {
-            cate = Categary_diff_selector.getInstance().updateCategory();
-            if (cate != null) {
-                Categary_diff_selector.getInstance().restDiff();
-                diff = Categary_diff_selector.getInstance().getCurrentDiff();
-            }
-        }
+//        if (diff == null) {
+//            cate = Categary_diff_selector.getInstance().updateCategory();
+//            if (cate != null) {
+//                Categary_diff_selector.getInstance().restDiff();
+//                diff = Categary_diff_selector.getInstance().getCurrentDiff();
+//            }
+//        }
         if (diff != null && cate != null) {
             Env.ICON_REGION_INIT = false;
             ThemeManager.getInstance().loadImageByCategary(cate);
@@ -643,7 +645,7 @@ public class LinkLink extends Activity implements LLViewActionListener
             mLLView.setChart(c);
             mLLView.forceRefresh();
             mCurrentTimeProgress = Categary_diff_selector.getInstance().getCurrentTime();
-            mLevelView.setLevel(Categary_diff_selector.getInstance().getCurrentLevel());
+            mLevelView.setLevel(Categary_diff_selector.getInstance().getCurrentDiffLevel());
 
             mHandler.sendEmptyMessage(RESET_PROGRESS_TIME_VIEW);
             if (!mAppDownloadShow) {
@@ -655,12 +657,12 @@ public class LinkLink extends Activity implements LLViewActionListener
             updateToolsCount();
             updateToolsCountView();
             
-            int openLevel = SettingManager.getInstance().getOpenLevel();
-            int curLevel = Categary_diff_selector.getInstance().getCurrentLevel();
+            int category = Categary_diff_selector.getInstance().getCurrentCategoryLevel();
+            int openLevel = SettingManager.getInstance().getOpenLevelByCategory(category);
+            int curLevel = Categary_diff_selector.getInstance().getCurrentDiffLevel();
             if (curLevel >= openLevel) {
-                SettingManager.getInstance().setOpenLevel(curLevel);
+                SettingManager.getInstance().setOpenLevelWithCategory(curLevel, category);
             }
-//            checkAppPoint();
             
             MobclickAgent.onEvent(mContext, Config.ACTION_LEVEL, String.valueOf(curLevel));
         } else {

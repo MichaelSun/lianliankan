@@ -9,6 +9,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 
 import com.tinygame.lianliankan.utils.ImageSplitUtils;
+import com.tinygame.lianliankan.utils.Utils;
 import com.tinygame.lianliankan.utils.ImageSplitUtils.BitmapSiplited;
 
 public class ThemeManager {

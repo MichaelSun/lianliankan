@@ -60,11 +60,11 @@ public class Categary_diff_selector {
         return null;
     }
     
-    public String updateCategory() {
-        mCurrentCategary++;
-        mCurrentDiff = 0;
-        return this.getCurrentCategary();
-    }
+//    public String updateCategory() {
+//        mCurrentCategary++;
+//        mCurrentDiff = 0;
+//        return this.getCurrentCategary();
+//    }
     
     public String getCurrentDiff() {
         if (mCurrentDiff < mDiffArryList.size()) {
@@ -98,13 +98,21 @@ public class Categary_diff_selector {
         return -1;
     }
     
-    public int getCurrentLevel() {
-        if (getCurrentDiff() != null && getCurrentCategary() != null) {
-            return 1 + mCurrentDiff + mDiffArryList.size() * mCurrentCategary;
-        }
-        
-        return 0;
+    public int getCurrentCategoryLevel() {
+        return mCurrentCategary;
     }
+    
+    public int getCurrentDiffLevel() {
+        return mCurrentDiff + 1;
+    }
+    
+//    public int getCurrentLevel() {
+//        if (getCurrentDiff() != null && getCurrentCategary() != null) {
+//            return 1 + mCurrentDiff + mDiffArryList.size() * mCurrentCategary;
+//        }
+//        
+//        return 0;
+//    }
     
     public void restDiff() {
         mCurrentDiff = 0;
@@ -127,16 +135,13 @@ public class Categary_diff_selector {
         return 5;
     }
     
-    public void updateLevelInfo(int level) {
-        int diffCount = mDiffArryList.size();
-        int category = (level - 1) / diffCount;
-        int diff = (level - 1) % diffCount;
+    public void updateLevelInfo(int level, int cate) {
+//        int diffCount = mDiffArryList.size();
+//        int category = (level - 1) / diffCount;
+//        int diff = (level - 1) % diffCount;
         
-        LOGD("[[updateLevelInfo]] level = " + level + " category = " + category
-                + " diff = " + diff);
-        
-        mCurrentCategary = category;
-        mCurrentDiff = diff;
+        mCurrentCategary = cate;
+        mCurrentDiff = level - 1;
     }
     
     public void saveCurretInfo() {
@@ -172,7 +177,6 @@ public class Categary_diff_selector {
         mCateLargeArryList.add("image/4_80.png");
         mCateLargeArryList.add("image/5_80.png");
         
-        mDiffArryList.add(new Diff("5x6", 25, 1, 1));
         mDiffArryList.add(new Diff("5x6", 25, 1, 1));
         mDiffArryList.add(new Diff("5x8", 28, 1, 1));
         mDiffArryList.add(new Diff("5x8", 28, 1, 1));
