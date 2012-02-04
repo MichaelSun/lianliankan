@@ -17,13 +17,23 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tfdroid ="http://schemas.android.com/apk/res/org.tfdroid" 
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
+    android:layout_height="fill_parent"
+    android:background="@drawable/menu_bg">
     
-	<com.tinygame.lianliankan.screen.ScrollScreen
-	    android:id="@id/scroll_screen"
-	    android:layout_width="fill_parent"
-	    android:layout_height="fill_parent"/>
-	
+    <ImageView 
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/top_bg"/>
+    
+    <ImageView 
+        android:id="@+id/top"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:scaleType="fitCenter"
+        android:src="@drawable/title_icon" />
+
 	<com.tinygame.lianliankan.screen.SimpleScreenIndicatorWidget
 	    android:id="@id/screen_indicator"
 	  	android:layout_width="wrap_content"
@@ -31,5 +41,12 @@
 	    android:layout_centerHorizontal="true"
 	    android:layout_alignParentBottom="true"
 	    android:layout_marginBottom="10dp"/>
+    
+	<com.tinygame.lianliankan.screen.ScrollScreen
+	    android:id="@id/scroll_screen"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_below="@id/top"
+	    android:layout_above="@id/screen_indicator" />
 	
 </RelativeLayout>

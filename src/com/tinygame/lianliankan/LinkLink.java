@@ -174,13 +174,10 @@ public class LinkLink extends Activity implements LLViewActionListener
         if (!Config.DEBUG_CLOSE_APP_DOWNLOAD) {
             int level = Categary_diff_selector.getInstance().getCurrentDiffLevel();
             int point = AppOffersManager.getPoints(this);
-            if (point < Config.POINT && level >= Config.APP_DOWNLOA_SHOW_LEVEL) {
+            if (point < Config.POINT_100 && level >= Config.APP_DOWNLOA_SHOW_LEVEL) {
                 showCountDownloadDialog();
-            } else if (point < Config.POINT_200 && level >= Config.APP_DOWNLOA_SHOW_LEVEL_ONE) {
-                AppOffersManager.spendPoints(this, Config.POINT);
-                showCountDownloadDialog();
-            } else if (point < Config.POINT_300 && level >= Config.APP_DOWNLOA_SHOW_LEVEL_TWO) {
-                AppOffersManager.spendPoints(this, Config.POINT);
+            } else if (point < Config.POINT_200 && level >= Config.APP_DOWNLOA_SHOW_LEVEL_TWO) {
+                AppOffersManager.spendPoints(this, Config.POINT_100);
                 showCountDownloadDialog();
             } else {
                 if (mDownloadDialog != null) {

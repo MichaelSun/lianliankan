@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
+    android:layout_width="45dp"
+    android:layout_height="45dp"
     android:orientation="horizontal"
     android:padding="2dp" >
     
     <ImageView 
+        android:id="@+id/egg_icon"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:background="@drawable/egg" />
+        android:src="@drawable/egg"
+        android:scaleType="fitCenter" />
     
     <TextView 
         android:id="@+id/level_icon"
@@ -22,36 +24,38 @@
 	
     <ImageView 
         android:id="@+id/lock_icon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
         android:src="@drawable/smalllock"
+        android:scaleType="fitCenter"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true" />
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="35dp" />
 
 	<ImageView 
         android:id="@+id/egg_point_three"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
         android:src="@drawable/egg_one"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="5dp"
-        android:layout_marginRight="20dp"
+        android:layout_marginRight="15dp"
         android:layout_alignParentRight="true"
         android:visibility="gone" />
 	<ImageView 
         android:id="@+id/egg_point_two"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
         android:src="@drawable/egg_one"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="5dp"
-		android:layout_marginRight="10dp"
+		android:layout_marginRight="7dp"
         android:layout_alignParentRight="true"
         android:visibility="gone" />
     <ImageView 
         android:id="@+id/egg_point"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
         android:src="@drawable/egg_one"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"

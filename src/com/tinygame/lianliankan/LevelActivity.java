@@ -37,6 +37,7 @@ public class LevelActivity extends ScrollScreenActivity
     private LayoutInflater mInflater;
     private int mCurCategory;
     private GridView[] mGridViewList;
+    private Drawable mEggBg;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
