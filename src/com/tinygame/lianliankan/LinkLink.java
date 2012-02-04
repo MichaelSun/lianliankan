@@ -138,6 +138,7 @@ public class LinkLink extends Activity implements LLViewActionListener
         //test umeng config
         MobclickAgent.setSessionContinueMillis(1 * 60 * 1000);
         MobclickAgent.onError(this);
+        MobclickAgent.setUpdateOnlyWifi(false);
     }
 
     @Override
