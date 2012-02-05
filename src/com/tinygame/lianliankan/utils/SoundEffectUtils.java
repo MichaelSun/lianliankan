@@ -39,18 +39,24 @@ public class SoundEffectUtils {
     }
     
     public void playClickSound() {
-        mSoundNotifySoundPool.play(mClickPlayID, (float) 0.3, (float) 0.5, 0, 0, 1);
+        if (mSoundNotifySoundPool != null) {
+            mSoundNotifySoundPool.play(mClickPlayID, (float) 0.3, (float) 0.5, 0, 0, 1);
+        }
     }
     
     public void playDisapperSound() {
-        mSoundNotifySoundPool.play(mConnectPlayID, (float) 0.5, (float) 0.5, 0, 0, 1);
+        if (mSoundNotifySoundPool != null) {
+            mSoundNotifySoundPool.play(mConnectPlayID, (float) 0.5, (float) 0.5, 0, 0, 1);
+        }
     }
     
     public void playReadySound() {
         if (Config.SOUND_DEBUG) {
             return;
         }
-        mSoundNotifySoundPool.play(mReadyGoID, (float) 0.1, (float) 0.3, 0, 0, 1);
+        if (mSoundNotifySoundPool != null) {
+            mSoundNotifySoundPool.play(mReadyGoID, (float) 0.1, (float) 0.3, 0, 0, 1);
+        }
     }
     
     public void playSpeedSound() {
