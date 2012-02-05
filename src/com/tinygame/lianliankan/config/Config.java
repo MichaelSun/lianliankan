@@ -17,7 +17,7 @@ public class Config {
     
     public static final String APP_SECRET_KEY = "e1703eadcc64253b";
     
-    public static final int APP_DOWNLOA_SHOW_LEVEL = 12;
+    public static final int APP_DOWNLOA_SHOW_LEVEL = 10;
     public static final int APP_DOWNLOA_SHOW_LEVEL_TWO = 18;
     
     public static final int POINT_100 = 100;
