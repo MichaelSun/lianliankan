@@ -50,7 +50,8 @@
             android:textColor="@drawable/white"
             android:layout_alignLeft="@id/arrange"
             android:layout_centerVertical="true"
-            android:paddingLeft="55dp" />
+            android:paddingLeft="55dp"
+            android:textStyle="bold" />
         
         <ImageButton
             android:id="@+id/hint"
@@ -68,7 +69,8 @@
             android:textColor="@drawable/white"
             android:layout_alignLeft="@id/hint"
             android:layout_centerVertical="true"
-            android:paddingLeft="46dp" />
+            android:paddingLeft="46dp"
+            android:textStyle="bold" />
 		
 	    <TextView 
 	        android:id="@+id/sorce"

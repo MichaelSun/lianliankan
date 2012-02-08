@@ -65,8 +65,8 @@ public class MenuActivity extends Activity {
     public void onResume() {
         super.onResume();
         
-        Animation alpha = new AlphaAnimation(0.6f, 1.0f);
-        alpha.setDuration(500);
+        Animation alpha = new AlphaAnimation(0.3f, 1.0f);
+        alpha.setDuration(1300);
         mClassicModeView.startAnimation(alpha);
         
         MobclickAgent.onResume(this);

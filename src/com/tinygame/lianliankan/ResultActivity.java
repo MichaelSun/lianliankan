@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.WindowManager;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
 import android.widget.TextView;
 
 public class ResultActivity extends Activity {
@@ -88,6 +90,15 @@ public class ResultActivity extends Activity {
                 }
             });
         }
+    }
+    
+    @Override
+    public void onResume() {
+        super.onResume();
+        View tips = findViewById(R.id.tips_icon);
+        Animation alpha = new AlphaAnimation(0.3f, 1.0f);
+        alpha.setDuration(1300);
+        tips.startAnimation(alpha);
     }
     
     @Override
