@@ -536,56 +536,6 @@ public class LinkLink extends Activity implements LLViewActionListener
     }
     
     private void showFinishDialog() {
-//        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-//        View showView = mInflater.inflate(R.layout.win_view, null);
-//        View next = showView.findViewById(R.id.next);
-//        TextView contentTV = (TextView) showView.findViewById(R.id.content);
-//        String showContent = String.format(getString(R.string.win_content), mTimeView.getCurCostTime());
-//        contentTV.setText(showContent);
-//        next.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                tryUpdateDiffAndCategory();
-//                if (mWinDialog != null) {
-//                    mFinishDialogShow = false;
-//                    mWinDialog.dismiss();
-//                    mWinDialog = null;
-//                }
-//            }
-//        });
-//        
-//        View retry = showView.findViewById(R.id.retry);
-//        retry.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Env.ICON_REGION_INIT = false;
-//                DatabaseOperator.getInstance().insertCategoryAndLevelIntergral(mLevelInfo);
-//                reloadCurrentLevel();   
-//                if (mWinDialog != null) {
-//                    mFinishDialogShow = false;
-//                    mWinDialog.dismiss();
-//                    mWinDialog = null;
-//                }
-//            }
-//        });
-//        
-//        View quit = showView.findViewById(R.id.quit);
-//        quit.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if (mWinDialog != null) {
-//                    mFinishDialogShow = false;
-//                    mWinDialog.dismiss();
-//                    mWinDialog = null;
-//                }
-//                finish();
-//            }
-//        });
-//        
-//        builder.setView(showView);
-//        mWinDialog = builder.create();
-//        mWinDialog.setCancelable(false);
-//        mWinDialog.show();
         mHandler.removeMessages(START_PROGRESS_TIME_VIEW);
         mHandler.sendEmptyMessage(RESET_PROGRESS_TIME_VIEW);
         
@@ -598,6 +548,8 @@ public class LinkLink extends Activity implements LLViewActionListener
         finishIntent.setClass(this, ResultActivity.class);
         finishIntent.putExtra(ResultActivity.RESULT_TYPE, ResultActivity.SUCCESS_CONTENT);
         finishIntent.putExtra(ResultActivity.COST_TIME, String.valueOf(mLevelInfo.cost));
+        finishIntent.putExtra(ResultActivity.COUNT, String.valueOf(mLevelInfo.count));
+        finishIntent.putExtra(ResultActivity.CONTINUE_COUNT, String.valueOf(mLevelInfo.continueCount));
         this.startActivityForResult(finishIntent, 100);
     }
     
@@ -660,6 +612,7 @@ public class LinkLink extends Activity implements LLViewActionListener
             LOGD("[[reloadCurrentLevel]] levle info = " + mLevelInfo.toString());
             
             mLevelInfo.count = 0;
+            mLevelInfo.continueCount = 0;
             mSorceTV.setText(String.format(getString(R.string.sorce), mLevelInfo.count));
             mCountClick = 0;
             mLLView.setChart(c);
@@ -743,6 +696,7 @@ public class LinkLink extends Activity implements LLViewActionListener
                     , Categary_diff_selector.getInstance().getCurrentDiffLevel() - 1);
             //reset the count to 0
             mLevelInfo.count = 0;
+            mLevelInfo.continueCount = 0;
             mSorceTV.setText(String.format(getString(R.string.sorce), mLevelInfo.count));
             mCountClick = 0;
             mLLView.changeBackground();
@@ -805,6 +759,11 @@ public class LinkLink extends Activity implements LLViewActionListener
     @Override
     public void onContinueClick() {
         mCountClick++;
+        
+        if (mCountClick > mLevelInfo.continueCount) {
+            mLevelInfo.continueCount = mCountClick;
+        }
+        
         if (mCountClick > mLevelInfo.max) {
             mLevelInfo.max = mCountClick;
         }

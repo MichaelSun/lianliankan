@@ -13,7 +13,6 @@
         android:gravity="center"
         android:textStyle="bold"
         android:textColor="@drawable/gray1"
-        android:singleLine="true"
         android:layout_marginTop="8dp"
         android:layout_centerInParent="true"/>
     

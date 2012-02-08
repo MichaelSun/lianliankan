@@ -14,7 +14,7 @@
     <string name="download_tips">您的游戏金币已经不足100,需要下载软件获得100金币才能继续阅读,下载软件不会收取您的费用,请放心下载</string>
     <string name="level" formatted="false">第%s关</string>
     <string name="tips">提示</string>
-    <string name="win_content" formatted="false">共耗时 : %s 秒</string>
+    <string name="win_content" formatted="false">共耗时 : %s 秒\n本关得分 : %s\n本次最大连击数 : %s</string>
     <string name="version" formatted="false">版本:%s</string>
     <string name="sorce" formatted="false">积分:%s</string>
     

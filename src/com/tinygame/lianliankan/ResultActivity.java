@@ -11,6 +11,8 @@ public class ResultActivity extends Activity {
 
     public static final String RESULT_TYPE = "result_type";
     public static final String COST_TIME = "cost_time";
+    public static final String COUNT = "count";
+    public static final String CONTINUE_COUNT = "continue_count";
     
     public static final int SUCCESS_CONTENT = 0;
     public static final int FAILED_CONTENT = 1;
@@ -32,8 +34,10 @@ public class ResultActivity extends Activity {
         if (mResultType == SUCCESS_CONTENT) {
             setContentView(R.layout.win_view);
             String time = getIntent().getStringExtra(COST_TIME);
+            String count = getIntent().getStringExtra(COUNT);
+            String continue_count = getIntent().getStringExtra(CONTINUE_COUNT);
             TextView contentTV = (TextView) findViewById(R.id.content);
-            String showContent = String.format(getString(R.string.win_content), time);
+            String showContent = String.format(getString(R.string.win_content), time, count, continue_count);
             contentTV.setText(showContent);
             
             View retry = findViewById(R.id.retry);
