@@ -9,6 +9,8 @@ import android.text.TextUtils;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -20,6 +22,7 @@ import com.tinygame.lianliankan.utils.Utils;
 public class MenuActivity extends Activity {
 
     private ImageView mSoundImageView;
+    private View mClassicModeView;
     
     private static final int ENTRY_GAME = 0;
     private Handler mHandler = new Handler() {
@@ -61,6 +64,11 @@ public class MenuActivity extends Activity {
     @Override
     public void onResume() {
         super.onResume();
+        
+        Animation alpha = new AlphaAnimation(0.6f, 1.0f);
+        alpha.setDuration(500);
+        mClassicModeView.startAnimation(alpha);
+        
         MobclickAgent.onResume(this);
         MobclickAgent.onEvent(this, Config.ACTION_START_LAUNCH, "MenuActiviy_resume");
     }
@@ -86,7 +94,7 @@ public class MenuActivity extends Activity {
 //        Drawable classDrawable = this.getResources().getDrawable(R.drawable.classic_model);
 //        Drawable bg = Utils.getPressDrawable(this, ((BitmapDrawable) classDrawable).getBitmap());
         
-        View classic = findViewById(R.id.classic);
+        mClassicModeView = findViewById(R.id.classic);
 //        if (bg != null) {
 //            classic.setBackgroundDrawable(bg);
 //        }
@@ -100,7 +108,7 @@ public class MenuActivity extends Activity {
             }
         }
         
-        classic.setOnClickListener(new View.OnClickListener() {
+        mClassicModeView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 SoundEffectUtils.getInstance().playClickSound();
