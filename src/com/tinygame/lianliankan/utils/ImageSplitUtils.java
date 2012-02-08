@@ -32,6 +32,7 @@ public class ImageSplitUtils {
     private ArrayList<Bitmap> mNumberList;
     private ArrayList<Bitmap> mLevelNumberList;
     private ArrayList<Bitmap> mBoomList;
+    private ArrayList<Bitmap> mContinueClickList;
     private int mCurrentImageWidth;
     
     public static ImageSplitUtils getInstance() {
@@ -123,6 +124,28 @@ public class ImageSplitUtils {
         return mBoomList;
     }
     
+    public ArrayList<Bitmap> getContinueClickBtList() {
+        mContinueClickList = new ArrayList<Bitmap>();
+        Bitmap src = loadBitmapFromAsset(mContext, "image/beat.png");
+        int height = src.getHeight();
+        int width = src.getWidth();
+        int retBtWidth = width / 11;
+        Bitmap bt = null;
+        for (int i = 0; i < 11; ++i) {
+            bt = Bitmap.createBitmap(src
+                                    , i * retBtWidth 
+                                    , 0
+                                    , retBtWidth
+                                    , height);
+            if (bt != null) {
+                bt.setDensity(160);
+                mContinueClickList.add(bt);
+            }
+        }
+        
+        return mContinueClickList;
+    }
+    
     public ArrayList<Bitmap> getTimeProgressBtList() {
         ArrayList<Bitmap> ret = new ArrayList<Bitmap>();
         Bitmap src = loadBitmapFromAsset(mContext, "image/time_progress.png");
@@ -175,14 +198,6 @@ public class ImageSplitUtils {
                                                 , icon_width
                                                 , icon_width);
                         bts.bitmap.setDensity(160);
-                        
-//                        Bitmap image = Bitmap.createBitmap(mCurrentImageWidth + 2, mCurrentImageWidth + 2
-//                                                        , Bitmap.Config.ARGB_8888);
-//                        image.eraseColor(0x000000);
-//                        canvas.setBitmap(image);
-//                        Rect srcRect = new Rect(0, 0, mCurrentImageWidth, mCurrentImageWidth);
-//                        Rect destRect = new Rect(1, 1, mCurrentImageWidth, mCurrentImageWidth);
-//                        canvas.drawBitmap(bts.bitmap, srcRect, destRect, paint);
                         
                         Bitmap image = Utils.getRoundedCornerBitmap(bts.bitmap, 10.0f, 1, mCurrentImageWidth);
                         image.setDensity(160);

@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -21,7 +20,6 @@ import com.tinygame.lianliankan.screen.ScrollScreen;
 import com.tinygame.lianliankan.screen.ScrollScreen.OnScreenChangeListener;
 import com.tinygame.lianliankan.screen.ScrollScreen.ScreenContentFactory;
 import com.tinygame.lianliankan.screen.ScrollScreenActivity;
-import com.tinygame.lianliankan.utils.Utils;
 
 public class LevelActivity extends ScrollScreenActivity
                 implements ScreenContentFactory, OnScreenChangeListener {
@@ -121,10 +119,9 @@ public class LevelActivity extends ScrollScreenActivity
         
         mGridViewList[category] = gridView;
         
-        Drawable egg = this.getResources().getDrawable(R.drawable.egg);
-        Drawable bg = Utils.getPressDrawable(this, ((BitmapDrawable) egg).getBitmap());
-        if (gridView != null && bg != null) {
-            gridView.setSelector(bg);
+        Drawable alpha = this.getResources().getDrawable(R.drawable.alpha);
+        if (gridView != null && alpha != null) {
+            gridView.setSelector(alpha);
         }
         
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {

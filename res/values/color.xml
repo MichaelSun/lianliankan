@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <drawable name="translucent_background">#a0000000</drawable>
+    
+	<drawable name="alpha">#00000000</drawable>
+	
 	<drawable name="white">#FFFFFF</drawable>
 	<drawable name="black">#000000</drawable>
 		
@@ -66,5 +70,7 @@
     <color name="app_default_bg">#ff004469</color>
     <color name="twitter_footer">#ff686868</color>
     <color name="sns_footer">#ffd0d0d0</color>
+    
+    <color name="count">#ff964100</color>
 
 </resources>

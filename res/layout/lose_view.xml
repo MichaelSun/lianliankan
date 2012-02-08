@@ -3,49 +3,46 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical"
-    android:background="@drawable/dialog_bg"
     android:padding="10dp" >
+    
+	<ImageView 
+        android:id="@+id/tips"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/lose"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="10dp" />
     
     <ImageView 
         android:id="@+id/tips_icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/lost"
-        android:layout_centerHorizontal="true" />
-    
-    <ImageView 
-        android:id="@+id/tips"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/lose"
-        android:layout_below="@id/tips_icon"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp" />
+        android:layout_above="@id/tips" />
     
     <LinearLayout 
-        android:layout_width="fill_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_below="@id/tips"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp" >
+        android:layout_marginTop="15dp" >
         
         <ImageButton 
             android:id="@+id/quit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
             android:background="@drawable/button_bg"
-            android:src="@drawable/back"
-            android:layout_weight="1"
+            android:src="@drawable/back_icon"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp" />
         <ImageButton 
             android:id="@+id/retry"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
             android:background="@drawable/button_bg"
             android:src="@drawable/restart"
-            android:layout_weight="1"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp" />
     </LinearLayout>

@@ -23,7 +23,7 @@ public class Hint {
 
                     } else {
                         if (chart.tiles[y][x].isBlank() == false) {
-                            if (null == one) {
+                            if (one == null) {
                                 one = chart.tiles[y][x];
                             } else {
                                 if (one.getImageIndex() == chart.tiles[y][x].getImageIndex()) {
@@ -36,10 +36,11 @@ public class Hint {
                     }
                 }
             }
-            if (one == null)
+            if (one == null) {
                 return null;
-            else
+            } else {
                 finded.add(one);
+            }
         }
         return null;
     }

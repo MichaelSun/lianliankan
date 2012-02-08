@@ -26,15 +26,15 @@
         android:orientation="horizontal"
         android:layout_alignParentBottom="true" >
 
-        <ImageButton
+        <!--  ImageButton
             android:id="@+id/newGame"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/button_bg"
 			android:src="@drawable/restart"
 			android:layout_marginLeft="10dp"
-			android:layout_alignParentLeft="true" />
-
+			android:layout_alignParentLeft="true"  / -->
+        
         <ImageButton
             android:id="@+id/arrange"
             android:layout_width="wrap_content"
@@ -69,12 +69,26 @@
             android:layout_alignLeft="@id/hint"
             android:layout_centerVertical="true"
             android:paddingLeft="46dp" />
+		
+	    <TextView 
+	        android:id="@+id/sorce"
+	        android:layout_width="wrap_content"
+	        android:layout_height="30dp"
+	        android:layout_alignParentLeft="true"
+	        android:layout_toLeftOf="@id/hint"
+	        android:layout_centerVertical="true"
+	        android:layout_marginLeft="8dp"
+	        android:textColor="@drawable/white"
+	        android:textSize="20dp"
+	        android:singleLine="true"
+	        android:gravity="center_vertical"
+	        android:textStyle="bold|italic" />
 		        
     </RelativeLayout>
     
     <com.tinygame.lianliankan.view.TimeProgressView 
         android:id="@+id/time"
-        android:layout_width="20dp"
+        android:layout_width="30dp"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
@@ -92,14 +106,45 @@
         android:layout_alignParentRight="true"
         android:layout_marginTop="10dp"
         android:layout_marginRight="10dp" />
-    
-    <ImageButton 
+
+	<ImageButton 
         android:id="@+id/stop"
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:background="@drawable/button_stop"
         android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"/>
+        android:layout_alignParentLeft="true" />
+
+		<ImageButton
+            android:id="@+id/newGame"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/button_bg"
+			android:src="@drawable/restart_small"
+			android:layout_alignParentRight="true"
+			android:layout_alignParentTop="true"
+			android:layout_marginTop="15dp"
+			android:layout_marginRight="10dp"  />
+	
+    <com.tinygame.lianliankan.view.ContinueClickView 
+        android:id="@+id/continueclick"
+        android:layout_width="85dp"
+        android:layout_height="60dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="5dp"
+        android:visibility="gone" />
+
+    <!--  ImageView 
+        android:id="@+id/source_icon"
+        android:layout_width="40dp"
+        android:layout_height="30dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/sorces"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="10dp"
+        android:layout_toLeftOf="@id/sorce" / -->
     
 	<ImageView 
 	    android:id="@+id/no_more_tips"

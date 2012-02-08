@@ -2,8 +2,6 @@ package com.tinygame.lianliankan;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -85,13 +83,13 @@ public class MenuActivity extends Activity {
     }
     
     private void initView() {
-        Drawable classDrawable = this.getResources().getDrawable(R.drawable.classic_model);
-        Drawable bg = Utils.getPressDrawable(this, ((BitmapDrawable) classDrawable).getBitmap());
+//        Drawable classDrawable = this.getResources().getDrawable(R.drawable.classic_model);
+//        Drawable bg = Utils.getPressDrawable(this, ((BitmapDrawable) classDrawable).getBitmap());
         
         View classic = findViewById(R.id.classic);
-        if (bg != null) {
-            classic.setBackgroundDrawable(bg);
-        }
+//        if (bg != null) {
+//            classic.setBackgroundDrawable(bg);
+//        }
         
         TextView versionTV = (TextView) findViewById(R.id.version);
         if (versionTV != null) {

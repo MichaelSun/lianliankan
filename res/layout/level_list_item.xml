@@ -2,14 +2,13 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="45dp"
     android:layout_height="45dp"
-    android:orientation="horizontal"
-    android:padding="2dp" >
+    android:orientation="horizontal" >
     
     <ImageView 
         android:id="@+id/egg_icon"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:src="@drawable/egg"
+        android:src="@drawable/button_egg"
         android:scaleType="fitCenter" />
     
     <TextView 
@@ -30,7 +29,7 @@
         android:scaleType="fitCenter"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:layout_marginBottom="35dp" />
+        android:layout_marginBottom="20dp" />
 
 	<ImageView 
         android:id="@+id/egg_point_three"

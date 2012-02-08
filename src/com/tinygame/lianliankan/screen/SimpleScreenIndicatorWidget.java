@@ -36,10 +36,11 @@ import com.tinygame.lianliankan.utils.Utils;
 
 public class SimpleScreenIndicatorWidget extends LinearLayout implements ScrollScreen.ScreenIndicator {
 	
-    private ArrayList<Drawable> mIndicatorImage;
+    private ArrayList<Drawable> mIndicatorImageUnSelected;;
+    private ArrayList<Drawable> mIndicatorImageSelected;;
     private float mDensity;
     private int mWidth;
-    private GradientDrawable mIndicatorBg;
+//    private GradientDrawable mIndicatorBg;
     
     private static final int NO_SELECTOR_PADDING = 10;
     private static final int SELECTOR_PADDING = 1;
@@ -49,26 +50,27 @@ public class SimpleScreenIndicatorWidget extends LinearLayout implements ScrollS
 		
 		mDensity = context.getResources().getDisplayMetrics().density;
 		mWidth = (int) (48 * mDensity);
-		mIndicatorBg = new GradientDrawable(GradientDrawable.Orientation.TL_BR,
-                        new int[] { 0xfffffce7, 0x00000000 });
-		mIndicatorBg.setShape(GradientDrawable.RECTANGLE);
-		mIndicatorBg.setGradientType(GradientDrawable.RADIAL_GRADIENT);
-		mIndicatorBg.setGradientRadius((float)(Math.sqrt(2) * 60));
-		mIndicatorBg.setCornerRadii(new float[] { 6, 6, 6, 6,
-                6, 6, 6, 6 });
+//		mIndicatorBg = new GradientDrawable(GradientDrawable.Orientation.TL_BR,
+//                        new int[] { 0xfffffce7, 0x00000000 });
+//		mIndicatorBg.setShape(GradientDrawable.RECTANGLE);
+//		mIndicatorBg.setGradientType(GradientDrawable.RADIAL_GRADIENT);
+//		mIndicatorBg.setGradientRadius((float)(Math.sqrt(2) * 60));
+//		mIndicatorBg.setCornerRadii(new float[] { 6, 6, 6, 6,
+//                6, 6, 6, 6 });
+//		
+		mIndicatorImageUnSelected = new ArrayList<Drawable>();
+		mIndicatorImageUnSelected.add(getResources().getDrawable(R.drawable.shengdan));
+		mIndicatorImageUnSelected.add(getResources().getDrawable(R.drawable.biaoqing));
+		mIndicatorImageUnSelected.add(getResources().getDrawable(R.drawable.dongwu));
+		mIndicatorImageUnSelected.add(getResources().getDrawable(R.drawable.katong));
+		mIndicatorImageUnSelected.add(getResources().getDrawable(R.drawable.majiang));
 		
-		mIndicatorImage = new ArrayList<Drawable>();
-		
-        Bitmap orgBt = AssetsImageLoader.loadBitmapFromAsset(context, "image/shengdan");
-        mIndicatorImage.add(new BitmapDrawable(Utils.getRoundedCornerBitmap(orgBt, 10.0f, 1, 40)));
-        orgBt = AssetsImageLoader.loadBitmapFromAsset(context, "image/biaoqing");
-        mIndicatorImage.add(new BitmapDrawable(Utils.getRoundedCornerBitmap(orgBt, 10.0f, 1, 40)));
-        orgBt = AssetsImageLoader.loadBitmapFromAsset(context, "image/dongwu");
-        mIndicatorImage.add(new BitmapDrawable(Utils.getRoundedCornerBitmap(orgBt, 10.0f, 1, 40)));
-        orgBt = AssetsImageLoader.loadBitmapFromAsset(context, "image/katong");
-        mIndicatorImage.add(new BitmapDrawable(Utils.getRoundedCornerBitmap(orgBt, 10.0f, 1, 40)));
-        orgBt = AssetsImageLoader.loadBitmapFromAsset(context, "image/majiang");
-        mIndicatorImage.add(new BitmapDrawable(Utils.getRoundedCornerBitmap(orgBt, 10.0f, 1, 40)));
+		mIndicatorImageSelected = new ArrayList<Drawable>();
+		mIndicatorImageSelected.add(getResources().getDrawable(R.drawable.shengdan_p));
+		mIndicatorImageSelected.add(getResources().getDrawable(R.drawable.biaoqing_p));
+		mIndicatorImageSelected.add(getResources().getDrawable(R.drawable.dongwu_p));
+		mIndicatorImageSelected.add(getResources().getDrawable(R.drawable.katong_p));
+		mIndicatorImageSelected.add(getResources().getDrawable(R.drawable.majiang_p));
     }
 
 	@Override
@@ -87,32 +89,21 @@ public class SimpleScreenIndicatorWidget extends LinearLayout implements ScrollS
 		for (int i = 0; i < childCount; i++) {
 			ImageView point = (ImageView) getChildAt(i);
 			
-            if (i < mIndicatorImage.size()) {
-                Drawable drawable = mIndicatorImage.get(i);
+            if (i < mIndicatorImageUnSelected.size()) {
+                Drawable drawable = mIndicatorImageUnSelected.get(i);
                 point.setImageDrawable(drawable);
             }
 			
 			if (i == index) {
 			    point.setPadding(SELECTOR_PADDING, SELECTOR_PADDING, SELECTOR_PADDING, SELECTOR_PADDING);
-			    point.setBackgroundDrawable(mIndicatorBg);
+			    Drawable drawable = mIndicatorImageSelected.get(i);
+			    point.setImageDrawable(drawable);
 			} else {
 			    point.setPadding(NO_SELECTOR_PADDING, NO_SELECTOR_PADDING
 			            , NO_SELECTOR_PADDING, NO_SELECTOR_PADDING);
-			    point.setBackgroundDrawable(null);
+                Drawable drawable = mIndicatorImageUnSelected.get(i);
+                point.setImageDrawable(drawable);
 			}
-			
-//			if (i == index) {
-//				if (index < mIndicatorImage.size()) {
-//				    Drawable drawable = mIndicatorImage.get(index);
-////				    point.setBackgroundDrawable(R.drawable.egg);
-//				    point.setImageDrawable(drawable);
-//				} else {
-//				    point.setBackgroundResource(R.drawable.screen_pot_selected);				    
-//				}
-//			} else {
-////				point.setBackgroundResource(R.drawable.screen_pot);
-//				point.setImageResource(R.drawable.screen_pot);
-//			}
 		}
 	}
 }

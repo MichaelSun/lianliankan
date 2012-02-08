@@ -39,12 +39,20 @@ public class SoundEffectUtils {
     }
     
     public void playClickSound() {
+        if (Config.SOUND_DEBUG) {
+            return;
+        }
+        
         if (mSoundNotifySoundPool != null) {
             mSoundNotifySoundPool.play(mClickPlayID, (float) 0.3, (float) 0.5, 0, 0, 1);
         }
     }
     
     public void playDisapperSound() {
+        if (Config.SOUND_DEBUG) {
+            return;
+        }
+        
         if (mSoundNotifySoundPool != null) {
             mSoundNotifySoundPool.play(mConnectPlayID, (float) 0.5, (float) 0.5, 0, 0, 1);
         }

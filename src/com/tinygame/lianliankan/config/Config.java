@@ -4,7 +4,7 @@ public class Config {
 
     public static final boolean DEBUG = true;
     
-    public static final boolean SOUND_DEBUG = false;
+    public static final boolean SOUND_DEBUG = true;
     
     public static final String ACTION_CLICK_LABEL = "action_click";
     public static final String ACTION_OFFER_LABEL = "offer_click";
@@ -23,6 +23,9 @@ public class Config {
     public static final int POINT_100 = 100;
     public static final int POINT_200 = 200;
     public static final int POINT_300 = 200;
+    
+    public static final int DISMISS_SORCE = 10;
+    public static final int CONTINUE_DISMISS_SORCE = 15;
     
     public static final boolean DEBUG_CLOSE_APP_DOWNLOAD = false; 
     

@@ -1,7 +1,5 @@
 package com.tinygame.lianliankan;
 
-import com.tinygame.lianliankan.utils.SoundEffectUtils;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -10,6 +8,9 @@ import android.os.Handler;
 import android.os.Message;
 import android.view.Window;
 import android.view.WindowManager;
+
+import com.tinygame.lianliankan.db.DatabaseOperator;
+import com.tinygame.lianliankan.utils.SoundEffectUtils;
 
 public class SplashActivity extends Activity {
 
@@ -44,6 +45,7 @@ public class SplashActivity extends Activity {
             try {
                 SoundEffectUtils.getInstance().init(SplashActivity.this.getApplicationContext());
                 SettingManager.getInstance().init(getApplicationContext());
+                DatabaseOperator.getInstance().init(getApplicationContext());
                 Thread.sleep(1200);
             } catch (Exception e) {
             }

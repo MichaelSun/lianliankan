@@ -25,6 +25,10 @@ public class TimeProgressView extends View {
     
     public interface TimeProgressListener {
         void onTimeCostFinish();
+        
+        void onContinueClick();
+        
+        void onContinueClickDismiss();
     }
     
     private static final int PADDING_TOP = 30;
@@ -148,12 +152,18 @@ public class TimeProgressView extends View {
                     mStopProgressTime = curTime;
                 }
                 mPreDismissTouch = curTime;
+                if (mTimeProgressListener != null) {
+                    mTimeProgressListener.onContinueClick();
+                }
             } else {
                 if (mStopProgressTime != 0) {
                     mEffectTime += (curTime - mStopProgressTime);
                     mStopProgressTime = 0;
                 }
                 mPreDismissTouch = curTime;
+                if (mTimeProgressListener != null) {
+                    mTimeProgressListener.onContinueClickDismiss();
+                }
             }
         }
     }
@@ -177,6 +187,9 @@ public class TimeProgressView extends View {
                     mStopProgressTime = 0;
                 }
                 mPreDismissTouch = 0;
+                if (mTimeProgressListener != null) {
+                    mTimeProgressListener.onContinueClickDismiss();
+                }
             }
         }
         
@@ -229,8 +242,8 @@ public class TimeProgressView extends View {
             if (mCurTimeProgreeIconIndex < mTimeProgressList.size()) {
                 Bitmap drawIcon = mTimeProgressList.get(mCurTimeProgreeIconIndex);
                 Rect iconSrc = new Rect(0, 0, mTimeProgressIconWidth, mTimeProgressIconHeight);
-                Rect iconDest = new Rect(0, progressLeft + curTopPadding + topStart - 15
-                                    , progressBgWidth, progressLeft + curTopPadding + topStart + 15);
+                Rect iconDest = new Rect(bgX, progressLeft + curTopPadding + topStart - 15
+                                    , progressBgWidth + bgX, progressLeft + curTopPadding + topStart + 15);
                 canvas.drawBitmap(drawIcon, iconSrc, iconDest, mPaint);
                 
                 if (mPreDrawTime == 0) {
@@ -255,8 +268,8 @@ public class TimeProgressView extends View {
             if (mCurTimeProgreeIconIndex < mTimeProgressList.size()) {
                 Bitmap drawIcon = mTimeProgressList.get(mCurTimeProgreeIconIndex);
                 Rect iconSrc = new Rect(0, 0, mTimeProgressIconWidth, mTimeProgressIconHeight);
-                Rect iconDest = new Rect(0, topStart + curTopPadding - 15
-                                        , progressBgWidth, topStart + curTopPadding + 15);
+                Rect iconDest = new Rect(bgX, topStart + curTopPadding - 15
+                                        , progressBgWidth + bgX, topStart + curTopPadding + 15);
                 canvas.drawBitmap(drawIcon, iconSrc, iconDest, mPaint);
             }
         }

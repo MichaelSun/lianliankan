@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">GuoGuo LinkLink</string>
+    <string name="btn_new_game">New</string>
+    <string name="btn_re_arrange">Arrange</string>
+    <string name="btn_tips">Tips</string>
+    <string name="btn_theme">Theme</string>
+    <string name="btn_next">Next</string>
+    <string name="btn_quit">Quit</string>
+    <string name="btn_retry">Retry</string>
+    <string name="btn_download">Download</string>
+    <string name="btn_cancel">Cancel</string>
+    <string name="reset_game_tips">You have finished all level, do you want to reset all level for play?</string>
+    <string name="download_tips">You should download the icon for continue play</string>
+    <string name="level" formatted="false">%s level</string>
+    <string name="tips">Tips</string>
+    <string name="win_content" formatted="false">Cost : %s s</string>
+    <string name="version" formatted="false">Version:%s</string>
+    <string name="sorce" formatted="false">sorce:%s</string>
+    
+    <string name="perf_last_diff">last_diff</string>
+    <string name="perf_last_cate">last_cate</string>
+    <string name="perf_sound_open">sound_open</string>
+    <string name="perf_level_opened">levle_open</string>
+</resources>

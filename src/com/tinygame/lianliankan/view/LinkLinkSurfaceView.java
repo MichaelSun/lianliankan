@@ -197,6 +197,13 @@ public class LinkLinkSurfaceView extends SurfaceView implements Callback {
         mChart = chart;
         mHint = null;
         mSelectTileCur = null;
+        
+        if (mChart != null) {
+            Tile[] hint = new Hint(mChart).findHint();
+            if (hint == null && mLLViewActionListener != null) {
+                mLLViewActionListener.onNoHintToConnect();
+            }
+        }
     }
     
     public void changeBackground() {

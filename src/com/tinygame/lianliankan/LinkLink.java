@@ -6,6 +6,7 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -14,22 +15,27 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
-import android.view.animation.TranslateAnimation;
 import android.view.animation.Animation.AnimationListener;
+import android.view.animation.AnimationSet;
 import android.view.animation.AnimationUtils;
+import android.view.animation.ScaleAnimation;
+import android.view.animation.TranslateAnimation;
 import android.widget.TextView;
 
 import com.mobclick.android.MobclickAgent;
-import com.mobclick.android.ReportPolicy;
 import com.tinygame.lianliankan.config.Config;
 import com.tinygame.lianliankan.config.Env;
+import com.tinygame.lianliankan.db.DatabaseOperator;
+import com.tinygame.lianliankan.db.DatabaseOperator.LevelInfo;
 import com.tinygame.lianliankan.engine.Chart;
 import com.tinygame.lianliankan.engine.FillContent;
 import com.tinygame.lianliankan.engine.Hint;
 import com.tinygame.lianliankan.engine.Tile;
 import com.tinygame.lianliankan.utils.ImageSplitUtils;
 import com.tinygame.lianliankan.utils.SoundEffectUtils;
+import com.tinygame.lianliankan.view.ContinueClickView;
 import com.tinygame.lianliankan.view.LevelView;
 import com.tinygame.lianliankan.view.LevelView.LevelChangedListener;
 import com.tinygame.lianliankan.view.LinkLinkSurfaceView;
@@ -49,8 +55,10 @@ public class LinkLink extends Activity implements LLViewActionListener
     private View mNoMoreTextView;
     private TextView mArrangeCount;
     private TextView mHintCount;
+    private TextView mSorceTV;
     private View mNext;
     private TimeProgressView mTimeView;
+    private ContinueClickView mContinueClickView;
     private LevelView mLevelView;
     private int mCurrentTimeProgress;
     private LayoutInflater mInflater;
@@ -61,12 +69,18 @@ public class LinkLink extends Activity implements LLViewActionListener
     private Dialog mStopDialog;
     private int mCurDiffArrangeCount;
     private int mCurDiffHintCount;
-    private boolean mFinishDialogShow;
+    private boolean mFinishSuccessActivityShow;
     private boolean mAppDownloadShow;
     
     private boolean mStopDialogShow;
     
+    private int mCountClick;
+    private LevelInfo mLevelInfo;
+    private AnimationSet mDispearAnimation;
+    private AnimationSet mSorceAnimation;
+    
     private Context mContext;
+    private boolean mNextLevel;
     
     private static final int PLAY_READY_SOUND = 0;
     private static final int PLAY_BACKGROUND_SOUND = 1;
@@ -131,6 +145,37 @@ public class LinkLink extends Activity implements LLViewActionListener
         
         mInflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         
+        mSorceAnimation = new AnimationSet(true);
+        Animation s = new ScaleAnimation(1.0f, 1.2f, 1.0f, 1.2f);
+        s.setDuration(200);
+        this.mSorceAnimation.addAnimation(s);
+        
+        mDispearAnimation = new AnimationSet(true);
+        Animation a = new TranslateAnimation(0.0f, 0.0f, 50.0f, 0.0f);
+        a.setDuration(2000);
+        mDispearAnimation.addAnimation(a);
+        a = new AlphaAnimation(1.0f, 0.6f);
+        a.setDuration(2000);
+        mDispearAnimation.addAnimation(a);
+        mDispearAnimation.setAnimationListener(new AnimationListener() {
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                if (mContinueClickView != null) {
+                    mContinueClickView.setVisibility(View.GONE);
+                }
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+            }
+
+            @Override
+            public void onAnimationStart(Animation animation) {
+            }
+            
+        });
+        
         resetContent();
         
         AppOffersManager.init(this, Config.APP_ID, Config.APP_SECRET_KEY, false);
@@ -144,13 +189,17 @@ public class LinkLink extends Activity implements LLViewActionListener
     @Override
     public void onStart() {
         super.onStart();
-        mHandler.sendEmptyMessageDelayed(PLAY_BACKGROUND_SOUND, 500);
+        LOGD("[[onStart]] >>>>>>>>> ");
         SettingManager.getInstance().init(getApplicationContext());
+        mHandler.sendEmptyMessageDelayed(PLAY_BACKGROUND_SOUND, 500);
         
         mAppDownloadShow = false;
         checkAppPoint();
-        reloadCurrentLevel();
-        updateToolsCount();
+        
+        if (!mNextLevel) {
+            reloadCurrentLevel();
+        }
+        mNextLevel = false;
         
         if (mStopDialogShow && mStopDialog != null) {
             mStopDialog.dismiss();
@@ -162,12 +211,16 @@ public class LinkLink extends Activity implements LLViewActionListener
     @Override
     public void onResume() {
         super.onResume();
+        LOGD("[[onResume]] >>>>>>>>> ");
+        mFinishSuccessActivityShow = false;
         MobclickAgent.onResume(this);
     }
     
     @Override
     public void onPause() {
         super.onPause();
+        LOGD("[[onPause]] >>>>>>>>> ");
+        mFinishSuccessActivityShow = true;
         MobclickAgent.onPause(this);
     }
 
@@ -225,6 +278,10 @@ public class LinkLink extends Activity implements LLViewActionListener
         mNoMoreTipsView = findViewById(R.id.no_more_tips);
         mNoMoreTextView = findViewById(R.id.no_more_text);
         
+        mContinueClickView = (ContinueClickView) findViewById(R.id.continueclick);
+        mSorceTV = (TextView) findViewById(R.id.sorce);
+        mSorceTV.setText(String.format(getString(R.string.sorce), 0));
+        
         View stopView = findViewById(R.id.stop);
         if (stopView != null) {
             stopView.setOnClickListener(new View.OnClickListener() {
@@ -267,6 +324,13 @@ public class LinkLink extends Activity implements LLViewActionListener
                 }
                 updateToolsCountView();
                 
+                mLevelInfo.count -= Config.DISMISS_SORCE;
+                if (mLevelInfo.count < 0) {
+                    mLevelInfo.count = 0;
+                }
+                mSorceTV.setText(String.format(getString(R.string.sorce), mLevelInfo.count));
+                mSorceTV.startAnimation(mSorceAnimation);
+                
                 MobclickAgent.onEvent(mContext, Config.ACTION_CLICK_LABEL, "arrange");
             }
         });
@@ -285,6 +349,13 @@ public class LinkLink extends Activity implements LLViewActionListener
                 }
                 updateToolsCountView();
                 
+                mLevelInfo.count -= Config.DISMISS_SORCE / 2;
+                if (mLevelInfo.count < 0) {
+                    mLevelInfo.count = 0;
+                }
+                mSorceTV.setText(String.format(getString(R.string.sorce), mLevelInfo.count));
+                mSorceTV.startAnimation(mSorceAnimation);
+                
                 MobclickAgent.onEvent(mContext, Config.ACTION_CLICK_LABEL, "hint");
             }
         });
@@ -300,11 +371,8 @@ public class LinkLink extends Activity implements LLViewActionListener
     @Override
     public void onStop() {
         super.onStop();
-//        if (!mStopDialogShow) {
-//            this.showStopDialog();
-//        }
+        LOGD("[[onStop]] >>>>>>>");
         
-        LOGD("[[onStop]]");
         boolean soundOpen = SettingManager.getInstance().getSoundOpen();
         if (soundOpen) {
             SoundEffectUtils.getInstance().stopSpeedSound();
@@ -315,7 +383,7 @@ public class LinkLink extends Activity implements LLViewActionListener
     @Override
     public void onDestroy() {
         super.onDestroy();
-        LOGD("[[onDestroy]]");
+        LOGD("[[onDestroy]] >>>>>>>");
         
         if (mStopDialog != null) {
             mStopDialog.dismiss();
@@ -336,6 +404,10 @@ public class LinkLink extends Activity implements LLViewActionListener
         if (mTimeView != null) {
             mTimeView.onDissmisTouch();
         }
+        
+        this.mLevelInfo.count += Config.DISMISS_SORCE;
+        mSorceTV.setText(String.format(getString(R.string.sorce), mLevelInfo.count));
+        mSorceTV.startAnimation(mSorceAnimation);
     }
     
     private void noMoreConnectChanged() {
@@ -352,7 +424,7 @@ public class LinkLink extends Activity implements LLViewActionListener
 
     @Override
     public void onFinishOnTime() {
-        mFinishDialogShow = true;
+        mFinishSuccessActivityShow = true;
         mHandler.sendEmptyMessage(SHOW_FINISH_ONE_TIME);
     }
     
@@ -399,9 +471,6 @@ public class LinkLink extends Activity implements LLViewActionListener
         if (mNoMoreTipsView.getVisibility() == View.GONE) {
             mNoMoreTipsView.setVisibility(View.VISIBLE);
             mNoMoreTextView.setVisibility(View.VISIBLE);
-//            Animation anim = AnimationUtils.loadAnimation(this, R.anim.no_more_tips_anim);
-//            anim.setAnimationListener(this);
-//            mNoMoreTipsView.startAnimation(anim);
             
             Animation a = new TranslateAnimation(0.0f, 0.0f, -200.0f, 0.0f);
             a.setDuration(2000);
@@ -467,90 +536,114 @@ public class LinkLink extends Activity implements LLViewActionListener
     }
     
     private void showFinishDialog() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        View showView = mInflater.inflate(R.layout.win_view, null);
-        View next = showView.findViewById(R.id.next);
-        TextView contentTV = (TextView) showView.findViewById(R.id.content);
-        String showContent = String.format(getString(R.string.win_content), mTimeView.getCurCostTime());
-        contentTV.setText(showContent);
-        next.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                tryUpdateDiffAndCategory();
-                if (mWinDialog != null) {
-                    mFinishDialogShow = false;
-                    mWinDialog.dismiss();
-                    mWinDialog = null;
-                }
-            }
-        });
-        
-        View retry = showView.findViewById(R.id.retry);
-        retry.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Env.ICON_REGION_INIT = false;
-                reloadCurrentLevel();   
-                if (mWinDialog != null) {
-                    mFinishDialogShow = false;
-                    mWinDialog.dismiss();
-                    mWinDialog = null;
-                }
-            }
-        });
-        
-        View quit = showView.findViewById(R.id.quit);
-        quit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (mWinDialog != null) {
-                    mFinishDialogShow = false;
-                    mWinDialog.dismiss();
-                    mWinDialog = null;
-                }
-                finish();
-            }
-        });
-        
-        builder.setView(showView);
-        mWinDialog = builder.create();
-        mWinDialog.setCancelable(false);
-        mWinDialog.show();
+//        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+//        View showView = mInflater.inflate(R.layout.win_view, null);
+//        View next = showView.findViewById(R.id.next);
+//        TextView contentTV = (TextView) showView.findViewById(R.id.content);
+//        String showContent = String.format(getString(R.string.win_content), mTimeView.getCurCostTime());
+//        contentTV.setText(showContent);
+//        next.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                tryUpdateDiffAndCategory();
+//                if (mWinDialog != null) {
+//                    mFinishDialogShow = false;
+//                    mWinDialog.dismiss();
+//                    mWinDialog = null;
+//                }
+//            }
+//        });
+//        
+//        View retry = showView.findViewById(R.id.retry);
+//        retry.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Env.ICON_REGION_INIT = false;
+//                DatabaseOperator.getInstance().insertCategoryAndLevelIntergral(mLevelInfo);
+//                reloadCurrentLevel();   
+//                if (mWinDialog != null) {
+//                    mFinishDialogShow = false;
+//                    mWinDialog.dismiss();
+//                    mWinDialog = null;
+//                }
+//            }
+//        });
+//        
+//        View quit = showView.findViewById(R.id.quit);
+//        quit.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if (mWinDialog != null) {
+//                    mFinishDialogShow = false;
+//                    mWinDialog.dismiss();
+//                    mWinDialog = null;
+//                }
+//                finish();
+//            }
+//        });
+//        
+//        builder.setView(showView);
+//        mWinDialog = builder.create();
+//        mWinDialog.setCancelable(false);
+//        mWinDialog.show();
         mHandler.removeMessages(START_PROGRESS_TIME_VIEW);
-        mHandler.sendEmptyMessage(RESET_PROGRESS_TIME_VIEW);   
+        mHandler.sendEmptyMessage(RESET_PROGRESS_TIME_VIEW);
+        
+        if (mLevelInfo != null) {
+            mLevelInfo.cost = mTimeView.getCurCostTime();
+        }
+        
+        DatabaseOperator.getInstance().insertCategoryAndLevelIntergral(mLevelInfo);
+        Intent finishIntent = new Intent();
+        finishIntent.setClass(this, ResultActivity.class);
+        finishIntent.putExtra(ResultActivity.RESULT_TYPE, ResultActivity.SUCCESS_CONTENT);
+        finishIntent.putExtra(ResultActivity.COST_TIME, String.valueOf(mLevelInfo.cost));
+        this.startActivityForResult(finishIntent, 100);
     }
     
     private void showFailedDialog() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        View showView = mInflater.inflate(R.layout.lose_view, null);
-        View next = showView.findViewById(R.id.retry);
-        next.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Env.ICON_REGION_INIT = false;
-                reloadCurrentLevel();
-                if (mLoseDialog != null) {
-                    mLoseDialog.dismiss();
-                    mLoseDialog = null;
-                }
-            }
-        });
-        View quit = showView.findViewById(R.id.quit);
-        quit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (mLoseDialog != null) {
-                    mLoseDialog.dismiss();
-                    mLoseDialog = null;
-                }
-                finish();
-            }
-        });
+//        DatabaseOperator.getInstance().insertCategoryAndLevelIntergral(mLevelInfo);
+        DatabaseOperator.getInstance().insertCategoryAndLevelIntergral(mLevelInfo.category
+                                , mLevelInfo.level
+                                , mLevelInfo.count
+                                , mLevelInfo.continueCount
+                                , mLevelInfo.max
+                                , -1);
         
-        builder.setView(showView);
-        mLoseDialog = builder.create();
-        mLoseDialog.setCancelable(false);
-        mLoseDialog.show();
+        Intent finishIntent = new Intent();
+        finishIntent.setClass(this, ResultActivity.class);
+        finishIntent.putExtra(ResultActivity.RESULT_TYPE, ResultActivity.FAILED_CONTENT);
+        this.startActivityForResult(finishIntent, 100);
+//        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+//        View showView = mInflater.inflate(R.layout.lose_view, null);
+//        View next = showView.findViewById(R.id.retry);
+//        next.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Env.ICON_REGION_INIT = false;
+//                reloadCurrentLevel();
+//                if (mLoseDialog != null) {
+//                    mLoseDialog.dismiss();
+//                    mLoseDialog = null;
+//                }
+//            }
+//        });
+//        View quit = showView.findViewById(R.id.quit);
+//        quit.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if (mLoseDialog != null) {
+//                    mLoseDialog.dismiss();
+//                    mLoseDialog = null;
+//                }
+//                finish();
+//            }
+//        });
+//        
+//        builder.setView(showView);
+//        mLoseDialog = builder.create();
+//        mLoseDialog.setCancelable(false);
+//        mLoseDialog.show();
     }
     
     private void reloadCurrentLevel() {
@@ -561,6 +654,14 @@ public class LinkLink extends Activity implements LLViewActionListener
             ThemeManager.getInstance().loadImageByCategary(cate);
             Chart c = new Chart(FillContent.getRandomWithDiff(diff
                                 , ThemeManager.getInstance().getCurrentImageCount() - 1));
+            mLevelInfo = DatabaseOperator.getInstance().getLevelInfo(
+                            Categary_diff_selector.getInstance().getCurrentCategoryLevel()
+                            , Categary_diff_selector.getInstance().getCurrentDiffLevel() - 1);
+            LOGD("[[reloadCurrentLevel]] levle info = " + mLevelInfo.toString());
+            
+            mLevelInfo.count = 0;
+            mSorceTV.setText(String.format(getString(R.string.sorce), mLevelInfo.count));
+            mCountClick = 0;
             mLLView.setChart(c);
             mCurrentTimeProgress = Categary_diff_selector.getInstance().getCurrentTime();
             int curLevel = Categary_diff_selector.getInstance().getCurrentDiffLevel();
@@ -577,7 +678,8 @@ public class LinkLink extends Activity implements LLViewActionListener
             updateToolsCount();
             updateToolsCountView();
             
-            MobclickAgent.onEvent(this, Config.ACTION_START, String.valueOf(curLevel));
+            MobclickAgent.onEvent(this, Config.ACTION_START
+                    , String.valueOf(mLevelInfo.category) + ":" + String.valueOf(curLevel));
         } else {
             showResetGameDialog();
         }
@@ -585,7 +687,7 @@ public class LinkLink extends Activity implements LLViewActionListener
     
     private void showResetGameDialog() {
         LOGD("[[showResetGameDialog]] >>>>>>>>>>>>>>>");
-        
+        DatabaseOperator.getInstance().insertCategoryAndLevelIntergral(mLevelInfo);
         finish();
 //        AlertDialog.Builder builder = new AlertDialog.Builder(this);
 //        View showView = mInflater.inflate(R.layout.reset_game_view, null);
@@ -624,21 +726,25 @@ public class LinkLink extends Activity implements LLViewActionListener
     }
     
     private void tryUpdateDiffAndCategory() {
+        LOGD("[[tryUpdateDiffAndCategory]] levle info = " + mLevelInfo.toString());
+        
+//        DatabaseOperator.getInstance().insertCategoryAndLevelIntergral(mLevelInfo);
+        
         String diff = Categary_diff_selector.getInstance().updateDiff();
         String cate = Categary_diff_selector.getInstance().getCurrentCategary();
         LOGD("tryUpdateDiffAndCategory >>>>> diff = " + diff + " cate = " + cate + " >>>>>>>");
-//        if (diff == null) {
-//            cate = Categary_diff_selector.getInstance().updateCategory();
-//            if (cate != null) {
-//                Categary_diff_selector.getInstance().restDiff();
-//                diff = Categary_diff_selector.getInstance().getCurrentDiff();
-//            }
-//        }
         if (diff != null && cate != null) {
             Env.ICON_REGION_INIT = false;
             ThemeManager.getInstance().loadImageByCategary(cate);
             Chart c = new Chart(FillContent.getRandomWithDiff(diff
                                 , ThemeManager.getInstance().getCurrentImageCount() - 1));
+            mLevelInfo = DatabaseOperator.getInstance().getLevelInfo(
+                    Categary_diff_selector.getInstance().getCurrentCategoryLevel()
+                    , Categary_diff_selector.getInstance().getCurrentDiffLevel() - 1);
+            //reset the count to 0
+            mLevelInfo.count = 0;
+            mSorceTV.setText(String.format(getString(R.string.sorce), mLevelInfo.count));
+            mCountClick = 0;
             mLLView.changeBackground();
             mLLView.setChart(c);
             mLLView.forceRefresh();
@@ -662,19 +768,63 @@ public class LinkLink extends Activity implements LLViewActionListener
                 SettingManager.getInstance().setOpenLevelWithCategory(curLevel, category);
             }
             
-            MobclickAgent.onEvent(mContext, Config.ACTION_LEVEL, String.valueOf(curLevel));
+            MobclickAgent.onEvent(mContext, Config.ACTION_LEVEL
+                    , String.valueOf(category) + ":" + String.valueOf(curLevel));
         } else {
             showResetGameDialog();
         }
     }
     
     @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == 100) {
+            switch (resultCode) {
+            case ResultActivity.RETURN_QUIT:
+                finish();
+                break;
+            case ResultActivity.RETURN_RETRY:
+                Env.ICON_REGION_INIT = false;
+                reloadCurrentLevel();
+                break;
+            case ResultActivity.RETURN_NEXT:
+                tryUpdateDiffAndCategory();
+                mNextLevel = true;
+                break;
+            }
+        }
+    }
+    
+    
+    @Override
     public void onTimeCostFinish() {
-        if (!mFinishDialogShow) {
+        if (!mFinishSuccessActivityShow) {
             mHandler.sendEmptyMessage(SHOW_FAILED_DIALOG);
         }
     }
 
+    @Override
+    public void onContinueClick() {
+        mCountClick++;
+        if (mCountClick > mLevelInfo.max) {
+            mLevelInfo.max = mCountClick;
+        }
+        
+        if (mContinueClickView.getVisibility() == View.GONE) {
+            mContinueClickView.setVisibility(View.VISIBLE);
+        }
+        mContinueClickView.setContinueCount(mCountClick, mLevelInfo.max);
+        mContinueClickView.startAnimation(mDispearAnimation);
+        
+        this.mLevelInfo.count += (Config.CONTINUE_DISMISS_SORCE - Config.DISMISS_SORCE);
+        mSorceTV.setText(String.format(getString(R.string.sorce), mLevelInfo.count));
+        mSorceTV.startAnimation(mSorceAnimation);
+    }
+    
+    @Override
+    public void onContinueClickDismiss() {
+        mCountClick = 0;
+    }
+    
     @Override
     public void onAnimationEnd(Animation animation) {
         LOGD("[[onAnimationEnd]] >>>>>>>>>");
