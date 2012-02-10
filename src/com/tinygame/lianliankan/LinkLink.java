@@ -1,6 +1,7 @@
 package com.tinygame.lianliankan;
 
-import net.youmi.android.appoffers.AppOffersManager;
+import net.youmi.android.appoffers.YoumiOffersManager;
+import net.youmi.android.appoffers.YoumiPointsManager;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -178,7 +179,7 @@ public class LinkLink extends Activity implements LLViewActionListener
         
         resetContent();
         
-        AppOffersManager.init(this, Config.APP_ID, Config.APP_SECRET_KEY, false);
+        YoumiOffersManager.init(this, Config.APP_ID, Config.APP_SECRET_KEY);
         
         //test umeng config
         MobclickAgent.setSessionContinueMillis(1 * 60 * 1000);
@@ -227,11 +228,12 @@ public class LinkLink extends Activity implements LLViewActionListener
     private void checkAppPoint() {
         if (!Config.DEBUG_CLOSE_APP_DOWNLOAD) {
             int level = Categary_diff_selector.getInstance().getCurrentDiffLevel();
-            int point = AppOffersManager.getPoints(this);
+            int point = YoumiPointsManager.queryPoints(this);
             if (point < Config.POINT_100 && level >= Config.APP_DOWNLOA_SHOW_LEVEL) {
                 showCountDownloadDialog();
             } else if (point < Config.POINT_200 && level >= Config.APP_DOWNLOA_SHOW_LEVEL_TWO) {
-                AppOffersManager.spendPoints(this, Config.POINT_100);
+                YoumiPointsManager.spendPoints(this, Config.POINT_100);
+
                 showCountDownloadDialog();
             } else {
                 if (mDownloadDialog != null) {
@@ -449,7 +451,9 @@ public class LinkLink extends Activity implements LLViewActionListener
                                     mDownloadDialog = null;
                                 }
                                 mAppDownloadShow = false;
-                                AppOffersManager.showAppOffers(LinkLink.this);
+                                LOGD("[[showCountDownloadDialog]] >>>>>>> show offers >>>>>>");
+                                YoumiOffersManager.showOffers(LinkLink.this,
+                                        YoumiOffersManager.TYPE_REWARD_OFFERS);
                                 
                                 MobclickAgent.onEvent(mContext, Config.ACTION_OFFER_LABEL);
                             }
