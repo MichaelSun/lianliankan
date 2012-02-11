@@ -11,6 +11,9 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.AnimationSet;
+import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -24,13 +27,14 @@ public class MenuActivity extends Activity {
     private ImageView mSoundImageView;
     private View mClassicModeView;
     
+    private AnimationSet mAnimationset;
+    
     private static final int ENTRY_GAME = 0;
     private Handler mHandler = new Handler() {
         public void handleMessage(Message msg) {
             switch (msg.what) {
             case ENTRY_GAME:
                 Intent mainviewIntent = new Intent();
-//                mainviewIntent.setClass(getApplicationContext(), LinkLink.class);
                 mainviewIntent.setClass(getApplicationContext(), LevelActivity.class);
                 startActivity(mainviewIntent);
                 break;
@@ -47,12 +51,42 @@ public class MenuActivity extends Activity {
         SettingManager.getInstance().init(getApplicationContext());
         this.setContentView(R.layout.menu_view);
         MobclickAgent.onError(this);
+        
+        mAnimationset = new AnimationSet(true);
+        Animation a = new TranslateAnimation(0.0f, 0.0f, 0.0f, 20.0f);
+        a.setDuration(150);
+        a.setInterpolator(this, android.R.anim.decelerate_interpolator);
+        mAnimationset.addAnimation(a);
+        
+        Animation b = new TranslateAnimation(0.0f, 0.0f, 20.0f, -400.0f);
+        b.setDuration(150);
+        b.setStartOffset(250);
+        b.setInterpolator(this, android.R.anim.accelerate_interpolator);
+        mAnimationset.addAnimation(b);
+        mAnimationset.setAnimationListener(new AnimationListener() {
+            
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                mClassicModeView.setVisibility(View.GONE);
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+            }
+
+            @Override
+            public void onAnimationStart(Animation animation) {
+            }
+        });
+        
         initView();
     }
     
     @Override
     public void onStart() {
         super.onStart();
+        mClassicModeView.setVisibility(View.VISIBLE);
+        
         SettingManager.getInstance().init(getApplicationContext());
         
         boolean soundOpen = SettingManager.getInstance().getSoundOpen();
@@ -91,13 +125,7 @@ public class MenuActivity extends Activity {
     }
     
     private void initView() {
-//        Drawable classDrawable = this.getResources().getDrawable(R.drawable.classic_model);
-//        Drawable bg = Utils.getPressDrawable(this, ((BitmapDrawable) classDrawable).getBitmap());
-        
         mClassicModeView = findViewById(R.id.classic);
-//        if (bg != null) {
-//            classic.setBackgroundDrawable(bg);
-//        }
         
         TextView versionTV = (TextView) findViewById(R.id.version);
         if (versionTV != null) {
@@ -112,7 +140,8 @@ public class MenuActivity extends Activity {
             @Override
             public void onClick(View v) {
                 SoundEffectUtils.getInstance().playClickSound();
-                mHandler.sendEmptyMessageDelayed(ENTRY_GAME, 100);
+                mHandler.sendEmptyMessageDelayed(ENTRY_GAME, 400);
+                mClassicModeView.startAnimation(mAnimationset);
             }
         });
         

@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
+import android.view.animation.ScaleAnimation;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.GridView;
@@ -35,7 +36,8 @@ public class LevelActivity extends ScrollScreenActivity
     private LayoutInflater mInflater;
     private int mCurCategory;
     private GridView[] mGridViewList;
-    private Drawable mEggBg;
+    
+    private ScaleAnimation mLevelClickAnimation;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -51,6 +53,10 @@ public class LevelActivity extends ScrollScreenActivity
         mScrollScreen = getScrollScreen();
         mScrollScreen.addScreen(SCREEN_COUNT, this);
         mScrollScreen.setOnScreenChangedListener(this);
+        
+        mLevelClickAnimation = new ScaleAnimation(1.0f, 1.2f, 1.0f, 1.2f);
+        mLevelClickAnimation.setDuration(200);
+        mLevelClickAnimation.setInterpolator(this, android.R.anim.decelerate_interpolator);
     }
     
     @Override
@@ -129,6 +135,7 @@ public class LevelActivity extends ScrollScreenActivity
                 if (view == null) {
                     return;
                 }
+//                view.startAnimation(mLevelClickAnimation);
                 
                 View lock = view.findViewById(R.id.lock_icon);
                 if (lock.getVisibility() == View.GONE) {
