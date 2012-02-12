@@ -54,10 +54,12 @@ public class LinkLink extends Activity implements LLViewActionListener
     private View newGameButton, arrangeButton, hintButton;
     private View mNoMoreTipsView;
     private View mNoMoreTextView;
+    private View mBottomRegion;
     private TextView mArrangeCount;
     private TextView mHintCount;
     private TextView mSorceTV;
     private View mNext;
+    private View mStopView;
     private TimeProgressView mTimeView;
     private ContinueClickView mContinueClickView;
     private LevelView mLevelView;
@@ -79,6 +81,12 @@ public class LinkLink extends Activity implements LLViewActionListener
     private LevelInfo mLevelInfo;
     private AnimationSet mDispearAnimation;
     private AnimationSet mSorceAnimation;
+    
+    private AnimationSet mTitleDisplayAnimation;
+    private AnimationSet mTimeProgressAnimation;
+    private AnimationSet mBottomAnimation;
+    private AnimationSet mStopAnimation;
+    private AnimationSet mNewGameAnimation;
     
     private Context mContext;
     private boolean mNextLevel;
@@ -151,6 +159,36 @@ public class LinkLink extends Activity implements LLViewActionListener
         s.setDuration(200);
         this.mSorceAnimation.addAnimation(s);
         
+        mTitleDisplayAnimation = new AnimationSet(true);
+        Animation t = new TranslateAnimation(0.0f, 0.0f, -50.0f, 10.0f);
+        t.setDuration(300);
+        t.setInterpolator(AnimationUtils.loadInterpolator(this, android.R.anim.bounce_interpolator));
+        mTitleDisplayAnimation.addAnimation(t);
+        
+        mTimeProgressAnimation = new AnimationSet(true);
+        Animation p = new TranslateAnimation(-50.0f, 10.0f, 0.0f, 0.0f);
+        p.setDuration(300);
+        p.setInterpolator(AnimationUtils.loadInterpolator(this, android.R.anim.bounce_interpolator));
+        mTimeProgressAnimation.addAnimation(p);
+        
+        mBottomAnimation = new AnimationSet(true);
+        Animation p1 = new TranslateAnimation(0.0f, 0.0f, 50.0f, -10.0f);
+        p1.setDuration(300);
+        p1.setInterpolator(AnimationUtils.loadInterpolator(this, android.R.anim.bounce_interpolator));
+        mBottomAnimation.addAnimation(p1);
+        
+        mStopAnimation = new AnimationSet(true);
+        Animation stopT = new TranslateAnimation(-20.0f, 10.0f, -20.0f, 10.0f);
+        stopT.setDuration(300);
+        stopT.setInterpolator(AnimationUtils.loadInterpolator(this, android.R.anim.bounce_interpolator));
+        mStopAnimation.addAnimation(stopT);
+        
+        mNewGameAnimation = new AnimationSet(true);
+        Animation newGame = new TranslateAnimation(20.0f, -10.0f, -20.0f, 10.0f);
+        newGame.setDuration(300);
+        newGame.setInterpolator(AnimationUtils.loadInterpolator(this, android.R.anim.bounce_interpolator));
+        mNewGameAnimation.addAnimation(newGame);
+        
         mDispearAnimation = new AnimationSet(true);
         Animation a = new TranslateAnimation(0.0f, 0.0f, 50.0f, 0.0f);
         a.setDuration(2000);
@@ -214,6 +252,13 @@ public class LinkLink extends Activity implements LLViewActionListener
         super.onResume();
         LOGD("[[onResume]] >>>>>>>>> ");
         mFinishSuccessActivityShow = false;
+        
+        mLevelView.startAnimation(mTitleDisplayAnimation);
+        mTimeView.startAnimation(mTimeProgressAnimation);
+        mBottomRegion.startAnimation(mBottomAnimation);
+        mStopView.startAnimation(mStopAnimation);
+        newGameButton.startAnimation(mNewGameAnimation);
+        
         MobclickAgent.onResume(this);
     }
     
@@ -284,9 +329,11 @@ public class LinkLink extends Activity implements LLViewActionListener
         mSorceTV = (TextView) findViewById(R.id.sorce);
         mSorceTV.setText(String.format(getString(R.string.sorce), 0));
         
-        View stopView = findViewById(R.id.stop);
-        if (stopView != null) {
-            stopView.setOnClickListener(new View.OnClickListener() {
+        mBottomRegion = findViewById(R.id.button_region);
+        
+        mStopView = findViewById(R.id.stop);
+        if (mStopView != null) {
+            mStopView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     showStopDialog();

@@ -59,7 +59,7 @@ public class MenuActivity extends Activity {
         mAnimationset.addAnimation(a);
         
         Animation b = new TranslateAnimation(0.0f, 0.0f, 20.0f, -400.0f);
-        b.setDuration(150);
+        b.setDuration(100);
         b.setStartOffset(250);
         b.setInterpolator(this, android.R.anim.accelerate_interpolator);
         mAnimationset.addAnimation(b);
