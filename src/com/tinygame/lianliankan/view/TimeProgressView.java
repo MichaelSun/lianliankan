@@ -10,14 +10,11 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
 
-import com.tinygame.lianliankan.R;
-import com.tinygame.lianliankan.ThemeManager;
-import com.tinygame.lianliankan.utils.ImageSplitUtils;
+import com.tinygame.lianliankan.utils.ThemeManager;
 
 public class TimeProgressView extends View {
     private static final String TAG = "TimeProgressView";
@@ -314,7 +311,7 @@ public class TimeProgressView extends View {
         mContext = context;
         mProgressBt = loadBitmapFromAsset(mContext, "image/time_bar.png");
         mProgressBg = loadBitmapFromAsset(mContext, "image/process_bg.png");
-        mTimeProgressList = ImageSplitUtils.getInstance().getTimeProgressBtList();
+        mTimeProgressList = ThemeManager.getInstance().getTimeProgressList();
         if (mTimeProgressList.size() > 0) {
             mTimeProgressIconWidth = mTimeProgressList.get(0).getWidth();
             mTimeProgressIconHeight = mTimeProgressList.get(0).getHeight();

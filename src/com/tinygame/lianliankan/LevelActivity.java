@@ -21,6 +21,7 @@ import com.tinygame.lianliankan.screen.ScrollScreen;
 import com.tinygame.lianliankan.screen.ScrollScreen.OnScreenChangeListener;
 import com.tinygame.lianliankan.screen.ScrollScreen.ScreenContentFactory;
 import com.tinygame.lianliankan.screen.ScrollScreenActivity;
+import com.tinygame.lianliankan.utils.ThemeManager;
 
 public class LevelActivity extends ScrollScreenActivity
                 implements ScreenContentFactory, OnScreenChangeListener {
@@ -72,6 +73,13 @@ public class LevelActivity extends ScrollScreenActivity
                 gview.setAdapter(adapter);
             }
         }
+    }
+    
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        
+        ThemeManager.getInstance().unload();
     }
     
     @Override

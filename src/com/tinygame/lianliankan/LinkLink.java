@@ -34,8 +34,8 @@ import com.tinygame.lianliankan.engine.Chart;
 import com.tinygame.lianliankan.engine.FillContent;
 import com.tinygame.lianliankan.engine.Hint;
 import com.tinygame.lianliankan.engine.Tile;
-import com.tinygame.lianliankan.utils.ImageSplitUtils;
 import com.tinygame.lianliankan.utils.SoundEffectUtils;
+import com.tinygame.lianliankan.utils.ThemeManager;
 import com.tinygame.lianliankan.view.ContinueClickView;
 import com.tinygame.lianliankan.view.LevelView;
 import com.tinygame.lianliankan.view.LevelView.LevelChangedListener;
@@ -148,7 +148,6 @@ public class LinkLink extends Activity implements LLViewActionListener
         mContext = this;
         SettingManager.getInstance().init(getApplicationContext());
         SoundEffectUtils.getInstance().init(this);
-        ImageSplitUtils.getInstance().init(this);
         ThemeManager.getInstance().init(this);
         Env.ICON_REGION_INIT = false;
         

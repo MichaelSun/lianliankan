@@ -4,7 +4,7 @@ import java.util.Random;
 
 import android.text.TextUtils;
 
-import com.tinygame.lianliankan.ThemeManager;
+import com.tinygame.lianliankan.utils.ThemeManager;
 
 
 public class FillContent {

@@ -2,7 +2,9 @@ package com.tinygame.lianliankan.utils;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.lang.ref.SoftReference;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -17,7 +19,7 @@ import android.util.Log;
 
 import com.tinygame.lianliankan.config.Config;
 
-public class ImageSplitUtils {
+class ImageSplitUtils {
 
     private static final String TAG = "ImageSplitUtils";
     
@@ -36,6 +38,10 @@ public class ImageSplitUtils {
     private int mCurrentImageWidth;
     
     public static ImageSplitUtils getInstance() {
+        if (gImageSplitUtils == null) {
+            gImageSplitUtils = new ImageSplitUtils();
+        }
+        
         return gImageSplitUtils;
     }
 

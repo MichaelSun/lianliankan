@@ -1,7 +1,7 @@
 package com.tinygame.lianliankan.view;
 
+import java.lang.ref.SoftReference;
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.Random;
 
 import android.content.Context;
@@ -20,7 +20,7 @@ import android.view.SurfaceHolder.Callback;
 import android.view.SurfaceView;
 
 import com.tinygame.lianliankan.R;
-import com.tinygame.lianliankan.ThemeManager;
+import com.tinygame.lianliankan.config.Config;
 import com.tinygame.lianliankan.config.Env;
 import com.tinygame.lianliankan.engine.BlankRoute;
 import com.tinygame.lianliankan.engine.Chart;
@@ -30,8 +30,8 @@ import com.tinygame.lianliankan.engine.DirectionPath;
 import com.tinygame.lianliankan.engine.Hint;
 import com.tinygame.lianliankan.engine.Tile;
 import com.tinygame.lianliankan.utils.AssetsImageLoader;
-import com.tinygame.lianliankan.utils.ImageSplitUtils;
 import com.tinygame.lianliankan.utils.SoundEffectUtils;
+import com.tinygame.lianliankan.utils.ThemeManager;
 
 public class LinkLinkSurfaceView extends SurfaceView implements Callback {
     private static final String TAG = "LinkLinkSurfaceView";
@@ -44,6 +44,10 @@ public class LinkLinkSurfaceView extends SurfaceView implements Callback {
     
     private static final int PADDING_LEFT = 0;
     private static final int REFRESH_DELAY = 300;
+    
+    private static final int LOADING_COUNTS = 3;
+    private static final int LOADING_SLEEP = 100;
+    private static final long LOADING_TIME_DELAY = LOADING_COUNTS * LOADING_SLEEP;
     
     private Context mContext;
     private Paint mPaintHint;
@@ -157,7 +161,7 @@ public class LinkLinkSurfaceView extends SurfaceView implements Callback {
     
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        if (!Env.ICON_REGION_INIT || mChart == null) {
+        if (!Env.ICON_REGION_INIT || mChart == null || mForceRefresh) {
             return true;
         }
         int xPicIndex = (int) ((event.getX() - mStartX) / Env.ICON_WIDTH);
@@ -394,22 +398,46 @@ public class LinkLinkSurfaceView extends SurfaceView implements Callback {
                 if (mTileDataChanged || mForceRefresh) {
 //                    mInDrawingProgress = true;
                     if (mForceRefresh) {
+                        try {
+                            synchronized (mRoutes) {
+                                if (mRoutes != null && mRoutes.size() > 0) {
+                                    for (BlankRoute blankRoute : mRoutes) {
+                                        blankRoute.start.dismiss();
+                                        blankRoute.end.dismiss();
+                                    }
+                                    mRoutes.clear();
+                                }
+                            }
+                        } catch (Exception e) {
+                        }
+                        
+                        if (Config.DRAW_LINE_ANIMATION) {
+                            long start = System.currentTimeMillis();
+                            for (int i = 0; i < LOADING_COUNTS; ++i) {
+                                Canvas canvas = mHolder.lockCanvas();
+                                try {
+                                    if (canvas != null) {
+                                        onDrawFullViewLine(canvas, start);
+                                    }
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                } finally {
+                                    if (canvas != null) {
+                                        mHolder.unlockCanvasAndPost(canvas);
+                                    }
+                                }
+
+                                try {
+                                    Thread.sleep(LOADING_SLEEP);
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                        }
+                        
                         Canvas canvas = mHolder.lockCanvas();
                         try {
                             if (canvas != null) {
-                                try {
-                                    synchronized (mRoutes) {
-                                        if (mRoutes != null && mRoutes.size() > 0) {
-                                            for (BlankRoute blankRoute : mRoutes) {
-                                                blankRoute.start.dismiss();
-                                                blankRoute.end.dismiss();
-                                            }
-                                            mRoutes.clear();
-                                        }
-                                    }
-                                } catch (Exception e) {
-                                }
-                                
                                 onDrawFullView(canvas);
                             }
                         } catch (Exception e) {
@@ -484,12 +512,12 @@ public class LinkLinkSurfaceView extends SurfaceView implements Callback {
         mPaintDismissing = new Paint();
         mPaintDismissing.setAlpha(80);
         
-        mBackgroundBtList = new ArrayList<Bitmap>();
-        mBackgroundBtList.add(AssetsImageLoader.loadBitmapFromAsset(mContext, "background/game_bg"));
-        mBackgroundBtList.add(AssetsImageLoader.loadBitmapFromAsset(mContext, "background/game_bg1"));
-        mBackgroundBtList.add(AssetsImageLoader.loadBitmapFromAsset(mContext, "background/game_bg2"));
-        mBackgroundBtList.add(AssetsImageLoader.loadBitmapFromAsset(mContext, "background/game_bg3"));
-        mBackgroundBtList.add(AssetsImageLoader.loadBitmapFromAsset(mContext, "background/game_bg4"));
+//        mBackgroundBtList.add(AssetsImageLoader.loadBitmapFromAsset(mContext, "background/game_bg"));
+//        mBackgroundBtList.add(AssetsImageLoader.loadBitmapFromAsset(mContext, "background/game_bg1"));
+//        mBackgroundBtList.add(AssetsImageLoader.loadBitmapFromAsset(mContext, "background/game_bg2"));
+//        mBackgroundBtList.add(AssetsImageLoader.loadBitmapFromAsset(mContext, "background/game_bg3"));
+//        mBackgroundBtList.add(AssetsImageLoader.loadBitmapFromAsset(mContext, "background/game_bg4"));
+        mBackgroundBtList = ThemeManager.getInstance().getBgList();
         mCurBackgroundIndex = 0;
         mRandom = new Random();
         
@@ -520,13 +548,18 @@ public class LinkLinkSurfaceView extends SurfaceView implements Callback {
     }
     
     private void onDrawBoom() {
-        ArrayList<Bitmap> ret = ImageSplitUtils.getInstance().getBoomBtList();
+        ArrayList<SoftReference<Bitmap>> ret = ThemeManager.getInstance().getBoomList();
         LOGD(">>>>> draw boom >>>>>>>");
         mLinePoints = null;
         mLightIndex = 0;
-        for (Bitmap bt : ret) {
+        for (SoftReference<Bitmap> sbt : ret) {
+            if (sbt.get() == null || (sbt.get() != null && sbt.get().isRecycled())) {
+                continue;
+            }
+            
+            Bitmap bt = sbt.get();
             Canvas canvas = mHolder.lockCanvas();
-            LOGD(">>>>> draw boom for bt = " + bt + ">>>>>>>");
+            LOGD(">>>>> draw boom for bt = " + sbt + ">>>>>>>");
             try {
                 onDrawFullView(canvas);
                 
@@ -749,6 +782,69 @@ public class LinkLinkSurfaceView extends SurfaceView implements Callback {
         return false;
     }
     
+    private boolean onDrawFullViewLine(Canvas canvas, long start) {
+        int width = getWidth();
+        int height = getHeight();
+        
+        canvas.drawColor(0x00000000);
+        Bitmap curBg = mBackgroundBtList.get(mCurBackgroundIndex);
+        if (curBg != null) {
+            Rect bgSrc = new Rect(0, 0, curBg.getWidth(), curBg.getHeight());
+            Rect bgDest = new Rect(0, 0, width, height);
+            canvas.drawBitmap(curBg, bgSrc, bgDest, mPaintPic);
+        }
+        if (mChart == null) {
+            LOGD("[[onDrawFullViewLine]] return because chart invalid!");
+            return false;
+        }
+        
+        if (!Env.ICON_REGION_INIT) {
+            int sideLength = Math.min(width, height) - 2 * PADDING_LEFT;
+            Env.ICON_REGION_INIT = true;
+            Env.ICON_WIDTH = sideLength / mChart.xSize;
+            LOGD("[[onDraw]] sideLength = "+ sideLength + " icon size = " + mChart.xSize 
+                    + " icon width = " + Env.ICON_WIDTH + " >>>>>>>>>>>>>>>>>");
+            int imageWidth = ThemeManager.getInstance().getCurrentImageWidth();
+            if (imageWidth < Env.ICON_WIDTH) {
+//                Env.ICON_WIDTH = imageWidth;
+                mStartX = (width - (mChart.xSize * Env.ICON_WIDTH)) / 2;
+                mStartY = (height - (mChart.ySize * Env.ICON_WIDTH)) / 2;
+            } else {
+                mStartX = PADDING_LEFT;
+                mStartY = (height - (mChart.ySize * Env.ICON_WIDTH)) / 2;
+            }
+        }
+        
+        long curTime = System.currentTimeMillis();
+        long time = curTime - start;
+        if (time >= LOADING_TIME_DELAY) {
+            return false;
+        }
+        int line = (int) ((((float) (curTime - start)) / LOADING_TIME_DELAY) * mChart.ySize);
+        line = line > mChart.ySize ? mChart.ySize : line;
+        
+        for (int yIndex = 0; yIndex < line; yIndex++) {
+            for (int xIndex = 0; xIndex < mChart.xSize; xIndex++) {
+                try {
+                    Tile tileTemp = mChart.getTile(xIndex, yIndex);
+                    Drawable drawable = ThemeManager.getInstance().getImage(mChart.getTile(xIndex, yIndex).getImageIndex());
+                    if (tileTemp != mSelectTileTwo && tileTemp != mSelectTileOne && drawable != null) {
+                        drawable.setBounds(mStartX + xIndex * Env.ICON_WIDTH
+                                        , mStartY + yIndex * Env.ICON_WIDTH
+                                        , mStartX + (xIndex + 1) * Env.ICON_WIDTH
+                                        , mStartY + (yIndex + 1) * Env.ICON_WIDTH);
+                        drawable.draw(canvas);
+                    } else {
+                        mCurRoundClipTile = true;
+                    }
+                } catch (Exception e) {
+                }
+            }
+        }
+        
+        return true;
+    }
+    
     private void onDrawFullView(Canvas canvasOrg) {
         int width = getWidth();
         int height = getHeight();
@@ -785,7 +881,7 @@ public class LinkLinkSurfaceView extends SurfaceView implements Callback {
             Env.ICON_WIDTH = sideLength / mChart.xSize;
             LOGD("[[onDraw]] sideLength = "+ sideLength + " icon size = " + mChart.xSize 
                     + " icon width = " + Env.ICON_WIDTH + " >>>>>>>>>>>>>>>>>");
-            int imageWidth = ImageSplitUtils.getInstance().getCurrentImageWidth();
+            int imageWidth = ThemeManager.getInstance().getCurrentImageWidth();
             if (imageWidth < Env.ICON_WIDTH) {
 //                Env.ICON_WIDTH = imageWidth;
                 mStartX = (width - (mChart.xSize * Env.ICON_WIDTH)) / 2;

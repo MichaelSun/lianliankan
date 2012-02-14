@@ -1,6 +1,6 @@
 package com.tinygame.lianliankan.engine;
 
-import com.tinygame.lianliankan.ThemeManager;
+import com.tinygame.lianliankan.utils.ThemeManager;
 
 
 public class Tile {

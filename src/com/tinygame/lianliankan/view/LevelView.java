@@ -14,7 +14,7 @@ import android.util.Log;
 import android.view.View;
 
 import com.tinygame.lianliankan.R;
-import com.tinygame.lianliankan.utils.ImageSplitUtils;
+import com.tinygame.lianliankan.utils.ThemeManager;
 
 public class LevelView extends View {
     private static final String TAG = "LevelView";
@@ -99,7 +99,7 @@ public class LevelView extends View {
     private void init(Context context) {
         mContext = context;
         mNumberMap = new HashMap<Integer, Bitmap>();
-        ArrayList<Bitmap> number = ImageSplitUtils.getInstance().getLevelNumberBtList();
+        ArrayList<Bitmap> number = ThemeManager.getInstance().getLevelNumberList();
         if (number.size() > 0) {
             for (int i = 0; i < number.size(); ++i) {
                 mNumberMap.put(i, number.get(i));

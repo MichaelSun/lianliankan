@@ -14,7 +14,7 @@ import android.util.Log;
 import android.view.View;
 
 import com.tinygame.lianliankan.utils.AssetsImageLoader;
-import com.tinygame.lianliankan.utils.ImageSplitUtils;
+import com.tinygame.lianliankan.utils.ThemeManager;
 
 public class ContinueClickView extends View {
     private static final String TAG = "ContinueClickView";
@@ -43,7 +43,7 @@ public class ContinueClickView extends View {
         if (battleBt != null) {
             mBattleDrawable = new BitmapDrawable(battleBt);
         }
-        mNumberList = ImageSplitUtils.getInstance().getContinueClickBtList();
+        mNumberList = ThemeManager.getInstance().getContinueNumberList();
         mNumberDrawList = new ArrayList<Bitmap>();
         mPaint = new Paint();
         
