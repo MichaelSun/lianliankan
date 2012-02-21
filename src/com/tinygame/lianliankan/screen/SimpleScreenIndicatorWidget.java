@@ -40,6 +40,7 @@ public class SimpleScreenIndicatorWidget extends LinearLayout implements ScrollS
     private ArrayList<Drawable> mIndicatorImageSelected;;
     private float mDensity;
     private int mWidth;
+    private ScrollScreen mScrollScreen;
 //    private GradientDrawable mIndicatorBg;
     
     private static final int NO_SELECTOR_PADDING = 10;
@@ -74,13 +75,31 @@ public class SimpleScreenIndicatorWidget extends LinearLayout implements ScrollS
     }
 
 	@Override
-	public void addIndicator() {
+	public void addIndicator(ScrollScreen scrollScreen) {
+	    mScrollScreen = scrollScreen;
+	    
 		ImageView slidePot = new ImageView(getContext());
 		slidePot.setPadding(NO_SELECTOR_PADDING, NO_SELECTOR_PADDING, NO_SELECTOR_PADDING, NO_SELECTOR_PADDING);
 		
 		slidePot.setLayoutParams(new LinearLayout.LayoutParams(mWidth, mWidth));
 		slidePot.setScaleType(ScaleType.FIT_XY);
 		addView(slidePot);
+		
+//        if (slidePot != null) {
+//            slidePot.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    int childCount = getChildCount();
+//                    for (int i = 0; i < childCount; ++i) {
+//                        View view = getChildAt(i);
+//                        if (view == v && mScrollScreen != null) {
+//                            mScrollScreen.setToScreen(i);
+//                            break;
+//                        }
+//                    }
+//                }
+//            });
+//        }
 	}
 	
 	@Override

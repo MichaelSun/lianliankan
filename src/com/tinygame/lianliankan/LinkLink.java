@@ -600,6 +600,8 @@ public class LinkLink extends Activity implements LLViewActionListener
         finishIntent.putExtra(ResultActivity.COST_TIME, String.valueOf(mLevelInfo.cost));
         finishIntent.putExtra(ResultActivity.COUNT, String.valueOf(mLevelInfo.count));
         finishIntent.putExtra(ResultActivity.CONTINUE_COUNT, String.valueOf(mLevelInfo.continueCount));
+        finishIntent.putExtra(ResultActivity.CATEGORY, mLevelInfo.category);
+        finishIntent.putExtra(ResultActivity.LEVEL, mLevelInfo.level);
         this.startActivityForResult(finishIntent, 100);
     }
     

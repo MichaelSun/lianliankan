@@ -1,5 +1,7 @@
 package com.tinygame.lianliankan.db;
 
+import java.util.ArrayList;
+
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -53,6 +55,43 @@ public class DatabaseOperator {
             mDBProxy = InternalDatabaseProxy.getDBInstance(context);
             mInit = true;
         }
+    }
+    
+    public ArrayList<LevelInfo> getLevelInfoForCategory(int category, int curLevel) {
+        ArrayList<LevelInfo> ret = new ArrayList<LevelInfo>();
+        if (category >= 0) {
+            Cursor c = null;
+            try {
+                String selection = DataBaseConfig.INTEGRAL_TABLE_CATEGORY + " =?";
+                String[] selectionArgs = new String[] { String.valueOf(category) };
+                
+                c = mDBProxy.query(DataBaseConfig.INTEGRAL_TABLE_NAME, selection, selectionArgs, null);
+                
+                if (c != null && c.moveToFirst()) {
+                    do {
+                        LevelInfo info = new LevelInfo();
+                        info.category = category;
+                        info.level = Integer.valueOf(c.getString(c.getColumnIndex(DataBaseConfig.INTEGRAL_TABLE_LEVEL)));
+                        if (info.level >= 0 && info.level <= curLevel) {
+                            info.count = Integer.valueOf(c.getString(c.getColumnIndex(DataBaseConfig.INTEGRAL_TABLE_COUNT)));
+                            info.continueCount = Integer.valueOf(c.getString(c.getColumnIndex(DataBaseConfig.INTEGRAL_TABLE_CONTINUE)));
+                            info.max = Integer.valueOf(c.getString(c.getColumnIndex(DataBaseConfig.INTEGRAL_TABLE_MAX_CONTINUE)));
+                            info.cost = Integer.valueOf(c.getString(c.getColumnIndex(DataBaseConfig.INTEGRAL_TABLE_COST)));
+                            
+                            ret.add(info);
+                        }
+                    } while (c.moveToNext());
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            } finally {
+                if (c != null) {
+                    c.close();
+                }
+            }
+        }
+        
+        return ret;
     }
     
     public LevelInfo getLevelInfo(int category, int level) {

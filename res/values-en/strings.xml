@@ -14,7 +14,7 @@
     <string name="download_tips">You should download the icon for continue play</string>
     <string name="level" formatted="false">%s level</string>
     <string name="tips">Tips</string>
-    <string name="win_content" formatted="false">Cost : %s s\nCount : %s\nMax Continue Count : %s</string>
+    <string name="win_content" formatted="false">Cost : %s s\nCount : %s\nTotal Count : %s\nMax Continue Count : %s</string>
     <string name="version" formatted="false">Version:%s</string>
     <string name="sorce" formatted="false">sorce:%s</string>
     

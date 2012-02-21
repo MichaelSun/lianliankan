@@ -39,7 +39,7 @@ public class ScrollScreenActivity extends Activity {
                     "'com.zhang.new_test.R.id.scroll_screen'");
         }
         
-		indicator = (ScrollScreen.ScreenIndicator)findViewById(R.id.screen_indicator);
+		indicator = (ScrollScreen.ScreenIndicator) findViewById(R.id.screen_indicator);
 		if (indicator != null) {
 			screen.setScreenIndicator(indicator);
 		}

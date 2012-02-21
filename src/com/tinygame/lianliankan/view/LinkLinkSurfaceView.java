@@ -32,6 +32,7 @@ import com.tinygame.lianliankan.engine.Tile;
 import com.tinygame.lianliankan.utils.AssetsImageLoader;
 import com.tinygame.lianliankan.utils.SoundEffectUtils;
 import com.tinygame.lianliankan.utils.ThemeManager;
+import com.tinygame.lianliankan.utils.Utils;
 
 public class LinkLinkSurfaceView extends SurfaceView implements Callback {
     private static final String TAG = "LinkLinkSurfaceView";
@@ -549,7 +550,8 @@ public class LinkLinkSurfaceView extends SurfaceView implements Callback {
     
     private void onDrawBoom() {
         ArrayList<SoftReference<Bitmap>> ret = ThemeManager.getInstance().getBoomList();
-        LOGD(">>>>> draw boom >>>>>>>");
+        LOGD(">>>>> draw boom >>>>>>>" +
+                " cur time = " + Utils.curTime() + " >>>>>>>>>");
         mLinePoints = null;
         mLightIndex = 0;
         for (SoftReference<Bitmap> sbt : ret) {
@@ -593,10 +595,12 @@ public class LinkLinkSurfaceView extends SurfaceView implements Callback {
             }
         }
         
-        LOGD(">>>>> draw boom finish  >>>>>>>");
+        LOGD(">>>>> draw boom finish  >>>>>>>" + " cur time = " + Utils.curTime() + " >>>>>>>>>");
     }
     
     private void onDrawPathLine(Canvas canvas) {
+        LOGD("[[onDrawPathLine]] entry <<<>>>" + " cur time = " + Utils.curTime() + " >>>>>>>>>");
+        
         //test code 
         if (mLinePoints == null) {
             mLinePoints = new ArrayList<ArrayList<Point>>();
@@ -705,6 +709,8 @@ public class LinkLinkSurfaceView extends SurfaceView implements Callback {
                 }
             }
         }
+        
+        LOGD("[[onDrawPathLine]] level =========" + " cur time = " + Utils.curTime() + " >>>>>>>>>");
     }
     
     private void drawLight(Canvas canvas, Point p1, Point p2) {
@@ -858,7 +864,8 @@ public class LinkLinkSurfaceView extends SurfaceView implements Callback {
 
         mCurRoundClipTile = false;
         LOGD("[[onDrawFullView]] entry into  >>>>>>> width = " + width + " height = " + height
-                + " canvas = " + canvas);
+                + " canvas = " + canvas
+                + " cur time = " + Utils.curTime() + " >>>>>>>>>");
 //        canvas.drawColor(Color.BLACK);
         
         Bitmap curBg = mBackgroundBtList.get(mCurBackgroundIndex);
@@ -934,7 +941,8 @@ public class LinkLinkSurfaceView extends SurfaceView implements Callback {
             canvasOrg.drawBitmap(mFullOverLayBitmap, src, dest, this.mPaintPic);
         }
         
-        LOGD("[[onDrawFullView]] leva <<<<<<< width = " + width + " height = " + height);
+        LOGD("[[onDrawFullView]] leva <<<<<<< width = " + width + " height = " + height
+                + " cur time = " + Utils.curTime() + " >>>>>>>>>");
     }
 
     private void LOGD(String msg) {

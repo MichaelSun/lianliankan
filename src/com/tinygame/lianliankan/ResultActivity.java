@@ -1,5 +1,10 @@
 package com.tinygame.lianliankan;
 
+import java.util.ArrayList;
+
+import com.tinygame.lianliankan.db.DatabaseOperator;
+import com.tinygame.lianliankan.db.DatabaseOperator.LevelInfo;
+
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.KeyEvent;
@@ -15,6 +20,8 @@ public class ResultActivity extends Activity {
     public static final String COST_TIME = "cost_time";
     public static final String COUNT = "count";
     public static final String CONTINUE_COUNT = "continue_count";
+    public static final String CATEGORY = "category";
+    public static final String LEVEL = "level";
     
     public static final int SUCCESS_CONTENT = 0;
     public static final int FAILED_CONTENT = 1;
@@ -35,11 +42,26 @@ public class ResultActivity extends Activity {
         mResultType = getIntent().getIntExtra(RESULT_TYPE, SUCCESS_CONTENT);
         if (mResultType == SUCCESS_CONTENT) {
             setContentView(R.layout.win_view);
+            
             String time = getIntent().getStringExtra(COST_TIME);
             String count = getIntent().getStringExtra(COUNT);
             String continue_count = getIntent().getStringExtra(CONTINUE_COUNT);
+            int category = getIntent().getIntExtra(CATEGORY, 0);
+            int level = getIntent().getIntExtra(LEVEL, 0);
+            
+            ArrayList<LevelInfo> infos = DatabaseOperator.getInstance()
+                                            .getLevelInfoForCategory(category, level);
+            int totalCount = 0;
+            for (LevelInfo info : infos) {
+                totalCount += info.count;
+            }
+            
             TextView contentTV = (TextView) findViewById(R.id.content);
-            String showContent = String.format(getString(R.string.win_content), time, count, continue_count);
+            String showContent = String.format(getString(R.string.win_content)
+                                                , time
+                                                , count
+                                                , totalCount
+                                                , continue_count);
             contentTV.setText(showContent);
             
             View retry = findViewById(R.id.retry);

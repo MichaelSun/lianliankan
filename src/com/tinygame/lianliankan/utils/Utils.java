@@ -1,5 +1,8 @@
 package com.tinygame.lianliankan.utils;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -15,6 +18,7 @@ import android.graphics.RectF;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.StateListDrawable;
+import android.text.format.DateFormat;
 
 public class Utils {
 
@@ -67,5 +71,18 @@ public class Utils {
         }
         
         return null;
+    }
+    
+    private static final String DATE_FORMAT = "MM-dd HH:mm:ss:SSS";
+    private static SimpleDateFormat mDateFormat = new SimpleDateFormat(DATE_FORMAT);
+    private static Calendar mCalendar = Calendar.getInstance();
+    
+    public static String curTime() {
+        if (com.tinygame.lianliankan.config.Config.DEBUG) {
+            mCalendar.setTimeInMillis(System.currentTimeMillis());
+            return mDateFormat.format(mCalendar.getTime());
+        } else {
+            return "";
+        }
     }
 }

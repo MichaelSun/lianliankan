@@ -192,14 +192,14 @@ public class ScrollScreen extends ViewGroup {
 
             mLastMotionX = ev.getX();
             break;
-        case MotionEvent.ACTION_MOVE:///��ͬ
+        case MotionEvent.ACTION_MOVE:
             final float x = ev.getX();
             final float deltaX = mLastMotionX - x;
             mLastMotionX = x;
 
             scrollBy((int) deltaX, 0);
             break;
-        case MotionEvent.ACTION_UP:///��ͬ
+        case MotionEvent.ACTION_UP:
             final VelocityTracker velocityTracker = mVelocityTracker;
             velocityTracker.computeCurrentVelocity(1000, mMaximumVelocity);
             final int velocityX = (int) velocityTracker.getXVelocity();
@@ -255,7 +255,7 @@ public class ScrollScreen extends ViewGroup {
     		return;
     	}
     	
-		indicator.addIndicator();
+		indicator.addIndicator(this);
     }
     
     public void addScreen(int count, ScreenContentFactory contentFactory) {
@@ -289,7 +289,7 @@ public class ScrollScreen extends ViewGroup {
 	
 	public interface ScreenIndicator {
     	
-    	void addIndicator();
+    	void addIndicator(ScrollScreen scrollScreen);
     	
     	void setCurrentScreen(int index);
     }
