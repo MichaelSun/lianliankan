@@ -11,6 +11,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Point;
 import android.graphics.Rect;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -906,7 +907,11 @@ public class LinkLinkSurfaceView extends SurfaceView implements Callback {
                 try {
                     Tile tileTemp = mChart.getTile(xIndex, yIndex);
                     Drawable drawable = ThemeManager.getInstance().getImage(mChart.getTile(xIndex, yIndex).getImageIndex());
-                    if (tileTemp != mSelectTileTwo && tileTemp != mSelectTileOne && drawable != null) {
+                    if (tileTemp != mSelectTileTwo 
+                            && tileTemp != mSelectTileOne 
+                            && drawable != null
+                            && ((BitmapDrawable) drawable).getBitmap() != null
+                            && !((BitmapDrawable) drawable).getBitmap().isRecycled()) {
 //                        mItemBg.setBounds(mStartX + xIndex * Env.ICON_WIDTH
 //                                        , mStartY + yIndex * Env.ICON_WIDTH
 //                                        , mStartX + (xIndex + 1) * Env.ICON_WIDTH

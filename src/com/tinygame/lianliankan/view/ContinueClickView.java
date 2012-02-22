@@ -122,12 +122,16 @@ public class ContinueClickView extends View {
         
         startY = startY + mBattleDrawable.getIntrinsicHeight() - imageHeight;
         Rect src = new Rect(0, 0, imageWidth, imageHeight);
+        Bitmap bt = null;
         for (int i = 0; i < mNumberDrawList.size(); ++i) {
-            Rect dst = new Rect(mBattleDrawable.getIntrinsicWidth() + startX + (i * imageWidth)
+            bt = mNumberDrawList.get(i);
+            if (bt != null && !bt.isRecycled()) {
+                Rect dst = new Rect(mBattleDrawable.getIntrinsicWidth() + startX + (i * imageWidth)
                                 , startY
                                 , mBattleDrawable.getIntrinsicWidth() + startX + ((i + 1) * imageWidth)
                                 , startY + imageHeight);
-            canvas.drawBitmap(mNumberDrawList.get(i), src, dst, mPaint);
+                canvas.drawBitmap(mNumberDrawList.get(i), src, dst, mPaint);
+            }
         }
     }
 }

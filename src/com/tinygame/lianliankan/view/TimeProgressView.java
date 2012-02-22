@@ -238,10 +238,12 @@ public class TimeProgressView extends View {
             
             if (mCurTimeProgreeIconIndex < mTimeProgressList.size()) {
                 Bitmap drawIcon = mTimeProgressList.get(mCurTimeProgreeIconIndex);
-                Rect iconSrc = new Rect(0, 0, mTimeProgressIconWidth, mTimeProgressIconHeight);
-                Rect iconDest = new Rect(bgX, progressLeft + curTopPadding + topStart - 15
+                if (drawIcon != null && !drawIcon.isRecycled()) {
+                    Rect iconSrc = new Rect(0, 0, mTimeProgressIconWidth, mTimeProgressIconHeight);
+                    Rect iconDest = new Rect(bgX, progressLeft + curTopPadding + topStart - 15
                                     , progressBgWidth + bgX, progressLeft + curTopPadding + topStart + 15);
-                canvas.drawBitmap(drawIcon, iconSrc, iconDest, mPaint);
+                    canvas.drawBitmap(drawIcon, iconSrc, iconDest, mPaint);
+                }
                 
                 if (mPreDrawTime == 0) {
                     mPreDrawTime = System.currentTimeMillis();
@@ -264,10 +266,12 @@ public class TimeProgressView extends View {
             mCurTimeProgreeIconIndex = 0;
             if (mCurTimeProgreeIconIndex < mTimeProgressList.size()) {
                 Bitmap drawIcon = mTimeProgressList.get(mCurTimeProgreeIconIndex);
-                Rect iconSrc = new Rect(0, 0, mTimeProgressIconWidth, mTimeProgressIconHeight);
-                Rect iconDest = new Rect(bgX, topStart + curTopPadding - 15
+                if (drawIcon != null && !drawIcon.isRecycled()) {
+                    Rect iconSrc = new Rect(0, 0, mTimeProgressIconWidth, mTimeProgressIconHeight);
+                    Rect iconDest = new Rect(bgX, topStart + curTopPadding - 15
                                         , progressBgWidth + bgX, topStart + curTopPadding + 15);
-                canvas.drawBitmap(drawIcon, iconSrc, iconDest, mPaint);
+                    canvas.drawBitmap(drawIcon, iconSrc, iconDest, mPaint);
+                }
             }
         }
         
@@ -281,11 +285,15 @@ public class TimeProgressView extends View {
                 int totalNumberWidth = numberWidth * numbers.size();
                 float startX = ((float) (width - totalNumberWidth)) / 2;
                 int startY = (PADDING_TOP - numberHeight) / 2;
+                Bitmap bt = null;
                 for (int i = 0; i < numbers.size(); ++i) {
-                    canvas.drawBitmap(numbers.get(i)
+                    bt = numbers.get(i);
+                    if (bt != null && !bt.isRecycled()) {
+                        canvas.drawBitmap(numbers.get(i)
                                         , startX + (i * numberWidth)
                                         , startY
                                         , mPaint);
+                    }
                 }
             }
         } 

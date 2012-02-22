@@ -87,12 +87,16 @@ public class LevelView extends View {
         
         Rect src = new Rect(0, 0, numberWidth, numberHeight);
         Rect destTarget = null;
+        Bitmap drawBt = null;
         for (int i = 0; i < mLevelNumList.size(); ++i) {
             destTarget = new Rect(startX + mLevelLogo.getIntrinsicWidth() + PADDING + numberWidth * i
                     , numberStartY
                     , numberWidth * (i + 1) + startX + mLevelLogo.getIntrinsicWidth() + PADDING
                     , numberStartY + numberHeight);
-            canvas.drawBitmap(mNumberMap.get(mLevelNumList.get(i)), src, destTarget, mPaint);
+            drawBt = mNumberMap.get(mLevelNumList.get(i));
+            if (drawBt != null && !drawBt.isRecycled()) {
+                canvas.drawBitmap(drawBt, src, destTarget, mPaint);
+            }
         }
     }
     
