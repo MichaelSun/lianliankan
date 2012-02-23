@@ -21,6 +21,7 @@ import com.mobclick.android.MobclickAgent;
 import com.tinygame.lianliankan.config.Config;
 import com.tinygame.lianliankan.utils.SoundEffectUtils;
 import com.tinygame.lianliankan.utils.Utils;
+import com.wiyun.game.WiGame;
 
 public class MenuActivity extends Activity {
 
@@ -126,6 +127,22 @@ public class MenuActivity extends Activity {
     
     private void initView() {
         mClassicModeView = findViewById(R.id.classic);
+        
+        View sorceBt = findViewById(R.id.sorcebt);
+        sorceBt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                WiGame.openLeaderboard(Config.WIGAME_SORCE_KEY);
+            }
+        });
+        
+        View wigame = findViewById(R.id.wigame);
+        wigame.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                WiGame.startUI();
+            }
+        });
         
         TextView versionTV = (TextView) findViewById(R.id.version);
         if (versionTV != null) {

@@ -36,6 +36,7 @@ import com.tinygame.lianliankan.engine.Hint;
 import com.tinygame.lianliankan.engine.Tile;
 import com.tinygame.lianliankan.utils.SoundEffectUtils;
 import com.tinygame.lianliankan.utils.ThemeManager;
+import com.tinygame.lianliankan.utils.ToastUtil;
 import com.tinygame.lianliankan.view.ContinueClickView;
 import com.tinygame.lianliankan.view.LevelView;
 import com.tinygame.lianliankan.view.LevelView.LevelChangedListener;
@@ -43,6 +44,9 @@ import com.tinygame.lianliankan.view.LinkLinkSurfaceView;
 import com.tinygame.lianliankan.view.LinkLinkSurfaceView.LLViewActionListener;
 import com.tinygame.lianliankan.view.TimeProgressView;
 import com.tinygame.lianliankan.view.TimeProgressView.TimeProgressListener;
+import com.wiyun.game.WiGame;
+import com.wiyun.game.WiGameAllClient;
+import com.wiyun.game.WiGameClient;
 
 public class LinkLink extends Activity implements LLViewActionListener
                                             , TimeProgressListener
@@ -90,6 +94,13 @@ public class LinkLink extends Activity implements LLViewActionListener
     
     private Context mContext;
     private boolean mNextLevel;
+    
+    private WiGameClient mWiGameClient = new WiGameAllClient() {
+        public void wyScoreSubmitted(String leaderboardId, int score, int rank) {
+            LOGD("[[wyScoreSubmitted]] >>>>>>>>>> <<<<<<<<<");
+            ToastUtil.getInstance(mContext).showToast(R.string.sorce_update_success);
+        }
+    };
     
     private static final int PLAY_READY_SOUND = 0;
     private static final int PLAY_BACKGROUND_SOUND = 1;
@@ -222,6 +233,8 @@ public class LinkLink extends Activity implements LLViewActionListener
         MobclickAgent.setSessionContinueMillis(1 * 60 * 1000);
         MobclickAgent.onError(this);
         MobclickAgent.setUpdateOnlyWifi(false);
+        
+        WiGame.addWiGameClient(mWiGameClient);
     }
 
     @Override
@@ -440,6 +453,8 @@ public class LinkLink extends Activity implements LLViewActionListener
         
         mHandler.sendEmptyMessage(RESET_PROGRESS_TIME_VIEW);
         Categary_diff_selector.getInstance().saveCurretInfo();
+        
+        WiGame.removeWiGameClient(mWiGameClient);
     }
 
     @Override

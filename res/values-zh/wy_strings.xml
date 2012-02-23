@@ -1,0 +1,360 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2010 WiYun Inc.
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+  
+          http://www.apache.org/licenses/LICENSE-2.0
+  
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+
+<resources>
+    <!-- common for some activities -->
+	<string name="wy_gender_male">男</string>
+	<string name="wy_gender_female">女</string>
+	<string name="wy_button_guest">游客</string>
+	<string name="wy_button_ok">确定</string>
+	<string name="wy_button_cancel">取消</string>
+	<string name="wy_button_clear">清除</string>
+	<string name="wy_button_close">关闭</string>
+	<string name="wy_button_submit">提交</string>
+	<string name="wy_button_later">过会再看</string>
+	<string name="wy_button_recharge">充值</string>
+	<string name="wy_button_send">发送</string>
+	<string name="wy_button_new_account">注册新帐号</string>
+	<string name="wy_button_continue">继续</string>
+	<string name="wy_label_wigame">微云游戏社交网络</string>
+	<string name="wy_label_nickname_colon">昵称:</string>
+	<string name="wy_label_username_colon">帐户:</string>
+	<string name="wy_label_password_colon">密码:</string>
+	<string name="wy_label_gender_colon">性别:</string>
+	<string name="wy_label_use_bound_account">使用已绑定帐号登录</string>
+	<string name="wy_label_use_other_account">使用其它帐号</string>
+	<string name="wy_label_achieve_at_x">达成于%s</string>
+	<string name="wy_progress_logging_in">正在登录</string>
+	<string name="wy_progress_loading">正在载入</string>
+	<string name="wy_toast_please_input_bound_info">请输入电子邮件或电话号码</string>
+	<string name="wy_toast_no_image_gallery">没有找到图片库程序</string>
+	<string name="wy_toast_no_camera">没有找到照相机程序</string>
+	<string name="wy_context_item_select_all">全选</string>
+	<string name="wy_context_item_deselect_all">全不选</string>
+	
+	<!-- user map -->
+	<string name="wy_name_x_rank_y">%1$s, 排名: %2$d</string>
+	
+	<!-- full image gallery -->
+	<string name="wy_button_back">返回</string>
+	<string name="wy_toast_already_last">已到达最后一张</string>
+	<string name="wy_toast_already_first">已到达第一张</string>
+	
+	<!-- WiGame -->
+	<string name="wy_label_saving_game_data">正在上传游戏存档...</string>
+	<string name="wy_label_no_network_to_save_game">无网络可用, 无法保存游戏存档</string>
+	<string name="wy_toast_welcome_back">欢迎回来: %s</string>
+	<string name="wy_toast_device_banned">当前设备已被禁止登录</string>
+    <string name="wy_toast_submitting_challenge_result">正在提交挑战结果...</string>
+    <string name="wy_toast_challenge_result_submitted">挑战结果提交成功</string>
+    <string name="wy_toast_challenge_result_cached">挑战结果提交失败, 将会在以后再尝试提交</string>
+    <string name="wy_toast_score_submitted">分数提交成功</string>
+    <string name="wy_toast_score_cached">您处于离线状态, 分数将保存在本地并在您登录微云时提交</string>
+    <string name="wy_toast_score_submitted_with_rank">提交成功, 分数今日排名是%d</string>
+    <string name="wy_toast_score_submitted_with_rank_0">提交成功, 您的最好成绩是%s</string>
+    <string name="wy_toast_achievement_unlocked">您达成了一个新成就!</string>
+    <string name="wy_toast_x_achievement_unlocked">您达成了\"%s\"成就!</string>
+    <string name="wy_toast_replace_map_key">您还没有替换Map Key. 请阅读sdk中开发者指南的Map Key一节了解如何操作.</string>
+    <string name="wy_toast_no_network_to_send_feedback">当前网络不可用, 无法发送反馈</string>
+    
+    <!-- use another account -->
+	<string name="wy_toast_email_is_invalid">电子邮件地址无效</string>
+	<string name="wy_toast_password_cannot_be_empty">密码不能为空</string>
+	<string name="wy_label_use_wiyun_account">使用微云帐号</string>
+	<string name="wy_placeholder_input_email_or_mobile">输入电子邮件或电话号码</string>
+	<string name="wy_placeholder_input_password">输入您的密码</string>
+	
+	<!-- switch account -->
+	<string name="wy_label_select_account">选择帐号</string>
+	<string name="wy_label_last_played_x">最近在玩%s</string>
+	<string name="wy_progress_checking_account">正在检查帐号</string>
+	
+	<!-- submit score -->
+	<string name="wy_label_submit_score">提交分数</string>
+	<string name="wy_progress_submitting">正在提交</string>
+	<string name="wy_button_return">返回</string>
+	<string name="wy_button_open_leaderboard">查看排行榜</string>
+	<string name="wy_label_about_submit_score">提交分数后, 便可查看您在全球排行榜的排名, 并能与全球玩家PK大挑战</string>
+	<string name="wy_label_your_today_rank_is_x">您的今日排名是%d</string>
+	<string name="wy_label_your_score_cached">提交失败, 将在下次登录时自动提交</string>
+	<string name="wy_label_your_best_score_is_x">您的最好成绩是%s</string>
+	
+	<!-- single list -->
+	<string name="wy_single_list_label_no_more_to_load">无更多结果</string>
+	<string name="wy_single_list_label_showing_x_of_y">当前显示%1$d条结果, 共%2$d条</string>
+	<string name="wy_single_list_label_load_next_x_more">显示下%d条</string>
+	<string name="wy_single_list_label_load_prev_x_more">显示上%d条</string>
+	
+	<!-- send challenge -->
+	<string name="wy_send_challenge_friends">我的好友</string>
+	<string name="wy_send_challenge_neighbors">我的邻居</string>
+	<string name="wy_send_challenge_by_score">实力相当</string>
+	<string name="wy_label_online">在线</string>
+	<string name="wy_label_bet_honor_hint">使用荣誉点下注让挑战更加刺激</string>
+	<string name="wy_send_challenge_label_you_have_no_friends">您还没有添加任何好友, 请先在微云中找寻您的好友吧</string>
+	<string name="wy_send_challenge_label_no_neighbors">没有发现和您邻近的玩家, 尝试邀请您附近的朋友一起来玩吧</string>
+	<string name="wy_send_challenge_label_cannot_locate_myself">暂时无法获得您的位置信息, 请确认GPS功能可用, 稍后再试.</string>
+	<string name="wy_label_no_competitor_found">暂时没有发现和您实力相近的其他玩家</string>
+	<string name="wy_label_select_competitor">选择挑战对象</string>
+	<string name="wy_button_bet">下注</string>
+	<string name="wy_toast_select_one_friend_at_least">请至少选择一个好友</string>
+	<string name="wy_toast_challenge_require_bid">这个挑战必须要押上你的荣誉</string>
+	<string name="wy_toast_point_is_not_enough">发起这个挑战您的总荣誉需要超过%d点才行 (点数乘以对手人数)</string>
+	<string name="wy_label_score_is_x_bet_is_y">我的分数是%1$s, 下注为%2$d</string>
+	<string name="wy_toast_challenge_is_sent">挑战已经成功发送</string>
+	<string name="wy_label_best_score_is_x">历史最好成绩: %s</string>
+	<string name="wy_send_challenge_label_no_more_to_load">无更多结果</string>
+	<string name="wy_send_challenge_label_showing_x_of_y">当前显示%1$d条结果, 共%2$d条</string>
+	<string name="wy_send_challenge_label_load_next_x_more">显示下%d条</string>
+	<string name="wy_send_challenge_label_last_played_x">最近在玩%s</string>
+    <string name="wy_send_challenge_label_now_from_me_x_kilometers">该用户当前距我%.03f公里</string>
+    <string name="wy_send_challenge_label_recently_from_me_x_kilometers">最近该用户出现在离我%.03f公里的地方</string>
+    <string name="wy_placeholder_input_challenge_message">请输入您的挑战口号</string>
+    
+    <!-- recharge -->
+    <string name="wy_label_select_bank">选择银行</string>
+    <string name="wy_label_icbc">工商银行</string>
+    <string name="wy_label_ccb">建设银行</string>
+    <string name="wy_label_cmb">招商银行</string>
+    <string name="wy_label_card_face_value_alert">请注意：输入的面值必须和充值卡上的完全一致, 不然可能导致充值失败或者给您带来经济损失</string>
+    <string name="wy_label_confirm_face_value">确认面值信息</string>
+    <string name="wy_label_confirm_face_value_is_x">您输入的面值是%d, 请确认这个值正确。 输入的面值必须和充值卡上的完全一致, 不然可能导致充值失败或者给您带来经济损失。如果正确无误, 请点击确定按钮。</string>
+    <string name="wy_label_exchange_to_x">可兑换%d微宝</string>
+    <string name="wy_label_select_recharge_method">请选择一种充值方式</string>
+    <string name="wy_label_select_other_recharge_method">选择充值方式</string>
+    <string name="wy_label_select_card_face_value">请选择充值卡面值</string>
+    <string name="wy_label_x_yuan">%d元</string>
+    <string name="wy_label_recharge">帐户充值</string>
+    <string name="wy_label_about_recharge">请点击下面的\"选择充值方式\"按钮选择一种充值方式, 当前支持运营商充值卡, 支付宝, 手机网银等充值方式.</string>
+    <string name="wy_toast_please_input_card_number">请输入充值卡卡号</string>
+    <string name="wy_toast_please_input_card_password">请输入充值卡密码</string>
+    <string name="wy_toast_please_select_card_face_value">请选择充值卡面值</string>
+    <string name="wy_toast_recharging_is_submitted">充值请求已提交但是还未完成, 请在充值历史记录中查看请求状态</string>
+    <string name="wy_toast_recharging_is_successful">充值成功</string>
+    <string name="wy_toast_recharging_is_failed">充值失败, 请确认输入的充值卡信息无误后再重新尝试</string>
+    <string name="wy_toast_please_input_recharge_amount">请输入充值金额(最少1元)</string>
+    <string name="wy_toast_please_select_bank">请选择银行</string>
+    <string name="wy_context_item_alipay">支付宝</string>
+    <string name="wy_context_item_mobile_bank">手机网银</string>
+    <string name="wy_context_item_paypal">贝宝</string>
+    <string name="wy_placeholder_enter_alipay_recharge_value">请输入充值额度(单位: 元)</string>
+    <string name="wy_placeholder_enter_mobile_bank_recharge_value">请输入充值额度(单位: 元)</string>
+    <string name="wy_placeholder_enter_paypal_recharge_value">请输入充值额度(单位: 美元)</string>
+    <string name="wy_placeholder_enter_card_number">请输入充值卡卡号</string>
+    <string name="wy_placeholder_enter_card_password">请输入充值卡密码</string>
+    <string name="wy_button_enter_alipay_wap">进入支付宝网站进行支付</string>
+    <string name="wy_button_enter_mobile_bank_wap">进入手机网银站点进行支付</string>
+    <string name="wy_button_enter_paypal_wap">进入贝宝网站进行支付</string>
+    <string name="wy_progress_may_be_long_when_recharging">请等待, 充值可能需要较长时间</string>
+
+    <!-- recharge redirect -->
+    <string name="wy_toast_already_first_page">已是第一页</string>
+    
+    <!-- purchase dialog -->
+	<string name="wy_title_purchase_dialog">购买道具</string>
+    <string name="wy_label_my_honor">剩余荣誉:</string>
+    <string name="wy_label_my_balance">剩余微宝:</string>
+    <string name="wy_label_price">道具价格:</string>
+    <string name="wy_label_insufficient_balance">余额不足</string>
+    <string name="wy_label_insufficient_honor">荣誉点不足</string>
+    <string name="wy_purchase_dialog_label_not_enough_coins">您的余额不足以支付, 请点击充值按钮进行充值</string>
+    <string name="wy_purchase_dialog_label_loading">正在载入...</string>
+    <string name="wy_purchase_dialog_label_buying">正在购买...</string>
+    <string name="wy_label_x_coins">%d个微宝</string>
+    <string name="wy_label_x_honor">%d点荣誉</string>
+    <string name="wy_label_buy_count_x">购买数量: %d</string>
+    <string name="wy_label_free">免费</string>
+    <string name="wy_label_total_x_coins">(总计%d微宝)</string>
+    <string name="wy_label_total_x_honor">(总计%d荣誉)</string>
+	<string name="wy_button_adjust_count">调整数量</string>
+	<string name="wy_button_buy">购买</string>
+    <string name="wy_toast_not_enough_honor">您的荣誉点不足以支付, 请调整购买数量或者在游戏中达成成就获得更多的荣誉点</string>
+	<string name="wy_toast_item_count_is_zero">购买数量不能为0</string>
+	<string name="wy_toast_no_purchasable_items">没有可购买的物品</string>
+	
+	<!-- my bag -->
+	<string name="wy_title_my_bag">我的背包</string>
+	<string name="wy_label_owned_x">拥有数量: %d</string>
+	<string name="wy_button_use">使用</string>
+	<string name="wy_button_goto_store">前往商店</string>
+	<string name="wy_toast_no_item_in_bag">未在背包中找到相应物品</string>
+	
+	<!-- login -->
+	<string name="wy_label_new_account">取个名字吧</string>
+	<string name="wy_placeholder_input_nickname">请输入您的昵称</string>
+	<string name="wy_toast_nickname_cannot_be_empty">昵称不能为空</string>
+	
+	<!-- load game dialog -->
+	<string name="wy_label_downloading_saved_game">正在下载游戏存档...</string>
+    <string name="wy_label_confirm_delete">确认删除</string>
+    <string name="wy_label_delete_game_slot">您确定要删除这个游戏存档吗? 注意: 删除后无法恢复。</string>
+    <string name="wy_label_no_slots">目前您还没有任何该游戏存档, 如果该游戏支持保存存档, 请在游戏界面中进行保存操作</string>
+    <string name="wy_label_slot_name_x">存档名称: %s</string>
+    <string name="wy_label_slot_save_time_x">存档时间: %s</string>
+    <string name="wy_label_slot_desc_x">描述: %s</string>
+    <string name="wy_label_more_saved_game">更多游戏存档</string>
+   	<string name="wy_context_item_load_slot">载入</string>
+	<string name="wy_context_item_delete_slot">删除</string>
+	<string name="wy_toast_no_saved_game">没有游戏存档</string>
+	<string name="wy_toast_no_more_saved_games">无更多游戏存档</string>
+	
+	<!-- human time -->
+    <string name="wy_label_before_x_second">%d秒前</string>
+    <string name="wy_label_before_x_minute">%d分钟前</string>
+    <string name="wy_label_before_x_hour">%d小时前</string>
+    <string name="wy_label_before_x_hour_minute">%1$d小时%2$d分钟前</string>
+    <string name="wy_label_before_x_day">%d天前</string>
+	<string name="wy_date_format_MMddHHmm">%1$d月%2$d日 %3$02d:%4$02d</string>
+	<string name="wy_date_format_MMdd">%1$d月%2$d日</string>
+	<string name="wy_date_format_yyyyMMddHHmm">%1$d年%2$d月%3$d日 %4$02d:%5$02d</string>
+	<string name="wy_date_format_yyyyMMdd">%1$d年%2$d月%3$d日</string>
+	
+	<!-- home -->
+	<string name="wy_label_no_local_score">您在该排行榜暂无分数</string>
+	<string name="wy_label_x_welcome_to_wiyun">%s, 欢迎来到微云社区</string>
+    <string name="wy_label_my_friends_hint2">您收到了%d个好友添加请求</string>
+    <string name="wy_label_my_message_hint2">您有%d条未读消息</string>
+    <string name="wy_label_system_notice_hint2">您有%d条未读系统通知</string>
+    <string name="wy_label_pending_challenge_hint">您收到了%d个挑战请求</string>
+    <string name="wy_label_offline_mode">离线模式</string>
+    <string name="wy_label_me">我</string>
+    <string name="wy_label_achievements">成就</string>
+    <string name="wy_label_secret_achievement_desc">完成该成就时才可看到具体描述</string>
+    <string name="wy_label_privacy_settings">隐私设置</string>
+    <string name="wy_label_current_account">当前帐号</string>
+    <string name="wy_label_share_location">允许他人看到我的位置</string>
+    <string name="wy_label_playing_x">正在玩%s</string>
+    <string name="wy_label_local_cache">本地缓存</string>
+	<string name="wy_label_switch_account">切换帐号</string>
+	<string name="wy_label_logout_account">注销帐号</string>
+	<string name="wy_label_clear_cache">清空本地缓存</string>
+	<string name="wy_label_clear_cache_hint">清空本地缓存的网页和图片等资源, 以便于下次可以和服务器同步</string>
+	<string name="wy_label_logout_account_hint">注意: 为了避免您丢失当前帐号, 注销帐号之前必须绑定手机号或者电子邮件, 之后您可以通过绑定的手机号或电子邮件登录</string>
+	<string name="wy_label_no_leaderboard_and_achievement">当前游戏没有定义任何排行榜或成就</string>
+	<string name="wy_label_downloading_challenge_blob">正在下载挑战数据, 下载完成后将开始挑战, 请稍等...</string>
+	<string name="wy_label_confirm_accept_challenge">您只有一次机会迎战, 如果挑战时中途逃跑, 将被视为拒绝挑战. 是否确认开始迎战?</string>
+	<string name="wy_label_confirm_logout">确认注销吗? 请记住您绑定过的手机号或电子邮件和密码, 以后您还可以通过它们登录.</string>
+	<string name="wy_label_please_bind_first">您尚未给当前帐号绑定过手机号或者电子邮件, 是否现在绑定?</string>
+	<string name="wy_title_confirm_accept_challenge">确认接受挑战</string>
+	<string name="wy_title_confirm_logout">确认注销帐号</string>
+	<string name="wy_title_please_bind_first">设置绑定信息</string>
+	<string name="wy_option_item_search_user">搜索用户</string>
+	<string name="wy_option_item_my_friends">我的好友</string>
+	<string name="wy_option_item_exit">返回游戏</string>
+	<string name="wy_option_item_reload">重新载入</string>
+	<string name="wy_button_pending_challenges">我的挑战</string>
+	<string name="wy_button_pending_messages">我的消息</string>
+	<string name="wy_button_pending_notices">系统通知</string>
+	<string name="wy_button_local_scores">本地成绩</string>
+	<string name="wy_button_settings">系统设置</string>
+	<string name="wy_button_my_friends">我的好友</string>
+	<string name="wy_button_wiyun_plaza">微云广场</string>
+	<string name="wy_button_game_homepage">游戏主页</string>
+	<string name="wy_button_my_info">我的信息</string>
+	<string name="wy_button_wibox">游戏盒子</string>
+	<string name="wy_button_start_challenge">迎战</string>
+	<string name="wy_placeholder_say_something">说点什么吧</string>
+	<string name="wy_toast_please_input_reply">请输入内容</string>
+	<string name="wy_toast_content_too_long">您输入的内容超过了最大允许字符数(最大允许: %d)</string>
+	<string name="wy_toast_clear_cache_ok">本地缓存清除成功</string>
+	<string name="wy_toast_clear_cache_fail">本地缓存清除失败</string>
+	<string name="wy_toast_no_mapview">暂时无法使用改功能, 因为在您的设备上无法初始化地图扩展组件</string>
+	
+	<!-- challenge toast -->
+	<string name="wy_label_show_me_now">是否现在查看?</string>
+	<string name="wy_button_show_challenge">现在查看</string>
+	
+	<!-- event result parser -->
+	<string name="wy_toast_server_error">手机网络有问题, 请等待一会儿后再试</string>
+	
+	<!-- download blob -->
+	<string name="wy_toast_failed_to_download_blob">下载数据失败, 请等待一会儿后再试</string>
+	<string name="wy_toast_cancelled_download_blob">下载已经取消</string>
+	
+	<!-- dlc downloader -->
+	<string name="wy_label_about_download_dlc">有些物品带有附件，正在下载这些附件。附件是一个物品的附加数据，对于物品的使用非常重要。如果您不想现在就下载，可以点击\"以后下载\"按钮。</string>
+	<string name="wy_toast_failed_to_download_dlc">有些附件下载失败，当该物品使用时会再次尝试下载</string>
+	
+	<!-- dialog -->
+	<string name="wy_dialog_ok">确定</string>
+	<string name="wy_dialog_cancel">取消</string>
+	<string name="wy_dialog_title_input">输入对话框</string>
+	
+	<!-- compose topic -->
+	<string name="wy_toast_content_cannot_be_empty">内容不能为空</string>
+	<string name="wy_toast_title_cannot_be_empty">标题不能为空</string>
+	<string name="wy_toast_post_topic_successful">主题发布成功</string>
+	<string name="wy_toast_reply_topic_successful">主题回复成功</string>
+	<string name="wy_toast_post_activity_successful">您的心情已经发布到微云广场</string>
+	<string name="wy_toast_no_my_location">无法得到您的当前位置, 无信息可插入</string>
+    <string name="wy_button_post">发布</string>
+    <string name="wy_title_compose_topic">发布主题</string>
+    <string name="wy_title_reply_topic">回复主题</string>
+    <string name="wy_title_compose_activity">发表心情</string>
+    <string name="wy_title_send_feedback">反馈意见</string>
+    <string name="wy_placeholder_input_topic_title">输入帖子的标题</string>
+    <string name="wy_label_send_feedback_hint">写下您对本应用的意见或建议</string>
+    <string name="wy_label_my_location_is_colon">我在这里:</string>
+    <string name="wy_label_input_your_mood">输入您想分享的心情吧</string>
+    <string name="wy_progress_posting">正在发布...</string>
+    
+    <!-- bid picker -->
+    <string name="wy_label_about_make_a_bet">您可以为这次挑战押上荣誉点, 每战胜一个对手您可以赢得相应荣誉点数, 失败则失去荣誉点数. 挑战所需的点数会从您的总荣誉中暂扣.\n\n这个挑战限制的最小和最大点数是:\n最小: %1$s\n最大: %2$s\n\n您当前的总荣誉: %3$d</string>
+    <string name="wy_label_unlimited">无限制</string>
+    <string name="wy_toast_bid_is_less_than_min">所押荣誉点小于最小值</string>
+    <string name="wy_toast_bid_is_larger_than_max">所押荣誉点大于最大值</string>
+    <string name="wy_toast_bid_is_larger_than_your_points">当前押注超过了您的总荣誉</string>
+    
+    <!-- CloudApi -->
+	<string name="wy_label_connection_problem">网络连接错误, 请稍后重试</string>
+	
+	<!-- account retrieval -->
+	<string name="wy_label_old_password_colon">旧密码:</string>
+	<string name="wy_label_confirm_password_colon">确认:</string>
+	<string name="wy_label_about_account_retrieval">设置绑定信息可以保护您的帐号，并支持从其它设备登录。您可以输入电子邮件或手机号码。</string>
+	<string name="wy_label_account_retrieval">设置帐号绑定信息</string>
+	<string name="wy_label_new_password_colon">新密码:</string>
+	<string name="wy_toast_old_password_cannot_be_empty">请输入旧密码</string>
+	<string name="wy_toast_new_password_cannot_be_empty">请输入新密码</string>
+	<string name="wy_toast_confirm_password_cannot_be_empty">请确认新密码</string>
+	<string name="wy_toast_two_passwords_not_match">新密码不匹配</string>
+	<string name="wy_progress_binding">正在设置绑定信息</string>
+	<string name="wy_button_skip">跳过</string>
+	<string name="wy_placeholder_input_username">输入您的用户名</string>
+	
+	<!-- change my portrait -->
+	<string name="wy_title_change_portrait">修改头像</string>
+	<string name="wy_button_upload">上传</string>
+	<string name="wy_label_change_portrait_hint">点击下面的按钮, 可以选择拍摄一张照片或者选择一张图片作为您的头像</string>
+	<string name="wy_toast_portrait_renewed">头像更新成功</string>
+	<string name="wy_progress_uploading_portriat">正在上传头像...</string>
+	<string name="wy_toast_please_select_portrait">请点击底部按钮, 从照相机或者相册中选择您的头像</string>
+	
+	<!-- crop image -->
+	<string name="wy_button_save">保存</string>
+	
+	<!-- mopay -->
+	<string name="wy_toast_mopay_initialization_failed">魔贝初始化失败</string>
+	<string name="wy_toast_failed_to_start_mopay">启动魔贝失败</string>
+	<string name="wy_toast_mopay_payment_is_ongoing">充值正在进行中, 请在充值历史中查看充值状态</string>
+	<string name="wy_toast_mopay_payment_failed">操作失败, 错误信息: %s</string>
+	<string name="wy_toast_cannot_use_mopay">无法使用mopay支付</string>
+	<string name="wy_progress_first_time_use_mopay">这是您第一次使用魔贝充值服务, 请等待魔贝服务模块下载完成</string>
+	<string name="wy_label_please_install_mopay">下载完成，请在安装完成后回到这个界面点击继续按钮</string>
+	
+	<!-- notification -->
+	<string name="wy_label_downloading">正在下载</string>
+</resources>

@@ -2,7 +2,7 @@ package com.tinygame.lianliankan.config;
 
 public class Config {
 
-    public static final boolean DEBUG = false;
+    public static final boolean DEBUG = true;
     
     public static final boolean SOUND_DEBUG = false;
     
@@ -14,6 +14,10 @@ public class Config {
     public static final String ACTION_LEVEL = "level";
     public static final String ACTION_START = "start";
     public static final String ACTION_START_LAUNCH = "launch";
+    
+    public static final String WIGAME_API_KEY = "e114a43362729371";
+    public static final String WIGAME_SECRECT_KEY = "DKZjrg6T95hJZqtunpQwf8PLVff2Nkce";
+    public static final String WIGAME_SORCE_KEY = "bb5f718b9a08b91c";
     
     public static final String APP_ID = "53e13f6906527b33";
     

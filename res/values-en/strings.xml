@@ -18,6 +18,8 @@
     <string name="version" formatted="false">Version:%s</string>
     <string name="sorce" formatted="false">sorce:%s</string>
     
+    <string name="sorce_update_success">update sorce success,press leader button for it.</string>
+    
     <string name="perf_last_diff">last_diff</string>
     <string name="perf_last_cate">last_cate</string>
     <string name="perf_sound_open">sound_open</string>

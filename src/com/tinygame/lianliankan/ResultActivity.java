@@ -2,9 +2,6 @@ package com.tinygame.lianliankan;
 
 import java.util.ArrayList;
 
-import com.tinygame.lianliankan.db.DatabaseOperator;
-import com.tinygame.lianliankan.db.DatabaseOperator.LevelInfo;
-
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.KeyEvent;
@@ -13,6 +10,11 @@ import android.view.WindowManager;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.widget.TextView;
+
+import com.tinygame.lianliankan.config.Config;
+import com.tinygame.lianliankan.db.DatabaseOperator;
+import com.tinygame.lianliankan.db.DatabaseOperator.LevelInfo;
+import com.wiyun.game.WiGame;
 
 public class ResultActivity extends Activity {
 
@@ -62,6 +64,11 @@ public class ResultActivity extends Activity {
                                                 , count
                                                 , totalCount
                                                 , continue_count);
+            int historyScore = SettingManager.getInstance().getHighScore();
+            if (totalCount > historyScore) {
+                SettingManager.getInstance().setHighScore(totalCount);
+            }
+            
             contentTV.setText(showContent);
             
             View retry = findViewById(R.id.retry);
@@ -91,6 +98,8 @@ public class ResultActivity extends Activity {
                 }
             });
             
+            WiGame.submitScore(Config.WIGAME_SORCE_KEY, totalCount, null, true);
+            
         } else if (mResultType == FAILED_CONTENT) {
             setContentView(R.layout.lose_view);
             
@@ -112,6 +121,14 @@ public class ResultActivity extends Activity {
                 }
             });
         }
+        
+        View sorceBt = findViewById(R.id.sorcebt);
+        sorceBt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                WiGame.openLeaderboard(Config.WIGAME_SORCE_KEY);
+            }
+        });
     }
     
     @Override

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2010 WiYun Inc.
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+  
+          http://www.apache.org/licenses/LICENSE-2.0
+  
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content"
+	android:minHeight="48dp"
+	android:paddingTop="5dp"
+	android:paddingBottom="5dp"
+	android:paddingLeft="10dp"
+	android:paddingRight="10dp"
+	android:orientation="horizontal"
+	android:gravity="center_vertical">
+	
+	<LinearLayout
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:orientation="horizontal"
+		android:gravity="center_vertical"
+		android:padding="6dp"
+		android:background="@drawable/wy_save_game_dialog_bg">
+		
+		<!-- slot screenshot -->
+		<ImageView
+			android:id="@+id/wy_iv_screenshot"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:minHeight="48dp"
+			android:minWidth="48dp"
+			android:scaleType="center"
+			android:background="@drawable/wy_picture_frame"/>
+	
+		<LinearLayout
+			android:layout_width="0dp"
+			android:layout_height="wrap_content"
+			android:layout_weight="1"
+			android:paddingLeft="5dp"
+			android:orientation="vertical"
+			android:gravity="center_vertical">
+			
+			<!-- name -->
+			<TextView 
+				android:id="@+id/wy_tv_name"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    style="@android:style/TextAppearance.Small.Inverse"
+			    android:ellipsize="marquee"
+			    android:singleLine="true"/>
+			    
+			<!-- time -->
+			<TextView 
+				android:id="@+id/wy_tv_time"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    style="@android:style/TextAppearance.Small.Inverse"
+			    android:ellipsize="marquee"
+			    android:singleLine="true"/>
+			    
+			<!-- desc -->
+			<TextView 
+				android:id="@+id/wy_tv_desc"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    style="@android:style/TextAppearance.Small.Inverse"
+			    android:ellipsize="marquee"
+			    android:singleLine="false"
+			    android:maxLines="2"/>
+			    
+		</LinearLayout>
+		
+	</LinearLayout>
+	
+</LinearLayout>

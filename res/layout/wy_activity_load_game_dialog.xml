@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2010 WiYun Inc.
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+  
+          http://www.apache.org/licenses/LICENSE-2.0
+  
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+
+<com.wiyun.game.widget.OverlapFrameLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content">
+	
+	<LinearLayout
+		android:id="@+id/wy_ll_main_panel"
+		android:layout_width="300dp"
+		android:layout_height="285dp"
+		android:paddingLeft="3dp"
+		android:paddingRight="3dp"
+		android:paddingTop="8dp"
+		android:paddingBottom="4dp"
+		android:layout_gravity="bottom|center_horizontal"
+		android:orientation="vertical"
+		android:background="@drawable/wy_dialog_bg">
+
+		<ListView
+			android:id="@android:id/list"
+			android:layout_width="fill_parent"
+			android:layout_height="0dp"
+			android:layout_weight="1"
+			android:divider="@null"
+			android:dividerHeight="0dp"
+			android:background="@android:color/transparent"
+			android:cacheColorHint="@android:color/transparent"
+			android:scrollbarThumbVertical="@drawable/wy_scrollbar_vertical_thumb_style1"
+			android:fadingEdge="none"/>
+
+		<FrameLayout
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content">
+				
+			<!-- button: more saved games -->
+			<Button
+				android:id="@+id/wy_b_more_games"
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:background="@drawable/wy_button_style10"/>
+				
+			<!--
+				button text label, because we need drawable align with text
+				so we can't set text on button
+			 -->
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_gravity="center"
+				android:text="@string/wy_label_more_saved_game"
+				android:textColor="@android:color/white"
+				style="@android:style/TextAppearance.Small"
+				android:drawableRight="@drawable/wy_round_down_arrow"
+				android:drawablePadding="5dp"
+				android:shadowColor="@android:color/black"
+				android:shadowDx="1"
+				android:shadowDy="1"
+				android:shadowRadius="1"/>
+			
+		</FrameLayout>
+		
+	</LinearLayout>
+
+	<!-- loading panel -->
+	<LinearLayout
+		android:id="@+id/wy_ll_loading_panel" 
+	    android:orientation="vertical"
+	    android:layout_width="fill_parent"
+	    android:layout_height="fill_parent"
+	    android:padding="30dp"
+	    android:gravity="center"
+	    android:layout_gravity="center"
+	    android:background="@drawable/wy_dialog_progress_bg"
+	    android:focusable="true"
+	    android:clickable="true">
+	    
+	    <ProgressBar
+	    	android:layout_height="wrap_content"
+	    	android:layout_width="wrap_content"
+	    	android:indeterminate="true"/>
+	    	
+	    <TextView 
+	        android:layout_width="wrap_content" 
+	        android:layout_height="wrap_content"
+	        android:layout_marginTop="5dip"
+	        style="@android:style/TextAppearance.Medium"
+	        android:singleLine="true"
+	        android:text="@string/wy_progress_loading"/>
+	        
+	</LinearLayout>
+
+	<!-- close button -->
+    <Button 
+    	android:id="@+id/wy_b_close"
+        android:layout_width="wrap_content" 
+        android:layout_height="wrap_content" 
+        android:layout_gravity="right|top"
+        android:background="@drawable/wy_button_close_dialog"/>
+        
+</com.wiyun.game.widget.OverlapFrameLayout>

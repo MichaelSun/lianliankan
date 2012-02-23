@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2010 WiYun Inc.
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+  
+          http://www.apache.org/licenses/LICENSE-2.0
+  
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+
+<ScrollView
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:id="@+id/wy_sv_local_scroller"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+    android:scrollbarStyle="outsideOverlay"
+    android:scrollbarThumbVertical="@drawable/wy_scrollbar_vertical_thumb_style2"
+    android:background="#ff011f48"
+    android:fadingEdge="none"
+    android:visibility="invisible">
+
+	<LinearLayout
+		android:id="@+id/wy_ll_local_panel"
+		android:layout_width="fill_parent"
+		android:layout_height="fill_parent"
+		android:paddingTop="54dp"
+		android:paddingLeft="10dp"
+		android:paddingRight="10dp"
+		android:paddingBottom="60dp"
+		android:orientation="vertical">
+	
+		<LinearLayout
+			android:id="@+id/wy_ll_empty_hint_panel"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:background="@drawable/wy_dialog_block_bg"
+			android:orientation="vertical">
+			
+			<!-- hint for no local score -->
+			<TextView
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				style="@android:style/TextAppearance.Small"
+				android:singleLine="false"
+				android:padding="10dp"
+				android:text="@string/wy_label_no_leaderboard_and_achievement"
+				android:textColor="@android:color/black"/>
+			
+		</LinearLayout>
+	
+	</LinearLayout>
+
+</ScrollView>

@@ -33,7 +33,7 @@
         android:layout_alignParentTop="true"
         android:scaleType="fitCenter"
         android:src="@drawable/title_icon" />
-
+    
 	<com.tinygame.lianliankan.screen.SimpleScreenIndicatorWidget
 	    android:id="@id/screen_indicator"
 	  	android:layout_width="wrap_content"

@@ -42,6 +42,15 @@ public class SettingManager {
         mEditor.commit();        
     }
     
+    public int getHighScore() {
+        return mSharedPreferences.getInt(mContext.getString(R.string.perf_score), 0);
+    }
+    
+    public void setHighScore(int score) {
+        mEditor.putInt(mContext.getString(R.string.perf_score), score);
+        mEditor.commit();   
+    }
+    
     public void setOpenLevel(int level) {
         mEditor.putInt(mContext.getString(R.string.perf_level_opened), level);
         mEditor.commit();

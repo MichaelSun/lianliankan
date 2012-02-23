@@ -17,11 +17,13 @@ import android.widget.ArrayAdapter;
 import android.widget.GridView;
 import android.widget.TextView;
 
+import com.tinygame.lianliankan.config.Config;
 import com.tinygame.lianliankan.screen.ScrollScreen;
 import com.tinygame.lianliankan.screen.ScrollScreen.OnScreenChangeListener;
 import com.tinygame.lianliankan.screen.ScrollScreen.ScreenContentFactory;
 import com.tinygame.lianliankan.screen.ScrollScreenActivity;
 import com.tinygame.lianliankan.utils.ThemeManager;
+import com.wiyun.game.WiGame;
 
 public class LevelActivity extends ScrollScreenActivity
                 implements ScreenContentFactory, OnScreenChangeListener {
@@ -58,6 +60,14 @@ public class LevelActivity extends ScrollScreenActivity
         mLevelClickAnimation = new ScaleAnimation(1.0f, 1.2f, 1.0f, 1.2f);
         mLevelClickAnimation.setDuration(200);
         mLevelClickAnimation.setInterpolator(this, android.R.anim.decelerate_interpolator);
+        
+//        View sorcebt = findViewById(R.id.sorcebt);
+//        sorcebt.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                WiGame.openLeaderboard(Config.WIGAME_SORCE_KEY);
+//            }
+//        });
     }
     
     @Override
@@ -155,6 +165,7 @@ public class LevelActivity extends ScrollScreenActivity
                 }
             }
         });
+        
     }
 
     class InfoAdapter extends ArrayAdapter<EachLevelInfo> {

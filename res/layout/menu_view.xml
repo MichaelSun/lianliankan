@@ -23,6 +23,29 @@
         android:layout_marginRight="15dp"
         android:layout_marginBottom="15dp" />
     
+    <ImageButton 
+        android:id="@+id/sorcebt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_bg"
+        android:src="@drawable/scorebt"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="15dp"
+        android:layout_above="@id/setting"
+        android:layout_marginBottom="10dp" />
+    
+    <ImageButton 
+        android:id="@+id/wigame"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/wigame"
+        android:background="@drawable/button_bg"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="10dp"
+        android:layout_above="@id/sorcebt"
+        android:layout_marginRight="15dp"
+        android:visibility="gone" />
+    
     <TextView 
         android:id="@+id/version"
         android:layout_width="wrap_content"

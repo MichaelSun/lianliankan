@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2010 WiYun Inc.
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+  
+          http://www.apache.org/licenses/LICENSE-2.0
+  
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+
+<com.wiyun.game.widget.OverlapFrameLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content">
+
+	<!-- main panel -->
+	<LinearLayout
+		android:id="@+id/wy_ll_main_panel"
+		android:layout_width="wrap_content"
+		android:layout_height="300dp"
+		android:minWidth="440dp"
+		android:maxWidth="460dp"
+		android:orientation="horizontal"
+		android:padding="10dp"
+		android:gravity="center_horizontal"
+		android:layout_gravity="bottom|center_horizontal"
+		android:background="@drawable/wy_dialog_bg">
+
+		<!-- item panel -->
+		<LinearLayout
+			android:layout_width="wrap_content"
+			android:layout_height="fill_parent"
+			android:orientation="vertical"
+			android:background="@drawable/wy_dialog_block_bg">
+			
+			<FrameLayout
+				android:layout_width="122dp"
+				android:layout_height="fill_parent"
+				android:layout_marginTop="7dp"
+				android:layout_marginBottom="7dp"
+				android:layout_marginLeft="7dp"
+				android:layout_marginRight="7dp"
+				android:background="@drawable/wy_dialog_large_concave_banner_bg">
+				
+				<!-- item grid view -->
+				<GridView
+					android:id="@+id/wy_gv_items"
+					android:layout_width="fill_parent"
+					android:layout_height="fill_parent"
+					android:horizontalSpacing="1dp"
+					android:verticalSpacing="5dp"
+					android:padding="4dp"
+					android:numColumns="2"
+					android:fadingEdge="none"
+					android:scrollbarThumbVertical="@drawable/wy_scrollbar_vertical_thumb_style3"
+					android:listSelector="@null"
+					android:gravity="fill"/>
+					
+				<!-- single item view -->
+				<ImageView
+					android:id="@+id/wy_iv_single_item"
+					android:layout_width="96dp"
+					android:layout_height="96dp"
+					android:background="@drawable/wy_picture_frame"
+					android:layout_gravity="center"
+					android:scaleType="fitXY"/>
+					
+			</FrameLayout>
+			
+		</LinearLayout>
+
+		<!-- container: info and buttons -->
+		<LinearLayout
+			android:layout_width="0dp"
+			android:layout_height="fill_parent"
+			android:layout_weight="1"
+			android:layout_marginLeft="8dp"
+			android:orientation="vertical">
+			
+			<LinearLayout
+				android:layout_width="fill_parent"
+				android:layout_height="0dp"
+				android:layout_weight="1"
+				android:orientation="vertical"
+				android:padding="10dp"
+				android:background="@drawable/wy_dialog_block_bg">
+
+				<!-- item name -->
+			    <TextView 
+			    	android:id="@+id/wy_tv_item_name"
+			        android:layout_width="wrap_content" 
+			        android:layout_height="wrap_content"
+			        style="@android:style/TextAppearance.Medium"
+			        android:singleLine="true"
+			        android:ellipsize="marquee"
+			        android:textColor="#ff3c3c3c"/>
+
+				<!-- item description -->
+			    <TextView 
+			    	android:id="@+id/wy_tv_item_desc"
+			        android:layout_width="fill_parent" 
+			        android:layout_height="wrap_content"
+			        style="@android:style/TextAppearance.Small"
+			        android:textColor="#ff6e6e6e"
+			        android:maxLines="3"/>
+
+		    	<!-- item count label -->
+			    <TextView 
+			    	android:id="@+id/wy_tv_item_count"
+			        android:layout_width="wrap_content" 
+			        android:layout_height="wrap_content"
+			        android:layout_marginTop="10dp"
+			        style="@android:style/TextAppearance.Medium"
+			        android:singleLine="true"
+			        android:ellipsize="marquee"
+			        android:textColor="#ff3c3c3c"/>
+			        
+			</LinearLayout>
+			
+			<!-- button area -->
+			<LinearLayout
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="6dp"
+				android:orientation="horizontal"
+				android:gravity="center_vertical">
+				
+				<!-- goto store button -->
+				<Button
+					android:id="@+id/wy_b_goto_store"
+					android:layout_width="0dp"
+					android:layout_height="wrap_content"
+					android:layout_weight="1"
+					android:text="@string/wy_button_goto_store"
+					android:background="@drawable/wy_dialog_button"
+					android:textAppearance="@android:style/TextAppearance.Medium.Inverse"
+					android:textStyle="bold"/>
+					
+				<!-- use button -->
+				<Button
+					android:id="@+id/wy_b_use"
+					android:layout_width="0dp"
+					android:layout_height="wrap_content"
+					android:layout_weight="1"
+					android:layout_marginLeft="15dp"
+					android:background="@drawable/wy_dialog_button_blue"
+					style="@style/TextAppearance.Medium.Shadow"
+					android:text="@string/wy_button_use"
+					android:textStyle="bold"/>
+				
+			</LinearLayout>
+				
+		</LinearLayout>
+	
+	</LinearLayout>
+
+	<!-- progress panel -->
+	<include layout="@layout/wy_panel_progress"/>
+
+	<!-- close button -->
+    <Button 
+    	android:id="@+id/wy_b_close"
+        android:layout_width="wrap_content" 
+        android:layout_height="wrap_content" 
+        android:layout_gravity="right|top"
+        android:background="@drawable/wy_button_close_dialog"/>
+	
+</com.wiyun.game.widget.OverlapFrameLayout>

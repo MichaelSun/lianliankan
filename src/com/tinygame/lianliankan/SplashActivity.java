@@ -9,8 +9,11 @@ import android.os.Message;
 import android.view.Window;
 import android.view.WindowManager;
 
+import com.tinygame.lianliankan.config.Config;
 import com.tinygame.lianliankan.db.DatabaseOperator;
 import com.tinygame.lianliankan.utils.SoundEffectUtils;
+import com.wiyun.game.WiGame;
+import com.wiyun.game.WiGameAllClient;
 
 public class SplashActivity extends Activity {
 
@@ -46,6 +49,13 @@ public class SplashActivity extends Activity {
                 SoundEffectUtils.getInstance().init(SplashActivity.this.getApplicationContext());
                 SettingManager.getInstance().init(getApplicationContext());
                 DatabaseOperator.getInstance().init(getApplicationContext());
+                WiGame.init(getApplicationContext()
+                            , Config.WIGAME_API_KEY
+                            , Config.WIGAME_SECRECT_KEY
+                            , "1.0"
+                            , true);
+                WiGame.setHideScoreToast(false);
+                WiGame.setSandboxMode(false);
                 Thread.sleep(1200);
             } catch (Exception e) {
             }
