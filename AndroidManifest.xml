@@ -12,6 +12,7 @@
 	<application android:icon="@drawable/icon" android:label="@string/app_name">
 		<meta-data android:value="4f26afbe52701526bc0000be" android:name="UMENG_APPKEY" />
 		<meta-data android:value="google" android:name="UMENG_CHANNEL" />
+		<meta-data android:name="YOUMI_CHANNEL" android:value="10020" />
 		
 		<activity android:name="net.youmi.android.appoffers.YoumiOffersActivity" android:configChanges="keyboard|keyboardHidden|orientation" />
 		<activity android:name=".SplashActivity" android:label="@string/app_name" android:screenOrientation="portrait">
