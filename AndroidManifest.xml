@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" 
     package="com.tinygame.lianliankan" 
-    android:versionCode="11" 
-    android:versionName="2.1">
+    android:versionCode="12" 
+    android:versionName="2.2">
 	<uses-sdk android:minSdkVersion="7" />
 	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 	<!-- add permissions for umeng -->
@@ -11,7 +11,7 @@
 	
 	<application android:icon="@drawable/icon" android:label="@string/app_name">
 		<meta-data android:value="4f26afbe52701526bc0000be" android:name="UMENG_APPKEY" />
-		<meta-data android:value="google" android:name="UMENG_CHANNEL" />
+		<meta-data android:value="360" android:name="UMENG_CHANNEL" />
 		<meta-data android:name="YOUMI_CHANNEL" android:value="10020" />
 		
 		<activity android:name="net.youmi.android.appoffers.YoumiOffersActivity" android:configChanges="keyboard|keyboardHidden|orientation" />
