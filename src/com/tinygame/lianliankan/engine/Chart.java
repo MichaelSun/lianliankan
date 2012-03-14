@@ -1,5 +1,9 @@
 package com.tinygame.lianliankan.engine;
 
+import android.util.Log;
+
+import com.tinygame.lianliankan.config.Config;
+
 
 public class Chart {
     
@@ -18,14 +22,124 @@ public class Chart {
             }
         }
     }
+    
+    public Chart(int x, int y) {
+        xSize = x;
+        ySize = y;
+    }
+    
+    public Chart align(int mode) {
+        Chart copyChart = copy();
+        switch (mode) {
+        case Config.ALIGN_LEFT:
+            alignLeft(copyChart);
+            return copyChart;
+        case Config.ALIGN_RIGHT:
+            alignRight(copyChart);
+            return copyChart;
+        case Config.ALIGN_TOP:
+            alignTop(copyChart);
+            return copyChart;
+        case Config.ALIGN_BOTTOM:
+            alignBottom(copyChart);
+            return copyChart;
+        }
+        
+        return null;
+    }
+    
+    private static void alignBottom(Chart chart) {
+        if (chart != null) {
+            for (int x = 1; x < chart.xSize - 1; ++x) {
+                int dIndex = chart.ySize - 2;
+                for (int y = chart.ySize - 2; y > 0; --y) {
+                    if (!chart.tiles[y][x].isBlank()) {
+                        chart.tiles[dIndex][x].setImageIndex(chart.tiles[y][x].getImageIndex());
+                        chart.tiles[dIndex][x].resetDismiss();
+                        if (dIndex != y) {
+                            chart.tiles[y][x].dismiss(); 
+                        }
+                        dIndex--;
+                    }
+                }
+            }
+        }
+    }
+    
+    private static void alignTop(Chart chart) {
+        if (chart != null) {
+            for (int x = 1; x < chart.xSize - 1; ++x) {
+                int dIndex = 1;
+                for (int y = 1; y < chart.ySize - 1; ++y) {
+                    if (!chart.tiles[y][x].isBlank()) {
+                        chart.tiles[dIndex][x].setImageIndex(chart.tiles[y][x].getImageIndex());
+                        chart.tiles[dIndex][x].resetDismiss();
+                        if (dIndex != y) {
+                            chart.tiles[y][x].dismiss(); 
+                        }
+                        dIndex++;
+                    }
+                }
+            }
+        }
+    }
+    
+    private static void alignRight(Chart chart) {
+        if (chart != null) {
+            for (int y = 1; y < chart.ySize - 1; ++y) {
+                int dIndex = chart.xSize - 2;
+                for (int x = chart.xSize - 2; x > 0; --x) {
+                    if (!chart.tiles[y][x].isBlank()) {
+                        chart.tiles[y][dIndex].setImageIndex(chart.tiles[y][x].getImageIndex());
+                        chart.tiles[y][dIndex].resetDismiss();
+                        if (dIndex != x) {
+                            chart.tiles[y][x].dismiss(); 
+                        }
+                        dIndex--;
+                    }
+                }
+            }
+        }
+    }
+    
+    private static void alignLeft(Chart chart) {
+        if (chart != null) {
+            for (int y = 1; y < chart.ySize - 1; ++y) {
+                int dIndex = 1;
+                for (int x = 1; x < chart.xSize - 1; ++x) {
+                    if (!chart.tiles[y][x].isBlank()) {
+                        chart.tiles[y][dIndex].setImageIndex(chart.tiles[y][x].getImageIndex());
+                        chart.tiles[y][dIndex].resetDismiss();
+                        if (dIndex != x) {
+                            chart.tiles[y][x].dismiss(); 
+                        }
+                        dIndex++;
+                    }
+                }
+            }
+        }
+    }
+    
+    private Chart copy() {
+        Chart ret = new Chart(this.xSize, this.ySize);
+        ret.tiles = new Tile[ySize][xSize];
+        for (int y = 0; y < ySize; ++y) {
+            for (int x = 0; x < xSize; ++x) {
+                ret.tiles[y][x] = this.tiles[y][x];
+            }
+        }
+        
+        return ret;
+    }
 	
 	public boolean isAllBlank(){
 		for (int y = 0; y < ySize; y++) {
 			for (int x = 0; x < xSize; x++) {
-				if(tiles[y][x].isBlank() == false)
+				if(!tiles[y][x].isBlank())
 					return false;
 			}
 		}
+		
 		return true;
 	}
 	
@@ -74,5 +188,15 @@ public class Chart {
 		} catch (ArrayIndexOutOfBoundsException ex) {
 			return Tile.UN_EXIST_TILE;
 		}
+	}
+	
+	public void dumpChart() {
+//	    for (int y = 0; y < ySize; ++y) {
+//	        StringBuilder data = new StringBuilder();
+//	        for (int x = 0; x < xSize; ++x) {
+//	            data.append(tiles[y][x].getImageIndex()).append(",");
+//	        }
+//	        Log.d("[[Chart]]", data.toString());
+//	    }
 	}
 }

@@ -289,8 +289,10 @@ public class LinkLink extends Activity implements LLViewActionListener
             if (point < Config.POINT_100 && level >= Config.APP_DOWNLOA_SHOW_LEVEL) {
                 showCountDownloadDialog();
             } else if (point < Config.POINT_200 && level >= Config.APP_DOWNLOA_SHOW_LEVEL_TWO) {
-                YoumiPointsManager.spendPoints(this, Config.POINT_100);
+//                YoumiPointsManager.spendPoints(this, Config.POINT_100);
 
+                showCountDownloadDialog();
+            } else if (point < Config.POINT_300 && level >= Config.APP_DOWNLOAD_SHOW_LEVEL_THREE) { 
                 showCountDownloadDialog();
             } else {
                 if (mDownloadDialog != null) {
@@ -458,6 +460,16 @@ public class LinkLink extends Activity implements LLViewActionListener
     }
 
     @Override
+    public void onAlignChart(Chart alignChart) {
+        if (alignChart != null) {
+            alignChart.dumpChart();
+            
+            mLLView.setChart(alignChart);
+            mLLView.forceRefresh();
+        }
+    }
+    
+    @Override
     public void onNoHintToConnect() {
         noMoreConnectChanged();
     }
@@ -474,6 +486,7 @@ public class LinkLink extends Activity implements LLViewActionListener
     }
     
     private void noMoreConnectChanged() {
+        mTimeView.stop();
         mHandler.removeMessages(SHOW_NO_MORE_TIPS);
         Chart chart = mLLView.getChart();
         chart.reArrange();
@@ -683,6 +696,7 @@ public class LinkLink extends Activity implements LLViewActionListener
             mSorceTV.setText(String.format(getString(R.string.sorce), mLevelInfo.count));
             mCountClick = 0;
             mLLView.setChart(c);
+            mLLView.setAlignMode(Categary_diff_selector.getInstance().getCurretntDiffAlignMode());
             mCurrentTimeProgress = Categary_diff_selector.getInstance().getCurrentTime();
             int curLevel = Categary_diff_selector.getInstance().getCurrentDiffLevel();
             mLevelView.setLevel(curLevel);
@@ -768,6 +782,7 @@ public class LinkLink extends Activity implements LLViewActionListener
             mCountClick = 0;
             mLLView.changeBackground();
             mLLView.setChart(c);
+            mLLView.setAlignMode(Categary_diff_selector.getInstance().getCurretntDiffAlignMode());
             mLLView.forceRefresh();
             mCurrentTimeProgress = Categary_diff_selector.getInstance().getCurrentTime();
             mLevelView.setLevel(Categary_diff_selector.getInstance().getCurrentDiffLevel());
@@ -871,7 +886,7 @@ public class LinkLink extends Activity implements LLViewActionListener
 
     @Override
     public void onAnimationStart(Animation animation) {
-        mTimeView.stop();
+//        mTimeView.stop();
     }
     
     private void LOGD(String msg) {

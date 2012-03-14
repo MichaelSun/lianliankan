@@ -2,6 +2,8 @@ package com.tinygame.lianliankan;
 
 import java.util.ArrayList;
 
+import com.tinygame.lianliankan.config.Config;
+
 import android.util.Log;
 
 public class Categary_diff_selector {
@@ -13,12 +15,14 @@ public class Categary_diff_selector {
         public int hint;
         public int rerange;
         public int level;
+        public int alignMode;
         
-        public Diff(String diff, int time, int hint, int rerange) {
+        public Diff(String diff, int time, int hint, int rerange, int alignMode) {
             this.diff = diff;
             this.time = time;
             this.hint = hint;
             this.rerange = rerange;
+            this.alignMode = alignMode;
         }
     }
     
@@ -60,11 +64,13 @@ public class Categary_diff_selector {
         return null;
     }
     
-//    public String updateCategory() {
-//        mCurrentCategary++;
-//        mCurrentDiff = 0;
-//        return this.getCurrentCategary();
-//    }
+    public int getCurretntDiffAlignMode() {
+        if (mCurrentDiff < mDiffArryList.size()) {
+            return mDiffArryList.get(mCurrentDiff).alignMode;
+        }
+        
+        return -1;
+    }
     
     public String getCurrentDiff() {
         if (mCurrentDiff < mDiffArryList.size()) {
@@ -106,14 +112,6 @@ public class Categary_diff_selector {
         return mCurrentDiff + 1;
     }
     
-//    public int getCurrentLevel() {
-//        if (getCurrentDiff() != null && getCurrentCategary() != null) {
-//            return 1 + mCurrentDiff + mDiffArryList.size() * mCurrentCategary;
-//        }
-//        
-//        return 0;
-//    }
-    
     public void restDiff() {
         mCurrentDiff = 0;
     }
@@ -136,10 +134,6 @@ public class Categary_diff_selector {
     }
     
     public void updateLevelInfo(int level, int cate) {
-//        int diffCount = mDiffArryList.size();
-//        int category = (level - 1) / diffCount;
-//        int diff = (level - 1) % diffCount;
-        
         mCurrentCategary = cate;
         mCurrentDiff = level - 1;
     }
@@ -177,30 +171,50 @@ public class Categary_diff_selector {
         mCateLargeArryList.add("image/4_80.png");
         mCateLargeArryList.add("image/5_80.png");
         
-        mDiffArryList.add(new Diff("6x6", 25, 1, 1));
-        mDiffArryList.add(new Diff("6x8", 28, 1, 1));
-        mDiffArryList.add(new Diff("6x8", 28, 1, 1));
+        mDiffArryList.add(new Diff("6x6", 25, 1, 1, -1));
+        mDiffArryList.add(new Diff("6x8", 28, 1, 1, -1));
+        mDiffArryList.add(new Diff("6x8", 28, 1, 1, -1));
         
-        mDiffArryList.add(new Diff("6x9", 28, 2, 1));
-        mDiffArryList.add(new Diff("6x10", 29, 2, 1));
-        mDiffArryList.add(new Diff("7x8", 30, 2, 1));
-        mDiffArryList.add(new Diff("7x10", 32, 2, 1));
-        mDiffArryList.add(new Diff("8x8", 30, 3, 1));
+        mDiffArryList.add(new Diff("6x6", 27, 1, 1, Config.ALIGN_LEFT));
+        mDiffArryList.add(new Diff("6x8", 32, 1, 1, Config.ALIGN_RIGHT));
+        mDiffArryList.add(new Diff("6x8", 32, 1, 1, Config.ALIGN_TOP));
+        mDiffArryList.add(new Diff("6x8", 32, 1, 1, Config.ALIGN_BOTTOM));
         
-        mDiffArryList.add(new Diff("8x9", 40, 4, 2));
-        mDiffArryList.add(new Diff("8x10", 44, 4, 2));
-        mDiffArryList.add(new Diff("8x11", 46, 4, 2));
-        mDiffArryList.add(new Diff("8x12", 46, 4, 2));
-        mDiffArryList.add(new Diff("8x12", 48, 4, 2));
+        mDiffArryList.add(new Diff("6x9", 28, 2, 1, -1));
+        mDiffArryList.add(new Diff("6x10", 29, 2, 1, -1));
+        mDiffArryList.add(new Diff("7x8", 30, 2, 1, -1));
+        mDiffArryList.add(new Diff("7x10", 32, 2, 1, -1));
+        mDiffArryList.add(new Diff("8x8", 30, 3, 1, -1));
         
-        mDiffArryList.add(new Diff("9x8", 55, 4, 2));
-        mDiffArryList.add(new Diff("9x10", 60, 5, 3));
-        mDiffArryList.add(new Diff("9x12", 65, 5, 3));
+        mDiffArryList.add(new Diff("8x9", 40, 4, 2, -1));
+        mDiffArryList.add(new Diff("8x10", 44, 4, 2, -1));
+        mDiffArryList.add(new Diff("8x11", 46, 4, 2, -1));
+        mDiffArryList.add(new Diff("8x12", 46, 4, 2, -1));
+        mDiffArryList.add(new Diff("8x12", 48, 4, 2, -1));
         
-        mDiffArryList.add(new Diff("10x10", 75, 5, 3));
-        mDiffArryList.add(new Diff("10x11", 85, 5, 3));
-        mDiffArryList.add(new Diff("10x12", 90, 5, 3));
-        mDiffArryList.add(new Diff("10x14", 100, 5, 3));
+        mDiffArryList.add(new Diff("8x10", 48, 4, 2, Config.ALIGN_LEFT));
+        mDiffArryList.add(new Diff("8x11", 50, 4, 2, Config.ALIGN_RIGHT));
+        mDiffArryList.add(new Diff("8x12", 52, 4, 2, Config.ALIGN_TOP));
+        mDiffArryList.add(new Diff("8x12", 54, 4, 2, Config.ALIGN_BOTTOM));
+        
+        mDiffArryList.add(new Diff("9x8", 55, 4, 2, -1));
+        mDiffArryList.add(new Diff("9x10", 60, 5, 3, -1));
+        mDiffArryList.add(new Diff("9x12", 65, 5, 3, -1));
+        
+        mDiffArryList.add(new Diff("10x10", 75, 5, 3, -1));
+        mDiffArryList.add(new Diff("10x11", 85, 5, 3, -1));
+        mDiffArryList.add(new Diff("10x12", 90, 5, 3, -1));
+        mDiffArryList.add(new Diff("10x14", 100, 5, 3, -1));
+        
+        mDiffArryList.add(new Diff("10x10", 75, 5, 3, -1));
+        mDiffArryList.add(new Diff("10x11", 85, 5, 3, -1));
+        mDiffArryList.add(new Diff("10x12", 90, 5, 3, -1));
+        mDiffArryList.add(new Diff("10x14", 100, 5, 3, -1));
+        
+        mDiffArryList.add(new Diff("10x10", 83, 5, 3, Config.ALIGN_LEFT));
+        mDiffArryList.add(new Diff("10x11", 93, 5, 3, Config.ALIGN_RIGHT));
+        mDiffArryList.add(new Diff("10x12", 100, 5, 3, Config.ALIGN_TOP));
+        mDiffArryList.add(new Diff("10x14", 110, 5, 3, Config.ALIGN_BOTTOM));
     }
     
     private void LOGD(String msg) {

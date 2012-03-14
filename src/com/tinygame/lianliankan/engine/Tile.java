@@ -19,10 +19,10 @@ public class Tile {
 
 	private int alpha = 255;
 	
-	public int deAlpha(int number){
-		alpha -= number;
-		return alpha;
-	}
+    public int deAlpha(int number) {
+        alpha -= number;
+        return alpha;
+    }
 	
 	public void dismiss() {
 		this.image = ThemeManager.NO_IMAGE;
@@ -193,6 +193,10 @@ public class Tile {
 	
 	private boolean isDismissing(){
 		return dismissing;
+	}
+	
+	public void resetDismiss() {
+	    dismissing = false;
 	}
 	
 	public void dismissing() {

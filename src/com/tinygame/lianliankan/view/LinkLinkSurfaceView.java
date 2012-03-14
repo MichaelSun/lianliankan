@@ -42,6 +42,8 @@ public class LinkLinkSurfaceView extends SurfaceView implements Callback {
         void onNoHintToConnect();
         void onFinishOnTime();
         void onDismissTouch();
+        
+        void onAlignChart(Chart alignChart);
     }
     
     private static final int PADDING_LEFT = 0;
@@ -95,6 +97,8 @@ public class LinkLinkSurfaceView extends SurfaceView implements Callback {
     
     private DrawTread mDrawTread;
     private SelectThread mSelectorThread;
+    
+    private int mAlignModel = -1;
     
     public Runnable mRefreshRunnable = new Runnable() {
         public void run() {
@@ -195,6 +199,10 @@ public class LinkLinkSurfaceView extends SurfaceView implements Callback {
         mLLViewActionListener = l;
     }
     
+    public void setAlignMode(int alignMode) {
+        mAlignModel = alignMode;
+    }
+    
     public Chart getChart() {
         return mChart;
     }
@@ -287,6 +295,14 @@ public class LinkLinkSurfaceView extends SurfaceView implements Callback {
                     mRoutes.clear();
                 }
             }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+    
+    private void checkChatStatus() {
+        LOGD("[[checkChatStatus]] >>>>>> <<<<<<<");
+        try {
             if (mChart.isAllBlank()) {
                 if (mLLViewActionListener != null) {
                     mLLViewActionListener.onFinishOnTime();
@@ -297,11 +313,30 @@ public class LinkLinkSurfaceView extends SurfaceView implements Callback {
                     mLLViewActionListener.onNoHintToConnect();
                 }
             }
-        } catch (Exception ex) {
-            ex.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
     
+    private void alignChat() {
+        LOGD("[[alignChat]] >>>>>> <<<<<<<");
+        try {
+            if (mChart.isAllBlank()) {
+                return;
+            } else {
+                LOGD("[[alignChat]] before align chart >>>>>>>");
+                mChart.dumpChart();
+                
+                Chart alignChart = mChart.align(mAlignModel);
+                if (mLLViewActionListener != null) {
+                    mLLViewActionListener.onAlignChart(alignChart);
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     private class SelectThread extends Thread {
         private boolean mRunning;
         
@@ -459,6 +494,9 @@ public class LinkLinkSurfaceView extends SurfaceView implements Callback {
                         mSelectTileTwo = null;
                         
                         doRoutes();
+                        alignChat();
+                        
+                        checkChatStatus();
                         Canvas canvas_temp = mHolder.lockCanvas();
                         try {
                             if (canvas_temp != null) {

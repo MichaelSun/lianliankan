@@ -24,37 +24,20 @@ public class Config {
     public static final String APP_SECRET_KEY = "e1703eadcc64253b";
     
     public static final int APP_DOWNLOA_SHOW_LEVEL = 10;
-    public static final int APP_DOWNLOA_SHOW_LEVEL_TWO = 16;
+    public static final int APP_DOWNLOA_SHOW_LEVEL_TWO = 20;
+    public static final int APP_DOWNLOAD_SHOW_LEVEL_THREE = 32;
     
     public static final int POINT_100 = 100;
     public static final int POINT_200 = 200;
-    public static final int POINT_300 = 200;
+    public static final int POINT_300 = 300;
     
     public static final int DISMISS_SORCE = 10;
     public static final int CONTINUE_DISMISS_SORCE = 15;
     
-    public static final boolean DEBUG_CLOSE_APP_DOWNLOAD = false; 
+    public static final boolean DEBUG_CLOSE_APP_DOWNLOAD = false;
     
-    public static final String DIFF_1 = "5x5";
-    public static final String DIFF_2 = "5x6";
-    public static final String DIFF_3 = "5x7";
-    public static final String DIFF_4 = "5x8";
-    public static final String DIFF_5 = "5x9";
-    
-    public static final String DIFF_6 = "6x8";
-    public static final String DIFF_7 = "6x10";
-    public static final String DIFF_8 = "6x12";
-    public static final String DIFF_9 = "6x12";
-    public static final String DIFF_10 = "6x14";
-    public static final String DIFF_12 = "6x15";
-    
-    public static final String DIFF_13 = "8x10";
-    public static final String DIFF_14 = "8x12";
-    public static final String DIFF_15 = "8x14";
-    public static final String DIFF_16 = "8x16";
-    
-    public static final String DIFF_17 = "10x10";
-    public static final String DIFF_18 = "10x12";
-    public static final String DIFF_19 = "10x14";
-    public static final String DIFF_20 = "10x16";
+    public static final int ALIGN_LEFT = 0;
+    public static final int ALIGN_RIGHT = 1;
+    public static final int ALIGN_TOP = 2;
+    public static final int ALIGN_BOTTOM = 4;
 }
