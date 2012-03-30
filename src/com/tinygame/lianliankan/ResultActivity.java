@@ -41,6 +41,12 @@ public class ResultActivity extends Activity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_BLUR_BEHIND,
                 WindowManager.LayoutParams.FLAG_BLUR_BEHIND);
         
+        WiGame.init(getApplicationContext()
+                , Config.WIGAME_API_KEY
+                , Config.WIGAME_SECRECT_KEY
+                , "1.0"
+                , true);
+        
         mResultType = getIntent().getIntExtra(RESULT_TYPE, SUCCESS_CONTENT);
         if (mResultType == SUCCESS_CONTENT) {
             setContentView(R.layout.win_view);

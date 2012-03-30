@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
@@ -507,6 +508,16 @@ public class LinkLink extends Activity implements LLViewActionListener
     @Override
     public void onLevelChanged(int level) {
         this.checkAppPoint();
+    }
+    
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {
+            finish();
+            overridePendingTransition(R.anim.slide_up_in, R.anim.slide_down_out);
+            return false;
+        }
+        return false;
     }
     
     private void showCountDownloadDialog() {

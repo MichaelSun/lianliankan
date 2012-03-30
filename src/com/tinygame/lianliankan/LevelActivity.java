@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -122,6 +123,16 @@ public class LevelActivity extends ScrollScreenActivity
         return levelPointList;
     }
     
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {
+            finish();
+            overridePendingTransition(R.anim.slide_up_in, R.anim.slide_down_out);
+            return false;
+        }
+        return false;
+    }
+    
     private void initView(View view, int category) {
         int level = Categary_diff_selector.getInstance().getDiffLevels().size();
         int curLevel = SettingManager.getInstance().getOpenLevelByCategory(category);
@@ -162,6 +173,7 @@ public class LevelActivity extends ScrollScreenActivity
                     Intent mainviewIntent = new Intent();
                     mainviewIntent.setClass(getApplicationContext(), LinkLink.class);
                     startActivity(mainviewIntent);
+                    overridePendingTransition(R.anim.slide_up_in, R.anim.slide_down_out);
                 }
             }
         });

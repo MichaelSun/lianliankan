@@ -26,6 +26,7 @@ public class SplashActivity extends Activity {
                 mainviewIntent.setClass(getApplicationContext(), MenuActivity.class);
                 startActivity(mainviewIntent);
                 finish();
+                overridePendingTransition(R.anim.slide_up_in, R.anim.slide_down_out);
                 break;
             }
         }

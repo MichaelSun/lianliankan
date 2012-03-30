@@ -38,6 +38,7 @@ public class MenuActivity extends Activity {
                 Intent mainviewIntent = new Intent();
                 mainviewIntent.setClass(getApplicationContext(), LevelActivity.class);
                 startActivity(mainviewIntent);
+                overridePendingTransition(R.anim.slide_up_in, R.anim.slide_down_out);
                 break;
             }
         }
@@ -54,15 +55,21 @@ public class MenuActivity extends Activity {
         MobclickAgent.onError(this);
         
         mAnimationset = new AnimationSet(true);
-        Animation a = new TranslateAnimation(0.0f, 0.0f, 0.0f, 20.0f);
-        a.setDuration(150);
-        a.setInterpolator(this, android.R.anim.decelerate_interpolator);
+//        Animation a = new TranslateAnimation(0.0f, 0.0f, 0.0f, 20.0f);
+//        a.setDuration(150);
+//        a.setInterpolator(this, android.R.anim.decelerate_interpolator);
+//        mAnimationset.addAnimation(a);
+        
+        Animation a = new AlphaAnimation(1.0f, 0.3f);
+        a.setDuration(1300);
+        a.setStartOffset(0);
         mAnimationset.addAnimation(a);
         
-        Animation b = new TranslateAnimation(0.0f, 0.0f, 20.0f, -400.0f);
-        b.setDuration(100);
-        b.setStartOffset(250);
-        b.setInterpolator(this, android.R.anim.accelerate_interpolator);
+//        Animation b = new TranslateAnimation(0.0f, 0.0f, 20.0f, -400.0f);
+        Animation b = new TranslateAnimation(0.0f, 0.0f, 0.0f, -150.0f);
+        b.setDuration(1300);
+        b.setStartOffset(0);
+//        b.setInterpolator(this, android.R.anim.accelerate_interpolator);
         mAnimationset.addAnimation(b);
         mAnimationset.setAnimationListener(new AnimationListener() {
             
@@ -157,7 +164,7 @@ public class MenuActivity extends Activity {
             @Override
             public void onClick(View v) {
                 SoundEffectUtils.getInstance().playClickSound();
-                mHandler.sendEmptyMessageDelayed(ENTRY_GAME, 400);
+                mHandler.sendEmptyMessageDelayed(ENTRY_GAME, 200);
                 mClassicModeView.startAnimation(mAnimationset);
             }
         });
