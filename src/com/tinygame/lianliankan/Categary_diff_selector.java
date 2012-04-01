@@ -147,30 +147,33 @@ public class Categary_diff_selector {
         mCurrentCategary = SettingManager.getInstance().getLastCategory();
         mCurrentDiff = SettingManager.getInstance().getLastDiff();
         
-        mCateSmallArryList.add("image/1_40.png");
+        //config the image icon for draw
+        mCateSmallArryList.add("level/1_85.png");
         mCateSmallArryList.add("image/2_40.png");
         mCateSmallArryList.add("image/3_40.png");
         mCateSmallArryList.add("image/4_40.png");
         mCateSmallArryList.add("image/5_40.png");
         
-        mCateSmallTwoArryList.add("image/1_48.png");
+        mCateSmallTwoArryList.add("level/1_85.png");
         mCateSmallTwoArryList.add("image/2_48.png");
         mCateSmallTwoArryList.add("image/3_48.png");
         mCateSmallTwoArryList.add("image/4_48.png");
         mCateSmallTwoArryList.add("image/5_48.png");
         
-        mCateMeduimArryList.add("image/1_64.png");
+        mCateMeduimArryList.add("level/1_85.png");
         mCateMeduimArryList.add("image/2_64.png");
         mCateMeduimArryList.add("image/3_64.png");
         mCateMeduimArryList.add("image/4_64.png");
         mCateMeduimArryList.add("image/5_64.png");
         
-        mCateLargeArryList.add("image/1_80.png");
+        mCateLargeArryList.add("level/1_85.png");
         mCateLargeArryList.add("image/2_80.png");
         mCateLargeArryList.add("image/3_80.png");
         mCateLargeArryList.add("image/4_80.png");
         mCateLargeArryList.add("image/5_80.png");
         
+        
+        //set the level diffcult
         mDiffArryList.add(new Diff("6x6", 25, 1, 1, -1));
         mDiffArryList.add(new Diff("6x8", 28, 1, 1, -1));
         mDiffArryList.add(new Diff("6x8", 28, 1, 1, -1));

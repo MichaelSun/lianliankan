@@ -6,14 +6,15 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.view.animation.AnimationUtils;
 
 import com.tinygame.lianliankan.config.Config;
 import com.tinygame.lianliankan.db.DatabaseOperator;
 import com.tinygame.lianliankan.utils.SoundEffectUtils;
 import com.wiyun.game.WiGame;
-import com.wiyun.game.WiGameAllClient;
 
 public class SplashActivity extends Activity {
 
@@ -40,6 +41,9 @@ public class SplashActivity extends Activity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);  
         
         this.setContentView(R.layout.splash);
+        View logo = findViewById(R.id.logo);
+        logo.startAnimation(AnimationUtils.loadAnimation(this, R.anim.fade));
+        
         StartTask task = new StartTask();
         task.execute("");
     }

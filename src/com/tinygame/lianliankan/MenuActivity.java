@@ -140,6 +140,7 @@ public class MenuActivity extends Activity {
             @Override
             public void onClick(View v) {
                 WiGame.openLeaderboard(Config.WIGAME_SORCE_KEY);
+                overridePendingTransition(R.anim.slide_up_in, R.anim.slide_down_out);
             }
         });
         

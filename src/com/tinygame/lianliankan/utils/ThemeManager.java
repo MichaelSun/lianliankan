@@ -201,7 +201,8 @@ public class ThemeManager {
             mCurCategory = cate;
             ImageSplitUtils.getInstance().clearCurrentRes();
             mResArray = null;
-            ArrayList<BitmapSiplited> ret = ImageSplitUtils.getInstance().splitBitmapInAssests(mCurCategory);
+            ArrayList<BitmapSiplited> ret = ImageSplitUtils.getInstance()
+                            .splitBitmapInAssests(mCurCategory);
             if (ret.size() > 0) {
                 if (mResArray == null) {
                     mResArray = new Drawable[ret.size()];
