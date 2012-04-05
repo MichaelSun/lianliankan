@@ -1,9 +1,6 @@
 package com.tinygame.lianliankan.engine;
 
-import android.util.Log;
-
 import com.tinygame.lianliankan.config.Config;
-
 
 public class Chart {
     
@@ -48,8 +45,9 @@ public class Chart {
         return null;
     }
     
-    private static void alignBottom(Chart chart) {
+    private void alignBottom(Chart chart) {
         if (chart != null) {
+            
             for (int x = 1; x < chart.xSize - 1; ++x) {
                 int dIndex = chart.ySize - 2;
                 for (int y = chart.ySize - 2; y > 0; --y) {
@@ -59,6 +57,9 @@ public class Chart {
                         if (dIndex != y) {
                             chart.tiles[y][x].dismiss(); 
                         }
+                        
+                        chart.tiles[dIndex][x].oldX = x;
+                        chart.tiles[dIndex][x].oldY = y;
                         dIndex--;
                     }
                 }
@@ -66,8 +67,9 @@ public class Chart {
         }
     }
     
-    private static void alignTop(Chart chart) {
+    private void alignTop(Chart chart) {
         if (chart != null) {
+            
             for (int x = 1; x < chart.xSize - 1; ++x) {
                 int dIndex = 1;
                 for (int y = 1; y < chart.ySize - 1; ++y) {
@@ -77,6 +79,9 @@ public class Chart {
                         if (dIndex != y) {
                             chart.tiles[y][x].dismiss(); 
                         }
+                        
+                        chart.tiles[dIndex][x].oldX = x;
+                        chart.tiles[dIndex][x].oldY = y;
                         dIndex++;
                     }
                 }
@@ -84,8 +89,9 @@ public class Chart {
         }
     }
     
-    private static void alignRight(Chart chart) {
+    private void alignRight(Chart chart) {
         if (chart != null) {
+            
             for (int y = 1; y < chart.ySize - 1; ++y) {
                 int dIndex = chart.xSize - 2;
                 for (int x = chart.xSize - 2; x > 0; --x) {
@@ -95,6 +101,9 @@ public class Chart {
                         if (dIndex != x) {
                             chart.tiles[y][x].dismiss(); 
                         }
+                        
+                        chart.tiles[y][dIndex].oldX = x;
+                        chart.tiles[y][dIndex].oldY = y;
                         dIndex--;
                     }
                 }
@@ -102,8 +111,9 @@ public class Chart {
         }
     }
     
-    private static void alignLeft(Chart chart) {
+    private void alignLeft(Chart chart) {
         if (chart != null) {
+            
             for (int y = 1; y < chart.ySize - 1; ++y) {
                 int dIndex = 1;
                 for (int x = 1; x < chart.xSize - 1; ++x) {
@@ -113,6 +123,9 @@ public class Chart {
                         if (dIndex != x) {
                             chart.tiles[y][x].dismiss(); 
                         }
+                        
+                        chart.tiles[y][dIndex].oldX = x;
+                        chart.tiles[y][dIndex].oldY = y;
                         dIndex++;
                     }
                 }

@@ -165,8 +165,9 @@ public class MenuActivity extends Activity {
             @Override
             public void onClick(View v) {
                 SoundEffectUtils.getInstance().playClickSound();
-                mHandler.sendEmptyMessageDelayed(ENTRY_GAME, 200);
-                mClassicModeView.startAnimation(mAnimationset);
+//                mHandler.sendEmptyMessageDelayed(ENTRY_GAME, 200);
+                mHandler.sendEmptyMessage(ENTRY_GAME);
+//                mClassicModeView.startAnimation(mAnimationset);
             }
         });
         

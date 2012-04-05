@@ -49,8 +49,8 @@ public class LinkLinkSurfaceView extends SurfaceView implements Callback {
     private static final int PADDING_LEFT = 0;
     private static final int REFRESH_DELAY = 300;
     
-    private static final int LOADING_COUNTS = 3;
-    private static final int LOADING_SLEEP = 100;
+    private static final int LOADING_COUNTS = 5;
+    private static final int LOADING_SLEEP = 20;
     private static final long LOADING_TIME_DELAY = LOADING_COUNTS * LOADING_SLEEP;
     
     private Context mContext;
@@ -88,7 +88,6 @@ public class LinkLinkSurfaceView extends SurfaceView implements Callback {
     private Tile mSelectTileOne;
     private Tile mSelectTileTwo;
     
-    private boolean mCurRoundClipTile;
     private boolean mTileDataChanged = true;
     private boolean mForceRefresh;
     private int mTileDataChangedCount;
@@ -207,12 +206,12 @@ public class LinkLinkSurfaceView extends SurfaceView implements Callback {
         return mChart;
     }
     
-    public void setChart(Chart chart) {
+    public void setChart(Chart chart, boolean checkStatus) {
         mChart = chart;
         mHint = null;
         mSelectTileCur = null;
         
-        if (mChart != null) {
+        if (mChart != null && checkStatus) {
             Tile[] hint = new Hint(mChart).findHint();
             if (hint == null && mLLViewActionListener != null) {
                 mLLViewActionListener.onNoHintToConnect();
@@ -318,23 +317,27 @@ public class LinkLinkSurfaceView extends SurfaceView implements Callback {
         }
     }
     
-    private void alignChat() {
+    private Chart alignChat() {
         LOGD("[[alignChat]] >>>>>> <<<<<<<");
         try {
             if (mChart.isAllBlank()) {
-                return;
+                return null;
             } else {
                 LOGD("[[alignChat]] before align chart >>>>>>>");
                 mChart.dumpChart();
                 
                 Chart alignChart = mChart.align(mAlignModel);
-                if (mLLViewActionListener != null) {
+                if (mLLViewActionListener != null && alignChart != null) {
                     mLLViewActionListener.onAlignChart(alignChart);
                 }
+                
+                return alignChart;
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
+        
+        return null;
     }
 
     private class SelectThread extends Thread {
@@ -433,7 +436,6 @@ public class LinkLinkSurfaceView extends SurfaceView implements Callback {
         public void run() {
             while (mRunning) {
                 if (mTileDataChanged || mForceRefresh) {
-//                    mInDrawingProgress = true;
                     if (mForceRefresh) {
                         try {
                             synchronized (mRoutes) {
@@ -446,30 +448,6 @@ public class LinkLinkSurfaceView extends SurfaceView implements Callback {
                                 }
                             }
                         } catch (Exception e) {
-                        }
-                        
-                        if (Config.DRAW_LINE_ANIMATION) {
-                            long start = System.currentTimeMillis();
-                            for (int i = 0; i < LOADING_COUNTS; ++i) {
-                                Canvas canvas = mHolder.lockCanvas();
-                                try {
-                                    if (canvas != null) {
-                                        onDrawFullViewLine(canvas, start);
-                                    }
-                                } catch (Exception e) {
-                                    e.printStackTrace();
-                                } finally {
-                                    if (canvas != null) {
-                                        mHolder.unlockCanvasAndPost(canvas);
-                                    }
-                                }
-
-                                try {
-                                    Thread.sleep(LOADING_SLEEP);
-                                } catch (Exception e) {
-                                    e.printStackTrace();
-                                }
-                            }
                         }
                         
                         Canvas canvas = mHolder.lockCanvas();
@@ -494,21 +472,40 @@ public class LinkLinkSurfaceView extends SurfaceView implements Callback {
                         mSelectTileTwo = null;
                         
                         doRoutes();
-                        alignChat();
-                        
-                        checkChatStatus();
-                        Canvas canvas_temp = mHolder.lockCanvas();
-                        try {
-                            if (canvas_temp != null) {
-                                onDrawFullView(canvas_temp);
-                            }
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        } finally {
-                            if (canvas_temp != null) {
-                                mHolder.unlockCanvasAndPost(canvas_temp);
+                        Chart oldChart = alignChat();
+                        if (Config.DRAW_LINE_ANIMATION 
+                                && oldChart != null 
+                                && mChart != null 
+                                && !mChart.isAllBlank()
+                                && !oldChart.isAllBlank()) {
+                            long startTemp = System.currentTimeMillis();
+//                            for (int i = 0; i < LOADING_COUNTS; ++i) {
+                            while (true) {
+                                Canvas canvas = mHolder.lockCanvas();
+                                try {
+                                    if (canvas != null) {
+                                        if (!onDrawFullViewLineAlignAnimation(canvas, startTemp, mChart)) {
+                                            break;
+                                        }
+                                    }
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                } finally {
+                                    if (canvas != null) {
+                                        mHolder.unlockCanvasAndPost(canvas);
+                                    }
+                                }
+
+//                                try {
+//                                    Thread.sleep(LOADING_SLEEP);
+//                                } catch (Exception e) {
+//                                    e.printStackTrace();
+//                                }
                             }
                         }
+                        
+                        checkChatStatus();
+                        refreshFullView();
                     }
                     
                     try {
@@ -527,6 +524,21 @@ public class LinkLinkSurfaceView extends SurfaceView implements Callback {
                         }
                     }
                 }
+            }
+        }
+    }
+    
+    private void refreshFullView() {
+        Canvas canvas_temp = mHolder.lockCanvas();
+        try {
+            if (canvas_temp != null) {
+                onDrawFullView(canvas_temp);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (canvas_temp != null) {
+                mHolder.unlockCanvasAndPost(canvas_temp);
             }
         }
     }
@@ -593,6 +605,9 @@ public class LinkLinkSurfaceView extends SurfaceView implements Callback {
                 " cur time = " + Utils.curTime() + " >>>>>>>>>");
         mLinePoints = null;
         mLightIndex = 0;
+        
+        onDrawFullView(null);
+        
         for (SoftReference<Bitmap> sbt : ret) {
             if (sbt.get() == null || (sbt.get() != null && sbt.get().isRecycled())) {
                 continue;
@@ -602,7 +617,11 @@ public class LinkLinkSurfaceView extends SurfaceView implements Callback {
             Canvas canvas = mHolder.lockCanvas();
             LOGD(">>>>> draw boom for bt = " + sbt + ">>>>>>>");
             try {
-                onDrawFullView(canvas);
+                if (mFullOverLayBitmap != null && canvas != null) {
+                    Rect src = new Rect(0, 0, mFullOverLayBitmap.getWidth(), mFullOverLayBitmap.getHeight());
+                    Rect dest = new Rect(0, 0, getWidth(), getHeight());
+                    canvas.drawBitmap(mFullOverLayBitmap, src, dest, this.mPaintPic);
+                }
                 
                 Rect src = new Rect(0, 0, bt.getWidth(), bt.getHeight());
                 Rect dest = new Rect(mStartX + (mSelectTileOne.x) * Env.ICON_WIDTH
@@ -627,11 +646,11 @@ public class LinkLinkSurfaceView extends SurfaceView implements Callback {
                     mHolder.unlockCanvasAndPost(canvas);
                 }
             }
-            try {
-                Thread.sleep(25);
-            } catch(Exception e) {
-                e.printStackTrace();
-            }
+//            try {
+//                Thread.sleep(20);
+//            } catch(Exception e) {
+//                e.printStackTrace();
+//            }
         }
         
         LOGD(">>>>> draw boom finish  >>>>>>>" + " cur time = " + Utils.curTime() + " >>>>>>>>>");
@@ -827,7 +846,9 @@ public class LinkLinkSurfaceView extends SurfaceView implements Callback {
         return false;
     }
     
-    private boolean onDrawFullViewLine(Canvas canvas, long start) {
+    private boolean onDrawFullViewLineAlignAnimation(Canvas canvas, long start, Chart nowChart) {
+        LOGD("[[onDrawFullViewLineAlignAnimation]]");
+        
         int width = getWidth();
         int height = getHeight();
         
@@ -838,53 +859,44 @@ public class LinkLinkSurfaceView extends SurfaceView implements Callback {
             Rect bgDest = new Rect(0, 0, width, height);
             canvas.drawBitmap(curBg, bgSrc, bgDest, mPaintPic);
         }
-        if (mChart == null) {
-            LOGD("[[onDrawFullViewLine]] return because chart invalid!");
-            return false;
-        }
-        
-        if (!Env.ICON_REGION_INIT) {
-            int sideLength = Math.min(width, height) - 2 * PADDING_LEFT;
-            Env.ICON_REGION_INIT = true;
-            Env.ICON_WIDTH = sideLength / mChart.xSize;
-            LOGD("[[onDraw]] sideLength = "+ sideLength + " icon size = " + mChart.xSize 
-                    + " icon width = " + Env.ICON_WIDTH + " >>>>>>>>>>>>>>>>>");
-            int imageWidth = ThemeManager.getInstance().getCurrentImageWidth();
-            if (imageWidth < Env.ICON_WIDTH) {
-//                Env.ICON_WIDTH = imageWidth;
-                mStartX = (width - (mChart.xSize * Env.ICON_WIDTH)) / 2;
-                mStartY = (height - (mChart.ySize * Env.ICON_WIDTH)) / 2;
-            } else {
-                mStartX = PADDING_LEFT;
-                mStartY = (height - (mChart.ySize * Env.ICON_WIDTH)) / 2;
-            }
-        }
         
         long curTime = System.currentTimeMillis();
         long time = curTime - start;
-        if (time >= LOADING_TIME_DELAY) {
-            return false;
-        }
-        int line = (int) ((((float) (curTime - start)) / LOADING_TIME_DELAY) * mChart.ySize);
-        line = line > mChart.ySize ? mChart.ySize : line;
         
-        for (int yIndex = 0; yIndex < line; yIndex++) {
+        for (int yIndex = 0; yIndex < mChart.ySize; yIndex++) {
             for (int xIndex = 0; xIndex < mChart.xSize; xIndex++) {
                 try {
-                    Tile tileTemp = mChart.getTile(xIndex, yIndex);
-                    Drawable drawable = ThemeManager.getInstance().getImage(mChart.getTile(xIndex, yIndex).getImageIndex());
-                    if (tileTemp != mSelectTileTwo && tileTemp != mSelectTileOne && drawable != null) {
-                        drawable.setBounds(mStartX + xIndex * Env.ICON_WIDTH
-                                        , mStartY + yIndex * Env.ICON_WIDTH
-                                        , mStartX + (xIndex + 1) * Env.ICON_WIDTH
-                                        , mStartY + (yIndex + 1) * Env.ICON_WIDTH);
+                    Tile tile = nowChart.getTile(xIndex, yIndex);
+                    int oldX = tile.getOldX();
+                    int oldY = tile.getOldY();
+                    
+                    Drawable drawable = ThemeManager.getInstance().getImage(tile.getImageIndex());
+                    if (tile != mSelectTileTwo && tile != mSelectTileOne && drawable != null) {
+                        if ((oldX != xIndex || oldY != yIndex) 
+                                && oldX != -1 
+                                && oldY != -1
+                                && time < LOADING_TIME_DELAY) {
+                            double per = 1.0 - ((time * 1.0) / LOADING_TIME_DELAY);
+                            int drawX = (mStartX + xIndex * Env.ICON_WIDTH) + 
+                                            ((int) (((oldX - xIndex) * Env.ICON_WIDTH) * per));
+                            int drawY = (mStartY + yIndex * Env.ICON_WIDTH) + 
+                                            ((int) (((oldY - yIndex) * Env.ICON_WIDTH) * per));
+                            drawable.setBounds(drawX, drawY, drawX + Env.ICON_WIDTH, drawY + Env.ICON_WIDTH);
+                        } else {
+                            drawable.setBounds(mStartX + xIndex * Env.ICON_WIDTH, 
+                                        mStartY + yIndex * Env.ICON_WIDTH,
+                                        mStartX + (xIndex + 1) * Env.ICON_WIDTH, 
+                                        mStartY + (yIndex + 1) * Env.ICON_WIDTH);
+                        }
                         drawable.draw(canvas);
-                    } else {
-                        mCurRoundClipTile = true;
                     }
                 } catch (Exception e) {
                 }
             }
+        }
+        
+        if (time >= LOADING_TIME_DELAY) {
+            return false;
         }
         
         return true;
@@ -901,7 +913,6 @@ public class LinkLinkSurfaceView extends SurfaceView implements Callback {
         mFullOverLayBitmap.eraseColor(0x00000000);
         canvas.setBitmap(mFullOverLayBitmap);
 
-        mCurRoundClipTile = false;
         LOGD("[[onDrawFullView]] entry into  >>>>>>> width = " + width + " height = " + height
                 + " canvas = " + canvas
                 + " cur time = " + Utils.curTime() + " >>>>>>>>>");
@@ -960,8 +971,6 @@ public class LinkLinkSurfaceView extends SurfaceView implements Callback {
                                         , mStartX + (xIndex + 1) * Env.ICON_WIDTH
                                         , mStartY + (yIndex + 1) * Env.ICON_WIDTH);
                         drawable.draw(canvas);
-                    } else {
-                        mCurRoundClipTile = true;
                     }
                 } catch (Exception e) {
                 }
@@ -978,7 +987,7 @@ public class LinkLinkSurfaceView extends SurfaceView implements Callback {
 //            mSelectorDrawable.draw(canvas);
 //        }
 
-        if (mFullOverLayBitmap != null) {
+        if (mFullOverLayBitmap != null && canvasOrg != null) {
             Rect src = new Rect(0, 0, mFullOverLayBitmap.getWidth(), mFullOverLayBitmap.getHeight());
             Rect dest = new Rect(0, 0, width, height);
             canvasOrg.drawBitmap(mFullOverLayBitmap, src, dest, this.mPaintPic);

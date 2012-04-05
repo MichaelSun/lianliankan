@@ -2,11 +2,11 @@ package com.tinygame.lianliankan.config;
 
 public class Config {
 
-    public static final boolean DEBUG = false;
+    public static final boolean DEBUG = true;
     
     public static final boolean SOUND_DEBUG = false;
     
-    public static final boolean DRAW_LINE_ANIMATION = false;
+    public static final boolean DRAW_LINE_ANIMATION = true;
     
     public static final String ACTION_CLICK_LABEL = "action_click";
     public static final String ACTION_OFFER_LABEL = "offer_click";

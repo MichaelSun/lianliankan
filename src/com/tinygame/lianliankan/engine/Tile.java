@@ -7,6 +7,9 @@ public class Tile {
 	public static Tile UN_EXIST_TILE = new Tile(-1, -1, ThemeManager.NO_IMAGE, null);
 	public final int x, y;
 	private int image;
+	
+	int oldX = -1;
+	int oldY = -1;
 
 	private Chart belongChart;
 
@@ -18,6 +21,14 @@ public class Tile {
 	}
 
 	private int alpha = 255;
+	
+	public int getOldX() {
+	    return oldX;
+	}
+	
+	public int getOldY() {
+	    return oldY;
+	}
 	
     public int deAlpha(int number) {
         alpha -= number;
