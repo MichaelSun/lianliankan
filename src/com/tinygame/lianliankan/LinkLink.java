@@ -547,8 +547,8 @@ public class LinkLink extends Activity implements LLViewActionListener
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 MobclickAgent.onEvent(mContext, Config.ACTION_OFFER_CANCEL_LABEL);
-                                
                                 finish();
+                                overridePendingTransition(R.anim.slide_up_in, R.anim.slide_down_out);
                             }
                         }).create();
         mDownloadDialog.setCancelable(false);
