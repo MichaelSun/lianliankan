@@ -21,6 +21,7 @@ import android.view.SurfaceHolder.Callback;
 import android.view.SurfaceView;
 
 import com.tinygame.lianliankan.R;
+import com.tinygame.lianliankan.SettingManager;
 import com.tinygame.lianliankan.config.Config;
 import com.tinygame.lianliankan.config.Env;
 import com.tinygame.lianliankan.engine.BlankRoute;
@@ -183,7 +184,9 @@ public class LinkLinkSurfaceView extends SurfaceView implements Callback {
             Tile touchTile = mChart.getTile(xPicIndex, yPicIndex);
             if (touchTile.isBlank() == false) {
                 mHint = null;
-                SoundEffectUtils.getInstance().playClickSound();
+                if (SettingManager.getInstance().getSoundOpen()) {
+                    SoundEffectUtils.getInstance().playClickSound();
+                }
                 handlerTileSelect(touchTile);
             }
             break;
@@ -251,7 +254,9 @@ public class LinkLinkSurfaceView extends SurfaceView implements Callback {
                 if (mSelectTileCur.getImageIndex() == newTile.getImageIndex()) {
                     ConnectiveInfo ci = mChart.connectvie(mSelectTileCur, newTile);
                     if (ci.getResult()) {
-                        SoundEffectUtils.getInstance().playDisapperSound();
+                        if (SettingManager.getInstance().getSoundOpen()) {
+                            SoundEffectUtils.getInstance().playDisapperSound();
+                        }
                         
                         if (mLLViewActionListener != null) {
                             mLLViewActionListener.onDismissTouch();
