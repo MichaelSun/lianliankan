@@ -6,14 +6,14 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.view.animation.AnimationUtils;
 
 import com.tinygame.lianliankan.config.Config;
 import com.tinygame.lianliankan.db.DatabaseOperator;
 import com.tinygame.lianliankan.utils.SoundEffectUtils;
+import com.tinygame.lianliankan.view.JPSplashView;
+import com.tinygame.lianliankan.view.JPSplashView.SplashDispalyListener;
 import com.wiyun.game.WiGame;
 
 public class SplashActivity extends Activity {
@@ -40,9 +40,17 @@ public class SplashActivity extends Activity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN ,    
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);  
         
-        this.setContentView(R.layout.splash);
-        View logo = findViewById(R.id.logo);
-        logo.startAnimation(AnimationUtils.loadAnimation(this, R.anim.fade));
+        this.setContentView(R.layout.splash_rotate);
+        JPSplashView splash = (JPSplashView) findViewById(R.id.splash);
+        splash.setSplashDispalyListener(new SplashDispalyListener() {
+            public void onAnimationFinished() {
+                mHandler.sendEmptyMessage(START_MAIN_VIEW);
+            }
+        });
+        splash.startWork();
+        
+//        View logo = findViewById(R.id.logo);
+//        logo.startAnimation(AnimationUtils.loadAnimation(this, R.anim.fade));
         
         StartTask task = new StartTask();
         task.execute("");
@@ -61,7 +69,6 @@ public class SplashActivity extends Activity {
                             , true);
                 WiGame.setHideScoreToast(false);
                 WiGame.setSandboxMode(false);
-                Thread.sleep(1200);
             } catch (Exception e) {
             }
             
@@ -69,7 +76,7 @@ public class SplashActivity extends Activity {
         }
         
         protected void onPostExecute(Integer result) {
-            mHandler.sendEmptyMessage(START_MAIN_VIEW);
+//            mHandler.sendEmptyMessage(START_MAIN_VIEW);
         }
     }
 }

@@ -10,6 +10,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
@@ -64,6 +65,22 @@ class ImageSplitUtils {
         return mCurrentImageWidth;
     }
     
+    public static Bitmap rotateBitmap(Bitmap bmp, int orientataion) {
+        if (orientataion != 0 && bmp != null) {
+            Matrix matrix = new Matrix();
+            matrix.postRotate((float) orientataion);
+            Bitmap tmp = Bitmap.createBitmap(bmp, 0, 0, bmp.getWidth(), bmp.getHeight(), matrix, true);
+            if (tmp != null) {
+//                bmp.recycle();
+//                bmp = null;
+                bmp = tmp;
+            }
+            return bmp;
+        }
+        
+        return bmp;
+    }
+    
     public ArrayList<Bitmap> getTimeNumberBtList() {
         mNumberList = new ArrayList<Bitmap>();
         Bitmap src = loadBitmapFromAsset(mContext, "image/time_number.png");
@@ -84,6 +101,28 @@ class ImageSplitUtils {
         }
         
         return mNumberList;
+    }
+    
+    public ArrayList<Bitmap> getLightVerticalBtList() {
+        ArrayList<Bitmap> ret = new ArrayList<Bitmap>();
+        Bitmap src = loadBitmapFromAsset(mContext, "image/light_vertical.png");
+        int height = src.getHeight();
+        int width = src.getWidth();
+        int retBtHeight = height / 5;
+        Bitmap bt = null;
+        for (int i = 0; i < 5; ++i) {
+            bt = Bitmap.createBitmap(src
+                                        , 0
+                                        , i * retBtHeight
+                                        , width
+                                        , retBtHeight);
+            if (bt != null) {
+                bt.setDensity(160);
+                ret.add(bt);
+            }
+        }
+       
+        return ret;
     }
     
     public ArrayList<Bitmap> getLevelNumberBtList() {
@@ -126,6 +165,23 @@ class ImageSplitUtils {
                 mBoomList.add(bt);
             }
         }
+        
+        return mBoomList;
+    }
+    
+    public ArrayList<Bitmap> getBoomList1() {
+        mBoomList = new ArrayList<Bitmap>();
+        Bitmap src = loadBitmapFromAsset(mContext, "boom/boom0.png");
+        mBoomList.add(src);
+        src = loadBitmapFromAsset(mContext, "boom/boom1.png");
+        src = loadBitmapFromAsset(mContext, "boom/boom2.png");
+        mBoomList.add(src);
+        src = loadBitmapFromAsset(mContext, "boom/boom3.png");
+        mBoomList.add(src);
+        src = loadBitmapFromAsset(mContext, "boom/boom4.png");
+        mBoomList.add(src);
+        src = loadBitmapFromAsset(mContext, "boom/boom5.png");
+        mBoomList.add(src);
         
         return mBoomList;
     }

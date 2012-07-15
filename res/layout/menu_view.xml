@@ -1,16 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res/com.tinygame.lianliankan"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical"
     android:background="@drawable/menu_bg" >
     
-    <ImageView
+    <!--  ImageView
        	android:id="@+id/classic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:src="@drawable/class_model" />
+        android:src="@drawable/class_model" / -->
+    
+	<android.support.v4.view.ViewPager
+        android:id="@+id/pager"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" />
     
     <ImageButton
        	android:id="@+id/setting"
@@ -55,5 +61,22 @@
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="15dp"
         android:layout_marginLeft="15dp"
-        android:textColor="@drawable/gray1" />    
+        android:textColor="@drawable/gray1" /> 
+        
+    <com.tinygame.lianliankan.pageIndactor.TitlePageIndicatorEx1
+        android:id="@+id/indicator"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#00DDDDDD"
+        app:footerColor="#FFEE3333"
+        app:footerIndicatorStyle="none"
+        app:footerLineHeight="0dp"
+        android:padding="10dip"
+        app:selectedBold="true"
+        app:selectedColor="#FFffffff"
+        app:textColor="#FF999999"
+        android:layout_above="@id/sorcebt"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="120dp" />
+    
 </RelativeLayout>

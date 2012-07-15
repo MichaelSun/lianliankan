@@ -24,12 +24,30 @@ public class SettingManager {
         mEditor.commit();
     }
     
+    public int getEndlessLastDiff() {
+        return mSharedPreferences.getInt(mContext.getString(R.string.perf_last_diff_endless), 0);
+    }
+    
+    public void setEndlessLastDiff(int diff) {
+        mEditor.putInt(mContext.getString(R.string.perf_last_diff_endless), diff);
+        mEditor.commit();
+    }
+    
     public int getLastCategory() {
         return mSharedPreferences.getInt(mContext.getString(R.string.perf_last_cate), 0);
     }
     
     public void setLastCategory(int category) {
         mEditor.putInt(mContext.getString(R.string.perf_last_cate), category);
+        mEditor.commit();
+    }
+    
+    public int getEndlessLastCategory() {
+        return mSharedPreferences.getInt(mContext.getString(R.string.perf_last_cate_endless), 0);
+    }
+    
+    public void setEndlessLastCategory(int category) {
+        mEditor.putInt(mContext.getString(R.string.perf_last_cate_endless), category);
         mEditor.commit();
     }
     
@@ -51,6 +69,15 @@ public class SettingManager {
         mEditor.commit();   
     }
     
+    public int getEndlessHighScore() {
+        return mSharedPreferences.getInt(mContext.getString(R.string.perf_score_endless), 0);
+    }
+    
+    public void setEndlessHighScore(int score) {
+        mEditor.putInt(mContext.getString(R.string.perf_score_endless), score);
+        mEditor.commit();   
+    }
+    
     public void setOpenLevel(int level) {
         mEditor.putInt(mContext.getString(R.string.perf_level_opened), level);
         mEditor.commit();
@@ -67,6 +94,17 @@ public class SettingManager {
     
     public int getOpenLevelByCategory(int category) {
         return mSharedPreferences.getInt(mContext.getString(R.string.perf_level_opened) + String.valueOf(category), 1);
+    }
+    
+    public void setEndlessOpenLevelWithCategory(int level, int category) {
+        mEditor.putInt(mContext.getString(R.string.perf_level_endless) + String.valueOf(category)
+                            , level);
+        mEditor.commit();
+    }
+    
+    public int getEndlessOpenLevelWithCategory(int category) {
+        return mSharedPreferences.getInt(mContext.getString(R.string.perf_level_opened) + String.valueOf(category)
+                            , 1);
     }
     
     public void init(Context context) {

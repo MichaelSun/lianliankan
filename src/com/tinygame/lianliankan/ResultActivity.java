@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.tinygame.lianliankan.config.Config;
@@ -25,6 +26,8 @@ public class ResultActivity extends Activity {
     public static final String CATEGORY = "category";
     public static final String LEVEL = "level";
     
+    public static final String GAME_MODE = "mode";
+    
     public static final int SUCCESS_CONTENT = 0;
     public static final int FAILED_CONTENT = 1;
     
@@ -33,6 +36,7 @@ public class ResultActivity extends Activity {
     public static final int RETURN_NEXT = 102;
     
     private int mResultType;
+    private int mGameMode;
     
     @Override
     protected void onCreate(Bundle icicle) {
@@ -47,6 +51,7 @@ public class ResultActivity extends Activity {
                 , "1.0"
                 , true);
         
+        mGameMode = getIntent().getIntExtra(GAME_MODE, Config.NORMAL_MODE);
         mResultType = getIntent().getIntExtra(RESULT_TYPE, SUCCESS_CONTENT);
         if (mResultType == SUCCESS_CONTENT) {
             setContentView(R.layout.win_view);
@@ -56,26 +61,48 @@ public class ResultActivity extends Activity {
             String continue_count = getIntent().getStringExtra(CONTINUE_COUNT);
             int category = getIntent().getIntExtra(CATEGORY, 0);
             int level = getIntent().getIntExtra(LEVEL, 0);
-            
-            ArrayList<LevelInfo> infos = DatabaseOperator.getInstance()
-                                            .getLevelInfoForCategory(category, level);
             int totalCount = 0;
-            for (LevelInfo info : infos) {
-                totalCount += info.count;
-            }
+            boolean shouldUpateSorce = false;
             
-            TextView contentTV = (TextView) findViewById(R.id.content);
-            String showContent = String.format(getString(R.string.win_content)
-                                                , time
-                                                , count
-                                                , totalCount
-                                                , continue_count);
-            int historyScore = SettingManager.getInstance().getHighScore();
-            if (totalCount > historyScore) {
-                SettingManager.getInstance().setHighScore(totalCount);
+            if (mGameMode == Config.NORMAL_MODE) {
+                ArrayList<LevelInfo> infos = DatabaseOperator.getInstance()
+                                                .getLevelInfoForCategory(category, level);
+                for (LevelInfo info : infos) {
+                    totalCount += info.count;
+                }
+                
+                TextView contentTV = (TextView) findViewById(R.id.content);
+                String showContent = String.format(getString(R.string.win_content)
+                                                    , time
+                                                    , count
+                                                    , totalCount
+                                                    , continue_count);
+                int historyScore = SettingManager.getInstance().getHighScore();
+                if (totalCount > historyScore) {
+                    SettingManager.getInstance().setHighScore(totalCount);
+                    shouldUpateSorce = true;
+                }
+                
+                contentTV.setText(showContent);
+            } else if (mGameMode == Config.ENDLESS_MODE) {
+                LevelInfo info = DatabaseOperator.getInstance().getEndlessInfo(category, level);
+                totalCount = info.count;
+                TextView contentTV = (TextView) findViewById(R.id.content);
+                String showContent = String.format(getString(R.string.endless_win_content)
+                                                    , time
+                                                    , totalCount
+                                                    , continue_count);
+                int historyScore = SettingManager.getInstance().getEndlessHighScore();
+                if (totalCount > historyScore) {
+                    SettingManager.getInstance().setEndlessHighScore(totalCount);
+                    shouldUpateSorce = true;
+                } else {
+                    ImageView tipsIcon = (ImageView) findViewById(R.id.tips_icon);
+                    tipsIcon.setBackgroundResource(R.drawable.lost);
+                }
+                
+                contentTV.setText(showContent);
             }
-            
-            contentTV.setText(showContent);
             
             View retry = findViewById(R.id.retry);
             retry.setOnClickListener(new View.OnClickListener() {
@@ -104,7 +131,13 @@ public class ResultActivity extends Activity {
                 }
             });
             
-            WiGame.submitScore(Config.WIGAME_SORCE_KEY, totalCount, null, true);
+            if (shouldUpateSorce) {
+                if (mGameMode == Config.ENDLESS_MODE) {
+                    WiGame.submitScore(Config.WIGAME_ENDLESS_KEY, totalCount, null, true);
+                } else if (mGameMode == Config.NORMAL_MODE) {
+                    WiGame.submitScore(Config.WIGAME_SORCE_KEY, totalCount, null, true);
+                }
+            }
             
         } else if (mResultType == FAILED_CONTENT) {
             setContentView(R.layout.lose_view);
@@ -132,9 +165,18 @@ public class ResultActivity extends Activity {
         sorceBt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                WiGame.openLeaderboard(Config.WIGAME_SORCE_KEY);
+                if (mGameMode == Config.ENDLESS_MODE) {
+                    WiGame.openLeaderboard(Config.WIGAME_ENDLESS_KEY);
+                } else if (mGameMode == Config.NORMAL_MODE) {
+                    WiGame.openLeaderboard(Config.WIGAME_SORCE_KEY);
+                }
             }
         });
+        
+        if (mGameMode == Config.ENDLESS_MODE) {
+            View next = findViewById(R.id.next);
+            next.setVisibility(View.GONE);
+        }
     }
     
     @Override

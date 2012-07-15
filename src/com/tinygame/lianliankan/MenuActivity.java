@@ -1,11 +1,24 @@
 package com.tinygame.lianliankan;
 
+import java.util.ArrayList;
+
+import net.youmi.android.appoffers.YoumiOffersManager;
+import net.youmi.android.appoffers.YoumiPointsManager;
+
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.os.Parcelable;
+import android.support.v4.view.PagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.text.TextUtils;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -13,12 +26,13 @@ import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
 import android.view.animation.AnimationSet;
-import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.mobclick.android.MobclickAgent;
 import com.tinygame.lianliankan.config.Config;
+import com.tinygame.lianliankan.pageIndactor.TitlePageIndicatorEx1;
+import com.tinygame.lianliankan.pageIndactor.TitleProvider;
 import com.tinygame.lianliankan.utils.SoundEffectUtils;
 import com.tinygame.lianliankan.utils.Utils;
 import com.wiyun.game.WiGame;
@@ -26,11 +40,19 @@ import com.wiyun.game.WiGame;
 public class MenuActivity extends Activity {
 
     private ImageView mSoundImageView;
-    private View mClassicModeView;
+//    private View mClassicModeView;
+    
+    private LayoutInflater mLayoutInflater;
+//    private Gallery mGallery;
+    private ViewPager mViewPager;
     
     private AnimationSet mAnimationset;
     
+    private int mCurrentIndex;
+    private Dialog mDownloadDialog;
+    
     private static final int ENTRY_GAME = 0;
+    private static final int ENTRY_ENDLESS = 1;
     private Handler mHandler = new Handler() {
         public void handleMessage(Message msg) {
             switch (msg.what) {
@@ -38,6 +60,12 @@ public class MenuActivity extends Activity {
                 Intent mainviewIntent = new Intent();
                 mainviewIntent.setClass(getApplicationContext(), LevelActivity.class);
                 startActivity(mainviewIntent);
+                overridePendingTransition(R.anim.slide_up_in, R.anim.slide_down_out);
+                break;
+            case ENTRY_ENDLESS:
+                Intent endlessIntent = new Intent();
+                endlessIntent.setClass(getApplicationContext(), LinkLinkEndlessActivity.class);
+                startActivity(endlessIntent);
                 overridePendingTransition(R.anim.slide_up_in, R.anim.slide_down_out);
                 break;
             }
@@ -75,7 +103,7 @@ public class MenuActivity extends Activity {
             
             @Override
             public void onAnimationEnd(Animation animation) {
-                mClassicModeView.setVisibility(View.GONE);
+//                mClassicModeView.setVisibility(View.GONE);
             }
 
             @Override
@@ -93,8 +121,6 @@ public class MenuActivity extends Activity {
     @Override
     public void onStart() {
         super.onStart();
-        mClassicModeView.setVisibility(View.VISIBLE);
-        
         SettingManager.getInstance().init(getApplicationContext());
         
         boolean soundOpen = SettingManager.getInstance().getSoundOpen();
@@ -109,7 +135,7 @@ public class MenuActivity extends Activity {
         
         Animation alpha = new AlphaAnimation(0.3f, 1.0f);
         alpha.setDuration(1300);
-        mClassicModeView.startAnimation(alpha);
+//        mClassicModeView.startAnimation(alpha);
         
         MobclickAgent.onResume(this);
         MobclickAgent.onEvent(this, Config.ACTION_START_LAUNCH, "MenuActiviy_resume");
@@ -133,13 +159,49 @@ public class MenuActivity extends Activity {
     }
     
     private void initView() {
-        mClassicModeView = findViewById(R.id.classic);
+//        mClassicModeView = findViewById(R.id.classic);
+        
+        mViewPager = (ViewPager) findViewById(R.id.pager);
+        mViewPager.setAdapter(new MyPagerAdapter());
+        
+        TitlePageIndicatorEx1 indicator = (TitlePageIndicatorEx1) findViewById(R.id.indicator);
+        indicator.setViewPager(mViewPager);
+        indicator.setFooterIndicatorStyle(TitlePageIndicatorEx1.IndicatorStyle.Underline);
+        
+        indicator.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            
+            @Override
+            public void onPageSelected(int arg0) {
+                mCurrentIndex = arg0;
+            }
+            
+            @Override
+            public void onPageScrolled(int arg0, float arg1, int arg2) {
+                
+            }
+            
+            @Override
+            public void onPageScrollStateChanged(int arg0) {
+                
+            }
+        });
+        
+//        mGallery = (Gallery) findViewById(R.id.gallery);
+//        mGallery.setAdapter(new MyModeAdapter());
+        mLayoutInflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         
         View sorceBt = findViewById(R.id.sorcebt);
         sorceBt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                WiGame.openLeaderboard(Config.WIGAME_SORCE_KEY);
+                switch (mCurrentIndex) {
+                case 0:
+                    WiGame.openLeaderboard(Config.WIGAME_SORCE_KEY);
+                    break;
+                case 1:
+                    WiGame.openLeaderboard(Config.WIGAME_ENDLESS_KEY);
+                    break;
+                }
                 overridePendingTransition(R.anim.slide_up_in, R.anim.slide_down_out);
             }
         });
@@ -161,15 +223,15 @@ public class MenuActivity extends Activity {
             }
         }
         
-        mClassicModeView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                SoundEffectUtils.getInstance().playClickSound();
-//                mHandler.sendEmptyMessageDelayed(ENTRY_GAME, 200);
-                mHandler.sendEmptyMessage(ENTRY_GAME);
-//                mClassicModeView.startAnimation(mAnimationset);
-            }
-        });
+//        mClassicModeView.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                SoundEffectUtils.getInstance().playClickSound();
+////                mHandler.sendEmptyMessageDelayed(ENTRY_GAME, 200);
+//                mHandler.sendEmptyMessage(ENTRY_GAME);
+////                mClassicModeView.startAnimation(mAnimationset);
+//            }
+//        });
         
         mSoundImageView = (ImageView) findViewById(R.id.setting);
         boolean open = SettingManager.getInstance().getSoundOpen();
@@ -195,5 +257,206 @@ public class MenuActivity extends Activity {
                 }
             }
         });
+    }
+    
+//    private class MyModeAdapter extends BaseAdapter {
+//        
+//        private int mCount;
+//        
+//        MyModeAdapter() {
+//            mCount = 2;
+//        }
+//        
+//        @Override
+//        public int getCount() {
+//            return mCount;
+//        }
+//
+//        @Override
+//        public Object getItem(int position) {
+//            return position;
+//        }
+//
+//        @Override
+//        public long getItemId(int position) {
+//            return position;
+//        }
+//
+//        @Override
+//        public View getView(int position, View convertView, ViewGroup parent) {
+//            View ret = convertView;
+//            
+//            if (ret == null) {
+//                ret = mLayoutInflater.inflate(R.layout.play_mode, null);
+//            }
+//            
+//            ImageView image = (ImageView) ret.findViewById(R.id.image);
+//            switch (position) {
+//            case 0:
+//                image.setImageResource(R.drawable.class_model);
+//                ret.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View v) {
+//                        SoundEffectUtils.getInstance().playClickSound();
+//                        mHandler.sendEmptyMessage(ENTRY_GAME);
+//                    }
+//                });
+//                break;
+//            case 1:
+//                image.setImageResource(R.drawable.endless_model);
+//                ret.setOnClickListener(new View.OnClickListener() {
+//
+//                    @Override
+//                    public void onClick(View v) {
+//                        SoundEffectUtils.getInstance().playClickSound();
+//                        mHandler.sendEmptyMessage(ENTRY_GAME);
+//                    }
+//                });
+//                break;
+//            }
+//            
+//            return ret;
+//        }
+//    }
+    
+    class MyPagerAdapter extends PagerAdapter implements TitleProvider {
+        
+        private ArrayList<View> mViewArray;
+        private int mCount;
+
+        MyPagerAdapter() {
+            mCount = 2;
+            mViewArray = new ArrayList<View>();
+        }
+
+        @Override
+        public void destroyItem(View arg0, int arg1, Object arg2) {
+            if (mViewArray.size() > arg1) {
+                ((ViewPager) arg0).removeView(mViewArray.get(arg1));
+            }
+        }
+
+        @Override
+        public void finishUpdate(View arg0) {
+        }
+
+        @Override
+        public int getCount() {
+            return mCount;
+        }
+
+        @Override
+        public Object instantiateItem(View arg0, int position) {
+            View v = getViewByIndex(position);
+            ((ViewPager) arg0).addView(v);
+            
+            return v;
+        }
+
+        @Override
+        public boolean isViewFromObject(View arg0, Object arg1) {
+            return arg0 == arg1;
+        }
+
+        @Override
+        public void restoreState(Parcelable arg0, ClassLoader arg1) {
+        }
+
+        @Override
+        public Parcelable saveState() {
+            return null;
+        }
+
+        @Override
+        public void startUpdate(View arg0) {
+        }
+        
+        private View getViewByIndex(int index) {
+            if (mViewArray.size() > index) {
+                return mViewArray.get(index);
+            } else {
+                View ret = mLayoutInflater.inflate(R.layout.play_mode, null);
+                ImageView image = (ImageView) ret.findViewById(R.id.image); 
+               
+                switch (index) {
+                case 0:
+                    image.setImageResource(R.drawable.class_model);
+                    ret.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            SoundEffectUtils.getInstance().playClickSound();
+                            mHandler.sendEmptyMessage(ENTRY_GAME);
+                        }
+                    });
+                    break;
+                case 1:
+                    image.setImageResource(R.drawable.endless_model);
+                    ret.setOnClickListener(new View.OnClickListener() {
+                        
+                        @Override
+                        public void onClick(View v) {
+                            int point = YoumiPointsManager.queryPoints(MenuActivity.this);
+                            if (!Config.DEBUG_CLOSE_APP_DOWNLOAD && point < Config.ENDLESS_POINT) {
+                                showCountDownloadDialog(point);
+                            } else {
+                                YoumiPointsManager.spendPoints(MenuActivity.this, Config.ENDLESS_POINT);
+                                SoundEffectUtils.getInstance().playClickSound();
+                                mHandler.sendEmptyMessage(ENTRY_ENDLESS);
+                            }
+                        }
+                    });
+                    break;
+                }
+                
+                mViewArray.add(ret);
+                
+                return ret;
+            }
+        }
+
+        @Override
+        public String getTitle(int position) {
+            switch (position) {
+            case 0:
+                return "经典模式";
+            case 1:
+                return "无尽模式";
+            }
+            
+            return "";
+        }
+    }
+    
+    private void showCountDownloadDialog(int point) {
+        if (mDownloadDialog != null && mDownloadDialog.isShowing()) {
+            mDownloadDialog.dismiss();
+            mDownloadDialog = null;
+        }
+        
+        String tips = String.format(getString(R.string.endless_download_tips), point);
+        mDownloadDialog = new AlertDialog.Builder(this).setTitle(getString(R.string.tips))
+                .setMessage(tips)
+                .setPositiveButton(R.string.btn_download
+                        , new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                if (mDownloadDialog != null) {
+                                    mDownloadDialog.dismiss();
+                                    mDownloadDialog = null;
+                                }
+                                YoumiOffersManager.showOffers(MenuActivity.this,
+                                        YoumiOffersManager.TYPE_REWARD_OFFERS);
+                                
+                                MobclickAgent.onEvent(MenuActivity.this, Config.ACTION_OFFER_LABEL);
+                            }
+                }).setNegativeButton(R.string.btn_cancel
+                        , new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                MobclickAgent.onEvent(MenuActivity.this, Config.ACTION_OFFER_CANCEL_LABEL);
+                                overridePendingTransition(R.anim.slide_up_in, R.anim.slide_down_out);
+                            }
+                        }).create();
+        mDownloadDialog.setCancelable(false);
+        mDownloadDialog.show();
     }
 }

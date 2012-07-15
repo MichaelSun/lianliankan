@@ -27,6 +27,8 @@ public class ThemeManager {
     private ArrayList<Bitmap> mLevelBtList;
     private ArrayList<Bitmap> mTimeProgressBtList;
     private ArrayList<Bitmap> mContinueNumberBtList;
+    private ArrayList<Bitmap> mVerticalBtList;
+    private ArrayList<Bitmap> mHorziontalBtList;
 
     public static ThemeManager getInstance() {
         if (gThemeManager == null) {
@@ -108,6 +110,33 @@ public class ThemeManager {
             mContinueNumberBtList.clear();
             mContinueNumberBtList = null;
         }
+        
+        //release light Bitmap image
+        if (mVerticalBtList != null) {
+            for (Bitmap bt : mVerticalBtList) {
+                if (bt != null && !bt.isRecycled()) {
+                    bt.recycle();
+                }
+            }
+            
+            mVerticalBtList.clear();
+            mVerticalBtList = null;
+        }
+        
+        releaseBtList(mHorziontalBtList);
+        mHorziontalBtList = null;
+    }
+    
+    private void releaseBtList(ArrayList<Bitmap> release) {
+        if (release != null) {
+            for (Bitmap bt : release) {
+                if (bt != null && !bt.isRecycled()) {
+                    bt.recycle();
+                }
+            }
+            
+            release.clear();
+        }
     }
     
     public int getCurrentImageCount() {
@@ -128,6 +157,32 @@ public class ThemeManager {
         }
         
         return null;
+    }
+    
+    public ArrayList<Bitmap> getLightHorizontalList() {
+        if (mVerticalBtList == null || (mVerticalBtList != null && mVerticalBtList.size() == 0)) {
+            mVerticalBtList = ImageSplitUtils.getInstance().getLightVerticalBtList();
+        }
+        
+        return mVerticalBtList;
+    }
+    
+    public ArrayList<Bitmap> getLightVerticalList() {
+        if (mHorziontalBtList == null 
+                || (mHorziontalBtList != null && mHorziontalBtList.size() == 0)) {
+            ArrayList<Bitmap> v = getLightHorizontalList();
+            mHorziontalBtList = new ArrayList<Bitmap>();
+            if (v != null && v.size() > 0) {
+                for (Bitmap bt : v) {
+                    Bitmap h = ImageSplitUtils.rotateBitmap(bt, 90);
+                    if (h != null) {
+                        mHorziontalBtList.add(h);
+                    }
+                }
+            }
+        }
+        
+        return mHorziontalBtList;
     }
     
     public ArrayList<Bitmap> getContinueNumberList() {
@@ -169,7 +224,7 @@ public class ThemeManager {
     public ArrayList<SoftReference<Bitmap>> getBoomList() {
         if (mBoomCacheList == null) {
             mBoomCacheList = new ArrayList<SoftReference<Bitmap>>();
-            ArrayList<Bitmap> btList = ImageSplitUtils.getInstance().getBoomBtList();
+            ArrayList<Bitmap> btList = ImageSplitUtils.getInstance().getBoomList1();
             if (btList != null && btList.size() > 0) {
                 for (Bitmap bt : btList) {
                     mBoomCacheList.add(new SoftReference<Bitmap>(bt));

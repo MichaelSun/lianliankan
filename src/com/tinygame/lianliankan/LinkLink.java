@@ -86,6 +86,8 @@ public class LinkLink extends Activity implements LLViewActionListener
     private LevelInfo mLevelInfo;
     private AnimationSet mDispearAnimation;
     private AnimationSet mSorceAnimation;
+    private AnimationSet mHitCountAnimation;
+    private Animation mshakeAnimation;
     
     private AnimationSet mTitleDisplayAnimation;
     private AnimationSet mTimeProgressAnimation;
@@ -200,6 +202,14 @@ public class LinkLink extends Activity implements LLViewActionListener
         newGame.setInterpolator(AnimationUtils.loadInterpolator(this, android.R.anim.bounce_interpolator));
         mNewGameAnimation.addAnimation(newGame);
         
+        mHitCountAnimation = new AnimationSet(true);
+        Animation a1 = new TranslateAnimation(0.0f, 0.0f, 20.0f, 0.0f);
+        a1.setDuration(800);
+        mHitCountAnimation.addAnimation(a1);
+        a1 = new AlphaAnimation(0.2f, 1.0f);
+        a1.setDuration(800);
+        mHitCountAnimation.addAnimation(a1);
+        
         mDispearAnimation = new AnimationSet(true);
         Animation a = new TranslateAnimation(0.0f, 0.0f, 50.0f, 0.0f);
         a.setDuration(2000);
@@ -225,6 +235,8 @@ public class LinkLink extends Activity implements LLViewActionListener
             }
             
         });
+        
+        mshakeAnimation = AnimationUtils.loadAnimation(this, R.anim.shake);
         
         resetContent();
         
@@ -476,14 +488,36 @@ public class LinkLink extends Activity implements LLViewActionListener
     }
     
     @Override
-    public void onDismissTouch() {
+    public void onDismissTouch(int imageIndex) {
         if (mTimeView != null) {
             mTimeView.onDissmisTouch();
         }
         
         this.mLevelInfo.count += Config.DISMISS_SORCE;
         mSorceTV.setText(String.format(getString(R.string.sorce), mLevelInfo.count));
-        mSorceTV.startAnimation(mSorceAnimation);
+//        mSorceTV.startAnimation(mSorceAnimation);
+        mSorceTV.startAnimation(mHitCountAnimation);
+        
+        if (Categary_diff_selector.getInstance().getCurrentCategoryLevel() == 0) {
+            switch (imageIndex) {
+            case Config.IMAGE_SEARCH:
+                mCurDiffHintCount++;
+                updateToolsCountView();
+    //            mHintCount.startAnimation(mSorceAnimation);
+                mHintCount.startAnimation(mHitCountAnimation);
+                break;
+            case Config.IMAGE_REARRANGE:
+                mCurDiffArrangeCount++;
+                updateToolsCountView();
+    //            mArrangeCount.startAnimation(mSorceAnimation);
+                mArrangeCount.startAnimation(mHitCountAnimation);
+                break;
+            case Config.IMAGE_TIME:
+                mTimeView.increaseTime(1000);
+                mTimeView.startAnimation(mshakeAnimation);
+                break;
+            }
+        }
     }
     
     private void noMoreConnectChanged() {

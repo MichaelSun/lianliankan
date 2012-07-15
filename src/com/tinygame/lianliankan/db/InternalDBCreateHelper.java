@@ -8,7 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 class InternalDBCreateHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "integral.db";
-    private static final int DATABASE_VERSION = 2;
+    private static final int DATABASE_VERSION = 3;
     
     public InternalDBCreateHelper(Context context){
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -17,12 +17,14 @@ class InternalDBCreateHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(DataBaseConfig.INTEGRAL_DATABASE_CREATE);
+        db.execSQL(DataBaseConfig.ENDLESS_DATABASE_CREATE);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         if(newVersion <= 2) {
             db.execSQL("DROP TABLE IF EXISTS " + DataBaseConfig.INTEGRAL_DATABASE_CREATE);
+            db.execSQL("DROP TABLE IF EXISTS " + DataBaseConfig.ENDLESS_DATABASE_CREATE);
             onCreate(db);
         }
     }

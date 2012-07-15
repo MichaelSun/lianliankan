@@ -20,6 +20,8 @@ public class LevelView extends View {
     private static final String TAG = "LevelView";
     
     private static final int PADDING = 20;
+    public static final int ENDLESS = 1000;
+    public static final int NORMAL = 10001;
 
     public interface LevelChangedListener {
         void onLevelChanged(int level);
@@ -33,6 +35,7 @@ public class LevelView extends View {
     private Paint mPaint = new Paint();
     private Drawable mTopBgDrawable;
     private LevelChangedListener mLevelChangedListener;
+    private int mMode;
     
     public LevelView(Context context) {
         super(context);
@@ -63,6 +66,10 @@ public class LevelView extends View {
         this.invalidate();
     }
     
+    public void setMode(int mode) {
+        mMode = mode;
+    }
+    
     @Override
     protected void onDraw(Canvas canvas) {
         int width = getWidth();
@@ -70,6 +77,10 @@ public class LevelView extends View {
         
         mTopBgDrawable.setBounds(0, 0, width, height);
         mTopBgDrawable.draw(canvas);
+        
+        if (mMode == ENDLESS) {
+            return;
+        }
         
         int logoWidth = mLevelLogo.getIntrinsicWidth();
         int numberWidth = mNumberMap.get(0).getWidth();
@@ -112,6 +123,8 @@ public class LevelView extends View {
         mLevelLogo = mContext.getResources().getDrawable(R.drawable.level);
         mTopBgDrawable = mContext.getResources().getDrawable(R.drawable.top_bg);
         mLevelNumList = new ArrayList<Integer>();
+        
+        mMode = NORMAL;
     }
     
     private void LOGD(String msg) {

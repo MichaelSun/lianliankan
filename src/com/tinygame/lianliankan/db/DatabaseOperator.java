@@ -134,6 +134,105 @@ public class DatabaseOperator {
         return ret;
     }
     
+    public LevelInfo getEndlessInfo(int category, int level) {
+        LevelInfo ret = new LevelInfo();
+        if (category >= 0 && level >= 0) {
+            ret.category = category;
+            ret.level = level;
+            Cursor c = null;
+            try {
+                String selection = DataBaseConfig.INTEGRAL_TABLE_CATEGORY + " =?";
+                String[] selectionArgs = new String[] { String.valueOf(category) };
+                c = mDBProxy.query(DataBaseConfig.ENDLESS_TABLE_NAME, selection, selectionArgs, null);
+                
+                LOGD("[[getLevelInfo]] selection = " + selection
+                        + " selectionArgs = " + selectionArgs);
+                
+                if (c != null) {
+                    LOGD("[[getLevelInfo]] cate = " + category + " level = " + level + " c != null >>>>>>>");
+                    if (c.moveToFirst()) {
+                        ret.count = Integer.valueOf(c.getString(c.getColumnIndex(DataBaseConfig.INTEGRAL_TABLE_COUNT)));
+                        ret.continueCount = Integer.valueOf(c.getString(c.getColumnIndex(DataBaseConfig.INTEGRAL_TABLE_CONTINUE)));
+                        ret.max = Integer.valueOf(c.getString(c.getColumnIndex(DataBaseConfig.INTEGRAL_TABLE_MAX_CONTINUE)));
+                        ret.cost = Integer.valueOf(c.getString(c.getColumnIndex(DataBaseConfig.INTEGRAL_TABLE_COST)));
+                        LOGD("[[getLevelInfo]] cate = " + category + " level = " + level + " c move to next success"
+                                + " ret = " + ret.toString());
+                    }
+                }
+                
+                return ret;
+            } catch (Exception e) {
+                e.printStackTrace();
+            } finally {
+                if (c != null) {
+                    c.close();
+                }
+            }
+        }
+        
+        return ret;
+    }
+    
+    public void clearEndlessInfoByCategory(int category) {
+        String selection = DataBaseConfig.ENDLESS_TABLE_CATEGORY + " =?";
+        String[] selectionArgs = new String[]{ String.valueOf(category) };
+        
+        mDBProxy.delete(DataBaseConfig.ENDLESS_TABLE_NAME, selection, selectionArgs);
+    }
+    
+    public boolean insertEndlessInfo(LevelInfo info) {
+        if (info != null) {
+            return insertEndlessInfo(info.category, info.level, info.count, info.continueCount, info.max, info.cost);
+        }
+        
+        return false;
+    }
+    
+    private boolean insertEndlessInfo(int category, int level, int count, int countinue, int max, int cost) {
+        if (category >= 0 && level >= 0) {
+            Cursor c = null;
+            try {
+                String selection = DataBaseConfig.ENDLESS_TABLE_CATEGORY + " =?";
+                String[] selectionArgs = new String[]{ String.valueOf(category) };
+                
+                c = mDBProxy.query(DataBaseConfig.ENDLESS_TABLE_NAME, selection, selectionArgs, null);
+                
+                ContentValues values = new ContentValues();
+                values.put(DataBaseConfig.INTEGRAL_TABLE_CATEGORY, String.valueOf(category));
+                values.put(DataBaseConfig.INTEGRAL_TABLE_LEVEL, String.valueOf(level));
+                if (count != -1) {
+                    values.put(DataBaseConfig.INTEGRAL_TABLE_COUNT, String.valueOf(count));
+                }
+                if (countinue != -1) {
+                    values.put(DataBaseConfig.INTEGRAL_TABLE_CONTINUE, String.valueOf(countinue));
+                }
+                if (max != -1) {
+                    values.put(DataBaseConfig.INTEGRAL_TABLE_MAX_CONTINUE, String.valueOf(max));
+                }
+                if (cost != -1) {
+                    values.put(DataBaseConfig.INTEGRAL_TABLE_COST, String.valueOf(cost));
+                }
+                if (c == null || (c != null && !c.moveToFirst())) {
+                    LOGD("[[insertCategoryAndLevelIntergral]] c == null, value = " + values.toString());
+                    mDBProxy.insert(DataBaseConfig.ENDLESS_TABLE_NAME, values);
+                } else {
+                    LOGD("[[insertCategoryAndLevelIntergral]] c != null update, value = " + values.toString());
+                    mDBProxy.update(DataBaseConfig.ENDLESS_TABLE_NAME, values, selection, selectionArgs);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            } finally {
+                if (c != null) {
+                    c.close();
+                }
+            }
+            
+            return true;
+        }
+        
+        return false;
+    }
+    
     public boolean insertCategoryAndLevelIntergral(LevelInfo info) {
         if (info != null) {
             return insertCategoryAndLevelIntergral(info.category, info.level, info.count, info.continueCount, info.max, info.cost);

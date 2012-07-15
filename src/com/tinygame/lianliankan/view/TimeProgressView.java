@@ -69,6 +69,13 @@ public class TimeProgressView extends View {
         mTimeProgressListener = l;
     }
     
+    public void increaseTime(int time) {
+        mStartTime += time;
+        mEffectTime += time;
+        
+        this.invalidate();
+    }
+    
     public void setTotalTime(int time) {
         mTotalTime = time;
         mProgressing = false;
@@ -301,6 +308,8 @@ public class TimeProgressView extends View {
         if (mProgressing) {
             this.invalidate();
         }
+        
+        super.onDraw(canvas);
     }
     
     private ArrayList<Bitmap> getTimeNumberBt(int time) {

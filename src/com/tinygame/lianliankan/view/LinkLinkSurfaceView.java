@@ -42,7 +42,7 @@ public class LinkLinkSurfaceView extends SurfaceView implements Callback {
     public static interface LLViewActionListener {
         void onNoHintToConnect();
         void onFinishOnTime();
-        void onDismissTouch();
+        void onDismissTouch(int imageIndex);
         
         void onAlignChart(Chart alignChart);
     }
@@ -91,6 +91,7 @@ public class LinkLinkSurfaceView extends SurfaceView implements Callback {
     
     private boolean mTileDataChanged = true;
     private boolean mForceRefresh;
+    private boolean mNextEndlessMode;
     private int mTileDataChangedCount;
     
     private Bitmap mFullOverLayBitmap;
@@ -244,6 +245,10 @@ public class LinkLinkSurfaceView extends SurfaceView implements Callback {
         mForceRefresh = true;    
     }
     
+    public void beginAnotherEndlessRound() {
+        mNextEndlessMode = true;
+    }
+    
     private void handlerTileSelect(Tile newTile) {
         if (mSelectTileCur == null) {
             mSelectTileCur = newTile;
@@ -259,7 +264,7 @@ public class LinkLinkSurfaceView extends SurfaceView implements Callback {
                         }
                         
                         if (mLLViewActionListener != null) {
-                            mLLViewActionListener.onDismissTouch();
+                            mLLViewActionListener.onDismissTouch(mSelectTileCur.getImageIndex());
                         }
                         
                         mSelectTileOne = mSelectTileCur;
@@ -440,8 +445,8 @@ public class LinkLinkSurfaceView extends SurfaceView implements Callback {
         
         public void run() {
             while (mRunning) {
-                if (mTileDataChanged || mForceRefresh) {
-                    if (mForceRefresh) {
+                if (mTileDataChanged || mForceRefresh || mNextEndlessMode) {
+                    if (mForceRefresh || mNextEndlessMode) {
                         try {
                             synchronized (mRoutes) {
                                 if (mRoutes != null && mRoutes.size() > 0) {
@@ -467,6 +472,8 @@ public class LinkLinkSurfaceView extends SurfaceView implements Callback {
                                 mHolder.unlockCanvasAndPost(canvas);
                             }
                         }
+                        
+                        mNextEndlessMode = false;
                     }
                     
                     if (mSelectTileOne != null 
@@ -591,14 +598,8 @@ public class LinkLinkSurfaceView extends SurfaceView implements Callback {
 //        mSelectorDrawableList.add(mContext.getResources().getDrawable(R.drawable.selector5));
         
         mLightIndex = 0;
-        mLightHBtList = new ArrayList<Bitmap>();
-        mLightHBtList.add(AssetsImageLoader.loadBitmapFromAsset(mContext, "image/light_h"));
-        mLightHBtList.add(AssetsImageLoader.loadBitmapFromAsset(mContext, "image/light_h1"));
-        mLightHBtList.add(AssetsImageLoader.loadBitmapFromAsset(mContext, "image/light_h2"));
-        mLightVBtList = new ArrayList<Bitmap>();
-        mLightVBtList.add(AssetsImageLoader.loadBitmapFromAsset(mContext, "image/light_v"));
-        mLightVBtList.add(AssetsImageLoader.loadBitmapFromAsset(mContext, "image/light_v1"));
-        mLightVBtList.add(AssetsImageLoader.loadBitmapFromAsset(mContext, "image/light_v2"));
+        mLightVBtList = ThemeManager.getInstance().getLightVerticalList();
+        mLightHBtList = ThemeManager.getInstance().getLightHorizontalList();
         
         getHolder().addCallback(this);
         mHolder = getHolder();
@@ -651,11 +652,11 @@ public class LinkLinkSurfaceView extends SurfaceView implements Callback {
                     mHolder.unlockCanvasAndPost(canvas);
                 }
             }
-//            try {
-//                Thread.sleep(20);
-//            } catch(Exception e) {
-//                e.printStackTrace();
-//            }
+            try {
+                Thread.sleep(20);
+            } catch(Exception e) {
+                e.printStackTrace();
+            }
         }
         
         LOGD(">>>>> draw boom finish  >>>>>>>" + " cur time = " + Utils.curTime() + " >>>>>>>>>");
