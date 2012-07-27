@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.tinygame.lianliankan"
-    android:versionCode="18"
-    android:versionName="3.1" >
+    android:versionCode="19"
+    android:versionName="3.2" >
 
     <uses-sdk android:minSdkVersion="7" />
 
@@ -59,6 +59,18 @@
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Translucent" />
+        
+        <activity android:name="com.renren.mobile.rmsdk.oauthimpl.auth.OAuthActivity" >
+        </activity>
+        <activity
+            android:name="com.renren.mobile.rmsdk.oauthimpl.auth.ChooseAccountActivity"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+        </activity>
+        <activity
+            android:name="com.renren.mobile.rmsdk.component.share.ShareActivity"
+            android:configChanges="orientation|keyboardHidden|navigation"
+            android:screenOrientation="portrait" >
+        </activity>
 
         <uses-library
             android:name="com.google.android.maps"
@@ -130,6 +142,33 @@
             android:theme="@style/WiGame.Borderless.Dialog"
             android:windowSoftInputMode="stateHidden|adjustUnspecified" />
         <activity android:name="com.wiyun.game.UserMap" />
+        <receiver android:name="com.renren.mobile.rmsdk.oauthimpl.auth.
+LogoutBroadCastDispactcher" >
+            <intent-filter>
+                <action android:name="com.renren.renren_account_manager.
+RENREN_MOBILE_LOGIN_BROADCAST" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name="com.renren.mobile.rmsdk.oauthimpl.auth.
+LogoutBroadCastDispactcher" >
+            <intent-filter>
+                <action android:name="com.renren.renren_account_manager.
+RENREN_MOBILE_LOGOUT_BROADCAST" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name="your.broadcast.receiver" >
+            <intent-filter>
+                <action android:name="com.renren.sso.
+RENREN_LOGOUT_BROADCAST" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </receiver>
+        
     </application>
 
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
@@ -140,5 +179,14 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.USE_CREDENTIALS" />
+    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS" />
 
 </manifest>

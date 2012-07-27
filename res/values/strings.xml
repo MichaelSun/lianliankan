@@ -20,6 +20,10 @@
     <string name="version" formatted="false">版本:%s</string>
     <string name="sorce" formatted="false">积分:%s</string>
     
+    <string name="login_success">登录成功</string>
+    <string name="login_failed">登录失败</string>
+    <string name="share_tips">果果连连看，超炫的连连看，必备的连连看。下载链接:http://apk.gfan.com/Product/App221213.html</string>
+    
     <string name="sorce_update_success">上传游戏积分成功,点击排行榜查看排名</string>
     
     <string name="perf_last_diff">last_diff</string>

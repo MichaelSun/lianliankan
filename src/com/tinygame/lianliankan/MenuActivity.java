@@ -1,16 +1,23 @@
 package com.tinygame.lianliankan;
 
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.net.MalformedURLException;
 import java.util.ArrayList;
 
 import net.youmi.android.appoffers.YoumiOffersManager;
 import net.youmi.android.appoffers.YoumiPointsManager;
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.CompressFormat;
+import android.graphics.Canvas;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -28,8 +35,12 @@ import android.view.animation.Animation.AnimationListener;
 import android.view.animation.AnimationSet;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.mobclick.android.MobclickAgent;
+import com.renren.mobile.rmsdk.component.share.ShareActivity;
+import com.renren.mobile.rmsdk.core.RMConnectCenter;
+import com.renren.mobile.rmsdk.core.RMConnectCenter.AuthVerifyListener;
 import com.tinygame.lianliankan.config.Config;
 import com.tinygame.lianliankan.pageIndactor.TitlePageIndicatorEx1;
 import com.tinygame.lianliankan.pageIndactor.TitleProvider;
@@ -50,6 +61,8 @@ public class MenuActivity extends Activity {
     
     private int mCurrentIndex;
     private Dialog mDownloadDialog;
+    
+    private RMConnectCenter mRMCenter;
     
     private static final int ENTRY_GAME = 0;
     private static final int ENTRY_ENDLESS = 1;
@@ -81,6 +94,52 @@ public class MenuActivity extends Activity {
         SettingManager.getInstance().init(getApplicationContext());
         this.setContentView(R.layout.menu_view);
         MobclickAgent.onError(this);
+        
+        mRMCenter = RMConnectCenter.getInstance(this);
+        mRMCenter.setClientInfo(Config.RR_API_KEY, Config.RR_SECRET_KEY, Config.RR_APP_ID);
+        mRMCenter.setAuthVerifyListener(new AuthVerifyListener() {
+            @Override
+            public void onAuthVerifySuccess() {
+                Toast.makeText(getApplicationContext(), getString(R.string.login_success), Toast.LENGTH_LONG).show();
+            }
+
+            @Override
+            public void onAuthVerifyFailed() {
+                Toast.makeText(getApplicationContext(), getString(R.string.login_failed), Toast.LENGTH_LONG).show();
+            }
+        });
+        mRMCenter.initFromLauncher(this);
+        
+        View renren = findViewById(R.id.renren_logo);
+        renren.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                View view = getWindow().getDecorView();
+                Bitmap bmp = Bitmap.createBitmap(view.getWidth(), view.getHeight(),
+                        android.graphics.Bitmap.Config.ARGB_8888);
+                view.draw(new Canvas(bmp));
+                String fileName = "my_screen_shot_upload.png";
+                String path = getCacheDir().getAbsolutePath();
+                File file = new File(path + "/" + fileName);
+                try {
+                    FileOutputStream os = new FileOutputStream(file);
+                    ByteArrayOutputStream bos = new ByteArrayOutputStream();
+                    bmp.compress(CompressFormat.JPEG, 100, bos);
+                    byte[] data = bos.toByteArray();
+                    os.write(data);
+                    bos.close();
+                    os.close();
+                } catch (MalformedURLException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+                bmp.recycle();
+                bmp = null;
+                ShareActivity.share(MenuActivity.this, file, getString(R.string.share_tips));
+            }
+        });
         
         mAnimationset = new AnimationSet(true);
 //        Animation a = new TranslateAnimation(0.0f, 0.0f, 0.0f, 20.0f);
@@ -458,5 +517,10 @@ public class MenuActivity extends Activity {
                         }).create();
         mDownloadDialog.setCancelable(false);
         mDownloadDialog.show();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        mRMCenter.onActivityResult(requestCode, resultCode, data);
     }
 }

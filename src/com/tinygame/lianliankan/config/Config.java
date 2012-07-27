@@ -8,6 +8,10 @@ public class Config {
     
     public static final boolean DRAW_LINE_ANIMATION = true;
     
+    public static final String RR_APP_ID = "2080092";
+    public static final String RR_API_KEY = "f704bb559b9144568faf1904c40df5b5";
+    public static final String RR_SECRET_KEY = "8ff73aa99c0144e2ae54350469d6882a";
+    
     public static final int IMAGE_SEARCH = 31;
     public static final int IMAGE_REARRANGE = 32;
     public static final int IMAGE_TIME = 33;
