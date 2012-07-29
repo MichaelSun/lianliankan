@@ -1,8 +1,16 @@
 package com.tinygame.lianliankan;
 
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.net.MalformedURLException;
 import java.util.ArrayList;
 
 import android.app.Activity;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Bitmap.CompressFormat;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
@@ -12,6 +20,7 @@ import android.view.animation.Animation;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.renren.mobile.rmsdk.component.share.ShareActivity;
 import com.tinygame.lianliankan.config.Config;
 import com.tinygame.lianliankan.db.DatabaseOperator;
 import com.tinygame.lianliankan.db.DatabaseOperator.LevelInfo;
@@ -55,6 +64,8 @@ public class ResultActivity extends Activity {
         mResultType = getIntent().getIntExtra(RESULT_TYPE, SUCCESS_CONTENT);
         if (mResultType == SUCCESS_CONTENT) {
             setContentView(R.layout.win_view);
+            
+            initShareToRenRen();
             
             String time = getIntent().getStringExtra(COST_TIME);
             String count = getIntent().getStringExtra(COUNT);
@@ -142,6 +153,8 @@ public class ResultActivity extends Activity {
         } else if (mResultType == FAILED_CONTENT) {
             setContentView(R.layout.lose_view);
             
+            initShareToRenRen();
+            
             View retry = findViewById(R.id.retry);
             retry.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -177,6 +190,39 @@ public class ResultActivity extends Activity {
             View next = findViewById(R.id.next);
             next.setVisibility(View.GONE);
         }
+    }
+    
+    private void initShareToRenRen() {
+        View renren = findViewById(R.id.renren_logo);
+        renren.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                View view = getWindow().getDecorView();
+                Bitmap bmp = Bitmap.createBitmap(view.getWidth(), view.getHeight(),
+                        android.graphics.Bitmap.Config.ARGB_8888);
+                view.draw(new Canvas(bmp));
+                String fileName = "my_screen_shot_upload.png";
+                String path = getCacheDir().getAbsolutePath();
+                File file = new File(path + "/" + fileName);
+                try {
+                    FileOutputStream os = new FileOutputStream(file);
+                    ByteArrayOutputStream bos = new ByteArrayOutputStream();
+                    bmp.compress(CompressFormat.JPEG, 100, bos);
+                    byte[] data = bos.toByteArray();
+                    os.write(data);
+                    bos.close();
+                    os.close();
+                } catch (MalformedURLException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+                bmp.recycle();
+                bmp = null;
+                ShareActivity.share(ResultActivity.this, file, getString(R.string.share_tips));
+            }
+        });
     }
     
     @Override

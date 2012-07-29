@@ -565,6 +565,9 @@ public class LinkLinkEndlessActivity extends Activity implements LLViewActionLis
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {
+            Endless_Category_Diff_Selector.getInstance().clearInfo();
+            DatabaseOperator.getInstance().clearEndlessInfoByCategory(
+                    Endless_Category_Diff_Selector.getInstance().getCurrentCategoryLevel());
             finish();
             overridePendingTransition(R.anim.slide_up_in, R.anim.slide_down_out);
             return false;
@@ -871,6 +874,9 @@ public class LinkLinkEndlessActivity extends Activity implements LLViewActionLis
         if (requestCode == Config.ENDLESS_REQUEST_CODE) {
             switch (resultCode) {
             case ResultActivity.RETURN_QUIT:
+                Endless_Category_Diff_Selector.getInstance().clearInfo();
+                DatabaseOperator.getInstance().clearEndlessInfoByCategory(
+                        Endless_Category_Diff_Selector.getInstance().getCurrentCategoryLevel());
                 finish();
                 break;
             case ResultActivity.RETURN_RETRY:

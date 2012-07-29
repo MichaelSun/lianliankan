@@ -107,6 +107,15 @@ public class SettingManager {
                             , 1);
     }
     
+    public int getLastOpenTime() {
+        return mSharedPreferences.getInt(mContext.getString(R.string.perf_last_open_day), 0);
+    }
+    
+    public void setLastOpenTime(int day) {
+        mEditor.putInt(mContext.getString(R.string.perf_last_open_day), day);
+        mEditor.commit();
+    }
+    
     public void init(Context context) {
         mContext = context;
         mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(mContext);

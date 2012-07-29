@@ -20,6 +20,8 @@
     <string name="version" formatted="false">版本:%s</string>
     <string name="sorce" formatted="false">积分:%s</string>
     
+    <string name="score_awards_tips">欢迎您再次归来，天天玩果果连连看，天天奖励30积分。</string>
+    
     <string name="login_success">登录成功</string>
     <string name="login_failed">登录失败</string>
     <string name="share_tips">果果连连看，超炫的连连看，必备的连连看。下载链接:http://apk.gfan.com/Product/App221213.html</string>
@@ -36,4 +38,6 @@
 	<string name="perf_last_diff_endless">endless_last_diff</string>
     <string name="perf_last_cate_endless">endless_last_cate</string>
     <string name="perf_score_endless">endless_high_score</string>
+    
+    <string name="perf_last_open_day">last_open_day</string>
 </resources>

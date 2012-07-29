@@ -75,7 +75,7 @@
 	    <TextView 
 	        android:id="@+id/sorce"
 	        android:layout_width="wrap_content"
-	        android:layout_height="30dp"
+	        android:layout_height="wrap_content"
 	        android:layout_alignParentLeft="true"
 	        android:layout_toLeftOf="@id/hint"
 	        android:layout_centerVertical="true"
@@ -130,8 +130,8 @@
 	
     <com.tinygame.lianliankan.view.ContinueClickView 
         android:id="@+id/continueclick"
-        android:layout_width="85dp"
-        android:layout_height="60dp"
+        android:layout_width="110dp"
+        android:layout_height="80dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_marginTop="15dp"

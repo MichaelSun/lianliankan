@@ -20,7 +20,7 @@ public class ContinueClickView extends View {
     private static final String TAG = "ContinueClickView";
 
     private Context mContext;
-    private Drawable mBattleDrawable;
+    private Bitmap mBattleBt;
     private int mCurContinueCount;
     private int mMaxContinueCount;
     private ArrayList<Bitmap> mNumberList;
@@ -39,10 +39,7 @@ public class ContinueClickView extends View {
     
     private void init(Context context) {
         mContext = context;
-        Bitmap battleBt = AssetsImageLoader.loadBitmapFromAsset(mContext, "image/batter");
-        if (battleBt != null) {
-            mBattleDrawable = new BitmapDrawable(battleBt);
-        }
+        mBattleBt = AssetsImageLoader.loadBitmapFromAsset(mContext, "image/batter");
         mNumberList = ThemeManager.getInstance().getContinueNumberList();
         mNumberDrawList = new ArrayList<Bitmap>();
         mPaint = new Paint();
@@ -95,40 +92,41 @@ public class ContinueClickView extends View {
                 || mCurContinueCount < 0 || mMaxContinueCount < 0) {
             return;
         }
-        if (mBattleDrawable == null) {
+        if (mBattleBt == null) {
             return;
         }
         
         int width = getWidth();
         int height = getHeight();
         
-        int imageTotalWidth = mBattleDrawable.getIntrinsicWidth();
+        int imageTotalWidth = mBattleBt.getWidth() * 2;
         for (Bitmap numBt : mNumberDrawList) {
             if (numBt != null) {
-                imageTotalWidth += numBt.getWidth();
+                imageTotalWidth += numBt.getWidth() * 2;
             }
         }
         
         int startX = (width - imageTotalWidth) / 2;
-//        int startY = (height - mBattleDrawable.getIntrinsicHeight()) / 2;
-        int startY = 0;
+        int imageWidth = mNumberList.get(0).getWidth() * 2;
+        int imageHeight = mNumberList.get(0).getHeight() * 2;
+        int startY = (height - (mBattleBt.getHeight() * 2)) / 2;
+//        mBattleDrawable.setBounds(startX, startY, mBattleDrawable.getIntrinsicWidth() * 2 + startX
+//                            , startY + mBattleDrawable.getIntrinsicHeight() * 2);
+//        mBattleDrawable.draw(canvas);
+        Rect src = new Rect(0, 0, mBattleBt.getWidth(), mBattleBt.getHeight());
+        Rect d = new Rect(startX, startY, mBattleBt.getWidth() * 2 + startX
+                , startY + mBattleBt.getHeight() * 2);
+        canvas.drawBitmap(mBattleBt, src, d, mPaint);
         
-        mBattleDrawable.setBounds(startX, startY, mBattleDrawable.getIntrinsicWidth() + startX
-                            , startY + mBattleDrawable.getIntrinsicHeight());
-        mBattleDrawable.draw(canvas);
-        
-        int imageWidth = mNumberList.get(0).getWidth();
-        int imageHeight = mNumberList.get(0).getHeight();
-        
-        startY = startY + mBattleDrawable.getIntrinsicHeight() - imageHeight;
-        Rect src = new Rect(0, 0, imageWidth, imageHeight);
+        startY = (height - imageHeight) / 2;
+        src = new Rect(0, 0, imageWidth / 2, imageHeight / 2);
         Bitmap bt = null;
         for (int i = 0; i < mNumberDrawList.size(); ++i) {
             bt = mNumberDrawList.get(i);
             if (bt != null && !bt.isRecycled()) {
-                Rect dst = new Rect(mBattleDrawable.getIntrinsicWidth() + startX + (i * imageWidth)
+                Rect dst = new Rect(mBattleBt.getWidth() * 2 + startX + (i * imageWidth)
                                 , startY
-                                , mBattleDrawable.getIntrinsicWidth() + startX + ((i + 1) * imageWidth)
+                                , mBattleBt.getWidth() * 2 + startX + ((i + 1) * imageWidth)
                                 , startY + imageHeight);
                 canvas.drawBitmap(mNumberDrawList.get(i), src, dst, mPaint);
             }

@@ -6,6 +6,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import net.youmi.android.appoffers.YoumiOffersManager;
 import net.youmi.android.appoffers.YoumiPointsManager;
@@ -175,6 +176,14 @@ public class MenuActivity extends Activity {
         });
         
         initView();
+        
+        int dayOfYear = Calendar.getInstance().get(Calendar.DAY_OF_YEAR);
+        int lastOpenDay = SettingManager.getInstance().getLastOpenTime();
+        if (lastOpenDay == 0 || (lastOpenDay != 0 && lastOpenDay != dayOfYear)) {
+            Toast.makeText(this, getString(R.string.score_awards_tips), Toast.LENGTH_LONG).show();
+            YoumiPointsManager.awardPoints(this, 30);
+        }
+        SettingManager.getInstance().setLastOpenTime(dayOfYear);
     }
     
     @Override
