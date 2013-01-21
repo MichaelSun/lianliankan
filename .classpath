@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK"/>
+	<classpathentry kind="con" path="com.android.ide.eclipse.adt.LIBRARIES"/>
+	<classpathentry kind="lib" path="libs/youmi-appoffer_2011-8-29.jar"/>
+	<classpathentry kind="lib" path="libs/AndroidAnalyticSDK3.1.1.jar"/>
+	<classpathentry kind="lib" path="libs/youmi-appoffer_v2.1_a_2012-01-31.jar"/>
+	<classpathentry kind="lib" path="libs/.DS_Store"/>
+	<classpathentry kind="lib" path="libs/WiGame.jar"/>
+	<classpathentry kind="lib" path="libs/cocos2d.jar"/>
+	<classpathentry kind="lib" path="libs/android-support-v4.jar"/>
+	<classpathentry kind="lib" path="libs/Renren_SDK_SocialPlugin_Android_v2.1.0.jar"/>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="gen"/>
+	<classpathentry kind="output" path="bin/classes"/>
+</classpath>
