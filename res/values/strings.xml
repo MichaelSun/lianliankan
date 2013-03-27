@@ -40,4 +40,5 @@
     <string name="perf_score_endless">endless_high_score</string>
     
     <string name="perf_last_open_day">last_open_day</string>
+    <string name="awardTips">欢迎进入果果连连看，奖励您30游戏积分</string>
 </resources>

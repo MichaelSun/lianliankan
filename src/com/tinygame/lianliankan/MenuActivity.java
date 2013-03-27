@@ -8,8 +8,10 @@ import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-import net.youmi.android.appoffers.YoumiOffersManager;
-import net.youmi.android.appoffers.YoumiPointsManager;
+import net.youmi.android.AdManager;
+import net.youmi.android.offers.OffersManager;
+import net.youmi.android.offers.PointsManager;
+import net.youmi.android.spot.SpotManager;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -176,12 +178,14 @@ public class MenuActivity extends Activity {
         });
         
         initView();
+        initYoumi();
         
         int dayOfYear = Calendar.getInstance().get(Calendar.DAY_OF_YEAR);
         int lastOpenDay = SettingManager.getInstance().getLastOpenTime();
         if (lastOpenDay == 0 || (lastOpenDay != 0 && lastOpenDay != dayOfYear)) {
             Toast.makeText(this, getString(R.string.score_awards_tips), Toast.LENGTH_LONG).show();
-            YoumiPointsManager.awardPoints(this, 30);
+            PointsManager.getInstance(this.getApplicationContext()).awardPoints(30);
+            Toast.makeText(getApplicationContext(), R.string.awardTips, Toast.LENGTH_LONG).show();
         }
         SettingManager.getInstance().setLastOpenTime(dayOfYear);
     }
@@ -195,6 +199,8 @@ public class MenuActivity extends Activity {
         if (soundOpen) {
             SoundEffectUtils.getInstance().playMenuSound();        
         }
+        
+        SpotManager.getInstance(this).loadSpotAds();
     }
     
     @Override
@@ -224,6 +230,11 @@ public class MenuActivity extends Activity {
         if (soundOpen) {
             SoundEffectUtils.getInstance().stopMenuSound();
         }
+    }
+    
+    private void initYoumi() {
+        AdManager.getInstance(this.getApplicationContext()).init(Config.YOUMI_APP_ID, Config.YOUMI_APP_SECRET_KEY, false);
+        OffersManager.getInstance(this.getApplicationContext()).onAppLaunch();
     }
     
     private void initView() {
@@ -463,11 +474,11 @@ public class MenuActivity extends Activity {
                         
                         @Override
                         public void onClick(View v) {
-                            int point = YoumiPointsManager.queryPoints(MenuActivity.this);
+                            int point = PointsManager.getInstance(getApplicationContext()).queryPoints();
                             if (!Config.DEBUG_CLOSE_APP_DOWNLOAD && point < Config.ENDLESS_POINT) {
                                 showCountDownloadDialog(point);
                             } else {
-                                YoumiPointsManager.spendPoints(MenuActivity.this, Config.ENDLESS_POINT);
+                                PointsManager.getInstance(getApplicationContext()).spendPoints(Config.ENDLESS_POINT);
                                 SoundEffectUtils.getInstance().playClickSound();
                                 mHandler.sendEmptyMessage(ENTRY_ENDLESS);
                             }
@@ -511,9 +522,7 @@ public class MenuActivity extends Activity {
                                     mDownloadDialog.dismiss();
                                     mDownloadDialog = null;
                                 }
-                                YoumiOffersManager.showOffers(MenuActivity.this,
-                                        YoumiOffersManager.TYPE_REWARD_OFFERS);
-                                
+                                OffersManager.getInstance(getApplicationContext()).showOffersWall();
                                 MobclickAgent.onEvent(MenuActivity.this, Config.ACTION_OFFER_LABEL);
                             }
                 }).setNegativeButton(R.string.btn_cancel

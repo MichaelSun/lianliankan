@@ -1,6 +1,5 @@
 package com.tinygame.lianliankan;
 
-import net.youmi.android.appoffers.YoumiOffersManager;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -173,8 +172,6 @@ public class LinkLinkEndlessActivity extends Activity implements LLViewActionLis
         
         initAnimation();
         resetContent();
-        
-        YoumiOffersManager.init(this, Config.APP_ID, Config.APP_SECRET_KEY);
         
         //test umeng config
         MobclickAgent.setSessionContinueMillis(1 * 60 * 1000);

@@ -16,7 +16,7 @@ import com.tinygame.lianliankan.view.JPSplashView;
 import com.tinygame.lianliankan.view.JPSplashView.SplashDispalyListener;
 import com.wiyun.game.WiGame;
 
-public class SplashActivity extends Activity {
+public class LinkLinkSplashActivity extends Activity {
 
     private static final int START_MAIN_VIEW = 0;
     private Handler mHandler = new Handler() {
@@ -59,7 +59,7 @@ public class SplashActivity extends Activity {
     private class StartTask extends AsyncTask<String, Void, Integer> {
         protected Integer doInBackground(String...params) {
             try {
-                SoundEffectUtils.getInstance().init(SplashActivity.this.getApplicationContext());
+                SoundEffectUtils.getInstance().init(LinkLinkSplashActivity.this.getApplicationContext());
                 SettingManager.getInstance().init(getApplicationContext());
                 DatabaseOperator.getInstance().init(getApplicationContext());
                 WiGame.init(getApplicationContext()

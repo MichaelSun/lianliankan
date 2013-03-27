@@ -1,7 +1,7 @@
 package com.tinygame.lianliankan;
 
-import net.youmi.android.appoffers.YoumiOffersManager;
-import net.youmi.android.appoffers.YoumiPointsManager;
+import net.youmi.android.offers.OffersManager;
+import net.youmi.android.offers.PointsManager;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -240,8 +240,6 @@ public class LinkLink extends Activity implements LLViewActionListener
         
         resetContent();
         
-        YoumiOffersManager.init(this, Config.APP_ID, Config.APP_SECRET_KEY);
-        
         //test umeng config
         MobclickAgent.setSessionContinueMillis(1 * 60 * 1000);
         MobclickAgent.onError(this);
@@ -298,7 +296,7 @@ public class LinkLink extends Activity implements LLViewActionListener
     private void checkAppPoint() {
         if (!Config.DEBUG_CLOSE_APP_DOWNLOAD) {
             int level = Categary_diff_selector.getInstance().getCurrentDiffLevel();
-            int point = YoumiPointsManager.queryPoints(this);
+            int point = PointsManager.getInstance(this.getApplicationContext()).queryPoints();
             if (point < Config.POINT_100 && level >= Config.APP_DOWNLOA_SHOW_LEVEL) {
                 showCountDownloadDialog();
             } else if (point < Config.POINT_200 && level >= Config.APP_DOWNLOA_SHOW_LEVEL_TWO) {
@@ -571,8 +569,7 @@ public class LinkLink extends Activity implements LLViewActionListener
                                 }
                                 mAppDownloadShow = false;
                                 LOGD("[[showCountDownloadDialog]] >>>>>>> show offers >>>>>>");
-                                YoumiOffersManager.showOffers(LinkLink.this,
-                                        YoumiOffersManager.TYPE_REWARD_OFFERS);
+                                OffersManager.getInstance(getApplicationContext()).showOffersWall();
                                 
                                 MobclickAgent.onEvent(mContext, Config.ACTION_OFFER_LABEL);
                             }

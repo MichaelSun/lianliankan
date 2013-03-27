@@ -7,10 +7,11 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.util.ArrayList;
 
+import net.youmi.android.spot.SpotManager;
 import android.app.Activity;
 import android.graphics.Bitmap;
-import android.graphics.Canvas;
 import android.graphics.Bitmap.CompressFormat;
+import android.graphics.Canvas;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
@@ -223,6 +224,13 @@ public class ResultActivity extends Activity {
                 ShareActivity.share(ResultActivity.this, file, getString(R.string.share_tips));
             }
         });
+    }
+    
+    @Override
+    public void onStart() {
+        super.onStart();
+        
+        SpotManager.getInstance(this.getApplicationContext()).showSpotAds(this);
     }
     
     @Override

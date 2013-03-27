@@ -33,9 +33,8 @@ public class Config {
     
     public static final String WIGAME_ENDLESS_KEY = "8eafacfce8ea6be2";
     
-    public static final String APP_ID = "53e13f6906527b33";
-    
-    public static final String APP_SECRET_KEY = "e1703eadcc64253b";
+    public static final String YOUMI_APP_ID = "53e13f6906527b33";
+    public static final String YOUMI_APP_SECRET_KEY = "e1703eadcc64253b";
     
     public static final int APP_DOWNLOA_SHOW_LEVEL = 10;
     public static final int APP_DOWNLOA_SHOW_LEVEL_TWO = 20;

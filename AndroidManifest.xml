@@ -1,40 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.tinygame.lianliankan"
-    android:versionCode="19"
-    android:versionName="3.2" >
+    android:versionCode="22"
+    android:versionName="4.0" >
 
-    <uses-sdk android:minSdkVersion="7" />
-
+    <uses-sdk android:minSdkVersion="7"
+        android:targetSdkVersion="14" />
+    
+    <uses-permission android:name="android.permission.READ_LOGS" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <!-- add permissions for umeng -->
-    <uses-permission android:name="android.permission.READ_LOGS" />
-    <uses-permission android:name="android.permission.READ_LOGS" />
+    <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.USE_CREDENTIALS" />
+    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
     <application
+        android:name="LinkLinkApplication"
         android:icon="@drawable/icon"
-        android:label="@string/app_name"
-        android:name="LinkLinkApplication" >
+        android:label="@string/app_name" >
         <meta-data
-            android:name="UMENG_APPKEY"
-            android:value="4f26afbe52701526bc0000be" />
+            android:name="UMENG_APPKEY" android:value="4f26afbe52701526bc0000be" />
         <meta-data
-            android:name="UMENG_CHANNEL"
-            android:value="gfan" />
+            android:name="UMENG_CHANNEL" android:value="gfan" />
         <meta-data
-            android:name="YOUMI_CHANNEL"
-            android:value="10020" />
+            android:name="YOUMI_CHANNEL" android:value="10020" />
 
         <activity
-            android:name="net.youmi.android.appoffers.YoumiOffersActivity"
-            android:configChanges="keyboard|keyboardHidden|orientation" />
-        <activity
-            android:name=".SplashActivity"
+            android:name=".LinkLinkSplashActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -59,7 +62,6 @@
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Translucent" />
-        
         <activity android:name="com.renren.mobile.rmsdk.oauthimpl.auth.OAuthActivity" >
         </activity>
         <activity
@@ -142,51 +144,42 @@
             android:theme="@style/WiGame.Borderless.Dialog"
             android:windowSoftInputMode="stateHidden|adjustUnspecified" />
         <activity android:name="com.wiyun.game.UserMap" />
-        <receiver android:name="com.renren.mobile.rmsdk.oauthimpl.auth.
-LogoutBroadCastDispactcher" >
-            <intent-filter>
-                <action android:name="com.renren.renren_account_manager.
-RENREN_MOBILE_LOGIN_BROADCAST" />
 
+        <receiver android:name="com.renren.mobile.rmsdk.oauthimpl.auth.LogoutBroadCastDispactcher" >
+            <intent-filter>
+                <action android:name="com.renren.renren_account_manager.RENREN_MOBILE_LOGIN_BROADCAST" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </receiver>
-        <receiver android:name="com.renren.mobile.rmsdk.oauthimpl.auth.
-LogoutBroadCastDispactcher" >
+        <receiver android:name="com.renren.mobile.rmsdk.oauthimpl.auth.LogoutBroadCastDispactcher" >
             <intent-filter>
-                <action android:name="com.renren.renren_account_manager.
-RENREN_MOBILE_LOGOUT_BROADCAST" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </receiver>
-        <receiver android:name="your.broadcast.receiver" >
-            <intent-filter>
-                <action android:name="com.renren.sso.
-RENREN_LOGOUT_BROADCAST" />
-
+                <action android:name="com.renren.renren_account_manager.RENREN_MOBILE_LOGOUT_BROADCAST" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </receiver>
         
-    </application>
+        <!-- youmi used -->
+		<activity
+		    android:name="net.youmi.android.AdBrowser"
+		    android:configChanges="keyboard|keyboardHidden|orientation"            
+		    android:theme="@android:style/Theme.Light.NoTitleBar" >
+		</activity>
+		<service
+		    android:name="net.youmi.android.AdService"
+		    android:exported="false" >
+		</service>
+		<receiver 
+		    android:name="net.youmi.android.AdReceiver" >
+		    <intent-filter>
+		        <action android:name="android.intent.action.PACKAGE_ADDED" />
+		        <data android:scheme="package" />
+		    </intent-filter>
+		</receiver>
+		<receiver
+            android:name="net.youmi.android.offers.OffersReceiver"
+            android:exported="false" >
+        </receiver>
 
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT" />
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
-    <uses-permission android:name="android.permission.USE_CREDENTIALS" />
-    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS" />
+    </application>
 
 </manifest>
