@@ -2,8 +2,9 @@ package com.tinygame.lianliankan;
 
 import android.app.Application;
 import android.util.DisplayMetrics;
+import com.skymobi.pay.app.PayApplication;
 
-public class LinkLinkApplication extends Application {
+public class LinkLinkApplication extends PayApplication {
 
     /**
      * width of screen in pixels

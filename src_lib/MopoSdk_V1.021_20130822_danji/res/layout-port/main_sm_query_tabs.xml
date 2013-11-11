@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent" android:layout_height="fill_parent"
+	android:id="@+id/main_tab">
+
+	<!-- 阴影背景 -->
+    <TextView 
+    android:id="@+id/text_back_ground_color_query_tabs"
+    android:layout_width="fill_parent" android:layout_height="53dp"
+	android:background="@drawable/sm_top"/>
+	
+	<FrameLayout android:orientation="vertical"
+		android:layout_width="fill_parent" android:layout_height="fill_parent"
+		android:layout_gravity="center_horizontal"	
+		android:id="@+id/main_tab_ll">
+
+		<RelativeLayout android:orientation="horizontal"
+			android:layout_width="fill_parent" android:layout_height="55.3dp"
+			android:background="@drawable/sm_input_top" android:gravity="right">
+
+			<TextView style="@style/back_button_normal" android:id="@+id/back_button"
+				android:layout_height="fill_parent" android:layout_width="38dp"
+				android:layout_alignParentRight="true" android:layout_gravity="right"
+				android:gravity="center_horizontal" android:clickable="true"
+				android:layout_marginTop="11.3dp" android:layout_marginRight="15dp"
+				android:textSize="15sp" android:text="返 回" />
+		</RelativeLayout>
+
+		<TabHost android:id="@android:id/tabhost"
+			android:layout_width="fill_parent" android:layout_height="fill_parent"
+			android:gravity="center" android:paddingTop="23.3dp">
+
+			<LinearLayout android:orientation="vertical"
+				android:layout_width="fill_parent" android:layout_height="fill_parent"
+				android:gravity="center">
+				<RadioGroup android:gravity="center_vertical"
+					android:layout_gravity="bottom" android:orientation="horizontal"
+					android:id="@+id/main_radio" android:layout_width="wrap_content"
+					android:layout_height="32dp">
+					<RadioButton android:id="@+id/radio_button_day"
+						android:tag="radio_button_day" android:layout_marginTop="2.0dip"
+						android:text="@string/day" style="@style/main_tab_bottom_port"
+						android:layout_marginLeft="15dp" android:checked="true"
+						android:gravity="center" />
+					<RadioButton android:id="@+id/radio_button_week"
+						android:tag="radio_button_week" android:layout_marginTop="2.0dip"
+						android:text="@string/week" style="@style/main_tab_bottom_port"
+						android:layout_marginLeft="5dp" android:gravity="center" />
+					<RadioButton android:id="@+id/radio_button_month"
+						android:tag="radio_button_month" android:layout_marginTop="2.0dip"
+						android:text="@string/month" style="@style/main_tab_bottom_port"
+						android:layout_marginLeft="5dp" android:gravity="center" />
+				</RadioGroup>
+				<FrameLayout android:id="@android:id/tabcontent"
+					android:layout_width="fill_parent" android:layout_height="fill_parent"
+					android:gravity="center" android:background="@drawable/sm_input_bg">
+					<ListView android:id="@+id/list" android:layout_width="fill_parent"
+						android:layout_height="fill_parent" android:drawSelectorOnTop="false"
+						android:fadingEdge="none" android:cacheColorHint="#00000000"
+						android:listSelector="#00000000" android:divider="#B4CEE1"
+						android:dividerHeight="1px"/>
+				</FrameLayout>
+
+				<TabWidget android:id="@android:id/tabs"
+					android:visibility="gone" android:layout_width="fill_parent"
+					android:layout_height="wrap_content" android:layout_weight="0.0"
+					android:gravity="center" />
+			</LinearLayout>
+		</TabHost>
+	</FrameLayout>
+</FrameLayout>

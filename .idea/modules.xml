@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/LinkLink.iml" filepath="$PROJECT_DIR$/LinkLink.iml" />
+      <module fileurl="file://$PROJECT_DIR$/src_lib/MopoSdk_V1.021_20130822_danji/MopoSdk_V1.021_20130822_danji.iml" filepath="$PROJECT_DIR$/src_lib/MopoSdk_V1.021_20130822_danji/MopoSdk_V1.021_20130822_danji.iml" />
+    </modules>
+  </component>
+</project>
+

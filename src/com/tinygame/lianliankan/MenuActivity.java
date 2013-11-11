@@ -8,6 +8,7 @@ import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.Calendar;
 
+import com.tinygame.lianliankan.pay.Pay;
 import net.youmi.android.AdManager;
 import net.youmi.android.offers.OffersManager;
 import net.youmi.android.offers.PointsManager;

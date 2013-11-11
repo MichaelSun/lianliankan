@@ -1,0 +1,36 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="horizontal" android:layout_width="fill_parent"
+	android:layout_height="54.67dp" android:minHeight="?android:attr/listPreferredItemHeight">
+	<TextView android:id="@+id/card_type" android:layout_width="wrap_content"
+		android:layout_height="wrap_content" android:gravity="left"
+		android:textSize="13.3sp" android:textColor="#29323B"
+		android:layout_alignParentTop="true" android:layout_alignParentLeft="true"
+		android:layout_marginTop="12dp" android:layout_marginLeft="15dp" />
+		
+	<TextView android:id="@+id/paid_amount" android:layout_width="135dp"
+		android:layout_height="wrap_content" android:gravity="left"
+		android:layout_alignParentTop="true" android:layout_alignParentRight="true"
+		android:textSize="13.3sp" android:textColor="#29323B"
+		android:layout_marginTop="12dp" android:paddingRight="20dp" 
+		android:singleLine="true" android:ellipsize="marquee"
+		android:marqueeRepeatLimit="marquee_forever"/>
+
+	<TextView android:id="@+id/pay_date" android:layout_width="wrap_content"
+		android:layout_height="wrap_content" android:gravity="left"
+		android:layout_marginTop="36dp" android:layout_marginLeft="15dp"
+		android:textSize="12sp" android:textColor="#5B6E7C"
+		android:layout_alignParentLeft="true" />
+		
+	<TextView android:id="@+id/pay_text_ret" android:layout_width="115dp"
+		android:layout_alignParentRight="true" android:layout_height="wrap_content"
+		android:gravity="left" android:textSize="13.3sp" android:textColor="#EC5B29"
+		android:layout_marginTop="36dp" android:paddingRight="20dp"
+		android:singleLine="true" android:ellipsize="end"
+		android:marqueeRepeatLimit="marquee_forever"
+		android:scrollHorizontally="true"/>
+		
+	<ImageView android:id="@+id/pay_img_ret"
+		android:layout_width="wrap_content" android:layout_height="wrap_content"
+		android:layout_toLeftOf="@id/pay_text_ret" android:layout_marginRight="6dp"
+		android:layout_marginTop="36dp" android:gravity="center" />
+</RelativeLayout>
