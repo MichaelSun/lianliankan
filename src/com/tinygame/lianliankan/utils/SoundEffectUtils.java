@@ -3,10 +3,8 @@ package com.tinygame.lianliankan.utils;
 import android.content.Context;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnCompletionListener;
 import android.media.SoundPool;
 import android.util.Log;
-
 import com.tinygame.lianliankan.R;
 import com.tinygame.lianliankan.config.Config;
 
@@ -18,7 +16,6 @@ public class SoundEffectUtils {
     private static SoundEffectUtils gSoundEffectUtils = new SoundEffectUtils();
     private int mClickPlayID;
     private int mConnectPlayID;
-    private int mReadyGoID;
     private MediaPlayer mMediaPlayer;
     
     public static SoundEffectUtils getInstance() {
@@ -31,11 +28,9 @@ public class SoundEffectUtils {
         
         mSoundNotifySoundPool.unload(R.raw.click);
         mSoundNotifySoundPool.unload(R.raw.disappear);
-        mSoundNotifySoundPool.unload(R.raw.ready_go);
-        
+
         mClickPlayID = mSoundNotifySoundPool.load(mContext, R.raw.click, 0);
         mConnectPlayID = mSoundNotifySoundPool.load(mContext, R.raw.disappear, 0);
-        mReadyGoID = mSoundNotifySoundPool.load(mContext, R.raw.ready_go, 0);
     }
     
     public void playClickSound() {
@@ -59,51 +54,51 @@ public class SoundEffectUtils {
     }
     
     public void playReadySound() {
-        if (Config.SOUND_DEBUG) {
-            return;
-        }
-        if (mSoundNotifySoundPool != null) {
-            mSoundNotifySoundPool.play(mReadyGoID, (float) 0.1, (float) 0.3, 0, 0, 1);
-        }
+//        if (Config.SOUND_DEBUG) {
+//            return;
+//        }
+//        if (mSoundNotifySoundPool != null) {
+//            mSoundNotifySoundPool.play(mReadyGoID, (float) 0.1, (float) 0.3, 0, 0, 1);
+//        }
     }
     
     public void playSpeedSound() {
-        if (Config.SOUND_DEBUG) {
-            return;
-        }
-        
-        if (mMediaPlayer != null) {
-            mMediaPlayer.stop();
-            mMediaPlayer.release();
-            mMediaPlayer = null;
-        }
-        
-        if (mContext == null) {
-            return;
-        }
-        
-        mMediaPlayer = new MediaPlayer();
-        mMediaPlayer = MediaPlayer.create(mContext, R.raw.game_classic_back);
-        try {
-            mMediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
-            mMediaPlayer.setLooping(true);
-            mMediaPlayer.prepare();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        mMediaPlayer.setOnCompletionListener(new OnCompletionListener() {
-            @Override
-            public void onCompletion(MediaPlayer mp) {
-            }
-        });
-
-        try {
-            mMediaPlayer.start();
-        } catch (Exception e) {
-            e.printStackTrace();
-            mMediaPlayer.release();
-            mMediaPlayer = null;
-        }
+//        if (Config.SOUND_DEBUG) {
+//            return;
+//        }
+//
+//        if (mMediaPlayer != null) {
+//            mMediaPlayer.stop();
+//            mMediaPlayer.release();
+//            mMediaPlayer = null;
+//        }
+//
+//        if (mContext == null) {
+//            return;
+//        }
+//
+//        mMediaPlayer = new MediaPlayer();
+//        mMediaPlayer = MediaPlayer.create(mContext, R.raw.game_classic_back);
+//        try {
+//            mMediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
+//            mMediaPlayer.setLooping(true);
+//            mMediaPlayer.prepare();
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//        mMediaPlayer.setOnCompletionListener(new OnCompletionListener() {
+//            @Override
+//            public void onCompletion(MediaPlayer mp) {
+//            }
+//        });
+//
+//        try {
+//            mMediaPlayer.start();
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            mMediaPlayer.release();
+//            mMediaPlayer = null;
+//        }
     }
     
     public void stopSpeedSound() {
@@ -120,42 +115,42 @@ public class SoundEffectUtils {
     }
     
     public void playMenuSound() {
-        if (Config.SOUND_DEBUG) {
-            return;
-        }
-        
-        if (mMediaPlayer != null) {
-            mMediaPlayer.stop();
-            mMediaPlayer.release();
-            mMediaPlayer = null;
-        }
-        
-        if (mContext == null) {
-            return;
-        }
-        
-        mMediaPlayer = new MediaPlayer();
-        mMediaPlayer = MediaPlayer.create(mContext, R.raw.game_main_back);
-        try {
-            mMediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
-            mMediaPlayer.setLooping(true);
-            mMediaPlayer.prepare();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        mMediaPlayer.setOnCompletionListener(new OnCompletionListener() {
-            @Override
-            public void onCompletion(MediaPlayer mp) {
-            }
-        });
-
-        try {
-            mMediaPlayer.start();
-        } catch (Exception e) {
-            e.printStackTrace();
-            mMediaPlayer.release();
-            mMediaPlayer = null;
-        }
+//        if (Config.SOUND_DEBUG) {
+//            return;
+//        }
+//
+//        if (mMediaPlayer != null) {
+//            mMediaPlayer.stop();
+//            mMediaPlayer.release();
+//            mMediaPlayer = null;
+//        }
+//
+//        if (mContext == null) {
+//            return;
+//        }
+//
+//        mMediaPlayer = new MediaPlayer();
+//        mMediaPlayer = MediaPlayer.create(mContext, R.raw.game_main_back);
+//        try {
+//            mMediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
+//            mMediaPlayer.setLooping(true);
+//            mMediaPlayer.prepare();
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//        mMediaPlayer.setOnCompletionListener(new OnCompletionListener() {
+//            @Override
+//            public void onCompletion(MediaPlayer mp) {
+//            }
+//        });
+//
+//        try {
+//            mMediaPlayer.start();
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            mMediaPlayer.release();
+//            mMediaPlayer = null;
+//        }
     }
     
     public void stopMenuSound() {

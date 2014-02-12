@@ -1,15 +1,14 @@
 package com.tinygame.lianliankan.utils;
 
-import java.lang.ref.SoftReference;
-import java.util.ArrayList;
-import java.util.HashMap;
-
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
-
 import com.tinygame.lianliankan.utils.ImageSplitUtils.BitmapSiplited;
+
+import java.lang.ref.SoftReference;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 
 public class ThemeManager {
@@ -240,10 +239,10 @@ public class ThemeManager {
             mBgList = new ArrayList<Bitmap>();
             
             mBgList.add(AssetsImageLoader.loadBitmapFromAsset(mContext, "background/game_bg"));
-            mBgList.add(AssetsImageLoader.loadBitmapFromAsset(mContext, "background/game_bg1"));
-            mBgList.add(AssetsImageLoader.loadBitmapFromAsset(mContext, "background/game_bg2"));
-            mBgList.add(AssetsImageLoader.loadBitmapFromAsset(mContext, "background/game_bg3"));
-            mBgList.add(AssetsImageLoader.loadBitmapFromAsset(mContext, "background/game_bg4"));
+//            mBgList.add(AssetsImageLoader.loadBitmapFromAsset(mContext, "background/game_bg1"));
+//            mBgList.add(AssetsImageLoader.loadBitmapFromAsset(mContext, "background/game_bg2"));
+//            mBgList.add(AssetsImageLoader.loadBitmapFromAsset(mContext, "background/game_bg3"));
+//            mBgList.add(AssetsImageLoader.loadBitmapFromAsset(mContext, "background/game_bg4"));
         }
         
         return mBgList;

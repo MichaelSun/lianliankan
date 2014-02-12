@@ -1,30 +1,22 @@
 package com.tinygame.lianliankan;
 
-import java.util.ArrayList;
-
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.view.KeyEvent;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.Window;
-import android.view.WindowManager;
+import android.view.*;
 import android.view.animation.ScaleAnimation;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.GridView;
 import android.widget.TextView;
-
-import com.tinygame.lianliankan.config.Config;
 import com.tinygame.lianliankan.screen.ScrollScreen;
 import com.tinygame.lianliankan.screen.ScrollScreen.OnScreenChangeListener;
 import com.tinygame.lianliankan.screen.ScrollScreen.ScreenContentFactory;
 import com.tinygame.lianliankan.screen.ScrollScreenActivity;
 import com.tinygame.lianliankan.utils.ThemeManager;
-import com.wiyun.game.WiGame;
+
+import java.util.ArrayList;
 
 public class LevelActivity extends ScrollScreenActivity
                 implements ScreenContentFactory, OnScreenChangeListener {

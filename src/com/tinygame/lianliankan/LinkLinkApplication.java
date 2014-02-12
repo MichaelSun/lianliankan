@@ -2,9 +2,9 @@ package com.tinygame.lianliankan;
 
 import android.app.Application;
 import android.util.DisplayMetrics;
-import com.skymobi.pay.app.PayApplication;
+import com.tinygame.lianliankan.utils.PointsManager;
 
-public class LinkLinkApplication extends PayApplication {
+public class LinkLinkApplication extends Application {
 
     /**
      * width of screen in pixels
@@ -29,6 +29,8 @@ public class LinkLinkApplication extends PayApplication {
         SCREEN_WIDTH = dm.widthPixels;
         SCREEN_HEIGHT = dm.heightPixels;
         SCREEN_DENSITY =  dm.density;
+
+        PointsManager.getInstance().init(this);
     }
     
     @Override

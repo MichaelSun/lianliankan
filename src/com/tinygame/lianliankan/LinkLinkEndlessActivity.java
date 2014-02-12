@@ -9,21 +9,10 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
-import android.view.KeyEvent;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
-import android.view.animation.AlphaAnimation;
-import android.view.animation.Animation;
+import android.view.*;
+import android.view.animation.*;
 import android.view.animation.Animation.AnimationListener;
-import android.view.animation.AnimationSet;
-import android.view.animation.AnimationUtils;
-import android.view.animation.ScaleAnimation;
-import android.view.animation.TranslateAnimation;
 import android.widget.TextView;
-
-import com.mobclick.android.MobclickAgent;
 import com.tinygame.lianliankan.config.Config;
 import com.tinygame.lianliankan.config.Env;
 import com.tinygame.lianliankan.db.DatabaseOperator;
@@ -34,16 +23,12 @@ import com.tinygame.lianliankan.engine.Hint;
 import com.tinygame.lianliankan.engine.Tile;
 import com.tinygame.lianliankan.utils.SoundEffectUtils;
 import com.tinygame.lianliankan.utils.ThemeManager;
-import com.tinygame.lianliankan.utils.ToastUtil;
 import com.tinygame.lianliankan.view.ContinueClickView;
 import com.tinygame.lianliankan.view.LevelView;
 import com.tinygame.lianliankan.view.LinkLinkSurfaceView;
 import com.tinygame.lianliankan.view.LinkLinkSurfaceView.LLViewActionListener;
 import com.tinygame.lianliankan.view.TimeProgressView;
 import com.tinygame.lianliankan.view.TimeProgressView.TimeProgressListener;
-import com.wiyun.game.WiGame;
-import com.wiyun.game.WiGameAllClient;
-import com.wiyun.game.WiGameClient;
 
 public class LinkLinkEndlessActivity extends Activity implements LLViewActionListener
                                             , TimeProgressListener
@@ -91,13 +76,6 @@ public class LinkLinkEndlessActivity extends Activity implements LLViewActionLis
     
     private Context mContext;
     private boolean mNextLevel;
-    
-    private WiGameClient mWiGameClient = new WiGameAllClient() {
-        public void wyScoreSubmitted(String leaderboardId, int score, int rank) {
-            LOGD("[[wyScoreSubmitted]] >>>>>>>>>> <<<<<<<<<");
-            ToastUtil.getInstance(mContext).showToast(R.string.sorce_update_success);
-        }
-    };
     
     private static final int PLAY_READY_SOUND = 0;
     private static final int PLAY_BACKGROUND_SOUND = 1;
@@ -172,13 +150,6 @@ public class LinkLinkEndlessActivity extends Activity implements LLViewActionLis
         
         initAnimation();
         resetContent();
-        
-        //test umeng config
-        MobclickAgent.setSessionContinueMillis(1 * 60 * 1000);
-        MobclickAgent.onError(this);
-        MobclickAgent.setUpdateOnlyWifi(false);
-        
-        WiGame.addWiGameClient(mWiGameClient);
     }
 
     @Override
@@ -210,8 +181,6 @@ public class LinkLinkEndlessActivity extends Activity implements LLViewActionLis
         mBottomRegion.startAnimation(mBottomAnimation);
         mStopView.startAnimation(mStopAnimation);
         newGameButton.startAnimation(mNewGameAnimation);
-        
-        MobclickAgent.onResume(this);
     }
     
     @Override
@@ -219,7 +188,6 @@ public class LinkLinkEndlessActivity extends Activity implements LLViewActionLis
         super.onPause();
         LOGD("[[onPause]] >>>>>>>>> ");
         mFinishSuccessActivityShow = true;
-        MobclickAgent.onPause(this);
     }
     
     private void initAnimation() {
@@ -419,8 +387,6 @@ public class LinkLinkEndlessActivity extends Activity implements LLViewActionLis
                 }
                 mSorceTV.setText(String.format(getString(R.string.sorce), mLevelInfo.count));
                 mSorceTV.startAnimation(mSorceAnimation);
-                
-                MobclickAgent.onEvent(mContext, Config.ACTION_CLICK_LABEL, "arrange");
             }
         });
         hintButton.setOnClickListener(new View.OnClickListener() {
@@ -444,8 +410,6 @@ public class LinkLinkEndlessActivity extends Activity implements LLViewActionLis
                 }
                 mSorceTV.setText(String.format(getString(R.string.sorce), mLevelInfo.count));
                 mSorceTV.startAnimation(mSorceAnimation);
-                
-                MobclickAgent.onEvent(mContext, Config.ACTION_CLICK_LABEL, "hint");
             }
         });
         mNext.setOnClickListener(new View.OnClickListener() {
@@ -486,8 +450,6 @@ public class LinkLinkEndlessActivity extends Activity implements LLViewActionLis
         
         mHandler.sendEmptyMessage(RESET_PROGRESS_TIME_VIEW);
         Endless_Category_Diff_Selector.getInstance().saveCurretInfo();
-        
-        WiGame.removeWiGameClient(mWiGameClient);
     }
 
     @Override
@@ -768,9 +730,6 @@ public class LinkLinkEndlessActivity extends Activity implements LLViewActionLis
             
             updateToolsCount();
             updateToolsCountView();
-            
-            MobclickAgent.onEvent(this, Config.ACTION_START
-                    , String.valueOf(mLevelInfo.category) + ":" + String.valueOf(curLevel));
         } else {
             showResetGameDialog();
         }
@@ -860,9 +819,6 @@ public class LinkLinkEndlessActivity extends Activity implements LLViewActionLis
             }
             
             mLLView.beginAnotherEndlessRound();
-            
-            MobclickAgent.onEvent(mContext, Config.ACTION_LEVEL
-                    , String.valueOf(category) + ":" + String.valueOf(curLevel));
         }
     }
     

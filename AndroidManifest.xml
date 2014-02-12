@@ -1,331 +1,108 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.tinygame.lianliankan"
-    android:versionCode="22"
-    android:versionName="4.0" >
+          package="com.tinygame.lianliankan"
+          android:versionCode="22"
+          android:versionName="4.0">
 
-    <uses-sdk android:minSdkVersion="7"
-        android:targetSdkVersion="14" />
-    
-    <uses-permission android:name="android.permission.READ_LOGS" />
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT" />
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
-    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
-    <uses-permission android:name="android.permission.USE_CREDENTIALS" />
-    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS" />
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-sdk
+        android:minSdkVersion="7"
+        android:targetSdkVersion="14"/>
+
+    <uses-permission android:name="android.permission.READ_LOGS"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+    <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
+    <uses-permission android:name="android.permission.USE_CREDENTIALS"/>
+    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
 
     <!-- 冒泡SDK所需的权限 -->
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>
 
     <!-- Allows an application to modify the current configuration, such as locale. -->
-    <uses-permission android:name="android.permission.CHANGE_CONFIGURATION" />
+    <uses-permission android:name="android.permission.CHANGE_CONFIGURATION"/>
     <!-- Allows an application to read or write the system settings. -->
-    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
-    <uses-permission android:name="android.permission.READ_SECURE_SETTINGS" />
-    <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS" />
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS"/>
+    <uses-permission android:name="android.permission.READ_SECURE_SETTINGS"/>
+    <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
     <!-- 允许一个程序访问CellID或WiFi热点来获取粗略的位置 -->
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
     <!-- 允许一个程序访问精确位置(如GPS) -->
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.VIBRATE" />
-    <uses-permission android:name="android.permission.READ_SMS" />
-    <uses-permission android:name="android.permission.WRITE_SMS" />
-    <uses-permission android:name="android.permission.SEND_SMS" />
-    <uses-permission android:name="android.permission.RECEIVE_SMS" />
-    <uses-permission android:name="android.permission.CALL_PHONE" />
-    <uses-permission android:name="android.permission.RECEIVE_WAP_PUSH" />
-    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
-    <uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES" />
-    <uses-permission android:name="com.android.alarm.permission.SET_ALARM" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.READ_SMS"/>
+    <uses-permission android:name="android.permission.WRITE_SMS"/>
+    <uses-permission android:name="android.permission.SEND_SMS"/>
+    <uses-permission android:name="android.permission.RECEIVE_SMS"/>
+    <uses-permission android:name="android.permission.CALL_PHONE"/>
+    <uses-permission android:name="android.permission.RECEIVE_WAP_PUSH"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+    <uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES"/>
+    <uses-permission android:name="com.android.alarm.permission.SET_ALARM"/>
 
     <!-- 创建桌面快捷方式 -->
-    <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT" />
-    <uses-permission android:name="com.android.launcher.permission.UNINSTALL_SHORTCUT" />
+    <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT"/>
+    <uses-permission android:name="com.android.launcher.permission.UNINSTALL_SHORTCUT"/>
     <!-- end 基础SDK 权限 -->
 
 
     <!-- 获取有关当前或最近运行的任务，最近任务按钮 -->
-    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.GET_TASKS"/>
     <!-- 清除所有已安装应用缓存的权限 -->
-    <uses-permission android:name="android.permission.CLEAR_APP_CACHE" />
+    <uses-permission android:name="android.permission.CLEAR_APP_CACHE"/>
     <!-- 允许一个程序扩展收缩在状态栏 -->
-    <uses-permission android:name="android.permission.EXPAND_STATUS_BAR" />
+    <uses-permission android:name="android.permission.EXPAND_STATUS_BAR"/>
     <!-- 桌面浮动窗口，分享插件 -->
-    <uses-permission android:name="android.permission.RUN_INSTRUMENTATION" />
+    <uses-permission android:name="android.permission.RUN_INSTRUMENTATION"/>
 
     <application
         android:name="LinkLinkApplication"
         android:icon="@drawable/icon"
-        android:label="@string/app_name" >
-        <meta-data
-            android:name="UMENG_APPKEY" android:value="4f26afbe52701526bc0000be" />
-        <meta-data
-            android:name="UMENG_CHANNEL" android:value="gfan" />
-        <meta-data
-            android:name="YOUMI_CHANNEL" android:value="10020" />
-
+        android:label="@string/app_name">
         <activity
             android:name=".LinkLinkSplashActivity"
             android:label="@string/app_name"
-            android:screenOrientation="portrait" >
+            android:screenOrientation="portrait">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
         <activity
             android:name=".MenuActivity"
             android:label="@string/app_name"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".LevelActivity"
             android:label="@string/app_name"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".LinkLink"
             android:label="@string/app_name"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".LinkLinkEndlessActivity"
             android:label="@string/app_name"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".ResultActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.Translucent" />
-        <activity android:name="com.renren.mobile.rmsdk.oauthimpl.auth.OAuthActivity" >
-        </activity>
-        <activity
-            android:name="com.renren.mobile.rmsdk.oauthimpl.auth.ChooseAccountActivity"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
-        </activity>
-        <activity
-            android:name="com.renren.mobile.rmsdk.component.share.ShareActivity"
-            android:configChanges="orientation|keyboardHidden|navigation"
-            android:screenOrientation="portrait" >
-        </activity>
-
-        <uses-library
-            android:name="com.google.android.maps"
-            android:required="false" />
-
-        <activity
-            android:name="com.wiyun.game.AccountRetrieval"
-            android:theme="@android:style/Theme.Dialog" />
-        <activity
-            android:name="com.wiyun.game.BidPicker"
-            android:theme="@android:style/Theme.Dialog" />
-        <activity
-            android:name="com.wiyun.game.ChangeMyPortrait"
-            android:configChanges="keyboardHidden|orientation"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name="com.wiyun.game.ComposeTopic"
-            android:configChanges="keyboardHidden|orientation"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustResize" />
-        <activity
-            android:name="com.wiyun.game.CropImage"
-            android:configChanges="keyboardHidden|orientation"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name="com.wiyun.game.DLCDownloader"
-            android:theme="@android:style/Theme.Dialog" />
-        <activity
-            android:name="com.wiyun.game.DownloadBlob"
-            android:theme="@style/WiGame.Borderless.Dialog" />
-        <activity android:name="com.wiyun.game.FullImageGallery" />
-        <activity
-            android:name="com.wiyun.game.SaveGameDialog"
-            android:theme="@style/WiGame.Borderless.Dialog" />
-        <activity
-            android:name="com.wiyun.game.Home"
-            android:configChanges="keyboardHidden|orientation"
-            android:launchMode="singleTask"
-            android:windowSoftInputMode="stateHidden|adjustUnspecified" />
-        <activity
-            android:name="com.wiyun.game.LoadGameDialog"
-            android:theme="@style/WiGame.Borderless.Dialog" />
-        <activity
-            android:name="com.wiyun.game.Login"
-            android:theme="@style/WiGame.Borderless.Dialog" />
-        <activity
-            android:name="com.wiyun.game.Mopay"
-            android:theme="@style/WiGame.Borderless.Dialog" />
-        <activity
-            android:name="com.wiyun.game.MyBagDialog"
-            android:theme="@style/WiGame.Borderless.Dialog" />
-        <activity
-            android:name="com.wiyun.game.OAuth"
-            android:theme="@style/WiGame.Borderless.Dialog" />
-        <activity
-            android:name="com.wiyun.game.PurchaseDialog"
-            android:theme="@style/WiGame.Borderless.Dialog" />
-        <activity
-            android:name="com.wiyun.game.SendChallenge"
-            android:theme="@style/WiGame.Borderless.Dialog" />
-        <activity
-            android:name="com.wiyun.game.SubmitScore"
-            android:theme="@style/WiGame.Borderless.Dialog" />
-        <activity
-            android:name="com.wiyun.game.SwitchAccount"
-            android:theme="@style/WiGame.Borderless.Dialog" />
-        <activity
-            android:name="com.wiyun.game.UseAnotherAccount"
-            android:theme="@style/WiGame.Borderless.Dialog"
-            android:windowSoftInputMode="stateHidden|adjustUnspecified" />
-        <activity android:name="com.wiyun.game.UserMap" />
-
-        <receiver android:name="com.renren.mobile.rmsdk.oauthimpl.auth.LogoutBroadCastDispactcher" >
-            <intent-filter>
-                <action android:name="com.renren.renren_account_manager.RENREN_MOBILE_LOGIN_BROADCAST" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </receiver>
-        <receiver android:name="com.renren.mobile.rmsdk.oauthimpl.auth.LogoutBroadCastDispactcher" >
-            <intent-filter>
-                <action android:name="com.renren.renren_account_manager.RENREN_MOBILE_LOGOUT_BROADCAST" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </receiver>
-        
-        <!-- youmi used -->
-		<activity
-		    android:name="net.youmi.android.AdBrowser"
-		    android:configChanges="keyboard|keyboardHidden|orientation"            
-		    android:theme="@android:style/Theme.Light.NoTitleBar" >
-		</activity>
-		<service
-		    android:name="net.youmi.android.AdService"
-		    android:exported="false" >
-		</service>
-		<receiver 
-		    android:name="net.youmi.android.AdReceiver" >
-		    <intent-filter>
-		        <action android:name="android.intent.action.PACKAGE_ADDED" />
-		        <data android:scheme="package" />
-		    </intent-filter>
-		</receiver>
-		<receiver
-            android:name="net.youmi.android.offers.OffersReceiver"
-            android:exported="false" >
-        </receiver>
-
-        <!-- #######################冒泡配置 开始################################## -->
-
-
-        <!-- 冒泡基础  需要声明的activity 共1个 -->
-        <activity android:name="com.skymobi.freesky.activity.FsSdkActivity" />
-
-        <!-- 冒泡基础  需要声明的service 共1个 -->
-        <service android:name="com.skymobi.freesky.service.FsSdkService" />
-
-        <!-- 冒泡基础  需要声明的receiver 共1个 -->
-        <receiver android:name="com.skymobi.freesky.basic.FsSdkReceiver" >
-            <intent-filter>
-                <action android:name="android.intent.action.PACKAGE_ADDED" />
-                <action android:name="android.intent.action.PACKAGE_REMOVED" />
-
-                <data android:scheme="package" />
-            </intent-filter>
-            <intent-filter>
-                <action android:name="android.intent.action.USER_PRESENT" />
-                <action android:name="android.intent.action.BOOT_COMPLETED" />
-                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
-                <action android:name="FREESKY_SDK_MID_BROADCAST" />
-            </intent-filter>
-        </receiver>
-
-        <!-- 冒泡支付 需要声明的activity 共4个 -->
-        <activity
-            android:name="com.skymobi.pay.sdk.SkyPayActivity"
-            android:configChanges="orientation|navigation|keyboardHidden|keyboard"
-            android:label="@string/app_name"
-            android:theme="@style/transparent" />
-        <activity
-            android:name="com.skymobi.pay.third.activity.impl.EnterChargeCenter"
-            android:configChanges="orientation|navigation|keyboardHidden|keyboard"
-            android:label="@string/app_name"
-            android:theme="@style/transparent"
-            android:windowSoftInputMode="adjustPan" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name="com.skymobi.pay.third.activity.impl.QueryChargeResultActivity"
-            android:configChanges="orientation|navigation|keyboardHidden|keyboard"
-            android:label="@string/app_name"
-            android:screenOrientation="behind"
-            android:theme="@style/transparent" />
-        <activity
-            android:name="com.skymobi.pay.third.activity.impl.HelpActivity"
-            android:configChanges="orientation|navigation|keyboardHidden|keyboard"
-            android:label="@string/app_name"
-            android:screenOrientation="behind"
-            android:theme="@style/transparent" />
-
-        <!-- 冒泡支付 需要声明的service 共5个 -->
-        <service android:name="com.skymobi.pay.sms.service.SmsService" />
-        <service android:name="com.skymobi.pay.sms.service.SynService" />
-        <service android:name="com.skymobi.pay.common.service.PayCtrlService" />
-        <service android:name="com.skymobi.pay.third.service.CheckResultBackgroundService" />
-        <service android:name="com.skymobi.pay.services.SkyPayRemoteService" >
-            <intent-filter>
-                <action android:name="com.skymobi.pay.sdk.ISkyPayRemoteService" >
-                </action>
-            </intent-filter>
-        </service>
-
-        <!-- 冒泡支付 需要声明的receiver 共3个 -->
-        <receiver android:name="com.skymobi.pay.sms.receiver.SmsReceiver" >
-            <intent-filter android:priority="2147483647" >
-                <action android:name="android.provider.Telephony.SMS_RECEIVED" />
-            </intent-filter>
-        </receiver>
-        <receiver android:name="com.skymobi.pay.sms.receiver.NetworkReceiver" >
-            <intent-filter android:priority="2147483647" >
-                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
-            </intent-filter>
-        </receiver>
-        <receiver android:name="com.skymobi.pay.sms.receiver.BootReceiver" >
-            <intent-filter android:priority="2147483647" >
-                <action android:name="android.intent.action.BATTERY_CHANGED" />
-                <action android:name="android.intent.action.SIM_STATE_CHANGED" />
-                <action android:name="android.intent.action.NOTIFICATION_ADD" />
-                <action android:name="android.intent.action.SERVICE_STATE" />
-                <action android:name="android.intent.action.NOTIFICATION_REMOVE" />
-                <action android:name="android.intent.action.NOTIFICATION_UPDATE" />
-                <action android:name="android.bluetooth.adapter.action.STATE_CHANGED" />
-                <action android:name="android.net.wifi.WIFI_STATE_CHANGED" />
-                <action android:name="android.intent.action.ANY_DATA_STATE" />
-                <action android:name="android.net.wifi.STATE_CHANGE" />
-                <action android:name="android.intent.action.BOOT_COMPLETED" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-
-                <action android:name="android.intent.action.SCREEN_ON" />
-                <action android:name="android.intent.action.USER_PRESENT" />
-            </intent-filter>
-        </receiver>
+            android:theme="@style/Theme.Translucent"/>
 
     </application>
 

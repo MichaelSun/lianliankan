@@ -8,13 +8,10 @@ import android.os.Handler;
 import android.os.Message;
 import android.view.Window;
 import android.view.WindowManager;
-
-import com.tinygame.lianliankan.config.Config;
 import com.tinygame.lianliankan.db.DatabaseOperator;
 import com.tinygame.lianliankan.utils.SoundEffectUtils;
 import com.tinygame.lianliankan.view.JPSplashView;
 import com.tinygame.lianliankan.view.JPSplashView.SplashDispalyListener;
-import com.wiyun.game.WiGame;
 
 public class LinkLinkSplashActivity extends Activity {
 
@@ -62,13 +59,6 @@ public class LinkLinkSplashActivity extends Activity {
                 SoundEffectUtils.getInstance().init(LinkLinkSplashActivity.this.getApplicationContext());
                 SettingManager.getInstance().init(getApplicationContext());
                 DatabaseOperator.getInstance().init(getApplicationContext());
-                WiGame.init(getApplicationContext()
-                            , Config.WIGAME_API_KEY
-                            , Config.WIGAME_SECRECT_KEY
-                            , "1.0"
-                            , true);
-                WiGame.setHideScoreToast(false);
-                WiGame.setSandboxMode(false);
             } catch (Exception e) {
             }
             

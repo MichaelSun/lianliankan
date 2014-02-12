@@ -1,15 +1,480 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AndroidLayoutPreviewToolWindow">
+    <option name="state">
+      <GlobalState />
+    </option>
+  </component>
+  <component name="AndroidLayouts">
+    <shared>
+      <config />
+    </shared>
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="5bc4bbdf-895b-4962-bc19-6f27a2a1facb" name="Default" comment="" />
+    <list default="true" id="5bc4bbdf-895b-4962-bc19-6f27a2a1facb" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/tinygame/lianliankan/utils/PointsManager.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/background/game_bg1.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/background/game_bg2.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/background/game_bg3.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/background/game_bg4.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libs/AndroidAnalyticSDK3.1.1.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libs/Renren_SDK_SocialPlugin_Android_v2.1.0.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libs/WiGame.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libs/YoumiSdk_2013-03-19.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/color/wy_dialog_button_color_style1.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable-zh/wy_portrait_select_photo.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_badge.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_button_activity.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_button_activity_focused.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_button_activity_normal.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_button_activity_pressed.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_button_back.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_button_back_focused.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_button_back_normal.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_button_back_pressed.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_button_back_style2.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_button_back_style2_focused.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_button_back_style2_normal.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_button_back_style2_pressed.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_button_camera.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_button_camera_focused.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_button_camera_normal.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_button_camera_pressed.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_button_close_dialog.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_button_close_dialog_focused.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_button_close_dialog_normal.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_button_close_dialog_pressed.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_button_close_home.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_button_close_home_focused.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_button_close_home_normal.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_button_close_home_pressed.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_button_decrease.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_button_decrease_focused.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_button_decrease_normal.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_button_decrease_pressed.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_button_game.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_button_game_focused.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_button_game_normal.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_button_game_pressed.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_button_images.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_button_images_focused.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_button_images_normal.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_button_images_pressed.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_button_increase.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_button_increase_focused.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_button_increase_normal.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_button_increase_pressed.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_button_my_location.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_button_my_location_focused.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_button_my_location_normal.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_button_my_location_pressed.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_button_next.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_button_next_focused.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_button_next_normal.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_button_next_pressed.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_button_prev.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_button_prev_focused.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_button_prev_normal.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_button_prev_pressed.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_button_profile.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_button_profile_focused.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_button_profile_normal.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_button_profile_pressed.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_button_smily.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_button_smily_focused.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_button_smily_normal.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_button_smily_pressed.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_button_style10.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_button_style10_focused.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_button_style10_normal.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_button_style10_pressed.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_button_style12.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_button_style12_focused.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_button_style12_normal.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_button_style12_pressed.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_button_style13.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_button_style13_focused.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_button_style13_normal.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_button_style13_pressed.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_button_style14.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_button_style14_focused.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_button_style14_normal.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_button_style14_pressed.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_button_style15.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_button_style15_focused.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_button_style15_normal.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_button_style15_pressed.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_button_style2.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_button_style2_pressed.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_button_style3.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_button_style3_focused.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_button_style3_normal.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_button_style3_pressed.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_button_style4.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_button_style4_focused.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_button_style4_normal.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_button_style4_pressed.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_button_wibox.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_button_wibox_focused.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_button_wibox_normal.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_button_wibox_pressed.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_camera_crop_height.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_camera_crop_width.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_cell_bg_style1.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_cell_bg_style2.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_circle_bg.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_compose_topic_button_separator.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_default_avatar_female.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_default_avatar_male.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_default_challenge_icon.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_default_game_slot_shot.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_default_market_icon.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_dialog_banner_bg.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_dialog_bg.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_dialog_block_bg.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_dialog_block_inside_horizontal_separator.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_dialog_button.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_dialog_button_blue.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_dialog_button_focused.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_dialog_button_normal.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_dialog_button_normal_blue.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_dialog_button_pressed.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_dialog_concave_banner_bg.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_dialog_half_block_bg.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_dialog_large_concave_banner_bg.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_dialog_progress_bg.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_dialog_tab.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_dialog_tab_focused.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_dialog_tab_normal.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_dialog_tab_pressed.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_dialog_tab_selected.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_dialog_tab_separator.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_edit_box.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_edit_box_focused.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_edit_box_normal.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_edit_box_pressed.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_gradient_bg_style1.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_green_circle_hook.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_header_cell_bg.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_home_footer.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_home_header.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_home_header_seperator.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_icon_coin.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_icon_fail_toast.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_icon_help2.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_icon_honor.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_icon_locked.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_icon_notice.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_icon_unlocked.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_indicator_autocrop.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_input_panel_bg.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_left_round_editbox.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_left_round_editbox_focused.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_left_round_editbox_normal.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_left_round_editbox_pressed.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_list_selector.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_list_selector_focused.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_list_selector_pressed.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_location_marker.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_menu_exit.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_menu_my_friends.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_menu_reload.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_menu_search_user.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_picture_frame.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_picture_frame_focused.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_picture_frame_normal.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_picture_frame_pressed.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_popup_challenge.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_popup_challenge_disabled.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_popup_challenge_normal.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_popup_challenge_pressed.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_popup_friend.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_popup_friend_disabled.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_popup_friend_normal.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_popup_friend_pressed.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_popup_horizontal_separator.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_popup_leaderboard.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_popup_leaderboard_disabled.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_popup_leaderboard_normal.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_popup_leaderboard_pressed.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_popup_message.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_popup_message_disabled.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_popup_message_normal.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_popup_message_pressed.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_popup_notice.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_popup_notice_disabled.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_popup_notice_normal.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_popup_notice_pressed.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_popup_panel_bg.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_popup_settings.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_popup_settings_disabled.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_popup_settings_normal.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_popup_settings_pressed.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_popup_vertical_separator.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_portrait_female_1.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_portrait_female_2.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_portrait_female_3.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_portrait_female_4.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_portrait_male_1.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_portrait_male_2.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_portrait_male_3.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_portrait_male_4.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_portrait_select_photo.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_progress_bar_style1.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_purchase_dialog_seekbar_thumb.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_rect_editbox.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_rect_editbox_focused.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_rect_editbox_normal.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_rect_editbox_pressed.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_round_down_arrow.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_round_editbox.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_round_editbox_focused.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_round_editbox_normal.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_round_editbox_pressed.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_round_right_arrow.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_roundrect_editbox.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_roundrect_editbox_focused.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_roundrect_editbox_normal.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_roundrect_editbox_pressed.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_save_game_dialog_bg.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_screen_indicator_off.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_screen_indicator_on.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_scrollbar_vertical_thumb_style1.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_scrollbar_vertical_thumb_style2.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_scrollbar_vertical_thumb_style3.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_search_box_bg.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_separator_h_style1.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_separator_h_style2.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_separator_v_style1.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_shade_bar.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_smily_1.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_smily_10.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_smily_11.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_smily_12.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_smily_13.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_smily_14.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_smily_15.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_smily_16.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_smily_17.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_smily_18.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_smily_19.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_smily_2.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_smily_20.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_smily_3.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_smily_4.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_smily_5.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_smily_6.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_smily_7.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_smily_8.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_smily_9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_smily_bg.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_smily_panel_bg.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_sns_139.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_sns_button_bg.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_sns_button_bg_pressed.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_sns_douban.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_sns_kaixin.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_sns_qq.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_sns_renren.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_sns_sina.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_sns_sohu.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_text_wigame.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_title_bg_style1.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_title_bg_style2.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_toast_bg.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_toast_logo.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_topic_picture_frame.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_triangle_indicator.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/wy_user_bar_bg.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/layout-land/wy_activity_my_bag.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/layout-land/wy_activity_purchase_dialog.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/layout-land/wy_activity_recharge.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/layout-land/wy_activity_send_challenge.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/layout-land/wy_view_embed_browser.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/layout-port/wy_activity_my_bag.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/layout-port/wy_activity_purchase_dialog.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/layout-port/wy_activity_recharge.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/layout-port/wy_activity_send_challenge.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/layout-port/wy_view_embed_browser.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/layout/wy_activity_account_retrieval.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/layout/wy_activity_bid_picker.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/layout/wy_activity_change_my_portrait.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/layout/wy_activity_compose_topic.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/layout/wy_activity_cropimage.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/layout/wy_activity_dlc_downloader.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/layout/wy_activity_download_blob.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/layout/wy_activity_full_image_gallery.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/layout/wy_activity_home.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/layout/wy_activity_load_game_dialog.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/layout/wy_activity_login.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/layout/wy_activity_mopay.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/layout/wy_activity_recharge_history.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/layout/wy_activity_save_game_dialog.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/layout/wy_activity_submit_score.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/layout/wy_activity_switch_account.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/layout/wy_activity_use_another_account.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/layout/wy_activity_usermap.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/layout/wy_list_item_account.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/layout/wy_list_item_achievement.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/layout/wy_list_item_checkbox_friend.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/layout/wy_list_item_checkbox_neighbor.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/layout/wy_list_item_checkbox_score.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/layout/wy_list_item_help.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/layout/wy_list_item_load_hint.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/layout/wy_list_item_load_hint2.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/layout/wy_list_item_score.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/layout/wy_list_item_slot.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/layout/wy_list_item_store_item.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/layout/wy_panel_header_popup.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/layout/wy_panel_input.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/layout/wy_panel_local_score.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/layout/wy_panel_progress.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/layout/wy_panel_settings.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/layout/wy_universal_notification.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/layout/wy_view_challenge_toast.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/layout/wy_view_full_image_panel.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/layout/wy_view_listview_block.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/layout/wy_view_loading.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/layout/wy_view_small_shadow_label.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/layout/wy_view_toast.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/layout/wy_view_workspace_screen.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/raw/game_classic_back.ogg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/raw/game_main_back.ogg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/raw/game_speed_back.ogg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/raw/ready_go.wav" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/values-zh/wy_strings.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/values/wy_arrays.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/values/wy_colors.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/values/wy_dimens.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/values/wy_strings.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/values/wy_styles.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/tinygame/lianliankan/pay/Pay.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src_lib/MopoSdk_V1.021_20130822_danji/.settings/org.eclipse.jdt.core.prefs" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src_lib/MopoSdk_V1.021_20130822_danji/AndroidManifest.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src_lib/MopoSdk_V1.021_20130822_danji/MopoSdk_V1.021_20130822_danji.iml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src_lib/MopoSdk_V1.021_20130822_danji/build.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src_lib/MopoSdk_V1.021_20130822_danji/libs/armeabi/libFreeSky.so" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src_lib/MopoSdk_V1.021_20130822_danji/libs/armeabi/liblocal.so" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src_lib/MopoSdk_V1.021_20130822_danji/libs/armeabi/libmylib.so" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src_lib/MopoSdk_V1.021_20130822_danji/libs/freebasicsdk_v3.420_20130909.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src_lib/MopoSdk_V1.021_20130822_danji/libs/openpayment_v6.001_20130909_lib.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src_lib/MopoSdk_V1.021_20130822_danji/libs/sdkproxy_mp_v1_000_offline.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src_lib/MopoSdk_V1.021_20130822_danji/lint.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src_lib/MopoSdk_V1.021_20130822_danji/proguard.cfg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src_lib/MopoSdk_V1.021_20130822_danji/project.properties" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src_lib/MopoSdk_V1.021_20130822_danji/res/anim/sm_bank_info_scale.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src_lib/MopoSdk_V1.021_20130822_danji/res/anim/sm_cycle_7.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src_lib/MopoSdk_V1.021_20130822_danji/res/anim/sm_image_scale.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src_lib/MopoSdk_V1.021_20130822_danji/res/anim/sm_popup_enter.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src_lib/MopoSdk_V1.021_20130822_danji/res/anim/sm_popup_exit.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src_lib/MopoSdk_V1.021_20130822_danji/res/anim/sm_shake.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src_lib/MopoSdk_V1.021_20130822_danji/res/drawable-hdpi/sm_bg.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src_lib/MopoSdk_V1.021_20130822_danji/res/drawable-hdpi/sm_btn_back_normal.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src_lib/MopoSdk_V1.021_20130822_danji/res/drawable-hdpi/sm_btn_back_selected.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src_lib/MopoSdk_V1.021_20130822_danji/res/drawable-hdpi/sm_button_back.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src_lib/MopoSdk_V1.021_20130822_danji/res/drawable-hdpi/sm_button_help.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src_lib/MopoSdk_V1.021_20130822_danji/res/drawable-hdpi/sm_cut_off_line.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src_lib/MopoSdk_V1.021_20130822_danji/res/drawable-hdpi/sm_fail.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src_lib/MopoSdk_V1.021_20130822_danji/res/drawable-hdpi/sm_failed.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src_lib/MopoSdk_V1.021_20130822_danji/res/drawable-hdpi/sm_help_btn_normal.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src_lib/MopoSdk_V1.021_20130822_danji/res/drawable-hdpi/sm_help_btn_selected.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src_lib/MopoSdk_V1.021_20130822_danji/res/drawable-hdpi/sm_help_normal.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src_lib/MopoSdk_V1.021_20130822_danji/res/drawable-hdpi/sm_help_selected.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src_lib/MopoSdk_V1.021_20130822_danji/res/drawable-hdpi/sm_home_btn_bg.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src_lib/MopoSdk_V1.021_20130822_danji/res/drawable-hdpi/sm_iamge_progress.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src_lib/MopoSdk_V1.021_20130822_danji/res/drawable-hdpi/sm_icon.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src_lib/MopoSdk_V1.021_20130822_danji/res/drawable-hdpi/sm_icon_help_xml.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src_lib/MopoSdk_V1.021_20130822_danji/res/drawable-hdpi/sm_input_amount_normal.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src_lib/MopoSdk_V1.021_20130822_danji/res/drawable-hdpi/sm_input_amount_selected.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src_lib/MopoSdk_V1.021_20130822_danji/res/drawable-hdpi/sm_input_bg.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src_lib/MopoSdk_V1.021_20130822_danji/res/drawable-hdpi/sm_input_bg_r1.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src_lib/MopoSdk_V1.021_20130822_danji/res/drawable-hdpi/sm_input_btn_focus.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src_lib/MopoSdk_V1.021_20130822_danji/res/drawable-hdpi/sm_input_btn_normal.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src_lib/MopoSdk_V1.021_20130822_danji/res/drawable-hdpi/sm_input_button.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src_lib/MopoSdk_V1.021_20130822_danji/res/drawable-hdpi/sm_input_continus_button.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src_lib/MopoSdk_V1.021_20130822_danji/res/drawable-hdpi/sm_input_continus_button_normal.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src_lib/MopoSdk_V1.021_20130822_danji/res/drawable-hdpi/sm_input_continus_button_selected.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src_lib/MopoSdk_V1.021_20130822_danji/res/drawable-hdpi/sm_input_edit.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src_lib/MopoSdk_V1.021_20130822_danji/res/drawable-hdpi/sm_input_edit_normal.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src_lib/MopoSdk_V1.021_20130822_danji/res/drawable-hdpi/sm_input_top.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src_lib/MopoSdk_V1.021_20130822_danji/res/drawable-hdpi/sm_loading_logo.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src_lib/MopoSdk_V1.021_20130822_danji/res/drawable-hdpi/sm_logo_txt.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src_lib/MopoSdk_V1.021_20130822_danji/res/drawable-hdpi/sm_main_menu_inquiry_button.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src_lib/MopoSdk_V1.021_20130822_danji/res/drawable-hdpi/sm_main_menu_inquiry_normal.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src_lib/MopoSdk_V1.021_20130822_danji/res/drawable-hdpi/sm_main_menu_inquiry_selected.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src_lib/MopoSdk_V1.021_20130822_danji/res/drawable-hdpi/sm_main_menu_user_icon.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src_lib/MopoSdk_V1.021_20130822_danji/res/drawable-hdpi/sm_normal.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src_lib/MopoSdk_V1.021_20130822_danji/res/drawable-hdpi/sm_passed.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src_lib/MopoSdk_V1.021_20130822_danji/res/drawable-hdpi/sm_pay_cancel_button.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src_lib/MopoSdk_V1.021_20130822_danji/res/drawable-hdpi/sm_pay_cancel_normal.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src_lib/MopoSdk_V1.021_20130822_danji/res/drawable-hdpi/sm_pay_cancel_selected.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src_lib/MopoSdk_V1.021_20130822_danji/res/drawable-hdpi/sm_pay_comfirm_button.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src_lib/MopoSdk_V1.021_20130822_danji/res/drawable-hdpi/sm_pay_comfirm_normal.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src_lib/MopoSdk_V1.021_20130822_danji/res/drawable-hdpi/sm_pay_comfirm_selected.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src_lib/MopoSdk_V1.021_20130822_danji/res/drawable-hdpi/sm_pop_bg.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src_lib/MopoSdk_V1.021_20130822_danji/res/drawable-hdpi/sm_processing.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src_lib/MopoSdk_V1.021_20130822_danji/res/drawable-hdpi/sm_query_normal.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src_lib/MopoSdk_V1.021_20130822_danji/res/drawable-hdpi/sm_query_ret_button.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src_lib/MopoSdk_V1.021_20130822_danji/res/drawable-hdpi/sm_query_selected.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src_lib/MopoSdk_V1.021_20130822_danji/res/drawable-hdpi/sm_ret_bg.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src_lib/MopoSdk_V1.021_20130822_danji/res/drawable-hdpi/sm_selected.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src_lib/MopoSdk_V1.021_20130822_danji/res/drawable-hdpi/sm_small_default.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src_lib/MopoSdk_V1.021_20130822_danji/res/drawable-hdpi/sm_sub_ret_bg.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src_lib/MopoSdk_V1.021_20130822_danji/res/drawable-hdpi/sm_submit_failed.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src_lib/MopoSdk_V1.021_20130822_danji/res/drawable-hdpi/sm_submit_success.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src_lib/MopoSdk_V1.021_20130822_danji/res/drawable-hdpi/sm_succes.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src_lib/MopoSdk_V1.021_20130822_danji/res/drawable-hdpi/sm_tab_focus.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src_lib/MopoSdk_V1.021_20130822_danji/res/drawable-hdpi/sm_tab_normal.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src_lib/MopoSdk_V1.021_20130822_danji/res/drawable-hdpi/sm_top.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src_lib/MopoSdk_V1.021_20130822_danji/res/drawable-hdpi/sm_wait.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src_lib/MopoSdk_V1.021_20130822_danji/res/drawable-hdpi/sm_waiting_progressbar_bg1.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src_lib/MopoSdk_V1.021_20130822_danji/res/drawable-hdpi/sm_waiting_progressbar_bg2.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src_lib/MopoSdk_V1.021_20130822_danji/res/drawable-hdpi/sm_warning.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src_lib/MopoSdk_V1.021_20130822_danji/res/drawable-hdpi/sm_wzbj.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src_lib/MopoSdk_V1.021_20130822_danji/res/layout-land/main_sm_input_bank_card.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src_lib/MopoSdk_V1.021_20130822_danji/res/layout-land/main_sm_input_card.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src_lib/MopoSdk_V1.021_20130822_danji/res/layout-land/main_sm_menu.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src_lib/MopoSdk_V1.021_20130822_danji/res/layout-land/main_sm_query_listview_item.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src_lib/MopoSdk_V1.021_20130822_danji/res/layout-land/main_sm_query_tabs.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src_lib/MopoSdk_V1.021_20130822_danji/res/layout-land/main_sm_sky_pay.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src_lib/MopoSdk_V1.021_20130822_danji/res/layout-land/main_sm_submit_result_dialog.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src_lib/MopoSdk_V1.021_20130822_danji/res/layout-port/main_sm_input_bank_card.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src_lib/MopoSdk_V1.021_20130822_danji/res/layout-port/main_sm_input_card.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src_lib/MopoSdk_V1.021_20130822_danji/res/layout-port/main_sm_menu.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src_lib/MopoSdk_V1.021_20130822_danji/res/layout-port/main_sm_query_listview_item.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src_lib/MopoSdk_V1.021_20130822_danji/res/layout-port/main_sm_query_tabs.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src_lib/MopoSdk_V1.021_20130822_danji/res/layout-port/main_sm_sky_pay.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src_lib/MopoSdk_V1.021_20130822_danji/res/layout-port/main_sm_submit_result_dialog.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src_lib/MopoSdk_V1.021_20130822_danji/res/layout/main_sm.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src_lib/MopoSdk_V1.021_20130822_danji/res/layout/main_sm_gridview_item.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src_lib/MopoSdk_V1.021_20130822_danji/res/layout/main_sm_help.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src_lib/MopoSdk_V1.021_20130822_danji/res/layout/main_sm_query_more_button.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src_lib/MopoSdk_V1.021_20130822_danji/res/layout/main_sm_waiting_dialog.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src_lib/MopoSdk_V1.021_20130822_danji/res/layout/main_sm_warning_popup.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src_lib/MopoSdk_V1.021_20130822_danji/res/layout/sm_input_gridview_item.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src_lib/MopoSdk_V1.021_20130822_danji/res/values/colors.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src_lib/MopoSdk_V1.021_20130822_danji/res/values/dimens.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src_lib/MopoSdk_V1.021_20130822_danji/res/values/strings.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src_lib/MopoSdk_V1.021_20130822_danji/res/values/style.xml" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AndroidManifest.xml" afterPath="$PROJECT_DIR$/AndroidManifest.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/tinygame/lianliankan/LevelActivity.java" afterPath="$PROJECT_DIR$/src/com/tinygame/lianliankan/LevelActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/LinkLink.iml" afterPath="$PROJECT_DIR$/LinkLink.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/tinygame/lianliankan/LinkLink.java" afterPath="$PROJECT_DIR$/src/com/tinygame/lianliankan/LinkLink.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/tinygame/lianliankan/LinkLinkApplication.java" afterPath="$PROJECT_DIR$/src/com/tinygame/lianliankan/LinkLinkApplication.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/tinygame/lianliankan/LinkLinkEndlessActivity.java" afterPath="$PROJECT_DIR$/src/com/tinygame/lianliankan/LinkLinkEndlessActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/tinygame/lianliankan/LinkLinkSplashActivity.java" afterPath="$PROJECT_DIR$/src/com/tinygame/lianliankan/LinkLinkSplashActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/tinygame/lianliankan/MenuActivity.java" afterPath="$PROJECT_DIR$/src/com/tinygame/lianliankan/MenuActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/tinygame/lianliankan/ResultActivity.java" afterPath="$PROJECT_DIR$/src/com/tinygame/lianliankan/ResultActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/tinygame/lianliankan/utils/SoundEffectUtils.java" afterPath="$PROJECT_DIR$/src/com/tinygame/lianliankan/utils/SoundEffectUtils.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/tinygame/lianliankan/utils/ThemeManager.java" afterPath="$PROJECT_DIR$/src/com/tinygame/lianliankan/utils/ThemeManager.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project.properties" afterPath="$PROJECT_DIR$/project.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/splash.xml" afterPath="$PROJECT_DIR$/res/layout/splash.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+    </list>
     <ignored path="lianliankan.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="5bc4bbdf-895b-4962-bc19-6f27a2a1facb" time="1384133460136" ignored="false" />
-    <file path="/fragment.java" changelist="5bc4bbdf-895b-4962-bc19-6f27a2a1facb" time="1384133466088" ignored="false" />
-    <file path="/Pay.java" changelist="5bc4bbdf-895b-4962-bc19-6f27a2a1facb" time="1384136889628" ignored="false" />
-    <file path="/MenuActivity.java" changelist="5bc4bbdf-895b-4962-bc19-6f27a2a1facb" time="1384136405760" ignored="false" />
-    <file path="/LinkLink.java" changelist="5bc4bbdf-895b-4962-bc19-6f27a2a1facb" time="1384153173883" ignored="false" />
-    <file path="$PROJECT_DIR$/bin/AndroidManifest.xml" changelist="5bc4bbdf-895b-4962-bc19-6f27a2a1facb" time="1384154573474" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,84 +535,83 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="LinkLink.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/tinygame/lianliankan/LinkLink.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="403" column="0" selection-start="15836" selection-end="15836" vertical-scroll-proportion="-11.96">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
+      <file leaf-file-name="boom0.png" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/assets/boom/boom0.png">
+          <provider selected="true" editor-type-id="images">
+            <state />
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PayErrorCode.class" pinned="false" current="false" current-in-tab="false">
-        <entry file="jar://$PROJECT_DIR$/src_lib/MopoSdk_V1.021_20130822_danji/libs/openpayment_v6.001_20130909_lib.jar!/com/skymobi/free/PayErrorCode.class">
+      <file leaf-file-name="2_80.png" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/assets/image/2_80.png">
+          <provider selected="true" editor-type-id="images">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="4_48.png" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/assets/image/4_48.png">
+          <provider selected="true" editor-type-id="images">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="number.png" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/assets/image/number.png">
+          <provider selected="true" editor-type-id="images">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="JPSplashView.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/tinygame/lianliankan/view/JPSplashView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="28" selection-start="452" selection-end="452" vertical-scroll-proportion="-6.4">
+            <state line="79" column="0" selection-start="2621" selection-end="2621" vertical-scroll-proportion="0.0" vertical-offset="525" max-vertical-offset="2992">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PayOrder.class" pinned="false" current="false" current-in-tab="false">
-        <entry file="jar://$PROJECT_DIR$/src_lib/MopoSdk_V1.021_20130822_danji/libs/openpayment_v6.001_20130909_lib.jar!/com/skymobi/free/PayOrder.class">
+      <file leaf-file-name="ThemeManager.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/tinygame/lianliankan/utils/ThemeManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="16" selection-start="264" selection-end="264" vertical-scroll-proportion="-5.12">
+            <state line="215" column="26" selection-start="6849" selection-end="6859" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4288">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AndroidManifest.xml" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
+      <file leaf-file-name="CirclePageIndicator.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/tinygame/lianliankan/pageIndactor/CirclePageIndicator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="251" column="28" selection-start="12018" selection-end="12018" vertical-scroll-proportion="0.2058433">
+            <state line="37" column="13" selection-start="1252" selection-end="1252" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="6544">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Config.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/tinygame/lianliankan/config/Config.java">
+      <file leaf-file-name="BlankRoute.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/tinygame/lianliankan/engine/BlankRoute.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="4" selection-start="461" selection-end="461" vertical-scroll-proportion="0.0">
+            <state line="21" column="40" selection-start="494" selection-end="494" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1872">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LinkLinkSplashActivity.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/tinygame/lianliankan/LinkLinkSplashActivity.java">
+      <file leaf-file-name="ConnectiveInfo.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/tinygame/lianliankan/engine/ConnectiveInfo.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="26" column="70" selection-start="971" selection-end="971" vertical-scroll-proportion="0.0">
+            <state line="2" column="13" selection-start="55" selection-end="55" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="336">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MenuActivity.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/tinygame/lianliankan/MenuActivity.java">
+      <file leaf-file-name="Direction.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/tinygame/lianliankan/engine/Direction.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="97" column="0" selection-start="3569" selection-end="3569" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LevelActivity.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/tinygame/lianliankan/LevelActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="34" column="5" selection-start="1181" selection-end="1181" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LinkLinkApplication.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/tinygame/lianliankan/LinkLinkApplication.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="55" selection-start="188" selection-end="202" vertical-scroll-proportion="0.0">
+            <state line="19" column="39" selection-start="595" selection-end="595" vertical-scroll-proportion="0.40264902" vertical-offset="0" max-vertical-offset="755">
               <folding />
             </state>
           </provider>
@@ -171,11 +635,19 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/com/tinygame/lianliankan/LinkLinkApplication.java" />
-        <option value="$PROJECT_DIR$/AndroidManifest.xml" />
-        <option value="$PROJECT_DIR$/src/com/tinygame/lianliankan/MenuActivity.java" />
         <option value="$PROJECT_DIR$/src/com/tinygame/lianliankan/pay/Pay.java" />
+        <option value="$PROJECT_DIR$/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/src/com/tinygame/lianliankan/LevelActivity.java" />
+        <option value="$PROJECT_DIR$/src/com/tinygame/lianliankan/LinkLinkEndlessActivity.java" />
+        <option value="$PROJECT_DIR$/src/com/tinygame/lianliankan/LinkLinkSplashActivity.java" />
+        <option value="$PROJECT_DIR$/src/com/tinygame/lianliankan/ResultActivity.java" />
+        <option value="$PROJECT_DIR$/src/com/tinygame/lianliankan/utils/PointsManager.java" />
+        <option value="$PROJECT_DIR$/src/com/tinygame/lianliankan/MenuActivity.java" />
         <option value="$PROJECT_DIR$/src/com/tinygame/lianliankan/LinkLink.java" />
+        <option value="$PROJECT_DIR$/src/com/tinygame/lianliankan/utils/SoundEffectUtils.java" />
+        <option value="$PROJECT_DIR$/res/layout/splash.xml" />
+        <option value="$PROJECT_DIR$/src/com/tinygame/lianliankan/LinkLinkApplication.java" />
+        <option value="$PROJECT_DIR$/src/com/tinygame/lianliankan/utils/ThemeManager.java" />
       </list>
     </option>
   </component>
@@ -211,7 +683,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
@@ -259,15 +730,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
+              <option name="myItemId" value="res" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="lianliankan" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="view" />
+              <option name="myItemId" value="values-en" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -281,15 +748,79 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
+              <option name="myItemId" value="res" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="values" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lianliankan" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="lianliankan" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="config" />
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="raw" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lianliankan" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lianliankan" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="layout" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lianliankan" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lianliankan" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lianliankan" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lianliankan" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="drawable" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -307,8 +838,23 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lianliankan" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lianliankan" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -329,9 +875,20 @@
     <property name="GoToClass.includeLibraries" value="false" />
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
   </component>
   <component name="RunManager" selected="Android Application.linklink">
-    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
+    <configuration default="true" type="GrailsRunConfigurationType" factoryName="Grails" singleton="true">
+      <module name="" />
+      <setting name="vmparams" value="" />
+      <setting name="cmdLine" value="run-app" />
+      <setting name="depsClasspath" value="false" />
+      <setting name="passParentEnv" value="true" />
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <setting name="launchBrowser" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin" singleton="true">
       <module name="" />
       <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m" />
       <option name="PROGRAM_PARAMETERS" />
@@ -345,6 +902,7 @@
       <option name="CLASS_NAME" value="" />
       <option name="PACKAGE_NAME" value="" />
       <option name="TARGET_SELECTION_MODE" value="EMULATOR" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
       <option name="PREFERRED_AVD" value="" />
       <option name="USE_COMMAND_LINE" value="true" />
       <option name="COMMAND_LINE" value="" />
@@ -353,6 +911,7 @@
       <option name="NETWORK_SPEED" value="full" />
       <option name="NETWORK_LATENCY" value="none" />
       <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
       <method />
     </configuration>
     <configuration default="true" type="Remote" factoryName="Remote">
@@ -363,7 +922,40 @@
       <option name="PORT" value="5005" />
       <method />
     </configuration>
+    <configuration default="true" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="myFilePath" />
+      <option name="GLUE" />
+      <option name="myNameFilter" />
+      <option name="myGeneratedName" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method />
+    </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
@@ -390,20 +982,8 @@
       <listeners />
       <method />
     </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <method />
-    </configuration>
     <configuration default="true" type="Application" factoryName="Application">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <option name="MAIN_CLASS_NAME" />
       <option name="VM_PARAMETERS" />
       <option name="PROGRAM_PARAMETERS" />
@@ -418,6 +998,7 @@
       <method />
     </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
@@ -442,7 +1023,9 @@
       <option name="ACTIVITY_CLASS" value="" />
       <option name="MODE" value="default_activity" />
       <option name="DEPLOY" value="true" />
+      <option name="ARTIFACT_NAME" value="" />
       <option name="TARGET_SELECTION_MODE" value="EMULATOR" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
       <option name="PREFERRED_AVD" value="" />
       <option name="USE_COMMAND_LINE" value="true" />
       <option name="COMMAND_LINE" value="" />
@@ -451,6 +1034,7 @@
       <option name="NETWORK_SPEED" value="full" />
       <option name="NETWORK_LATENCY" value="none" />
       <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
       <method />
     </configuration>
     <configuration default="false" name="linklink" type="AndroidRunConfigurationType" factoryName="Android Application">
@@ -458,7 +1042,9 @@
       <option name="ACTIVITY_CLASS" value="" />
       <option name="MODE" value="default_activity" />
       <option name="DEPLOY" value="true" />
+      <option name="ARTIFACT_NAME" value="" />
       <option name="TARGET_SELECTION_MODE" value="USB_DEVICE" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
       <option name="PREFERRED_AVD" value="" />
       <option name="USE_COMMAND_LINE" value="true" />
       <option name="COMMAND_LINE" value="" />
@@ -467,6 +1053,7 @@
       <option name="NETWORK_SPEED" value="full" />
       <option name="NETWORK_LATENCY" value="none" />
       <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
       <RunnerSettings RunnerId="AndroidDebugRunner" />
       <ConfigurationWrapper RunnerId="AndroidDebugRunner" />
       <method />
@@ -485,92 +1072,61 @@
       <changelist id="5bc4bbdf-895b-4962-bc19-6f27a2a1facb" name="Default" comment="" />
       <created>1384133419478</created>
       <updated>1384133419478</updated>
+      <workItem from="1392176428957" duration="6260000" />
     </task>
     <servers />
   </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="6260000" />
+  </component>
   <component name="ToolWindowManager">
-    <frame x="47" y="22" width="1393" height="878" extended-state="0" />
+    <frame x="47" y="22" width="1393" height="878" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3290653" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32950193" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3290653" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24907339" sideWeight="0.6709347" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32822478" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32987398" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32822478" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39974457" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32822478" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32950193" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24981412" sideWeight="0.6709347" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3290653" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
     </layout>
   </component>
+  <component name="Vcs.Log.UiProperties">
+    <option name="RECENTLY_FILTERED_USER_GROUPS">
+      <collection />
+    </option>
+  </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <option name="OFFER_MOVE_TO_ANOTHER_CHANGELIST_ON_PARTIAL_COMMIT" value="true" />
-    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="true" />
-    <option name="CHECK_NEW_TODO" value="true" />
     <option name="myTodoPanelSettings">
-      <value>
-        <are-packages-shown value="false" />
-        <are-modules-shown value="false" />
-        <flatten-packages value="false" />
-        <is-autoscroll-to-source value="false" />
-      </value>
+      <TodoPanelSettings />
     </option>
-    <option name="PERFORM_UPDATE_IN_BACKGROUND" value="true" />
-    <option name="PERFORM_COMMIT_IN_BACKGROUND" value="true" />
-    <option name="PERFORM_EDIT_IN_BACKGROUND" value="true" />
-    <option name="PERFORM_CHECKOUT_IN_BACKGROUND" value="true" />
-    <option name="PERFORM_ADD_REMOVE_IN_BACKGROUND" value="true" />
-    <option name="PERFORM_ROLLBACK_IN_BACKGROUND" value="false" />
-    <option name="CHECK_LOCALLY_CHANGED_CONFLICTS_IN_BACKGROUND" value="false" />
-    <option name="CHANGED_ON_SERVER_INTERVAL" value="60" />
-    <option name="SHOW_ONLY_CHANGED_IN_SELECTION_DIFF" value="true" />
-    <option name="CHECK_COMMIT_MESSAGE_SPELLING" value="true" />
-    <option name="DEFAULT_PATCH_EXTENSION" value="patch" />
-    <option name="SHORT_DIFF_HORIZONTALLY" value="true" />
-    <option name="SHORT_DIFF_EXTRA_LINES" value="2" />
-    <option name="SOFT_WRAPS_IN_SHORT_DIFF" value="true" />
-    <option name="INCLUDE_TEXT_INTO_PATCH" value="false" />
-    <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
-    <option name="SHOW_FILE_HISTORY_DETAILS" value="true" />
-    <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
-    <option name="SHOW_DIRTY_RECURSIVELY" value="false" />
-    <option name="LIMIT_HISTORY" value="true" />
-    <option name="MAXIMUM_HISTORY_ROWS" value="1000" />
-    <option name="UPDATE_FILTER_SCOPE_NAME" />
-    <option name="USE_COMMIT_MESSAGE_MARGIN" value="false" />
-    <option name="COMMIT_MESSAGE_MARGIN_SIZE" value="72" />
-    <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
-    <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
-    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" />
-    <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
-    <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
-    <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
-    <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="false" />
-    <option name="REFORMAT_BEFORE_FILE_COMMIT" value="false" />
-    <option name="FILE_HISTORY_DIALOG_COMMENTS_SPLITTER_PROPORTION" value="0.8" />
-    <option name="FILE_HISTORY_DIALOG_SPLITTER_PROPORTION" value="0.5" />
-    <option name="ACTIVE_VCS_NAME" />
-    <option name="UPDATE_GROUP_BY_PACKAGES" value="false" />
-    <option name="UPDATE_GROUP_BY_CHANGELIST" value="false" />
-    <option name="UPDATE_FILTER_BY_SCOPE" value="false" />
-    <option name="SHOW_FILE_HISTORY_AS_TREE" value="false" />
-    <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -580,118 +1136,364 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/com/tinygame/lianliankan/ResultActivity.java">
+    <entry file="file://$PROJECT_DIR$/src/com/tinygame/lianliankan/LevelActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="13" selection-start="945" selection-end="945" vertical-scroll-proportion="0.0">
-          <folding />
+        <state line="34" column="5" selection-start="1181" selection-end="1181" vertical-scroll-proportion="0.0" vertical-offset="544" max-vertical-offset="3776">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/tinygame/lianliankan/LinkLinkEndlessActivity.java">
+    <entry file="file://$PROJECT_DIR$/src/com/tinygame/lianliankan/LinkLinkApplication.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="47" column="13" selection-start="1897" selection-end="1897" vertical-scroll-proportion="0.0">
+        <state line="6" column="55" selection-start="188" selection-end="202" vertical-scroll-proportion="0.0" vertical-offset="96" max-vertical-offset="704">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/tinygame/lianliankan/view/LinkLinkSurfaceView.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="56" column="29" selection-start="2057" selection-end="2057" vertical-scroll-proportion="0.0">
+        <state line="56" column="29" selection-start="2057" selection-end="2057" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/tinygame/lianliankan/SettingManager.java">
+    <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="91" column="25" selection-start="3115" selection-end="3115" vertical-scroll-proportion="0.107569724">
-          <folding />
+        <state line="64" column="23" selection-start="3764" selection-end="3778" vertical-scroll-proportion="0.0" vertical-offset="444" max-vertical-offset="1824">
+          <folding>
+            <element signature="e#4182#4200#0" expanded="true" />
+            <element signature="e#4297#4315#0" expanded="true" />
+            <element signature="e#4672#4690#0" expanded="true" />
+            <element signature="e#4828#4846#0" expanded="true" />
+            <element signature="e#4979#4997#0" expanded="true" />
+            <element signature="e#5145#5163#0" expanded="true" />
+            <element signature="e#5302#5320#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/tinygame/lianliankan/LinkLinkApplication.java">
+    <entry file="file://$PROJECT_DIR$/src/com/tinygame/lianliankan/LinkLinkEndlessActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="55" selection-start="188" selection-end="202" vertical-scroll-proportion="0.0">
-          <folding />
+        <state line="821" column="9" selection-start="33450" selection-end="33450" vertical-scroll-proportion="0.0" vertical-offset="12949" max-vertical-offset="14640">
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/tinygame/lianliankan/LinkLinkSplashActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="70" selection-start="971" selection-end="971" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/tinygame/lianliankan/MenuActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="97" column="0" selection-start="3569" selection-end="3569" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/tinygame/lianliankan/LevelActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="5" selection-start="1181" selection-end="1181" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/src_lib/MopoSdk_V1.021_20130822_danji/libs/openpayment_v6.001_20130909_lib.jar!/com/skymobi/free/PayChannel.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="13" selection-start="159" selection-end="159" vertical-scroll-proportion="0.10989011">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/tinygame/lianliankan/pay/Pay.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="38" selection-start="776" selection-end="790" vertical-scroll-proportion="0.32005313">
+        <state line="61" column="35" selection-start="2469" selection-end="2469" vertical-scroll-proportion="0.0" vertical-offset="493" max-vertical-offset="1248">
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/tinygame/lianliankan/config/Config.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="4" selection-start="461" selection-end="461" vertical-scroll-proportion="0.0">
+        <state line="42" column="28" selection-start="1821" selection-end="1821" vertical-scroll-proportion="0.0" vertical-offset="253" max-vertical-offset="1008">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="jar://$PROJECT_DIR$/src_lib/MopoSdk_V1.021_20130822_danji/libs/openpayment_v6.001_20130909_lib.jar!/com/skymobi/free/PayErrorCode.class">
+    <entry file="file://$PROJECT_DIR$/src/com/tinygame/lianliankan/SettingManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="28" selection-start="452" selection-end="452" vertical-scroll-proportion="-6.4">
+        <state line="118" column="0" selection-start="4081" selection-end="4285" vertical-scroll-proportion="0.0" vertical-offset="1309" max-vertical-offset="2064">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="jar://$PROJECT_DIR$/src_lib/MopoSdk_V1.021_20130822_danji/libs/openpayment_v6.001_20130909_lib.jar!/com/skymobi/free/FreePayment.class">
+    <entry file="file://$PROJECT_DIR$/src/com/tinygame/lianliankan/utils/PointsManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="68" selection-start="910" selection-end="918" vertical-scroll-proportion="0.51468533">
+        <state line="39" column="40" selection-start="1165" selection-end="1165" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="784">
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#477#478#0" expanded="true" />
+            <element signature="e#514#515#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/tinygame/lianliankan/MenuActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="449" column="0" selection-start="15909" selection-end="15909" vertical-scroll-proportion="0.0" vertical-offset="6880" max-vertical-offset="7712">
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#6058#6095#0" expanded="false" />
+            <element signature="e#6233#6251#0" expanded="false" />
+            <element signature="e#8586#8633#0" expanded="false" />
+            <element signature="e#12856#12857#0" expanded="false" />
+            <element signature="e#12893#12894#0" expanded="false" />
+            <element signature="e#15946#15987#0" expanded="false" />
+            <element signature="e#16062#16086#0" expanded="false" />
+            <element signature="e#16185#16206#0" expanded="false" />
+            <element signature="e#16723#16742#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/tinygame/lianliankan/view/ContinueClickView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="38" column="4" selection-start="1105" selection-end="1105" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2032">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="jar://$PROJECT_DIR$/src_lib/MopoSdk_V1.021_20130822_danji/libs/openpayment_v6.001_20130909_lib.jar!/com/skymobi/free/PayOrder.class">
+    <entry file="file://$PROJECT_DIR$/res/drawable-hdpi/bt_play_pressed.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/drawable-hdpi/classic_model.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/drawable-hdpi/wigame.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/drawable-hdpi/win.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/drawable-hdpi/scorebt.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/drawable/shengdan_bg.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="16" selection-start="264" selection-end="264" vertical-scroll-proportion="-5.12">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="498">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/tinygame/lianliankan/LinkLink.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="403" column="0" selection-start="15836" selection-end="15836" vertical-scroll-proportion="-11.96">
+        <state line="883" column="0" selection-start="34695" selection-end="34695" vertical-scroll-proportion="19.040432" vertical-offset="0" max-vertical-offset="14224">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
+    <entry file="file://$PROJECT_DIR$/res/layout/menu_view.xml">
+      <provider selected="true" editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1568">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/tinygame/lianliankan/Categary_diff_selector.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="251" column="28" selection-start="12018" selection-end="12018" vertical-scroll-proportion="0.2058433">
+        <state line="34" column="51" selection-start="1148" selection-end="1148" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3584">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/values-en/strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="28" selection-start="965" selection-end="965" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="528">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/tinygame/lianliankan/utils/SoundEffectUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="56" column="10" selection-start="1740" selection-end="1947" vertical-scroll-proportion="0.0" vertical-offset="666" max-vertical-offset="2816">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/background/game_bg.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/drawable/title_icon.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/drawable/find_button_bg.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="498">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/drawable/button_egg.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="755">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/lose_view.xml">
+      <provider selected="true" editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1232">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/level_list_item.xml">
+      <provider selected="true" editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1104">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/tinygame/lianliankan/ResultActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="216" column="5" selection-start="8366" selection-end="8366" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3552">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/boom/boom1.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/boom/boom3.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/boom/boom4.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/boom/boom5.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/image/2_64.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/image/light_v.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/image/time_progress.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/level/1_85.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/boom/boom2.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/boom/boom0.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/image/2_80.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/image/4_48.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/image/number.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/splash.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="24" selection-start="328" selection-end="328" vertical-scroll-proportion="0.17902099" vertical-offset="0" max-vertical-offset="715">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/tinygame/lianliankan/view/JPSplashView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="79" column="0" selection-start="2621" selection-end="2621" vertical-scroll-proportion="0.0" vertical-offset="525" max-vertical-offset="2992">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/tinygame/lianliankan/LinkLinkApplication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="23" column="13" selection-start="766" selection-end="766" vertical-scroll-proportion="0.4450331" vertical-offset="0" max-vertical-offset="755">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/tinygame/lianliankan/LevelActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="26" column="5" selection-start="940" selection-end="940" vertical-scroll-proportion="0.45960265" vertical-offset="69" max-vertical-offset="3648">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/tinygame/lianliankan/utils/ThemeManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="215" column="26" selection-start="6849" selection-end="6859" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4288">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/tinygame/lianliankan/pageIndactor/CirclePageIndicator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="37" column="13" selection-start="1252" selection-end="1252" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="6544">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/tinygame/lianliankan/engine/BlankRoute.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="21" column="40" selection-start="494" selection-end="494" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1872">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/tinygame/lianliankan/engine/ConnectiveInfo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="13" selection-start="55" selection-end="55" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="336">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/tinygame/lianliankan/engine/Direction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="39" selection-start="595" selection-end="595" vertical-scroll-proportion="0.40264902" vertical-offset="0" max-vertical-offset="755">
           <folding />
         </state>
       </provider>
@@ -725,6 +1527,7 @@
       </state>
       <state key="GlobalLibrariesConfigurable.UI">
         <settings>
+          <last-edited>grails-2.2.4</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

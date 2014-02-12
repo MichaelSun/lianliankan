@@ -1,10 +1,5 @@
 package com.tinygame.lianliankan;
 
-import android.widget.Toast;
-import com.skymobi.free.*;
-import com.tinygame.lianliankan.pay.Pay;
-import net.youmi.android.offers.OffersManager;
-import net.youmi.android.offers.PointsManager;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -15,21 +10,10 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
-import android.view.KeyEvent;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
-import android.view.animation.AlphaAnimation;
-import android.view.animation.Animation;
+import android.view.*;
+import android.view.animation.*;
 import android.view.animation.Animation.AnimationListener;
-import android.view.animation.AnimationSet;
-import android.view.animation.AnimationUtils;
-import android.view.animation.ScaleAnimation;
-import android.view.animation.TranslateAnimation;
 import android.widget.TextView;
-
-import com.mobclick.android.MobclickAgent;
 import com.tinygame.lianliankan.config.Config;
 import com.tinygame.lianliankan.config.Env;
 import com.tinygame.lianliankan.db.DatabaseOperator;
@@ -38,9 +22,9 @@ import com.tinygame.lianliankan.engine.Chart;
 import com.tinygame.lianliankan.engine.FillContent;
 import com.tinygame.lianliankan.engine.Hint;
 import com.tinygame.lianliankan.engine.Tile;
+import com.tinygame.lianliankan.utils.PointsManager;
 import com.tinygame.lianliankan.utils.SoundEffectUtils;
 import com.tinygame.lianliankan.utils.ThemeManager;
-import com.tinygame.lianliankan.utils.ToastUtil;
 import com.tinygame.lianliankan.view.ContinueClickView;
 import com.tinygame.lianliankan.view.LevelView;
 import com.tinygame.lianliankan.view.LevelView.LevelChangedListener;
@@ -48,9 +32,6 @@ import com.tinygame.lianliankan.view.LinkLinkSurfaceView;
 import com.tinygame.lianliankan.view.LinkLinkSurfaceView.LLViewActionListener;
 import com.tinygame.lianliankan.view.TimeProgressView;
 import com.tinygame.lianliankan.view.TimeProgressView.TimeProgressListener;
-import com.wiyun.game.WiGame;
-import com.wiyun.game.WiGameAllClient;
-import com.wiyun.game.WiGameClient;
 
 public class LinkLink extends Activity implements LLViewActionListener
                                                       , TimeProgressListener
@@ -100,13 +81,6 @@ public class LinkLink extends Activity implements LLViewActionListener
 
     private Context mContext;
     private boolean mNextLevel;
-
-    private WiGameClient mWiGameClient = new WiGameAllClient() {
-        public void wyScoreSubmitted(String leaderboardId, int score, int rank) {
-            LOGD("[[wyScoreSubmitted]] >>>>>>>>>> <<<<<<<<<");
-            ToastUtil.getInstance(mContext).showToast(R.string.sorce_update_success);
-        }
-    };
 
     private static final int PLAY_READY_SOUND = 0;
     private static final int PLAY_BACKGROUND_SOUND = 1;
@@ -160,9 +134,6 @@ public class LinkLink extends Activity implements LLViewActionListener
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
-        // init pay
-        Pay.getInstance().init(this);
 
         mContext = this;
         SettingManager.getInstance().init(getApplicationContext());
@@ -244,13 +215,6 @@ public class LinkLink extends Activity implements LLViewActionListener
         mshakeAnimation = AnimationUtils.loadAnimation(this, R.anim.shake);
 
         resetContent();
-
-        //test umeng config
-        MobclickAgent.setSessionContinueMillis(1 * 60 * 1000);
-        MobclickAgent.onError(this);
-        MobclickAgent.setUpdateOnlyWifi(false);
-
-        WiGame.addWiGameClient(mWiGameClient);
     }
 
     @Override
@@ -286,8 +250,6 @@ public class LinkLink extends Activity implements LLViewActionListener
         mBottomRegion.startAnimation(mBottomAnimation);
         mStopView.startAnimation(mStopAnimation);
         newGameButton.startAnimation(mNewGameAnimation);
-
-        MobclickAgent.onResume(this);
     }
 
     @Override
@@ -295,13 +257,12 @@ public class LinkLink extends Activity implements LLViewActionListener
         super.onPause();
         LOGD("[[onPause]] >>>>>>>>> ");
         mFinishSuccessActivityShow = true;
-        MobclickAgent.onPause(this);
     }
 
     private void checkAppPoint() {
         if (!Config.DEBUG_CLOSE_APP_DOWNLOAD) {
             int level = Categary_diff_selector.getInstance().getCurrentDiffLevel();
-            int point = PointsManager.getInstance(this.getApplicationContext()).queryPoints();
+            int point = PointsManager.getInstance().queryPoints();
             if (point < Config.POINT_100 && level >= Config.APP_DOWNLOA_SHOW_LEVEL) {
                 showCountDownloadDialog();
             } else if (point < Config.POINT_200 && level >= Config.APP_DOWNLOA_SHOW_LEVEL_TWO) {
@@ -367,8 +328,6 @@ public class LinkLink extends Activity implements LLViewActionListener
                 @Override
                 public void onClick(View v) {
                     showStopDialog();
-                    MobclickAgent.onEvent(mContext, Config.ACTION_CLICK_LABEL, "paused_game");
-//                    showNoMoreTipsView();
                 }
             });
         }
@@ -378,36 +337,12 @@ public class LinkLink extends Activity implements LLViewActionListener
             public void onClick(View v) {
                 Env.ICON_REGION_INIT = false;
                 reloadCurrentLevel();
-                MobclickAgent.onEvent(mContext, Config.ACTION_CLICK_LABEL, "new_game");
             }
         });
         arrangeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (mCurDiffArrangeCount == 0) {
-                    PayOrder order = new PayOrder();
-                    order.title = "道具购买";
-                    order.orderCode = System.currentTimeMillis() + "";
-                    order.description = "购买重排列道具";
-                    order.payAmount = 200;
-
-                    PayChannel[] payChannel = Pay.getInstance().getChannelData();
-                    if (payChannel != null && payChannel.length > 0) {
-                        FreePayment.pay(payChannel[0].id, order, new com.skymobi.free.OnPayListener() {
-
-                            @Override
-                            public void onPaySuccess(PayOrder payOrder) {
-                                mCurDiffArrangeCount++;
-                                onPaySuccessShow(payOrder);
-                                updateToolsCountView();
-                            }
-
-                            @Override
-                            public void onPayFailure(int i, String s) {
-                                onPayFailureShow(i, s);
-                            }
-                        });
-                    }
                 } else {
                     Chart chart = mLLView.getChart();
                     chart.reArrange();
@@ -430,8 +365,6 @@ public class LinkLink extends Activity implements LLViewActionListener
                     }
                     mSorceTV.setText(String.format(getString(R.string.sorce), mLevelInfo.count));
                     mSorceTV.startAnimation(mSorceAnimation);
-
-                    MobclickAgent.onEvent(mContext, Config.ACTION_CLICK_LABEL, "arrange");
                 }
             }
         });
@@ -439,29 +372,6 @@ public class LinkLink extends Activity implements LLViewActionListener
             @Override
             public void onClick(View v) {
                 if (mCurDiffHintCount == 0) {
-                    PayOrder order = new PayOrder();
-                    order.title = "道具购买";
-                    order.orderCode = System.currentTimeMillis() + "";
-                    order.description = "购买重提示道具";
-                    order.payAmount = 200;
-
-                    PayChannel[] payChannel = Pay.getInstance().getChannelData();
-                    if (payChannel != null && payChannel.length > 0) {
-                        FreePayment.pay(payChannel[0].id, order, new com.skymobi.free.OnPayListener() {
-
-                            @Override
-                            public void onPaySuccess(PayOrder payOrder) {
-                                mCurDiffHintCount++;
-                                onPaySuccessShow(payOrder);
-                                updateToolsCountView();
-                            }
-
-                            @Override
-                            public void onPayFailure(int i, String s) {
-                                onPayFailureShow(i, s);
-                            }
-                        });
-                    }
                 } else {
                     Tile[] hint = new Hint(mLLView.getChart()).findHint();
                     mLLView.showHint(hint);
@@ -477,8 +387,6 @@ public class LinkLink extends Activity implements LLViewActionListener
                     }
                     mSorceTV.setText(String.format(getString(R.string.sorce), mLevelInfo.count));
                     mSorceTV.startAnimation(mSorceAnimation);
-
-                    MobclickAgent.onEvent(mContext, Config.ACTION_CLICK_LABEL, "hint");
                 }
             }
         });
@@ -515,8 +423,6 @@ public class LinkLink extends Activity implements LLViewActionListener
 
         mHandler.sendEmptyMessage(RESET_PROGRESS_TIME_VIEW);
         Categary_diff_selector.getInstance().saveCurretInfo();
-
-        WiGame.removeWiGameClient(mWiGameClient);
     }
 
     @Override
@@ -618,15 +524,11 @@ public class LinkLink extends Activity implements LLViewActionListener
                                       }
                                       mAppDownloadShow = false;
                                       LOGD("[[showCountDownloadDialog]] >>>>>>> show offers >>>>>>");
-                                      OffersManager.getInstance(getApplicationContext()).showOffersWall();
-
-                                      MobclickAgent.onEvent(mContext, Config.ACTION_OFFER_LABEL);
                                   }
                               }).setNegativeButton(R.string.btn_cancel
                                                       , new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-                    MobclickAgent.onEvent(mContext, Config.ACTION_OFFER_CANCEL_LABEL);
                     finish();
                     overridePendingTransition(R.anim.slide_up_in, R.anim.slide_down_out);
                 }
@@ -802,9 +704,6 @@ public class LinkLink extends Activity implements LLViewActionListener
 
             updateToolsCount();
             updateToolsCountView();
-
-            MobclickAgent.onEvent(this, Config.ACTION_START
-                                     , String.valueOf(mLevelInfo.category) + ":" + String.valueOf(curLevel));
         } else {
             showResetGameDialog();
         }
@@ -894,9 +793,6 @@ public class LinkLink extends Activity implements LLViewActionListener
             if (curLevel >= openLevel) {
                 SettingManager.getInstance().setOpenLevelWithCategory(curLevel, category);
             }
-
-            MobclickAgent.onEvent(mContext, Config.ACTION_LEVEL
-                                     , String.valueOf(category) + ":" + String.valueOf(curLevel));
         } else {
             showResetGameDialog();
         }
@@ -984,47 +880,5 @@ public class LinkLink extends Activity implements LLViewActionListener
         if (com.tinygame.lianliankan.config.Config.DEBUG) {
             Log.d(TAG, msg);
         }
-    }
-
-    private void onPaySuccessShow(PayOrder arg0) {
-        Toast.makeText(this, "支付成功", Toast.LENGTH_SHORT).show();
-    }
-
-    private void onPayFailureShow(int code, String msg) {
-        switch (code) {
-            case PayErrorCode.ERROR_CODE_EXEC_METHOD_FAILURE:
-                //执行插件方法失败
-                break;
-            case PayErrorCode.ERROR_CODE_INIT_PLUGIN_FAILURE:
-                //插件未初始化或加载失
-                break;
-            case PayErrorCode.ERROR_CODE_INSUFFICIENT_FOUNDS:
-                //余额不足
-                break;
-            case PayErrorCode.ERROR_CODE_INVALID_PARAMS:
-                //无效的参数错误
-                break;
-            case PayErrorCode.ERROR_CODE_NETWORK_DATA_ERROR:
-                //网络数据传输错误
-                break;
-            case PayErrorCode.ERROR_CODE_NETWORK_LINK_ERROR:
-                //网络连接失败
-                break;
-            case PayErrorCode.ERROR_CODE_NO_CHANNEL:
-                //没有支付通道
-                break;
-            case PayErrorCode.ERROR_CODE_TRADE_INFO_ERROR:
-                //交易信息错误
-                break;
-            case PayErrorCode.ERROR_CODE_UNAUTHORIZED_DEV_MODE:
-                //设备未授权
-                break;
-            case PayErrorCode.ERROR_CODE_USER_CANCEL:
-                //用户取消支付
-                break;
-            default:
-                break;
-        }
-        Toast.makeText(this, "支付失败:errcode:" + code + "errStr:" + msg, Toast.LENGTH_SHORT).show();
     }
 }
