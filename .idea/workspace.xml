@@ -12,36 +12,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5bc4bbdf-895b-4962-bc19-6f27a2a1facb" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/image/2_40.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/image/2_48.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/image/2_64.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/image/2_80.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/image/3_40.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/image/3_48.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/image/3_64.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/image/3_80.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/image/4_40.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/image/4_48.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/image/4_64.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/image/4_80.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/image/5_40.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/image/5_48.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/image/5_64.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/image/5_80.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable-hdpi/biaoqing.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable-hdpi/biaoqing_p.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable-hdpi/dongwu.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable-hdpi/dongwu_p.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable-hdpi/katong.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable-hdpi/katong_p.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable-hdpi/majiang.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable-hdpi/majiang_p.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable-hdpi/wigame.png" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/tinygame/lianliankan/Categary_diff_selector.java" afterPath="$PROJECT_DIR$/src/com/tinygame/lianliankan/Categary_diff_selector.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/tinygame/lianliankan/LevelActivity.java" afterPath="$PROJECT_DIR$/src/com/tinygame/lianliankan/LevelActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/tinygame/lianliankan/MenuActivity.java" afterPath="$PROJECT_DIR$/src/com/tinygame/lianliankan/MenuActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/tinygame/lianliankan/screen/SimpleScreenIndicatorWidget.java" afterPath="$PROJECT_DIR$/src/com/tinygame/lianliankan/screen/SimpleScreenIndicatorWidget.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/menu_view.xml" afterPath="$PROJECT_DIR$/res/layout/menu_view.xml" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable-hdpi/renren_icon.png" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/tinygame/lianliankan/ResultActivity.java" afterPath="$PROJECT_DIR$/src/com/tinygame/lianliankan/ResultActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/lose_view.xml" afterPath="$PROJECT_DIR$/res/layout/lose_view.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/win_view.xml" afterPath="$PROJECT_DIR$/res/layout/win_view.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="lianliankan.iws" />
@@ -106,17 +80,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="process_bg.png" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/assets/image/process_bg.png">
-          <provider selected="true" editor-type-id="images">
-            <state />
+      <file leaf-file-name="LinkLink.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/tinygame/lianliankan/LinkLink.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="699" column="46" selection-start="27714" selection-end="27714" vertical-scroll-proportion="0.0" vertical-offset="10895" max-vertical-offset="14224">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="time_progress.png" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/assets/image/time_progress.png">
-          <provider selected="true" editor-type-id="images">
-            <state />
+      <file leaf-file-name="ResultActivity.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/tinygame/lianliankan/ResultActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="53" column="57" selection-start="1907" selection-end="1907" vertical-scroll-proportion="0.3960265" vertical-offset="341" max-vertical-offset="3552">
+              <folding />
+            </state>
           </provider>
         </entry>
       </file>
@@ -150,10 +130,43 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MenuActivity.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="MenuActivity.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/tinygame/lianliankan/MenuActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="88" column="28" selection-start="3373" selection-end="3373" vertical-scroll-proportion="-2.8384106" vertical-offset="3039" max-vertical-offset="6544">
+            <state line="228" column="35" selection-start="8455" selection-end="8455" vertical-scroll-proportion="0.0" vertical-offset="3039" max-vertical-offset="6544">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="lose_view.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/res/layout/lose_view.xml">
+          <provider editor-type-id="android-designer">
+            <state />
+          </provider>
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="60" column="0" selection-start="2198" selection-end="2198" vertical-scroll-proportion="-22.925926" vertical-offset="341" max-vertical-offset="1056">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LinkLinkEndlessActivity.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/tinygame/lianliankan/LinkLinkEndlessActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="32" column="13" selection-start="1327" selection-end="1327" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="14192">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="win_view.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/res/layout/win_view.xml">
+          <provider editor-type-id="android-designer">
+            <state />
+          </provider>
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="74" column="0" selection-start="2687" selection-end="2687" vertical-scroll-proportion="-13.407408" vertical-offset="822" max-vertical-offset="1280">
               <folding />
             </state>
           </provider>
@@ -163,39 +176,6 @@
         <entry file="file://$PROJECT_DIR$/src/com/tinygame/lianliankan/screen/SimpleScreenIndicatorWidget.java">
           <provider selected="true" editor-type-id="text-editor">
             <state line="80" column="31" selection-start="3448" selection-end="3448" vertical-scroll-proportion="0.0" vertical-offset="730" max-vertical-offset="1664">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ScrollScreen.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/tinygame/lianliankan/screen/ScrollScreen.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="308" column="28" selection-start="9729" selection-end="9744" vertical-scroll-proportion="0.0" vertical-offset="4061" max-vertical-offset="4816">
-              <folding>
-                <element signature="imports" expanded="false" />
-                <element signature="e#8841#8842#0" expanded="false" />
-                <element signature="e#8874#8875#0" expanded="false" />
-                <element signature="e#8908#8909#0" expanded="false" />
-                <element signature="e#8936#8937#0" expanded="false" />
-                <element signature="e#9439#9440#0" expanded="false" />
-                <element signature="e#9482#9483#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="boom4.png" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/assets/boom/boom4.png">
-          <provider selected="true" editor-type-id="images">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="find_button_bg.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/res/drawable/find_button_bg.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="272">
               <folding />
             </state>
           </provider>
@@ -223,7 +203,6 @@
         <option value="$PROJECT_DIR$/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/src/com/tinygame/lianliankan/LinkLinkEndlessActivity.java" />
         <option value="$PROJECT_DIR$/src/com/tinygame/lianliankan/LinkLinkSplashActivity.java" />
-        <option value="$PROJECT_DIR$/src/com/tinygame/lianliankan/ResultActivity.java" />
         <option value="$PROJECT_DIR$/src/com/tinygame/lianliankan/utils/PointsManager.java" />
         <option value="$PROJECT_DIR$/src/com/tinygame/lianliankan/LinkLink.java" />
         <option value="$PROJECT_DIR$/src/com/tinygame/lianliankan/utils/SoundEffectUtils.java" />
@@ -235,6 +214,9 @@
         <option value="$PROJECT_DIR$/res/layout/menu_view.xml" />
         <option value="$PROJECT_DIR$/src/com/tinygame/lianliankan/screen/SimpleScreenIndicatorWidget.java" />
         <option value="$PROJECT_DIR$/src/com/tinygame/lianliankan/MenuActivity.java" />
+        <option value="$PROJECT_DIR$/res/layout/lose_view.xml" />
+        <option value="$PROJECT_DIR$/res/layout/win_view.xml" />
+        <option value="$PROJECT_DIR$/src/com/tinygame/lianliankan/ResultActivity.java" />
       </list>
     </option>
   </component>
@@ -695,12 +677,12 @@
       <changelist id="5bc4bbdf-895b-4962-bc19-6f27a2a1facb" name="Default" comment="" />
       <created>1384133419478</created>
       <updated>1384133419478</updated>
-      <workItem from="1392176428957" duration="8787000" />
+      <workItem from="1392176428957" duration="9098000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="8787000" />
+    <option name="totallyTimeSpent" value="9098000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="47" y="22" width="1393" height="878" extended-state="6" />
@@ -759,24 +741,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/com/tinygame/lianliankan/utils/PointsManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="39" column="40" selection-start="1165" selection-end="1165" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="784">
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#477#478#0" expanded="true" />
-            <element signature="e#514#515#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/tinygame/lianliankan/view/ContinueClickView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="38" column="4" selection-start="1105" selection-end="1105" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2032">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/res/drawable-hdpi/bt_play_pressed.png">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -835,29 +799,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/lose_view.xml">
-      <provider selected="true" editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1232">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/res/layout/level_list_item.xml">
       <provider selected="true" editor-type-id="android-designer">
         <state />
       </provider>
       <provider editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1104">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/tinygame/lianliankan/ResultActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="216" column="5" selection-start="8366" selection-end="8366" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3552">
           <folding />
         </state>
       </provider>
@@ -960,15 +907,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="74" column="46" selection-start="2807" selection-end="2807" vertical-scroll-proportion="0.0" vertical-offset="464" max-vertical-offset="6544">
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/tinygame/lianliankan/LinkLink.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="700" column="40" selection-start="27775" selection-end="27775" vertical-scroll-proportion="0.0" vertical-offset="10895" max-vertical-offset="14224">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1108,7 +1046,50 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/tinygame/lianliankan/MenuActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="88" column="28" selection-start="3373" selection-end="3373" vertical-scroll-proportion="-2.8384106" vertical-offset="3039" max-vertical-offset="6544">
+        <state line="228" column="35" selection-start="8455" selection-end="8455" vertical-scroll-proportion="0.0" vertical-offset="3039" max-vertical-offset="6544">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/lose_view.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="60" column="0" selection-start="2198" selection-end="2198" vertical-scroll-proportion="-22.925926" vertical-offset="341" max-vertical-offset="1056">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/tinygame/lianliankan/LinkLinkEndlessActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="32" column="13" selection-start="1327" selection-end="1327" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="14192">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/win_view.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="74" column="0" selection-start="2687" selection-end="2687" vertical-scroll-proportion="-13.407408" vertical-offset="822" max-vertical-offset="1280">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/tinygame/lianliankan/LinkLink.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="699" column="46" selection-start="27714" selection-end="27714" vertical-scroll-proportion="0.0" vertical-offset="10895" max-vertical-offset="14224">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/tinygame/lianliankan/ResultActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="53" column="57" selection-start="1907" selection-end="1907" vertical-scroll-proportion="0.3960265" vertical-offset="341" max-vertical-offset="3552">
           <folding />
         </state>
       </provider>
