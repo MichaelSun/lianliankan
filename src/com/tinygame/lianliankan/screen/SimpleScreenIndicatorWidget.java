@@ -16,23 +16,15 @@
 
 package com.tinygame.lianliankan.screen;
 
-import java.util.ArrayList;
-
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
-import android.graphics.drawable.GradientDrawable;
 import android.util.AttributeSet;
-import android.view.LayoutInflater;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
-
 import com.tinygame.lianliankan.R;
-import com.tinygame.lianliankan.utils.AssetsImageLoader;
-import com.tinygame.lianliankan.utils.Utils;
+
+import java.util.ArrayList;
 
 public class SimpleScreenIndicatorWidget extends LinearLayout implements ScrollScreen.ScreenIndicator {
 	
@@ -61,17 +53,17 @@ public class SimpleScreenIndicatorWidget extends LinearLayout implements ScrollS
 //		
 		mIndicatorImageUnSelected = new ArrayList<Drawable>();
 		mIndicatorImageUnSelected.add(getResources().getDrawable(R.drawable.shengdan));
-		mIndicatorImageUnSelected.add(getResources().getDrawable(R.drawable.biaoqing));
-		mIndicatorImageUnSelected.add(getResources().getDrawable(R.drawable.dongwu));
-		mIndicatorImageUnSelected.add(getResources().getDrawable(R.drawable.katong));
-		mIndicatorImageUnSelected.add(getResources().getDrawable(R.drawable.majiang));
+//		mIndicatorImageUnSelected.add(getResources().getDrawable(R.drawable.biaoqing));
+//		mIndicatorImageUnSelected.add(getResources().getDrawable(R.drawable.dongwu));
+//		mIndicatorImageUnSelected.add(getResources().getDrawable(R.drawable.katong));
+//		mIndicatorImageUnSelected.add(getResources().getDrawable(R.drawable.majiang));
 		
 		mIndicatorImageSelected = new ArrayList<Drawable>();
 		mIndicatorImageSelected.add(getResources().getDrawable(R.drawable.shengdan_p));
-		mIndicatorImageSelected.add(getResources().getDrawable(R.drawable.biaoqing_p));
-		mIndicatorImageSelected.add(getResources().getDrawable(R.drawable.dongwu_p));
-		mIndicatorImageSelected.add(getResources().getDrawable(R.drawable.katong_p));
-		mIndicatorImageSelected.add(getResources().getDrawable(R.drawable.majiang_p));
+//		mIndicatorImageSelected.add(getResources().getDrawable(R.drawable.biaoqing_p));
+//		mIndicatorImageSelected.add(getResources().getDrawable(R.drawable.dongwu_p));
+//		mIndicatorImageSelected.add(getResources().getDrawable(R.drawable.katong_p));
+//		mIndicatorImageSelected.add(getResources().getDrawable(R.drawable.majiang_p));
     }
 
 	@Override

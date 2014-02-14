@@ -6,9 +6,6 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.CompressFormat;
-import android.graphics.Canvas;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -34,11 +31,6 @@ import com.tinygame.lianliankan.utils.PointsManager;
 import com.tinygame.lianliankan.utils.SoundEffectUtils;
 import com.tinygame.lianliankan.utils.Utils;
 
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -85,36 +77,6 @@ public class MenuActivity extends Activity {
                                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         SettingManager.getInstance().init(getApplicationContext());
         this.setContentView(R.layout.menu_view);
-
-        View renren = findViewById(R.id.renren_logo);
-        renren.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                View view = getWindow().getDecorView();
-                Bitmap bmp = Bitmap.createBitmap(view.getWidth(), view.getHeight(),
-                                                    android.graphics.Bitmap.Config.ARGB_8888);
-                view.draw(new Canvas(bmp));
-                String fileName = "my_screen_shot_upload.png";
-                String path = getCacheDir().getAbsolutePath();
-                File file = new File(path + "/" + fileName);
-                try {
-                    FileOutputStream os = new FileOutputStream(file);
-                    ByteArrayOutputStream bos = new ByteArrayOutputStream();
-                    bmp.compress(CompressFormat.JPEG, 100, bos);
-                    byte[] data = bos.toByteArray();
-                    os.write(data);
-                    bos.close();
-                    os.close();
-                } catch (MalformedURLException e) {
-                    e.printStackTrace();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-
-                bmp.recycle();
-                bmp = null;
-            }
-        });
 
         mAnimationset = new AnimationSet(true);
 //        Animation a = new TranslateAnimation(0.0f, 0.0f, 0.0f, 20.0f);
@@ -227,7 +189,6 @@ public class MenuActivity extends Activity {
         mLayoutInflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
         View sorceBt = findViewById(R.id.sorcebt);
-        View wigame = findViewById(R.id.wigame);
 
         TextView versionTV = (TextView) findViewById(R.id.version);
         if (versionTV != null) {

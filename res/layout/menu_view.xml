@@ -40,19 +40,7 @@
         android:layout_above="@id/setting"
         android:layout_marginBottom="10dp" />
     
-    <ImageButton 
-        android:id="@+id/wigame"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/wigame"
-        android:background="@drawable/button_bg"
-        android:layout_alignParentRight="true"
-        android:layout_marginBottom="10dp"
-        android:layout_above="@id/sorcebt"
-        android:layout_marginRight="15dp"
-        android:visibility="gone" />
-    
-    <TextView 
+    <TextView
         android:id="@+id/version"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -78,16 +66,5 @@
         android:layout_above="@id/sorcebt"
         android:layout_alignParentTop="true"
         android:layout_marginTop="120dp" />
-    
-    <ImageView 
-        android:id="@+id/renren_logo"
-        android:layout_width="55dp"
-        android:layout_height="55dp"
-        android:layout_alignParentLeft="true"
-        android:layout_above="@id/version"
-        android:layout_marginBottom="10dp"
-        android:layout_marginLeft="15dp"
-        android:scaleType="fitCenter"
-        android:src="@drawable/renren_icon" />  
     
 </RelativeLayout>

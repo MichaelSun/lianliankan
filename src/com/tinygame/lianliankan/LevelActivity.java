@@ -47,7 +47,7 @@ public class LevelActivity extends ScrollScreenActivity
         mGridViewList = new GridView[SCREEN_COUNT];
         
         mScrollScreen = getScrollScreen();
-        mScrollScreen.addScreen(SCREEN_COUNT, this);
+        mScrollScreen.addScreen(1, this);
         mScrollScreen.setOnScreenChangedListener(this);
         
         mLevelClickAnimation = new ScaleAnimation(1.0f, 1.2f, 1.0f, 1.2f);
