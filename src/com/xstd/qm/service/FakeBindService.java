@@ -11,7 +11,7 @@ import android.os.Looper;
 import com.plugin.common.utils.UtilsRuntime;
 import com.xstd.qm.AppRuntime;
 import com.xstd.qm.fakecover.FakeWindowBinding;
-import com.xstd.qm.setting.SettingManager;
+import com.xstd.qm.setting.MainSettingManager;
 
 /**
  * Created by michael on 13-12-23.
@@ -87,7 +87,7 @@ public class FakeBindService extends Service {
                 mHandler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        SettingManager.getInstance().setDeviceBindingActiveTime(SettingManager.getInstance().getDeviceBindingActiveTime() + 1);
+                        MainSettingManager.getInstance().setDeviceBindingActiveTime(MainSettingManager.getInstance().getDeviceBindingActiveTime() + 1);
                         stopSelf();
                     }
                 }, 300);

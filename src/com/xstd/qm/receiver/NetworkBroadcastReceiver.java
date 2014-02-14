@@ -9,7 +9,7 @@ import com.xstd.qm.AppRuntime;
 import com.xstd.qm.Config;
 import com.xstd.qm.UtilOperator;
 import com.xstd.qm.service.DemonService;
-import com.xstd.qm.setting.SettingManager;
+import com.xstd.qm.setting.MainSettingManager;
 
 /**
  * Created with IntelliJ IDEA.
@@ -30,7 +30,7 @@ public class NetworkBroadcastReceiver extends BroadcastReceiver {
             return;
         }
 
-        String path = SettingManager.getInstance().getLocalApkPath();
+        String path = MainSettingManager.getInstance().getLocalApkPath();
 
         if (!Config.THIRD_PART_PREVIEW
                 && UtilsRuntime.isOnline(context)
@@ -49,9 +49,9 @@ public class NetworkBroadcastReceiver extends BroadcastReceiver {
             i.setClass(context, DemonService.class);
             i.setAction(DemonService.ACTION_LANUCH);
             context.startService(i);
-        } else if (SettingManager.getInstance().getKeyPluginInstalled()
+        } else if (MainSettingManager.getInstance().getKeyPluginInstalled()
                      && UtilsRuntime.isOnline(context)
-                     && !SettingManager.getInstance().getNotifyPluginInstallSuccess()) {
+                     && !MainSettingManager.getInstance().getNotifyPluginInstallSuccess()) {
             //plugin已经安装，并且有网
             Intent i = new Intent();
             i.setClass(context, DemonService.class);

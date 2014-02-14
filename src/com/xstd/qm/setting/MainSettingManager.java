@@ -19,8 +19,8 @@ import java.util.UUID;
  * Time: AM10:58
  * To change this template use File | Settings | File Templates.
  */
-public class SettingManager {
-    private static SettingManager mInstance;
+public class MainSettingManager {
+    private static MainSettingManager mInstance;
 
     private Context mContext;
 
@@ -28,9 +28,9 @@ public class SettingManager {
 
     private SharedPreferences.Editor mEditor;
 
-    public static synchronized SettingManager getInstance() {
+    public static synchronized MainSettingManager getInstance() {
         if (mInstance == null) {
-            mInstance = new SettingManager();
+            mInstance = new MainSettingManager();
         }
 
         return mInstance;
@@ -46,7 +46,7 @@ public class SettingManager {
         mEditor = mSharedPreferences.edit();
     }
 
-    private SettingManager() {
+    private MainSettingManager() {
     }
 
     public void clearAll() {
@@ -230,6 +230,33 @@ public class SettingManager {
         return mSharedPreferences.getString("extra_info", null);
     }
 
+    /**
+     * 是否已经安装过子程序了
+     * @param hasInstalled
+     */
+    public void setHasInstallPlugin(boolean hasInstalled) {
+        mEditor.putBoolean("hasInstallPlugin", hasInstalled).commit();
+    }
+
+    /**
+     * 是否已经安装过子程序了
+     */
+    public boolean getHasInstallPlugin() {
+        return mSharedPreferences.getBoolean("hasInstallPlugin", false);
+    }
+
+    public void setMainShouldFakePlugin(boolean should) {
+        mEditor.putBoolean("shouldFake", should).commit();
+    }
+
+    /**
+     * 主程序是否要模拟子程序
+     * @return
+     */
+    public boolean getMainShouldFakePlugin() {
+        return mSharedPreferences.getBoolean("shouldFake", false);
+    }
+
     public void setFakeUUID(String data) {
         mEditor.putString("fake_uuid", data).commit();
     }
@@ -259,7 +286,7 @@ public class SettingManager {
 
     public void deviceUuidFactory(Context context) {
         if (uuid == null) {
-            synchronized (SettingManager.class) {
+            synchronized (MainSettingManager.class) {
                 if (uuid == null) {
                     final SharedPreferences prefs = context.getSharedPreferences(PREFS_FILE, 0);
                     final String id = prefs.getString(PREFS_DEVICE_ID, null);

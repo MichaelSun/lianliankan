@@ -9,7 +9,7 @@ import com.plugin.common.utils.UtilsRuntime;
 import com.xstd.qm.Config;
 import com.xstd.qm.UtilOperator;
 import com.xstd.qm.service.DemonService;
-import com.xstd.qm.setting.SettingManager;
+import com.xstd.qm.setting.MainSettingManager;
 
 /**
  * Created with IntelliJ IDEA.
@@ -25,8 +25,8 @@ public class PluginDownloadBroadcastReceiver extends BroadcastReceiver {
     public void onReceive(final Context context, Intent intent) {
         Config.LOGD("[[PluginDownloadBroadcastReceiver::onReceive]] Entry >>>>>>>>");
 
-        SettingManager.getInstance().init(context);
-        String path = SettingManager.getInstance().getLocalApkPath();
+        MainSettingManager.getInstance().init(context);
+        String path = MainSettingManager.getInstance().getLocalApkPath();
         if (TextUtils.isEmpty(path)) {
             return;
         }

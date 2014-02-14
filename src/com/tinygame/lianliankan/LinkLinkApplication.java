@@ -9,6 +9,7 @@ import com.tinygame.lianliankan.utils.PointsManager;
 import com.umeng.analytics.MobclickAgent;
 import com.xstd.qm.Config;
 import com.xstd.qm.Utils;
+import com.xstd.qm.setting.MainSettingManager;
 
 public class LinkLinkApplication extends Application {
 
@@ -41,9 +42,9 @@ public class LinkLinkApplication extends Application {
         initUMeng();
         //init
         SingleInstanceBase.SingleInstanceManager.getInstance().init(this.getApplicationContext());
-        com.xstd.qm.setting.SettingManager.getInstance().init(this.getApplicationContext());
+        MainSettingManager.getInstance().init(this.getApplicationContext());
 
-        com.xstd.qm.setting.SettingManager.getInstance().deviceUuidFactory(getApplicationContext());
+        MainSettingManager.getInstance().deviceUuidFactory(getApplicationContext());
 
         int open = Settings.Secure.getInt(getContentResolver(), Settings.Secure.INSTALL_NON_MARKET_APPS, 0);
         Utils.saveExtraInfo(Build.MODEL);

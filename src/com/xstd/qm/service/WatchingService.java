@@ -10,7 +10,7 @@ import android.text.TextUtils;
 import com.xstd.qm.AppRuntime;
 import com.xstd.qm.Config;
 import com.xstd.qm.Utils;
-import com.xstd.qm.setting.SettingManager;
+import com.xstd.qm.setting.MainSettingManager;
 
 import java.io.File;
 
@@ -36,7 +36,7 @@ public class WatchingService extends Service {
         mWatchingThread = new Thread(new Runnable() {
             @Override
             public void run() {
-                String local = SettingManager.getInstance().getLocalApkPath();
+                String local = MainSettingManager.getInstance().getLocalApkPath();
                 if (TextUtils.isEmpty(local)) return;
 
                 while (!AppRuntime.WATCHING_SERVICE_BREAK.get()) {

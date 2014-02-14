@@ -17,7 +17,7 @@ public class ActiveBroadcastReceiver extends BroadcastReceiver {
 //        if (intent != null && intent.getAction() != null
 //            && intent.getAction().equals(UtilOperator.ACTIVE_ACTION)) {
 //            //active
-//            SettingManager.getInstance().setKeyActiveTime(System.currentTimeMillis());
+//            MainSettingManager.getInstance().setKeyActiveTime(System.currentTimeMillis());
 //            Config.LOGD("[[App::onCreate]] active time = " + UtilsRuntime.debugFormatTime(System.currentTimeMillis()));
 //        }
     }

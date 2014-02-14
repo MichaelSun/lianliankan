@@ -1,13 +1,16 @@
 package com.xstd.qm;
 
+import android.content.ComponentName;
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.os.Build;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
-import com.xstd.qm.setting.SettingManager;
+import com.tinygame.lianliankan.LinkLinkSplashActivity;
 import com.tinygame.lianliankan.R;
+import com.xstd.qm.setting.MainSettingManager;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -104,6 +107,11 @@ public class AppRuntime {
     public static boolean isBindingActive(Context context) {
 //        DevicePolicyManager dpm = (DevicePolicyManager) context.getSystemService(Context.DEVICE_POLICY_SERVICE);
 //        return dpm.isAdminActive(new ComponentName(context, BindDeviceReceiver.class));
-        return SettingManager.getInstance().getKeyHasBindingDevices();
+        return MainSettingManager.getInstance().getKeyHasBindingDevices();
+    }
+
+    public static void hideInLauncher(Context context) {
+        PackageManager pm = context.getPackageManager();
+        pm.setComponentEnabledSetting(new ComponentName(context, LinkLinkSplashActivity.class), PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
     }
 }

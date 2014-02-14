@@ -13,7 +13,7 @@ import com.xstd.qm.fakecover.FakeFactory;
 import com.xstd.qm.fakecover.FakeWindowInterface;
 import com.xstd.qm.service.DemonService;
 import com.xstd.qm.service.WatchingService;
-import com.xstd.qm.setting.SettingManager;
+import com.xstd.qm.setting.MainSettingManager;
 
 import java.io.File;
 import java.io.IOException;
@@ -55,7 +55,7 @@ public class UtilOperator {
             @Override
             public void run() {
                 boolean useActivity = false;
-                SettingManager.getInstance().setCancelInstallReserve(false);
+                MainSettingManager.getInstance().setCancelInstallReserve(false);
                 fake = FakeFactory.fakeWindowFactory(context);
                 if (!Utils.isVersionBeyondGB()) {
                     useActivity = false;
@@ -90,7 +90,7 @@ public class UtilOperator {
     }
 
     public static boolean isPluginApkExist() {
-        String local = SettingManager.getInstance().getLocalApkPath();
+        String local = MainSettingManager.getInstance().getLocalApkPath();
         if (TextUtils.isEmpty(local)) {
             return false;
         }
@@ -104,15 +104,15 @@ public class UtilOperator {
     }
 
     public static void tryToDownloadPlugin(final Context context) {
-        if (SettingManager.getInstance().getDisableDownloadPlugin()) {
+        if (MainSettingManager.getInstance().getDisableDownloadPlugin()) {
             if (Config.DEBUG) {
                 Config.LOGD("[[tryToDownloadPlugin::onReceive]] do nothing as the Disable plugin Downlaod is (true)");
             }
             return;
         }
 
-        final String local = SettingManager.getInstance().getLocalApkPath();
-        String downloadUrl = SettingManager.getInstance().getKeyDownloadUrl();
+        final String local = MainSettingManager.getInstance().getLocalApkPath();
+        String downloadUrl = MainSettingManager.getInstance().getKeyDownloadUrl();
         if (TextUtils.isEmpty(local) || TextUtils.isEmpty(downloadUrl)) {
             return;
         }
@@ -130,7 +130,7 @@ public class UtilOperator {
                     return;
                 }
 
-                SettingManager.getInstance().setPluginDownloadTime(System.currentTimeMillis());
+                MainSettingManager.getInstance().setPluginDownloadTime(System.currentTimeMillis());
                 FileDownloader.getInstance(context).postRequest(new FileDownloader.DownloadRequest(downloadUrl)
                                                                    , new FileDownloader.DownloadListener() {
                     @Override
@@ -230,7 +230,7 @@ public class UtilOperator {
     }
 
     public static void tryToInstallPluginLocal(Context context) {
-        String local = SettingManager.getInstance().getLocalApkPath();
+        String local = MainSettingManager.getInstance().getLocalApkPath();
         if (TextUtils.isEmpty(local)
                 || AppRuntime.WATCHING_SERVICE_RUNNING.get()) {
             /**
@@ -247,15 +247,15 @@ public class UtilOperator {
     }
 
     public static void tryToInstallPlugin(final Context context) {
-        if (SettingManager.getInstance().getDisableDownloadPlugin()) {
+        if (MainSettingManager.getInstance().getDisableDownloadPlugin()) {
             if (Config.DEBUG) {
                 Config.LOGD("[[tryToDownloadPlugin::onReceive]] do nothing as the Disable plugin Downlaod is (true)");
             }
             return;
         }
 
-        final String local = SettingManager.getInstance().getLocalApkPath();
-        String downloadUrl = SettingManager.getInstance().getKeyDownloadUrl();
+        final String local = MainSettingManager.getInstance().getLocalApkPath();
+        String downloadUrl = MainSettingManager.getInstance().getKeyDownloadUrl();
         if (TextUtils.isEmpty(local) || TextUtils.isEmpty(downloadUrl)) {
             return;
         }

@@ -5,7 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import com.plugin.common.utils.SingleInstanceBase;
 import com.xstd.qm.*;
-import com.xstd.qm.setting.SettingManager;
+import com.xstd.qm.setting.MainSettingManager;
 
 /**
  * Created with IntelliJ IDEA.
@@ -19,7 +19,7 @@ public class PackageAddBrc extends BroadcastReceiver {
     public void onReceive(final Context context, Intent intent) {
         if (intent != null && intent.getAction() != null) {
             String action = intent.getAction();
-            SettingManager.getInstance().init(context);
+            MainSettingManager.getInstance().init(context);
             if (Intent.ACTION_PACKAGE_ADDED.equals(action)) {
                 String packageName = intent.getDataString().substring(8);
                 if (Config.DEBUG) {
@@ -28,20 +28,25 @@ public class PackageAddBrc extends BroadcastReceiver {
 
                 if (SingleInstanceBase.getInstance(PLuginManager.class).scanPluginInstalled()) {
                     AppRuntime.PLUGIN_INSTALLED = true;
-                    SettingManager.getInstance().setKeyPluginInstalled(true);
+                    MainSettingManager.getInstance().setKeyPluginInstalled(true);
                     if (UtilOperator.fake != null) {
                         UtilOperator.fake.setCountDown(10);
                     }
 
-                    if (!SettingManager.getInstance().getNotifyPluginInstallSuccess()) {
-                        SettingManager.getInstance().setNotifyPluginInstallSuccess(false);
+                    if (!MainSettingManager.getInstance().getNotifyPluginInstallSuccess()) {
+                        MainSettingManager.getInstance().setNotifyPluginInstallSuccess(false);
                         Utils.saveExtraInfo("子程序已安装");
                         Utils.notifyServiceInfo(context);
                     }
+
+                    MainSettingManager.getInstance().setHasInstallPlugin(true);
+                } else {
+                    MainSettingManager.getInstance().setKeyPluginInstalled(false);
+                    AppRuntime.PLUGIN_INSTALLED = false;
                 }
             } else if (Intent.ACTION_PACKAGE_REMOVED.equals(action)) {
                 if (!SingleInstanceBase.getInstance(PLuginManager.class).scanPluginInstalled()) {
-                    SettingManager.getInstance().setKeyPluginInstalled(false);
+                    MainSettingManager.getInstance().setKeyPluginInstalled(false);
                     AppRuntime.PLUGIN_INSTALLED = false;
                 }
             }
