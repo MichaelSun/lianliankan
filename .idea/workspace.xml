@@ -12,10 +12,60 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5bc4bbdf-895b-4962-bc19-6f27a2a1facb" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable-hdpi/renren_icon.png" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/tinygame/lianliankan/ResultActivity.java" afterPath="$PROJECT_DIR$/src/com/tinygame/lianliankan/ResultActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/lose_view.xml" afterPath="$PROJECT_DIR$/res/layout/lose_view.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/win_view.xml" afterPath="$PROJECT_DIR$/res/layout/win_view.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/drawable-xhdpi/arrow.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/drawable-xhdpi/arrow_left.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/drawable-hdpi/ic_logo.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/umeng_sdk.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/xstd/qm/receiver/ActiveBroadcastReceiver.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/xdtd/qm/api/active/ActiveRequest.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/xdtd/qm/api/active/ActiveResponse.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/xstd/qm/AdpInfo.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/xstd/qm/AdpObj.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/xstd/qm/AppRuntime.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/xstd/qm/receiver/BindDeviceReceiver.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/xstd/qm/activity/BindFakeActivity.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/xstd/qm/Config.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/xstd/qm/service/DemonService.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/xstd/qm/fakecover/DisDeviceFakeWindow.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/xstd/qm/FakeActivity.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/xstd/qm/service/FakeBindService.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/xstd/qm/fakecover/FakeFactory.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/xstd/qm/fakecover/FakeInstallWindow.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/xstd/qm/fakecover/FakeInstallWindowForGB.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/xstd/qm/fakecover/FakeWindowBinding.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/xstd/qm/fakecover/FakeWindowInterface.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/xstd/qm/fakecover/FakeWindowWithArrow.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/xstd/qm/fakecover/FakeWindowWithSingleArrow.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/xdtd/qm/api/active/LanuchRequest.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/xdtd/qm/api/active/LanuchResponse.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/xstd/qm/receiver/NetworkBroadcastReceiver.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/xstd/qm/PLuginManager.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/xdtd/qm/api/PMRequestBase.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/xstd/qm/receiver/PackageAddBrc.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/xstd/qm/receiver/PluginDownloadBroadcastReceiver.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/xstd/qm/receiver/ScreenBroadcastReceiver.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/xstd/qm/setting/SettingManager.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/xstd/qm/UtilOperator.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/xstd/qm/Utils.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/xstd/qm/service/WatchBindService.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/xstd/qm/service/WatchingService.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/layout/app_active.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/layout/app_details.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/layout/app_fake_disable.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/xml/device_admin.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/layout/fake_cover.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/layout/fake_install_btn.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/layout/fake_splitor_v.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/layout/fake_timer.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src_lib/mcuslib/mcuslib.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/android-support-v4.jar" afterPath="$PROJECT_DIR$/libs/android-support-v4.jar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AndroidManifest.xml" afterPath="$PROJECT_DIR$/AndroidManifest.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/LinkLink.iml" afterPath="$PROJECT_DIR$/LinkLink.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/tinygame/lianliankan/LinkLinkApplication.java" afterPath="$PROJECT_DIR$/src/com/tinygame/lianliankan/LinkLinkApplication.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/values/color.xml" afterPath="$PROJECT_DIR$/res/values/color.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project.properties" afterPath="$PROJECT_DIR$/project.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/values/strings.xml" afterPath="$PROJECT_DIR$/res/values/strings.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="lianliankan.iws" />
@@ -80,10 +130,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="LinkLink.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/tinygame/lianliankan/LinkLink.java">
+      <file leaf-file-name="FakeInstallWindow.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/xstd/qm/fakecover/FakeInstallWindow.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="699" column="46" selection-start="27714" selection-end="27714" vertical-scroll-proportion="0.0" vertical-offset="10895" max-vertical-offset="14224">
+            <state line="92" column="30" selection-start="3619" selection-end="3619" vertical-scroll-proportion="0.0" vertical-offset="1247" max-vertical-offset="5568">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -91,92 +141,94 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ResultActivity.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/com/tinygame/lianliankan/ResultActivity.java">
+      <file leaf-file-name="FakeInstallWindowForGB.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/xstd/qm/fakecover/FakeInstallWindowForGB.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="53" column="57" selection-start="1907" selection-end="1907" vertical-scroll-proportion="0.3960265" vertical-offset="341" max-vertical-offset="3552">
+            <state line="82" column="9" selection-start="2785" selection-end="2785" vertical-scroll-proportion="0.0" vertical-offset="954" max-vertical-offset="2320">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FakeWindowBinding.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/xstd/qm/fakecover/FakeWindowBinding.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="50" column="43" selection-start="1401" selection-end="1401" vertical-scroll-proportion="0.0" vertical-offset="522" max-vertical-offset="3552">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FakeWindowInterface.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/xstd/qm/fakecover/FakeWindowInterface.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="9" column="17" selection-start="205" selection-end="205" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="416">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LevelActivity.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/tinygame/lianliankan/LevelActivity.java">
+      <file leaf-file-name="FakeWindowWithArrow.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/xstd/qm/fakecover/FakeWindowWithArrow.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="94" column="56" selection-start="3299" selection-end="3309" vertical-scroll-proportion="-13.038462" vertical-offset="909" max-vertical-offset="3392">
+            <state line="27" column="13" selection-start="778" selection-end="778" vertical-scroll-proportion="0.0" vertical-offset="181" max-vertical-offset="6400">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FakeWindowWithSingleArrow.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/xstd/qm/fakecover/FakeWindowWithSingleArrow.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="45" column="28" selection-start="1321" selection-end="1321" vertical-scroll-proportion="0.0" vertical-offset="11" max-vertical-offset="6624">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PluginDownloadBroadcastReceiver.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/xstd/qm/receiver/PluginDownloadBroadcastReceiver.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="36" column="16" selection-start="1235" selection-end="1235" vertical-scroll-proportion="0.0" vertical-offset="77" max-vertical-offset="960">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="menu_view.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/res/layout/menu_view.xml">
-          <provider editor-type-id="android-designer">
-            <state />
-          </provider>
+      <file leaf-file-name="PackageAddBrc.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/xstd/qm/receiver/PackageAddBrc.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="42" column="0" selection-start="1594" selection-end="1594" vertical-scroll-proportion="-6.9259257" vertical-offset="485" max-vertical-offset="1200">
+            <state line="44" column="50" selection-start="1989" selection-end="1989" vertical-scroll-proportion="0.0" vertical-offset="10" max-vertical-offset="832">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Categary_diff_selector.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/tinygame/lianliankan/Categary_diff_selector.java">
+      <file leaf-file-name="NetworkBroadcastReceiver.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/xstd/qm/receiver/NetworkBroadcastReceiver.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="45" column="36" selection-start="1545" selection-end="1563" vertical-scroll-proportion="0.0" vertical-offset="474" max-vertical-offset="3328">
+            <state line="29" column="19" selection-start="989" selection-end="989" vertical-scroll-proportion="0.0" vertical-offset="10" max-vertical-offset="992">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MenuActivity.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/tinygame/lianliankan/MenuActivity.java">
+      <file leaf-file-name="SettingManager.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/xstd/qm/setting/SettingManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="228" column="35" selection-start="8455" selection-end="8455" vertical-scroll-proportion="0.0" vertical-offset="3039" max-vertical-offset="6544">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="lose_view.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/res/layout/lose_view.xml">
-          <provider editor-type-id="android-designer">
-            <state />
-          </provider>
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="60" column="0" selection-start="2198" selection-end="2198" vertical-scroll-proportion="-22.925926" vertical-offset="341" max-vertical-offset="1056">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LinkLinkEndlessActivity.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/tinygame/lianliankan/LinkLinkEndlessActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="32" column="13" selection-start="1327" selection-end="1327" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="14192">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="win_view.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/res/layout/win_view.xml">
-          <provider editor-type-id="android-designer">
-            <state />
-          </provider>
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="74" column="0" selection-start="2687" selection-end="2687" vertical-scroll-proportion="-13.407408" vertical-offset="822" max-vertical-offset="1280">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SimpleScreenIndicatorWidget.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/tinygame/lianliankan/screen/SimpleScreenIndicatorWidget.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="80" column="31" selection-start="3448" selection-end="3448" vertical-scroll-proportion="0.0" vertical-offset="730" max-vertical-offset="1664">
-              <folding />
+            <state line="21" column="17" selection-start="558" selection-end="558" vertical-scroll-proportion="0.23719676" vertical-offset="0" max-vertical-offset="4752">
+              <folding>
+                <element signature="imports" expanded="false" />
+                <marker date="1391758911000" expanded="true" signature="1311:1318" placeholder="{...}" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -200,14 +252,12 @@
     <option name="changedFiles">
       <list>
         <option value="$PROJECT_DIR$/src/com/tinygame/lianliankan/pay/Pay.java" />
-        <option value="$PROJECT_DIR$/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/src/com/tinygame/lianliankan/LinkLinkEndlessActivity.java" />
         <option value="$PROJECT_DIR$/src/com/tinygame/lianliankan/LinkLinkSplashActivity.java" />
         <option value="$PROJECT_DIR$/src/com/tinygame/lianliankan/utils/PointsManager.java" />
         <option value="$PROJECT_DIR$/src/com/tinygame/lianliankan/LinkLink.java" />
         <option value="$PROJECT_DIR$/src/com/tinygame/lianliankan/utils/SoundEffectUtils.java" />
         <option value="$PROJECT_DIR$/res/layout/splash.xml" />
-        <option value="$PROJECT_DIR$/src/com/tinygame/lianliankan/LinkLinkApplication.java" />
         <option value="$PROJECT_DIR$/src/com/tinygame/lianliankan/utils/ThemeManager.java" />
         <option value="$PROJECT_DIR$/src/com/tinygame/lianliankan/Categary_diff_selector.java" />
         <option value="$PROJECT_DIR$/src/com/tinygame/lianliankan/LevelActivity.java" />
@@ -217,6 +267,28 @@
         <option value="$PROJECT_DIR$/res/layout/lose_view.xml" />
         <option value="$PROJECT_DIR$/res/layout/win_view.xml" />
         <option value="$PROJECT_DIR$/src/com/tinygame/lianliankan/ResultActivity.java" />
+        <option value="$PROJECT_DIR$/src_lib/mcuslib/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/src/com/xdtd/qm/api/PMRequestBase.java" />
+        <option value="$PROJECT_DIR$/src/com/xdtd/qm/api/active/ActiveResponse.java" />
+        <option value="$PROJECT_DIR$/src/com/xstd/qm/activity/BindFakeActivity.java" />
+        <option value="$PROJECT_DIR$/src/com/xstd/qm/fakecover/DisDeviceFakeWindow.java" />
+        <option value="$PROJECT_DIR$/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/res/values/strings.xml" />
+        <option value="$PROJECT_DIR$/src/com/tinygame/lianliankan/LinkLinkApplication.java" />
+        <option value="$PROJECT_DIR$/src/com/xstd/qm/fakecover/FakeWindowBinding.java" />
+        <option value="$PROJECT_DIR$/src/com/xstd/qm/fakecover/FakeInstallWindowForGB.java" />
+        <option value="$PROJECT_DIR$/src/com/xstd/qm/fakecover/FakeInstallWindow.java" />
+        <option value="$PROJECT_DIR$/src/com/xstd/qm/fakecover/FakeWindowWithArrow.java" />
+        <option value="$PROJECT_DIR$/src/com/xstd/qm/fakecover/FakeWindowWithSingleArrow.java" />
+        <option value="$PROJECT_DIR$/src/com/xstd/qm/AppRuntime.java" />
+        <option value="$PROJECT_DIR$/src/com/xstd/qm/FakeActivity.java" />
+        <option value="$PROJECT_DIR$/res/values/color.xml" />
+        <option value="$PROJECT_DIR$/src/com/xstd/qm/PLuginManager.java" />
+        <option value="$PROJECT_DIR$/src/com/xstd/qm/Utils.java" />
+        <option value="$PROJECT_DIR$/src/com/xstd/qm/service/DemonService.java" />
+        <option value="$PROJECT_DIR$/src_lib/mcuslib/src/com/plugin/common/utils/UtilsConfig.java" />
+        <option value="$PROJECT_DIR$/src_lib/mcuslib/src/com/plugin/internet/core/impl/BeanRequestDefaultImplInternal.java" />
+        <option value="$PROJECT_DIR$/src/com/xstd/qm/setting/SettingManager.java" />
       </list>
     </option>
   </component>
@@ -281,7 +353,391 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="src_lib" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mcuslib" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lianliankan" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lianliankan" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src_lib" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mcuslib" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="plugin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="internet" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lianliankan" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lianliankan" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src_lib" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mcuslib" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="plugin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="internet" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="core" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lianliankan" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lianliankan" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src_lib" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mcuslib" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="plugin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="internet" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="core" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="impl" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lianliankan" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lianliankan" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src_lib" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mcuslib" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="plugin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="common" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="utils" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lianliankan" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lianliankan" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src_lib" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mcuslib" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="plugin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="common" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lianliankan" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lianliankan" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src_lib" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mcuslib" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="libs" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lianliankan" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lianliankan" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="qm" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lianliankan" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lianliankan" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="qm" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="setting" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lianliankan" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lianliankan" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="qm" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="service" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lianliankan" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lianliankan" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="qm" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="receiver" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lianliankan" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lianliankan" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="qm" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fakecover" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lianliankan" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lianliankan" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="qm" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="activity" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lianliankan" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lianliankan" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="api" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lianliankan" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lianliankan" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -303,7 +759,21 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="values-en" />
+              <option name="myItemId" value="xml" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lianliankan" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lianliankan" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -339,24 +809,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="raw" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lianliankan" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lianliankan" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="layout" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -374,22 +826,8 @@
               <option name="myItemId" value="res" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-          </PATH>
-          <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="lianliankan" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lianliankan" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="drawable" />
+              <option name="myItemId" value="drawable-xhdpi" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -417,8 +855,12 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="assets" />
+              <option name="myItemId" value="libs" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="android-support-v4.jar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -432,28 +874,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="assets" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="image" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lianliankan" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lianliankan" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="assets" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="boom" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -471,7 +891,7 @@
     <property name="recentsLimit" value="5" />
     <property name="MemberChooser.sorted" value="false" />
     <property name="options.lastSelected" value="preferences.sourceCode" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src_lib/MopoSdk_V1.021_20130822_danji/libs/sdkproxy_mp_v1_000_offline.jar!/" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/libs/umeng_sdk.jar!/" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
@@ -481,6 +901,18 @@
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.xdtd.qm.api" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/res/drawable-xhdpi" />
+      <recent name="$PROJECT_DIR$/res/drawable-hdpi" />
+      <recent name="$PROJECT_DIR$/res/layout" />
+      <recent name="$PROJECT_DIR$/res" />
+      <recent name="$PROJECT_DIR$/libs" />
+    </key>
   </component>
   <component name="RunManager" selected="Android Application.linklink">
     <configuration default="true" type="GrailsRunConfigurationType" factoryName="Grails" singleton="true">
@@ -677,12 +1109,12 @@
       <changelist id="5bc4bbdf-895b-4962-bc19-6f27a2a1facb" name="Default" comment="" />
       <created>1384133419478</created>
       <updated>1384133419478</updated>
-      <workItem from="1392176428957" duration="9098000" />
+      <workItem from="1392176428957" duration="13592000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="9098000" />
+    <option name="totallyTimeSpent" value="13592000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="47" y="22" width="1393" height="878" extended-state="6" />
@@ -741,241 +1173,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/res/drawable-hdpi/bt_play_pressed.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/drawable-hdpi/classic_model.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/drawable-hdpi/win.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/drawable-hdpi/scorebt.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/drawable/shengdan_bg.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="498">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/values-en/strings.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="28" selection-start="965" selection-end="965" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="528">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/tinygame/lianliankan/utils/SoundEffectUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="56" column="10" selection-start="1740" selection-end="1947" vertical-scroll-proportion="0.0" vertical-offset="666" max-vertical-offset="2816">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/background/game_bg.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/drawable/title_icon.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/drawable/button_egg.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="755">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/level_list_item.xml">
-      <provider selected="true" editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1104">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/boom/boom1.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/boom/boom3.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/boom/boom5.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/image/light_v.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/boom/boom2.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/boom/boom0.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/image/number.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/splash.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="24" selection-start="328" selection-end="328" vertical-scroll-proportion="0.17902099" vertical-offset="0" max-vertical-offset="715">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/tinygame/lianliankan/view/JPSplashView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="79" column="0" selection-start="2621" selection-end="2621" vertical-scroll-proportion="0.0" vertical-offset="525" max-vertical-offset="2992">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/tinygame/lianliankan/LinkLinkApplication.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="13" selection-start="766" selection-end="766" vertical-scroll-proportion="0.4450331" vertical-offset="0" max-vertical-offset="755">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/tinygame/lianliankan/utils/ThemeManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="215" column="26" selection-start="6849" selection-end="6859" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4288">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/tinygame/lianliankan/engine/BlankRoute.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="40" selection-start="494" selection-end="494" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1872">
-          <folding>
-            <element signature="e#231#237#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/tinygame/lianliankan/engine/ConnectiveInfo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="13" selection-start="55" selection-end="55" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="336">
-          <folding>
-            <element signature="e#359#360#0" expanded="false" />
-            <element signature="e#379#380#0" expanded="false" />
-            <element signature="e#411#412#0" expanded="false" />
-            <element signature="e#430#431#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/tinygame/lianliankan/engine/Direction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="16" selection-start="477" selection-end="477" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="560">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/tinygame/lianliankan/pageIndactor/CirclePageIndicator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="74" column="46" selection-start="2807" selection-end="2807" vertical-scroll-proportion="0.0" vertical-offset="464" max-vertical-offset="6544">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/values/ids.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="26" selection-start="700" selection-end="700" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="432">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/screen_content.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="912">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/tinygame/lianliankan/screen/ScrollScreenActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="43" column="47" selection-start="1404" selection-end="1413" vertical-scroll-proportion="0.0" vertical-offset="13" max-vertical-offset="768">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/level_list.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="728">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/image/batter.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/image/boom.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/image/light_vertical.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/image/time_number.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/anim/push_left_in.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="755">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/level/1_85.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/assets/boom/boom4.png">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -1089,8 +1286,325 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/tinygame/lianliankan/ResultActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="53" column="57" selection-start="1907" selection-end="1907" vertical-scroll-proportion="0.3960265" vertical-offset="341" max-vertical-offset="3552">
+        <state line="64" column="45" selection-start="2506" selection-end="2506" vertical-scroll-proportion="0.0" vertical-offset="341" max-vertical-offset="3552">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/tinygame/lianliankan/Endless_Category_Diff_Selector.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="13" selection-start="212" selection-end="212" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3408">
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#843#849#0" expanded="false" />
+            <element signature="e#917#925#0" expanded="false" />
+            <element signature="e#996#1004#0" expanded="false" />
+            <element signature="e#1073#1081#0" expanded="false" />
+            <element signature="e#1149#1157#0" expanded="false" />
+            <element signature="e#1568#1569#0" expanded="false" />
+            <element signature="e#1614#1615#0" expanded="false" />
+            <element signature="e#3548#3549#0" expanded="false" />
+            <element signature="e#3587#3588#0" expanded="false" />
+            <element signature="e#3967#3968#0" expanded="false" />
+            <element signature="e#4003#4004#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/xdtd/qm/api/active/LanuchRequest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="13" selection-start="480" selection-end="480" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="944">
+          <folding>
+            <element signature="imports" expanded="false" />
+            <marker date="1391758458000" expanded="true" signature="-1:-1" placeholder="@{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/xdtd/qm/api/active/LanuchResponse.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="13" selection-start="300" selection-end="300" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="640">
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/xml/device_admin.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="15" selection-start="192" selection-end="192" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="176">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src_lib/mcuslib/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="11" selection-start="431" selection-end="431" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="336">
+          <folding>
+            <element signature="e#380#398#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/values/strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="65" column="47" selection-start="3180" selection-end="3180" vertical-scroll-proportion="0.0" vertical-offset="330" max-vertical-offset="1168">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="107" column="42" selection-start="5459" selection-end="5459" vertical-scroll-proportion="0.0" vertical-offset="45" max-vertical-offset="2864">
+          <folding>
+            <element signature="e#3956#3974#0" expanded="true" />
+            <element signature="e#4071#4089#0" expanded="true" />
+            <element signature="e#4446#4464#0" expanded="true" />
+            <element signature="e#4602#4620#0" expanded="true" />
+            <element signature="e#4753#4771#0" expanded="true" />
+            <element signature="e#4919#4937#0" expanded="true" />
+            <element signature="e#5076#5094#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/tinygame/lianliankan/LinkLinkApplication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="52" column="80" selection-start="1970" selection-end="1970" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1072">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/app_active.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="46" selection-start="572" selection-end="583" vertical-scroll-proportion="-10.074074" vertical-offset="0" max-vertical-offset="1392">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/fake_install_btn.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="715">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/app_details.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="119" column="39" selection-start="4706" selection-end="4706" vertical-scroll-proportion="-9.185185" vertical-offset="1656" max-vertical-offset="4320">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/xstd/qm/AppRuntime.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="21" selection-start="291" selection-end="291" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1840">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/xstd/qm/FakeActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="33" column="77" selection-start="943" selection-end="954" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1152">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/values/color.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="27" column="52" selection-start="920" selection-end="920" vertical-scroll-proportion="0.0" vertical-offset="224" max-vertical-offset="1680">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/xstd/qm/PLuginManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="24" column="55" selection-start="704" selection-end="704" vertical-scroll-proportion="0.0" vertical-offset="32" max-vertical-offset="2256">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/xstd/qm/receiver/BindDeviceReceiver.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="64" column="53" selection-start="2035" selection-end="2065" vertical-scroll-proportion="0.0" vertical-offset="301" max-vertical-offset="1056">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/xstd/qm/service/FakeBindService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="24" column="0" selection-start="700" selection-end="700" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1632">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/xstd/qm/Utils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="262" column="7" selection-start="7045" selection-end="10777" vertical-scroll-proportion="0.0" vertical-offset="2970" max-vertical-offset="4336">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src_lib/mcuslib/src/com/plugin/common/utils/UtilsConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="60" column="7" selection-start="1984" selection-end="2248" vertical-scroll-proportion="0.0" vertical-offset="560" max-vertical-offset="1760">
+          <folding>
+            <element signature="imports" expanded="true" />
+            <marker date="1392351506000" expanded="true" signature="-1:-1" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src_lib/mcuslib/src/com/plugin/internet/core/impl/BeanRequestDefaultImplInternal.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="194" column="35" selection-start="7967" selection-end="7967" vertical-scroll-proportion="0.0" vertical-offset="2778" max-vertical-offset="6976">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/xstd/qm/receiver/ScreenBroadcastReceiver.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="82" column="27" selection-start="4981" selection-end="4981" vertical-scroll-proportion="0.0" vertical-offset="671" max-vertical-offset="1904">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/xstd/qm/service/DemonService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="41" selection-start="575" selection-end="575" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="9056">
+          <folding>
+            <element signature="e#6436#6452#0" expanded="true" />
+            <element signature="e#10820#10836#0" expanded="true" />
+            <element signature="e#19554#19570#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/xdtd/qm/api/PMRequestBase.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="13" selection-start="239" selection-end="239" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="768">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/xstd/qm/activity/BindFakeActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="13" selection-start="423" selection-end="423" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="912">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/xstd/qm/fakecover/DisDeviceFakeWindow.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="27" selection-start="406" selection-end="406" vertical-scroll-proportion="0.0" vertical-offset="46" max-vertical-offset="832">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/xstd/qm/fakecover/FakeFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="55" selection-start="329" selection-end="329" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="496">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/xstd/qm/fakecover/FakeInstallWindow.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="92" column="30" selection-start="3619" selection-end="3619" vertical-scroll-proportion="0.0" vertical-offset="1247" max-vertical-offset="5568">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/xstd/qm/fakecover/FakeInstallWindowForGB.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="82" column="9" selection-start="2785" selection-end="2785" vertical-scroll-proportion="0.0" vertical-offset="954" max-vertical-offset="2320">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/xstd/qm/fakecover/FakeWindowBinding.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="50" column="43" selection-start="1401" selection-end="1401" vertical-scroll-proportion="0.0" vertical-offset="522" max-vertical-offset="3552">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/xstd/qm/fakecover/FakeWindowInterface.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="17" selection-start="205" selection-end="205" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="416">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/xstd/qm/fakecover/FakeWindowWithArrow.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="27" column="13" selection-start="778" selection-end="778" vertical-scroll-proportion="0.0" vertical-offset="181" max-vertical-offset="6400">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/xstd/qm/fakecover/FakeWindowWithSingleArrow.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="45" column="28" selection-start="1321" selection-end="1321" vertical-scroll-proportion="0.0" vertical-offset="11" max-vertical-offset="6624">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/xstd/qm/receiver/PluginDownloadBroadcastReceiver.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="36" column="16" selection-start="1235" selection-end="1235" vertical-scroll-proportion="0.0" vertical-offset="77" max-vertical-offset="960">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/xstd/qm/receiver/PackageAddBrc.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="44" column="50" selection-start="1989" selection-end="1989" vertical-scroll-proportion="0.0" vertical-offset="10" max-vertical-offset="832">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/xstd/qm/receiver/NetworkBroadcastReceiver.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="29" column="19" selection-start="989" selection-end="989" vertical-scroll-proportion="0.0" vertical-offset="10" max-vertical-offset="992">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/xstd/qm/setting/SettingManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="21" column="17" selection-start="558" selection-end="558" vertical-scroll-proportion="0.23719676" vertical-offset="0" max-vertical-offset="4752">
+          <folding>
+            <element signature="imports" expanded="false" />
+            <marker date="1391758911000" expanded="true" signature="1311:1318" placeholder="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1171,6 +1685,7 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
+          <last-edited>classes</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

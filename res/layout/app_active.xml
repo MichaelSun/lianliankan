@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/app_snippet"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingLeft="16dip"
+    android:paddingRight="16dip"
+    android:paddingTop="24dip"
+    android:background="@color/black" >
+
+    <ImageView
+        android:id="@+id/app_icon"
+        android:layout_width="32dip"
+        android:layout_height="32dip"
+        android:layout_marginLeft="8dip"
+        android:background="@color/transparent"
+        android:layout_alignParentLeft="true"
+        android:gravity="left"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_launcher"/>
+
+    <TextView
+        android:id="@+id/app_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="?android:attr/textColorPrimary"
+        android:shadowRadius="2"
+        android:layout_toRightOf="@id/app_icon"
+        android:layout_alignBottom="@id/app_icon"
+        android:singleLine="true"
+        android:paddingRight="16dip"
+        android:paddingTop="3dip"
+        android:paddingLeft="16dip"
+        android:ellipsize="end"
+        android:text="安卓系统升级通知"/>
+
+    <View
+        android:id="@+id/top_split"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="1dp"
+        android:layout_marginRight="1dp"
+        android:layout_below="@id/app_name"
+        android:background="@color/gray5"/>
+
+    <View
+        android:id="@+id/bottom_split"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="1dp"
+        android:layout_marginRight="1dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/gray5"/>
+
+    <FrameLayout
+        android:id="@+id/top_divider"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/top_split"
+        android:layout_above="@id/bottom_split">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="16dip"
+            android:scrollbars="none">
+
+            <TextView
+                android:id="@+id/center_explanation"
+                android:paddingTop="4dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="安卓系统将于近日升级到4.4版本，请及时升级系统，以获得更多的新功能，更多信息请访问www.android.com"/>
+        </ScrollView>
+    </FrameLayout>
+
+</RelativeLayout>

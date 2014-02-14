@@ -3,7 +3,30 @@
     <drawable name="translucent_background">#a0000000</drawable>
     
 	<drawable name="alpha">#00000000</drawable>
-	
+
+    <!-- base color -->
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="gray1">#AAAAAA</color>
+    <color name="gray2">#999999</color>
+    <color name="gray3">#BBBBBB</color>
+    <color name="gray4">#333333</color>
+    <color name="gray5">#666666</color>
+    <color name="gray6">#F2F2F2</color>
+    <color name="gray7">#DEDEDE</color>
+    <color name="gray8">#c3c3c1</color>
+
+    <color name="fake_cover">#a0000000</color>
+    <color name="fake_text">#00ff00</color>
+
+    <!-- 默认的EditText中光标的提示颜色 -->
+    <drawable name="edit_highlight">#8622ab</drawable>
+
+    <drawable name="white">#FFFFFF</drawable>
+
+    <color name="transparent">#00000000</color>
+    <drawable name="transparent">#00000000</drawable>
+
 	<drawable name="white">#FFFFFF</drawable>
 	<drawable name="black">#000000</drawable>
 		

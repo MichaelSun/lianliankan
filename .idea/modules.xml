@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/LinkLink.iml" filepath="$PROJECT_DIR$/LinkLink.iml" />
+      <module fileurl="file://$PROJECT_DIR$/src_lib/mcuslib/mcuslib.iml" filepath="$PROJECT_DIR$/src_lib/mcuslib/mcuslib.iml" />
     </modules>
   </component>
 </project>

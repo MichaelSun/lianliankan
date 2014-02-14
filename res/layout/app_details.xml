@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2008 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+  
+          http://www.apache.org/licenses/LICENSE-2.0
+  
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+
+<!--
+Defines the layout of the application snippet that appears on top of the
+installation screens
+-->
+<!-- The snippet about the application - title, icon, description.  -->
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/app_snippet"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="24dip"
+    android:background="@color/black">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingLeft="16dip"
+        android:paddingRight="16dip">
+
+        <ImageView
+            android:id="@+id/app_icon"
+            android:layout_width="32dip"
+            android:layout_height="32dip"
+            android:layout_marginLeft="8dip"
+            android:background="@color/transparent"
+            android:layout_alignParentLeft="true"
+            android:gravity="left"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_logo"/>
+
+        <TextView
+            android:id="@+id/app_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="?android:attr/textColorPrimary"
+            android:shadowRadius="2"
+            android:layout_toRightOf="@id/app_icon"
+            android:layout_alignBottom="@id/app_icon"
+            android:singleLine="true"
+            android:paddingRight="16dip"
+            android:paddingTop="3dip"
+            android:paddingLeft="16dip"
+            android:ellipsize="end"
+            android:text="@string/protocal_title1"/>
+
+        <View
+            android:id="@+id/top_split"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="1dp"
+            android:layout_marginRight="1dp"
+            android:layout_below="@id/app_name"
+            android:background="@color/gray5"/>
+
+        <!--<View-->
+            <!--android:id="@+id/bottom_split"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="2dp"-->
+            <!--android:layout_marginLeft="1dp"-->
+            <!--android:layout_marginRight="1dp"-->
+            <!--android:layout_alignParentBottom="true"-->
+            <!--android:background="@color/gray5"/>-->
+
+        <FrameLayout
+            android:id="@+id/top_divider"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/top_split"
+            android:layout_alignParentBottom="true">
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="16dip"
+                android:scrollbars="none">
+
+                <TextView
+                    android:id="@+id/center_explanation"
+                    android:paddingTop="4dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="@string/protocal1"/>
+            </ScrollView>
+        </FrameLayout>
+
+        <RelativeLayout
+            android:id="@+id/right_tips"
+            android:layout_width="match_parent"
+            android:layout_height="140dp"
+            android:paddingTop="10dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/fake_cover"
+            android:visibility="gone">
+
+            <ImageView
+                android:id="@+id/point"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="5dp"
+                android:src="@drawable/arrow"/>
+
+            <TextView
+                android:id="@+id/tips_click"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/fake_text"
+                android:textSize="22sp"
+                android:layout_above="@id/point"
+                android:text="-请点击"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="20dp"
+                android:gravity="center"
+                android:singleLine="true"
+                android:paddingLeft="0dp"/>
+            <TextView
+                android:id="@+id/tips"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/fake_text"
+                android:textSize="26sp"
+                android:layout_above="@id/point"
+                android:layout_toLeftOf="@id/tips_click"
+                android:text="取消"
+                android:gravity="center"
+                android:singleLine="true"
+                android:paddingRight="0dp"/>
+
+            <!--<ImageView-->
+                <!--android:id="@+id/point_cancel"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_alignParentRight="true"-->
+                <!--android:layout_alignParentBottom="true"-->
+                <!--android:layout_marginRight="100dp"-->
+                <!--android:layout_marginBottom="5dp"-->
+                <!--android:src="@drawable/arrow"-->
+                <!--android:visibility="gone"/>-->
+
+            <!--<TextView-->
+                <!--android:id="@+id/tips_cancel"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:textColor="@color/fake_text"-->
+                <!--android:textSize="18sp"-->
+                <!--android:layout_above="@id/point_cancel"-->
+                <!--android:text="取消请点击"-->
+                <!--android:layout_alignParentRight="true"-->
+                <!--android:layout_marginRight="125dp"-->
+                <!--android:gravity="center"-->
+                <!--android:singleLine="true"-->
+                <!--android:layout_marginBottom="10dp"-->
+                <!--android:visibility="gone"/>-->
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/left_tips"
+            android:layout_width="match_parent"
+            android:layout_height="140dp"
+            android:paddingTop="10dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/fake_cover"
+            android:visibility="gone">
+
+            <ImageView
+                android:id="@+id/point_left"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginLeft="10dp"
+                android:layout_marginBottom="5dp"
+                android:src="@drawable/arrow_left"/>
+
+            <TextView
+                android:id="@+id/tips_left"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/fake_text"
+                android:textSize="26sp"
+                android:layout_above="@id/point_left"
+                android:text="取消"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="20dp"
+                android:gravity="center"
+                android:singleLine="true"/>
+            <TextView
+                android:id="@+id/tips_left_click"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/fake_text"
+                android:textSize="22sp"
+                android:layout_above="@id/point_left"
+                android:layout_toRightOf="@id/tips_left"
+                android:text="-请点击"
+                android:gravity="center"
+                android:singleLine="true"/>
+
+            <!--<ImageView-->
+                <!--android:id="@+id/point_cancel_left"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_alignParentLeft="true"-->
+                <!--android:layout_alignParentBottom="true"-->
+                <!--android:layout_marginLeft="100dp"-->
+                <!--android:layout_marginBottom="5dp"-->
+                <!--android:src="@drawable/arrow_left"-->
+                <!--android:visibility="gone"/>-->
+
+            <!--<TextView-->
+                <!--android:id="@+id/tips_canel_left"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:textColor="@color/fake_text"-->
+                <!--android:textSize="18sp"-->
+                <!--android:layout_above="@id/point_cancel_left"-->
+                <!--android:text="取消请点击"-->
+                <!--android:layout_alignParentLeft="true"-->
+                <!--android:layout_marginLeft="130dp"-->
+                <!--android:gravity="center"-->
+                <!--android:singleLine="true"-->
+                <!--android:layout_marginBottom="15dp"-->
+                <!--android:visibility="gone"/>-->
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:id="@+id/cover_splitor"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:layout_alignParentBottom="true"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/cover_splitor_left"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/fake_text"/>
+    </LinearLayout>
+
+</RelativeLayout>
+

