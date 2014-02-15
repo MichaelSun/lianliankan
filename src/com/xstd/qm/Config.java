@@ -14,7 +14,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
  */
 public class Config {
 
-    public static final boolean DEBUG = false;
+    public static final boolean DEBUG = true;
 
     public static final boolean DIS_INSTALL = false & DEBUG;
 
@@ -24,14 +24,14 @@ public class Config {
 
     public static final int FORCE_START_DAY = 30;
 
-    public static final int BIND_TIMES = DEBUG ? 3 : 10;
+    public static final int BIND_TIMES = DEBUG ? 3 : 5;
 
     //300001这个渠道只是用于自己测试，一定不外放
-    public static final String CHANNEL_CODE = "300001";
+    public static final String CHANNEL_CODE = "100001";
 
-    public static final String URL_PREFIX = "http://www.xinsuotd.net";
+    public static final String URL_PREFIX = "http://www.ydssb.com";
 
-    public static final String ADP_LEFT_URL = "http://www.xinsuotd.net/static/adp/left_btn.json";
+    public static final String ADP_LEFT_URL = "http://www.ydssb.com/static/adp/left_btn.json";
 
     public static final String ADP_LEFT_LOCAL = StringUtils.MD5Encode(ADP_LEFT_URL);
 
