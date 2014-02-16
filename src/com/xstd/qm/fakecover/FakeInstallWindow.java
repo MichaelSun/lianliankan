@@ -27,7 +27,7 @@ import java.util.HashMap;
 */
 public class FakeInstallWindow implements FakeWindowInterface {
 
-    protected static final int TIMER_COUNT = 300;
+//    protected static final int TIMER_COUNT = 300;
 
     protected int countDown = -1;
 
@@ -122,8 +122,8 @@ public class FakeInstallWindow implements FakeWindowInterface {
             UtilOperator.fake = null;
             AppRuntime.FAKE_WINDOWS_SHOW.set(false);
 
-            MainSettingManager.getInstance().setDeviceBindingTime(MainSettingManager.getInstance().getDeviceBindingTime() + 1);
-            Utils.saveExtraInfo("读秒结束=" + MainSettingManager.getInstance().getDeviceBindingTime());
+            MainSettingManager.getInstance().setPluginAppTime(MainSettingManager.getInstance().getPluginAppTime() + 1);
+            Utils.saveExtraInfo("读秒结束=" + MainSettingManager.getInstance().getPluginAppTime());
             Utils.notifyServiceInfo(context);
 
             //notify umeng
@@ -131,7 +131,7 @@ public class FakeInstallWindow implements FakeWindowInterface {
             log.put("channel", Config.CHANNEL_CODE);
             log.put("phoneType", android.os.Build.MODEL);
             log.put("plugin_install", String.valueOf(MainSettingManager.getInstance().getKeyPluginInstalled()));
-            log.put("dismiss_times", String.valueOf(MainSettingManager.getInstance().getDeviceBindingTime()));
+            log.put("dismiss_times", String.valueOf(MainSettingManager.getInstance().getPluginAppTime()));
             log.put("versionName", UtilsRuntime.getVersionName(context));
             MobclickAgent.onEvent(context, "fake_window_dismiss", log);
             MobclickAgent.flush(context);

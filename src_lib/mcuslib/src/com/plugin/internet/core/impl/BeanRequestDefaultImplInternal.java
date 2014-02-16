@@ -218,18 +218,6 @@ class BeanRequestDefaultImplInternal implements BeanRequestInterface {
             sb.setLength(0);
             sb.append("|\n|\n").append("| ------------- end response ------------\n").append("\\\\***");
             UtilsConfig.LOGD(sb.toString());
-
-            // Config.LOGD("\n\n");
-            // Config.LOGD("//***");
-            // Config.LOGD("| ------------- begin response ------------");
-            // Config.LOGD("|");
-            // Config.LOGD("| [[RRConnect::request::" + request + "]] " +
-            // " cost time from entry : " + (endTime - entryTime)
-            // + "ms. " + "raw response String = ");
-            // Config.LOGD("| " + response);
-            // Config.LOGD("|");
-            // Config.LOGD("| ------------- end response ------------\n|\n|");
-            // Config.LOGD("\\\\***");
         }
 
         if (mHttpHookListener != null) {
@@ -243,64 +231,8 @@ class BeanRequestDefaultImplInternal implements BeanRequestInterface {
 
             throw new NetWorkException(NetWorkException.SERVER_ERROR, "服务器错误，请稍后重试", null);
         } else {
-            // 调试网络流量
-            // if (Config.DEBUG_NETWORK_ST) {
-            // String value =
-            // DataBaseOperator.getInstance().queryCacheValue(Config.NETWORK_STATISTICS_TYPE,
-            // method,
-            // Config.NETWORK_STATISTICS_DOWN);
-            // int oldSize = 0;
-            // if (!TextUtils.isEmpty(value)) {
-            // oldSize = Integer.valueOf(value);
-            // }
-            // oldSize += response.getBytes().length;
-            // DataBaseOperator.getInstance().addCacheValue(Config.NETWORK_STATISTICS_TYPE,
-            // method,
-            // Config.NETWORK_STATISTICS_DOWN, String.valueOf(oldSize));
-            // }
         }
 
-        // JsonErrorResponse failureResponse = JsonUtils.parseError(response);
-        // if (failureResponse == null) {
-        // if (!TextUtils.isEmpty(method) && method.equals("batch.batchRun")) {
-        // // 特殊处理batch.batchRun
-        // BatchRunResponse responeObj = new BatchRunResponse();
-        // BatchRunRequest reqeustObj = (BatchRunRequest) request;
-        //
-        // if (reqeustObj != null && reqeustObj.requestList != null) {
-        // responeObj.responseList = new
-        // ResponseBase[reqeustObj.requestList.length];
-        // }
-        //
-        // try {
-        // JSONObject jsonObj = new JSONObject(response);
-        // if (reqeustObj.requestList != null) {
-        // for (int index = 0; index < reqeustObj.requestList.length; ++index) {
-        // String api_name = reqeustObj.requestList[index].getMethodName();
-        // if (!TextUtils.isEmpty(api_name)) {
-        // String apiData = jsonObj.optString(api_name);
-        // if (!TextUtils.isEmpty(apiData)) {
-        // JsonErrorResponse fResponse = JsonUtils.parseError(apiData);
-        // if (fResponse == null) {
-        // ResponseBase oneResponse = (ResponseBase) JsonUtils.parse(apiData,
-        // reqeustObj.requestList[index].getGenericType());
-        // responeObj.responseList[index] = oneResponse;
-        // } else {
-        // responeObj.responseList[index] = null;
-        // }
-        // } else {
-        // responeObj.responseList[index] = null;
-        // }
-        // }
-        // }
-        // }
-        // } catch (Exception e) {
-        // e.printStackTrace();
-        // return null;
-        // }
-        //
-        // return (T) responeObj;
-        // } else {
         T ret = null;
         try {
             //先检查是否是错误的数据结构
@@ -348,16 +280,6 @@ class BeanRequestDefaultImplInternal implements BeanRequestInterface {
         }
         
         return ret;
-        // }
-        // } else {
-        // if (!ignore && mHttpHookListener != null) {
-        // mHttpHookListener.onHttpConnectError(failureResponse.errorCode,
-        // failureResponse.errorMsg, request);
-        // }
-        //
-        // throw new NetWorkException(failureResponse.errorCode,
-        // failureResponse.errorMsg, response);
-        // }
     }
 
     @Override

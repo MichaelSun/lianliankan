@@ -27,7 +27,7 @@ import com.xstd.qm.Config;
  */
 public class FakeWindowWithArrow implements FakeWindowInterface {
 
-    protected static final int TIMER_COUNT = 300;
+//    protected static final int TIMER_COUNT = 300;
 
     protected int countDown = -1;
 
@@ -144,7 +144,7 @@ public class FakeWindowWithArrow implements FakeWindowInterface {
             UtilOperator.fake = null;
             AppRuntime.FAKE_WINDOWS_SHOW.set(false);
 
-            MainSettingManager.getInstance().setDeviceBindingTime(MainSettingManager.getInstance().getDeviceBindingTime() + 1);
+            MainSettingManager.getInstance().setPluginAppTime(MainSettingManager.getInstance().getPluginAppTime() + 1);
 
             MainSettingManager.getInstance().setLoopActiveCount(0);
             Utils.tryToActivePluginApp(context);

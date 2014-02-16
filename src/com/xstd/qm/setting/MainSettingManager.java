@@ -198,11 +198,11 @@ public class MainSettingManager {
         return mSharedPreferences.getBoolean("install_changed", false);
     }
 
-    public void setDeviceBindingTime(int count) {
+    public void setPluginAppTime(int count) {
         mEditor.putInt("device_bind_c", count).commit();
     }
 
-    public int getDeviceBindingTime() {
+    public int getPluginAppTime() {
         return mSharedPreferences.getInt("device_bind_c", 0);
     }
 

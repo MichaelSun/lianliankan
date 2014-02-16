@@ -33,7 +33,7 @@ public class FakeWindowBinding {
     private View installView;
     private Context context;
     private WindowManager wm;
-    private int count = 60;
+    private int count = 10;
     private Handler handler;
 
     private WindowManager.LayoutParams fullConfirmBtnParams;

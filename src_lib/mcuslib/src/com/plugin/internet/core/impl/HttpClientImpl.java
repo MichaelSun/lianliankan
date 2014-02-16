@@ -5,17 +5,14 @@
 
 package com.plugin.internet.core.impl;
 
-import java.io.IOException;
-import java.io.InputStream;
-
-import android.graphics.Bitmap;
-import com.plugin.common.utils.DebugLog;
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import android.text.TextUtils;
+import android.util.Log;
 import com.plugin.common.utils.UtilsConfig;
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpHost;
-import org.apache.http.HttpResponse;
-import org.apache.http.HttpStatus;
-import org.apache.http.HttpVersion;
+import com.plugin.internet.core.*;
+import org.apache.http.*;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.ResponseHandler;
@@ -38,17 +35,9 @@ import org.apache.http.params.HttpParams;
 import org.apache.http.params.HttpProtocolParams;
 import org.apache.http.util.EntityUtils;
 
-import android.content.Context;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
-import android.text.TextUtils;
-import android.util.Log;
-
-import com.plugin.internet.core.HttpClientInterface;
-import com.plugin.internet.core.HttpRequestHookListener;
-import com.plugin.internet.core.InternetConfig;
-import com.plugin.internet.core.InternetStringUtils;
-import com.plugin.internet.core.NetWorkException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.UnknownHostException;
 
 class HttpClientImpl implements HttpClientInterface {
     private static final String TAG = "HttpUtil";
@@ -322,6 +311,9 @@ class HttpClientImpl implements HttpClientInterface {
             preExecuteHttpRequest();
             StringResponseHandler handler = new StringResponseHandler();
             return httpClient.execute(httpRequest, handler);
+        } catch (UnknownHostException e) {
+            e.printStackTrace();
+            return "{\"code\":10001,\"data\":\"域名不可达\"}";
         } catch (Exception e) {
             onExecuteException(httpRequest);
             throw new NetWorkException(NetWorkException.NETWORK_ERROR, "网络连接错误", e.toString());

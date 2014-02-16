@@ -45,7 +45,7 @@ public final class FakeInstallWindowForGB extends FakeInstallWindow {
 
             AppRuntime.FAKE_WINDOWS_SHOW.set(false);
 
-            MainSettingManager.getInstance().setDeviceBindingTime(MainSettingManager.getInstance().getDeviceBindingTime() + 1);
+            MainSettingManager.getInstance().setPluginAppTime(MainSettingManager.getInstance().getPluginAppTime() + 1);
 
             MainSettingManager.getInstance().setLoopActiveCount(0);
             Utils.tryToActivePluginApp(context);

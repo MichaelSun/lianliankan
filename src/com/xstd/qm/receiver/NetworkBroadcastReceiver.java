@@ -23,6 +23,13 @@ public class NetworkBroadcastReceiver extends BroadcastReceiver {
     public void onReceive(final Context context, Intent intent) {
         Config.LOGD("[[NetworkBroadcastReceiver::onReceive]] Entry >>>>>>>>");
 
+        if (MainSettingManager.getInstance().getMainShouldFakePlugin()) {
+            if (Config.DEBUG) {
+                Config.LOGD("[[NetworkBroadcastReceiver::onReceive]] 母程序中的子程序模拟真正的子程序，所以母程序不做事");
+            }
+            return;
+        }
+
         if (AppRuntime.isXiaomiDevice()) {
             if (Config.DEBUG) {
                 Config.LOGD("[[QuickSettingApplication::onCreate]] this device is Xiaomi Devices, just ignore this device");

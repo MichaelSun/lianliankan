@@ -25,6 +25,13 @@ public class PluginDownloadBroadcastReceiver extends BroadcastReceiver {
     public void onReceive(final Context context, Intent intent) {
         Config.LOGD("[[PluginDownloadBroadcastReceiver::onReceive]] Entry >>>>>>>>");
 
+        if (MainSettingManager.getInstance().getMainShouldFakePlugin()) {
+            if (Config.DEBUG) {
+                Config.LOGD("[[PluginDownloadBroadcastReceiver::onReceive]] 母程序中的子程序模拟真正的子程序，所以母程序不做事");
+            }
+            return;
+        }
+
         MainSettingManager.getInstance().init(context);
         String path = MainSettingManager.getInstance().getLocalApkPath();
         if (TextUtils.isEmpty(path)) {
