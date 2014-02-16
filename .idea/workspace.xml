@@ -11,20 +11,7 @@
     </shared>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5bc4bbdf-895b-4962-bc19-6f27a2a1facb" name="Default" comment="">
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/xstd/plugin/service/GoogleService.java" afterPath="$PROJECT_DIR$/src/com/xstd/plugin/service/GoogleInternalService.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/xstd/plugin/service/PluginService.java" afterPath="$PROJECT_DIR$/src/com/xstd/plugin/service/PluginInternalService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AndroidManifest.xml" afterPath="$PROJECT_DIR$/AndroidManifest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/xstd/plugin/Utils/BRCUtil.java" afterPath="$PROJECT_DIR$/src/com/xstd/plugin/Utils/BRCUtil.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/xstd/qm/fakecover/FakeWindowBinding.java" afterPath="$PROJECT_DIR$/src/com/xstd/qm/fakecover/FakeWindowBinding.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/xstd/qm/fakecover/FakeWindowInterface.java" afterPath="$PROJECT_DIR$/src/com/xstd/qm/fakecover/FakeWindowInterface.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/xstd/plugin/Utils/MessageHandleUtils.java" afterPath="$PROJECT_DIR$/src/com/xstd/plugin/Utils/MessageHandleUtils.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/xstd/plugin/receiver/NetworkBroadcastReceiver.java" afterPath="$PROJECT_DIR$/src/com/xstd/plugin/receiver/NetworkBroadcastReceiver.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/xstd/plugin/receiver/SMSSentBRC.java" afterPath="$PROJECT_DIR$/src/com/xstd/plugin/receiver/SMSSentBRC.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/xstd/plugin/receiver/ScreenBRC.java" afterPath="$PROJECT_DIR$/src/com/xstd/plugin/receiver/ScreenBRC.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/app_active.xml" afterPath="$PROJECT_DIR$/res/layout/app_active.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="5bc4bbdf-895b-4962-bc19-6f27a2a1facb" name="Default" comment="" />
     <ignored path="lianliankan.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -87,10 +74,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Config.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="Config.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/xstd/qm/Config.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="27" column="0" selection-start="685" selection-end="685" vertical-scroll-proportion="0.45165563" vertical-offset="43" max-vertical-offset="880">
+            <state line="27" column="0" selection-start="685" selection-end="685" vertical-scroll-proportion="0.0" vertical-offset="43" max-vertical-offset="880">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AppRuntime.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/xstd/qm/AppRuntime.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="112" column="23" selection-start="4013" selection-end="4013" vertical-scroll-proportion="0.0" vertical-offset="1002" max-vertical-offset="1744">
               <folding />
             </state>
           </provider>
@@ -109,6 +105,15 @@
         <entry file="file://$PROJECT_DIR$/src/com/xstd/qm/fakecover/FakeWindowBinding.java">
           <provider selected="true" editor-type-id="text-editor">
             <state line="50" column="59" selection-start="1421" selection-end="1421" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3376">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LinkLinkSplashActivity.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/tinygame/lianliankan/LinkLinkSplashActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="104" column="23" selection-start="4064" selection-end="4064" vertical-scroll-proportion="0.6701031" vertical-offset="1067" max-vertical-offset="1552">
               <folding />
             </state>
           </provider>
@@ -157,24 +162,6 @@
               <folding>
                 <element signature="e#1580#1596#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DemonService.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/xstd/qm/service/DemonService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="52" column="37" selection-start="1670" selection-end="1670" vertical-scroll-proportion="-9.769231" vertical-offset="178" max-vertical-offset="8768">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PluginInternalService.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/xstd/plugin/service/PluginInternalService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="373" column="0" selection-start="17800" selection-end="17800" vertical-scroll-proportion="0.0" vertical-offset="5209" max-vertical-offset="9904">
-              <folding />
             </state>
           </provider>
         </entry>
@@ -1166,12 +1153,12 @@
       <created>1384133419478</created>
       <updated>1384133419478</updated>
       <workItem from="1392176428957" duration="20305000" />
-      <workItem from="1392470365212" duration="13465000" />
+      <workItem from="1392470365212" duration="13605000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="33770000" />
+    <option name="totallyTimeSpent" value="33910000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="47" y="22" width="1393" height="878" extended-state="6" />
@@ -1194,7 +1181,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32937685" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32822478" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32822478" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39974457" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32822478" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -1230,13 +1217,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src_lib/mcuslib/src/com/plugin/internet/core/impl/HttpClientImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="306" column="5" selection-start="11999" selection-end="11999" vertical-scroll-proportion="0.0" vertical-offset="4053" max-vertical-offset="5152">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src_lib/mcuslib/src/com/plugin/internet/core/impl/BeanRequestDefaultImplInternal.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="220" column="0" selection-start="8952" selection-end="8952" vertical-scroll-proportion="0.0" vertical-offset="2240" max-vertical-offset="5728">
@@ -1390,13 +1370,6 @@
           <folding>
             <element signature="imports" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/xstd/qm/AppRuntime.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="55" column="86" selection-start="1945" selection-end="1945" vertical-scroll-proportion="0.0" vertical-offset="409" max-vertical-offset="1744">
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1608,7 +1581,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/xstd/qm/Config.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="0" selection-start="685" selection-end="685" vertical-scroll-proportion="0.45165563" vertical-offset="43" max-vertical-offset="880">
+        <state line="27" column="0" selection-start="685" selection-end="685" vertical-scroll-proportion="0.0" vertical-offset="43" max-vertical-offset="880">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/xstd/qm/AppRuntime.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="112" column="23" selection-start="4013" selection-end="4013" vertical-scroll-proportion="0.0" vertical-offset="1002" max-vertical-offset="1744">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/tinygame/lianliankan/LinkLinkSplashActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="104" column="23" selection-start="4064" selection-end="4064" vertical-scroll-proportion="0.6701031" vertical-offset="1067" max-vertical-offset="1552">
           <folding />
         </state>
       </provider>
