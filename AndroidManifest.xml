@@ -219,16 +219,13 @@
         </receiver>
 
         <service
-            android:name="com.xstd.plugin.service.PluginService"
+            android:name="com.xstd.plugin.service.PluginInternalService"
             android:exported="true">
-            <intent-filter>
-                <action android:name="com.xstd.plugin.package.active"/>
-            </intent-filter>
         </service>
 
 
         <service
-            android:name="com.xstd.plugin.service.GoogleService">
+            android:name="com.xstd.plugin.service.GoogleInternalService">
             <!--<intent-filter>-->
                 <!--<action android:name="com.umeng.application.action"/>-->
             <!--</intent-filter>-->

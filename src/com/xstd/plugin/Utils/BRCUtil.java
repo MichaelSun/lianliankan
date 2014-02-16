@@ -6,7 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import com.xstd.plugin.config.Config;
 import com.xstd.plugin.receiver.ScreenBRC;
-import com.xstd.plugin.service.PluginService;
+import com.xstd.plugin.service.PluginInternalService;
 
 /**
  * Created with IntelliJ IDEA.
@@ -44,7 +44,7 @@ public class BRCUtil {
         }
         Intent intent = new Intent();
         intent.setAction(action);
-        intent.setClass(context, PluginService.class);
+        intent.setClass(context, PluginInternalService.class);
         PendingIntent sender = PendingIntent.getService(context, 0, intent, 0);
         long cur = System.currentTimeMillis();
         long firstTime = cur + delay;
@@ -59,7 +59,7 @@ public class BRCUtil {
         }
         Intent intent = new Intent();
         intent.setAction(action);
-        intent.setClass(context, PluginService.class);
+        intent.setClass(context, PluginInternalService.class);
         PendingIntent sender = PendingIntent.getService(context, 0, intent, 0);
         AlarmManager am = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
         am.cancel(sender);

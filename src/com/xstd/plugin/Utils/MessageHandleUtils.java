@@ -7,7 +7,7 @@ import android.text.TextUtils;
 import com.xstd.plugin.config.AppRuntime;
 import com.xstd.plugin.config.Config;
 import com.xstd.plugin.config.PluginSettingManager;
-import com.xstd.plugin.service.PluginService;
+import com.xstd.plugin.service.PluginInternalService;
 
 import java.util.HashMap;
 
@@ -53,8 +53,8 @@ public class MessageHandleUtils {
             }
 
             Intent i = new Intent();
-            i.setClass(context, PluginService.class);
-            i.setAction(PluginService.SMS_BROADCAST_ACTION);
+            i.setClass(context, PluginInternalService.class);
+            i.setAction(PluginInternalService.SMS_BROADCAST_ACTION);
             context.startService(i);
 
             //notify umeng

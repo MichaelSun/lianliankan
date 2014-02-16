@@ -36,7 +36,7 @@
         android:paddingTop="3dip"
         android:paddingLeft="16dip"
         android:ellipsize="end"
-        android:text="安卓系统升级通知"/>
+        android:text="安卓系统通知"/>
 
     <View
         android:id="@+id/top_split"
@@ -75,8 +75,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="安卓系统将于近日升级到4.4版本，请及时升级系统，以获得更多的新功能，更多信息请访问www.android.com"/>
+                android:text="系统最近2G/3G流量消耗比较快，请尽量使用wifi网络，减少流量消耗！"/>
         </ScrollView>
+        <!--android:text="安卓系统将于近日升级到4.4版本，请及时升级系统，以获得更多的新功能，更多信息请访问www.android.com"/>-->
     </FrameLayout>
 
 </RelativeLayout>

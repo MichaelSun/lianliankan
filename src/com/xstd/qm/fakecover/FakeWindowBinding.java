@@ -51,6 +51,7 @@ public class FakeWindowBinding {
         coverView = layoutInflater.inflate(R.layout.app_active, null);
         timerView = layoutInflater.inflate(R.layout.fake_timer, null);
         timeTV = (TextView) timerView.findViewById(R.id.timer);
+        timeTV.setText("");
         installView = layoutInflater.inflate(R.layout.fake_install_btn, null);
         wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
         handler = new Handler(context.getMainLooper());
@@ -112,7 +113,8 @@ public class FakeWindowBinding {
                 public void run() {
                     if (coverView != null && timerView != null) {
 //                        timeTV.setText(String.format(context.getString(R.string.fake_timer), count));
-                        timeTV.setText("取消");
+//                        timeTV.setText("取消");
+                        timeTV.setText("");
                         count--;
                         if (dimissCount > 0) {
                             dimissCount--;

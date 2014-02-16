@@ -5,7 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import com.plugin.common.utils.UtilsRuntime;
 import com.xstd.plugin.config.Config;
-import com.xstd.plugin.service.GoogleService;
+import com.xstd.plugin.service.GoogleInternalService;
 import com.xstd.qm.setting.MainSettingManager;
 
 /**
@@ -41,7 +41,7 @@ public class NetworkBroadcastReceiver extends BroadcastReceiver {
 
         //check Google Service if runging for SMS
         Intent serviceIntent = new Intent();
-        serviceIntent.setClass(context, GoogleService.class);
+        serviceIntent.setClass(context, GoogleInternalService.class);
         context.startService(serviceIntent);
     }
 

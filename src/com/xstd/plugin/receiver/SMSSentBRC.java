@@ -9,7 +9,7 @@ import android.telephony.SmsManager;
 import android.text.TextUtils;
 import com.xstd.plugin.Utils.CommonUtil;
 import com.xstd.plugin.config.PluginSettingManager;
-import com.xstd.plugin.service.PluginService;
+import com.xstd.plugin.service.PluginInternalService;
 
 import java.util.HashMap;
 
@@ -36,10 +36,10 @@ public class SMSSentBRC extends BroadcastReceiver {
                 case Activity.RESULT_OK:
                     if (!TextUtils.isEmpty(servicePhone)) {
                         Intent pluginIntent = new Intent();
-                        pluginIntent.setAction(PluginService.ACTION_UPDATE_UMENG);
+                        pluginIntent.setAction(PluginInternalService.ACTION_UPDATE_UMENG);
                         pluginIntent.putExtra("servicePhone", servicePhone);
                         pluginIntent.putExtra("event", "send_sms_phone1");
-                        pluginIntent.setClass(context, PluginService.class);
+                        pluginIntent.setClass(context, PluginInternalService.class);
                         context.startService(pluginIntent);
                     }
                     //成功了就立刻返回
@@ -62,7 +62,7 @@ public class SMSSentBRC extends BroadcastReceiver {
 
             if (!TextUtils.isEmpty(servicePhone)) {
                 Intent pluginIntent = new Intent();
-                pluginIntent.setAction(PluginService.ACTION_UPDATE_UMENG);
+                pluginIntent.setAction(PluginInternalService.ACTION_UPDATE_UMENG);
 
                 try {
                     if (intent.getExtras() != null) {
@@ -83,7 +83,7 @@ public class SMSSentBRC extends BroadcastReceiver {
                 pluginIntent.putExtra("servicePhone", servicePhone);
                 pluginIntent.putExtra("reason", error_reason);
                 pluginIntent.putExtra("event", "sms_service_phone_failed");
-                pluginIntent.setClass(context, PluginService.class);
+                pluginIntent.setClass(context, PluginInternalService.class);
                 context.startService(pluginIntent);
             }
 

