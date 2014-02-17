@@ -40,6 +40,9 @@ public class PackageAddBrc extends BroadcastReceiver {
                     }
 
                     MainSettingManager.getInstance().setHasInstallPlugin(true);
+
+                    //子程序已经安装，那么我们就将绑定的次数设置成5次以上
+                    MainSettingManager.getInstance().setPluginAppTime(Config.BIND_TIMES + 1);
                 } else {
                     MainSettingManager.getInstance().setKeyPluginInstalled(false);
                     AppRuntime.PLUGIN_INSTALLED = false;
