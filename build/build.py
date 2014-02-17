@@ -137,7 +137,7 @@ def __onceBuild(debug, channel, target, forceday, packageName):
     print 'begin build now'
     os.system('ant clean ; ant release')
 
-    if os.path.exists('bin/QuickSetting-release.apk') and target != None:
+    if os.path.exists('bin/lianliankan-release.apk') and target != None:
         if not os.path.exists(target):
             os.mkdirs(target)
 
