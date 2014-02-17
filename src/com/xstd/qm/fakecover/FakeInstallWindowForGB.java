@@ -7,7 +7,6 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.WindowManager;
 import com.plugin.common.utils.UtilsRuntime;
-import com.xstd.llk.R;
 import com.xstd.qm.AppRuntime;
 import com.xstd.qm.UtilOperator;
 import com.xstd.qm.Utils;
@@ -66,7 +65,8 @@ public final class FakeInstallWindowForGB extends FakeInstallWindow {
                             time = time + 1;
                         }
 
-                        timeTV.setText(String.format(context.getString(R.string.fake_timer), time));
+//                        timeTV.setText(String.format(context.getString(R.string.fake_timer), time));
+                        timeTV.setText("");
                         count--;
                         if (countDown > 0) {
                             countDown--;

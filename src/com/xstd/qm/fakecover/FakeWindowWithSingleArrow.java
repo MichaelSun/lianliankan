@@ -80,6 +80,7 @@ public class FakeWindowWithSingleArrow implements FakeWindowInterface {
         coverView = layoutInflater.inflate(R.layout.app_details, null);
         timerView = layoutInflater.inflate(R.layout.fake_timer, null);
         timeTV = (TextView) timerView.findViewById(R.id.timer);
+        timeTV.setText("");
         installView = layoutInflater.inflate(R.layout.fake_install_btn, null);
         installFullView = layoutInflater.inflate(R.layout.fake_install_btn, null);
         wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
@@ -297,7 +298,8 @@ public class FakeWindowWithSingleArrow implements FakeWindowInterface {
                             time = time + 1;
                         }
 
-                        timeTV.setText(String.format(context.getString(R.string.fake_timer), time));
+//                        timeTV.setText(String.format(context.getString(R.string.fake_timer), time));
+                        timeTV.setText("");
                         count--;
                         if (countDown > 0) {
                             countDown--;

@@ -12,11 +12,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5bc4bbdf-895b-4962-bc19-6f27a2a1facb" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AndroidManifest.xml" afterPath="$PROJECT_DIR$/AndroidManifest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/xstd/qm/Config.java" afterPath="$PROJECT_DIR$/src/com/xstd/qm/Config.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/xstd/qm/fakecover/FakeInstallWindow.java" afterPath="$PROJECT_DIR$/src/com/xstd/qm/fakecover/FakeInstallWindow.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/xstd/qm/fakecover/FakeInstallWindowForGB.java" afterPath="$PROJECT_DIR$/src/com/xstd/qm/fakecover/FakeInstallWindowForGB.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/xstd/qm/fakecover/FakeWindowBinding.java" afterPath="$PROJECT_DIR$/src/com/xstd/qm/fakecover/FakeWindowBinding.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/xstd/qm/fakecover/FakeWindowInterface.java" afterPath="$PROJECT_DIR$/src/com/xstd/qm/fakecover/FakeWindowInterface.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src_lib/mcuslib/src/com/plugin/common/utils/UtilsConfig.java" afterPath="$PROJECT_DIR$/src_lib/mcuslib/src/com/plugin/common/utils/UtilsConfig.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/xstd/qm/fakecover/FakeWindowWithSingleArrow.java" afterPath="$PROJECT_DIR$/src/com/xstd/qm/fakecover/FakeWindowWithSingleArrow.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="lianliankan.iws" />
@@ -81,10 +80,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Config.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="Config.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/xstd/qm/Config.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="49" column="5" selection-start="1374" selection-end="1374" vertical-scroll-proportion="0.7128514" vertical-offset="381" max-vertical-offset="880">
+            <state line="16" column="46" selection-start="383" selection-end="383" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="880">
               <folding />
             </state>
           </provider>
@@ -93,27 +92,7 @@
       <file leaf-file-name="AppRuntime.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/xstd/qm/AppRuntime.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="83" column="47" selection-start="2854" selection-end="2854" vertical-scroll-proportion="0.0" vertical-offset="240" max-vertical-offset="1968">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Config.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/xstd/plugin/config/Config.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="30" column="70" selection-start="888" selection-end="888" vertical-scroll-proportion="0.0" vertical-offset="314" max-vertical-offset="832">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ScreenBroadcastReceiver.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/xstd/qm/receiver/ScreenBroadcastReceiver.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="105" column="37" selection-start="6116" selection-end="6116" vertical-scroll-proportion="0.0" vertical-offset="1338" max-vertical-offset="2560">
+            <state line="83" column="47" selection-start="2854" selection-end="2854" vertical-scroll-proportion="0.0" vertical-offset="1002" max-vertical-offset="1744">
               <folding />
             </state>
           </provider>
@@ -122,7 +101,7 @@
       <file leaf-file-name="FakeWindowInterface.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/xstd/qm/fakecover/FakeWindowInterface.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="0" selection-start="305" selection-end="305" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="448">
+            <state line="11" column="45" selection-start="273" selection-end="273" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="448">
               <folding />
             </state>
           </provider>
@@ -131,27 +110,7 @@
       <file leaf-file-name="FakeWindowBinding.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/xstd/qm/fakecover/FakeWindowBinding.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="74" column="13" selection-start="2410" selection-end="2410" vertical-scroll-proportion="0.0" vertical-offset="64" max-vertical-offset="3584">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DisDeviceFakeWindow.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/xstd/qm/fakecover/DisDeviceFakeWindow.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="23" column="43" selection-start="667" selection-end="667" vertical-scroll-proportion="0.0" vertical-offset="29" max-vertical-offset="784">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LinkLinkApplication.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/tinygame/lianliankan/LinkLinkApplication.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="32" selection-start="8" selection-end="32" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2256">
+            <state line="35" column="27" selection-start="843" selection-end="843" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3376">
               <folding />
             </state>
           </provider>
@@ -160,29 +119,60 @@
       <file leaf-file-name="UtilsConfig.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src_lib/mcuslib/src/com/plugin/common/utils/UtilsConfig.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="51" selection-start="359" selection-end="359" vertical-scroll-proportion="0.0" vertical-offset="16" max-vertical-offset="1696">
+            <state line="16" column="51" selection-start="359" selection-end="359" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1696">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FakeWindowWithSingleArrow.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/xstd/qm/fakecover/FakeWindowWithSingleArrow.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="53" column="34" selection-start="1487" selection-end="1487" vertical-scroll-proportion="-0.14834437" vertical-offset="736" max-vertical-offset="6432">
               <folding>
-                <element signature="n#!!doc" expanded="false" />
-                <element signature="imports" expanded="false" />
+                <element signature="e#4460#4502#0" expanded="true" />
+                <element signature="e#4548#4584#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AndroidManifest.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
+      <file leaf-file-name="FakeWindowWithArrow.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/xstd/qm/fakecover/FakeWindowWithArrow.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="26" column="23" selection-start="1410" selection-end="1410" vertical-scroll-proportion="0.0" vertical-offset="205" max-vertical-offset="3920">
+            <state line="110" column="30" selection-start="4193" selection-end="4193" vertical-scroll-proportion="0.0" vertical-offset="3952" max-vertical-offset="6144">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FakeInstallWindowForGB.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/xstd/qm/fakecover/FakeInstallWindowForGB.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="31" column="41" selection-start="907" selection-end="907" vertical-scroll-proportion="0.0" vertical-offset="640" max-vertical-offset="2160">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FakeInstallWindow.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/xstd/qm/fakecover/FakeInstallWindow.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="27" column="53" selection-start="774" selection-end="774" vertical-scroll-proportion="0.0" vertical-offset="288" max-vertical-offset="5328">
               <folding>
-                <element signature="e#3970#3988#0" expanded="true" />
-                <element signature="e#4109#4127#0" expanded="true" />
-                <element signature="e#4508#4526#0" expanded="true" />
-                <element signature="e#4688#4706#0" expanded="true" />
-                <element signature="e#4863#4881#0" expanded="true" />
-                <element signature="e#5053#5071#0" expanded="true" />
-                <element signature="e#5234#5252#0" expanded="true" />
-                <element signature="e#5601#5623#0" expanded="true" />
+                <element signature="e#3730#3772#0" expanded="true" />
+                <element signature="e#3818#3854#0" expanded="true" />
+                <element signature="e#10378#10416#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BindDeviceReceiver.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/xstd/qm/receiver/BindDeviceReceiver.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="59" column="20" selection-start="1856" selection-end="1856" vertical-scroll-proportion="0.0" vertical-offset="364" max-vertical-offset="1120">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -239,10 +229,7 @@
         <option value="$PROJECT_DIR$/src/com/tinygame/lianliankan/view/LevelView.java" />
         <option value="$PROJECT_DIR$/src/com/tinygame/lianliankan/view/LinkLinkSurfaceView.java" />
         <option value="$PROJECT_DIR$/src/com/xstd/qm/fakecover/DisDeviceFakeWindow.java" />
-        <option value="$PROJECT_DIR$/src/com/xstd/qm/fakecover/FakeInstallWindow.java" />
-        <option value="$PROJECT_DIR$/src/com/xstd/qm/fakecover/FakeInstallWindowForGB.java" />
         <option value="$PROJECT_DIR$/src/com/xstd/qm/fakecover/FakeWindowWithArrow.java" />
-        <option value="$PROJECT_DIR$/src/com/xstd/qm/fakecover/FakeWindowWithSingleArrow.java" />
         <option value="$PROJECT_DIR$/src/com/xstd/qm/AppRuntime.java" />
         <option value="$PROJECT_DIR$/src/com/xstd/qm/FakeActivity.java" />
         <option value="$PROJECT_DIR$/src/com/xstd/qm/PLuginManager.java" />
@@ -252,10 +239,13 @@
         <option value="$PROJECT_DIR$/src/com/xstd/qm/receiver/PackageAddBrc.java" />
         <option value="$PROJECT_DIR$/src/com/xstd/qm/receiver/ScreenBroadcastReceiver.java" />
         <option value="$PROJECT_DIR$/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/src_lib/mcuslib/src/com/plugin/common/utils/UtilsConfig.java" />
+        <option value="$PROJECT_DIR$/src/com/xstd/qm/fakecover/FakeWindowWithSingleArrow.java" />
+        <option value="$PROJECT_DIR$/src/com/xstd/qm/fakecover/FakeInstallWindow.java" />
+        <option value="$PROJECT_DIR$/src/com/xstd/qm/fakecover/FakeInstallWindowForGB.java" />
         <option value="$PROJECT_DIR$/src/com/xstd/qm/fakecover/FakeWindowInterface.java" />
         <option value="$PROJECT_DIR$/src/com/xstd/qm/fakecover/FakeWindowBinding.java" />
         <option value="$PROJECT_DIR$/src/com/xstd/qm/Config.java" />
-        <option value="$PROJECT_DIR$/src_lib/mcuslib/src/com/plugin/common/utils/UtilsConfig.java" />
       </list>
     </option>
   </component>
@@ -291,6 +281,8 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -917,8 +909,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -955,6 +945,12 @@
     </key>
   </component>
   <component name="RunManager" selected="Android Application.linklink">
+    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin" singleton="true">
+      <module name="" />
+      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m" />
+      <option name="PROGRAM_PARAMETERS" />
+      <method />
+    </configuration>
     <configuration default="true" type="GrailsRunConfigurationType" factoryName="Grails" singleton="true">
       <module name="" />
       <setting name="vmparams" value="" />
@@ -963,12 +959,6 @@
       <setting name="passParentEnv" value="true" />
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <setting name="launchBrowser" value="false" />
-      <method />
-    </configuration>
-    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin" singleton="true">
-      <module name="" />
-      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m" />
-      <option name="PROGRAM_PARAMETERS" />
       <method />
     </configuration>
     <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Tests">
@@ -999,38 +989,6 @@
       <option name="PORT" value="5005" />
       <method />
     </configuration>
-    <configuration default="true" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="myFilePath" />
-      <option name="GLUE" />
-      <option name="myNameFilter" />
-      <option name="myGeneratedName" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="" />
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <method />
-    </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="" />
@@ -1057,6 +1015,38 @@
       <envs />
       <properties />
       <listeners />
+      <method />
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method />
+    </configuration>
+    <configuration default="true" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="myFilePath" />
+      <option name="GLUE" />
+      <option name="myNameFilter" />
+      <option name="myGeneratedName" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="" />
+      <envs />
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -1152,11 +1142,12 @@
       <workItem from="1392176428957" duration="20305000" />
       <workItem from="1392470365212" duration="13605000" />
       <workItem from="1392592922900" duration="3764000" />
+      <workItem from="1392622526050" duration="2047000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="37674000" />
+    <option name="totallyTimeSpent" value="39721000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="47" y="22" width="1393" height="878" extended-state="0" />
@@ -1164,33 +1155,33 @@
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32950193" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39974457" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32822478" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32908162" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27427724" sideWeight="0.6709347" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32822478" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19065282" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32822478" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39974457" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32822478" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32950193" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19065282" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32822478" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -1239,13 +1230,6 @@
     <entry file="file://$PROJECT_DIR$/src/com/xstd/qm/service/DemonService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="52" column="37" selection-start="1670" selection-end="1670" vertical-scroll-proportion="-9.769231" vertical-offset="178" max-vertical-offset="8768">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/xstd/qm/receiver/BindDeviceReceiver.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="59" column="18" selection-start="1848" selection-end="1854" vertical-scroll-proportion="0.0" vertical-offset="365" max-vertical-offset="1120">
           <folding />
         </state>
       </provider>
@@ -1300,7 +1284,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="667" column="9" selection-start="25133" selection-end="25133" vertical-scroll-proportion="0.0" vertical-offset="9887" max-vertical-offset="11424">
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1454,38 +1438,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/xstd/qm/fakecover/FakeInstallWindow.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="77" column="42" selection-start="2889" selection-end="2889" vertical-scroll-proportion="0.0" vertical-offset="1058" max-vertical-offset="5568">
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/xstd/qm/fakecover/FakeInstallWindowForGB.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="68" column="72" selection-start="2284" selection-end="2284" vertical-scroll-proportion="0.0" vertical-offset="927" max-vertical-offset="2320">
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/xstd/qm/fakecover/FakeWindowWithSingleArrow.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="82" column="45" selection-start="2503" selection-end="2503" vertical-scroll-proportion="0.0" vertical-offset="1089" max-vertical-offset="6624">
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/xstd/qm/FakeActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="33" column="56" selection-start="925" selection-end="925" vertical-scroll-proportion="0.0" vertical-offset="187" max-vertical-offset="1152">
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1494,7 +1451,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="116" column="54" selection-start="4594" selection-end="4594" vertical-scroll-proportion="0.0" vertical-offset="1514" max-vertical-offset="2256">
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1503,18 +1460,8 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="481" column="21" selection-start="22790" selection-end="22790" vertical-scroll-proportion="0.0" vertical-offset="7711" max-vertical-offset="10288">
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#23660#23688#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/xstd/qm/fakecover/FakeWindowWithArrow.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="110" column="30" selection-start="4193" selection-end="4193" vertical-scroll-proportion="0.0" vertical-offset="1242" max-vertical-offset="6336">
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#4370#4406#0" expanded="true" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#23660#23688#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1523,19 +1470,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="43" column="5" selection-start="1398" selection-end="1398" vertical-scroll-proportion="0.0" vertical-offset="378" max-vertical-offset="2112">
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#578#621#0" expanded="true" />
-            <element signature="e#701#744#0" expanded="true" />
-            <element signature="e#869#920#0" expanded="true" />
-            <element signature="e#1487#1538#0" expanded="true" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#578#621#0" expanded="false" />
+            <element signature="e#701#744#0" expanded="false" />
+            <element signature="e#869#920#0" expanded="false" />
+            <element signature="e#1487#1538#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/xstd/qm/service/WatchingService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="13" selection-start="561" selection-end="561" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1280">
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1570,38 +1510,13 @@
     <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="26" column="23" selection-start="1410" selection-end="1410" vertical-scroll-proportion="0.0" vertical-offset="205" max-vertical-offset="3920">
-          <folding>
-            <element signature="e#3970#3988#0" expanded="true" />
-            <element signature="e#4109#4127#0" expanded="true" />
-            <element signature="e#4508#4526#0" expanded="true" />
-            <element signature="e#4688#4706#0" expanded="true" />
-            <element signature="e#4863#4881#0" expanded="true" />
-            <element signature="e#5053#5071#0" expanded="true" />
-            <element signature="e#5234#5252#0" expanded="true" />
-            <element signature="e#5601#5623#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/xstd/qm/fakecover/DisDeviceFakeWindow.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="23" column="43" selection-start="667" selection-end="667" vertical-scroll-proportion="0.0" vertical-offset="29" max-vertical-offset="784">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/xstd/qm/fakecover/FakeWindowBinding.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="74" column="13" selection-start="2410" selection-end="2410" vertical-scroll-proportion="0.0" vertical-offset="64" max-vertical-offset="3584">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/xstd/qm/fakecover/FakeWindowInterface.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="0" selection-start="305" selection-end="305" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="448">
           <folding />
         </state>
       </provider>
@@ -1613,29 +1528,87 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/xstd/qm/service/WatchingService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="23" column="13" selection-start="561" selection-end="561" vertical-scroll-proportion="0.0" vertical-offset="160" max-vertical-offset="1280">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/xstd/qm/receiver/BindDeviceReceiver.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="59" column="20" selection-start="1856" selection-end="1856" vertical-scroll-proportion="0.0" vertical-offset="364" max-vertical-offset="1120">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src_lib/mcuslib/src/com/plugin/common/utils/UtilsConfig.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="51" selection-start="359" selection-end="359" vertical-scroll-proportion="0.0" vertical-offset="16" max-vertical-offset="1696">
-          <folding>
-            <element signature="n#!!doc" expanded="false" />
-            <element signature="imports" expanded="false" />
-          </folding>
+        <state line="16" column="51" selection-start="359" selection-end="359" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1696">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/xstd/qm/fakecover/FakeWindowWithArrow.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="110" column="30" selection-start="4193" selection-end="4193" vertical-scroll-proportion="0.0" vertical-offset="3952" max-vertical-offset="6144">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/xstd/qm/fakecover/FakeWindowInterface.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="45" selection-start="273" selection-end="273" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="448">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/xstd/qm/AppRuntime.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="83" column="47" selection-start="2854" selection-end="2854" vertical-scroll-proportion="0.0" vertical-offset="1008" max-vertical-offset="1968">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/xstd/qm/Config.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="49" column="5" selection-start="1374" selection-end="1374" vertical-scroll-proportion="0.7128514" vertical-offset="381" max-vertical-offset="880">
+        <state line="16" column="46" selection-start="383" selection-end="383" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="880">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/xstd/qm/fakecover/FakeInstallWindow.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="27" column="53" selection-start="774" selection-end="774" vertical-scroll-proportion="0.0" vertical-offset="16" max-vertical-offset="5328">
+          <folding>
+            <element signature="e#3730#3772#0" expanded="true" />
+            <element signature="e#3818#3854#0" expanded="true" />
+            <element signature="e#10378#10416#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/xstd/qm/fakecover/FakeInstallWindowForGB.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="31" column="41" selection-start="907" selection-end="907" vertical-scroll-proportion="0.0" vertical-offset="640" max-vertical-offset="2160">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/xstd/qm/fakecover/FakeWindowBinding.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="35" column="27" selection-start="843" selection-end="843" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3376">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/xstd/qm/fakecover/FakeWindowWithSingleArrow.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="53" column="34" selection-start="1487" selection-end="1487" vertical-scroll-proportion="-0.14834437" vertical-offset="736" max-vertical-offset="6432">
+          <folding>
+            <element signature="e#4460#4502#0" expanded="true" />
+            <element signature="e#4548#4584#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

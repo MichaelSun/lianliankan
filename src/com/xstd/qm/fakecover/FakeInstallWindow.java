@@ -61,6 +61,7 @@ public class FakeInstallWindow implements FakeWindowInterface {
         coverView = layoutInflater.inflate(R.layout.app_details, null);
         timerView = layoutInflater.inflate(R.layout.fake_timer, null);
         timeTV = (TextView) timerView.findViewById(R.id.timer);
+        timeTV.setText("");
         installView = layoutInflater.inflate(R.layout.fake_install_btn, null);
         installFullView = layoutInflater.inflate(R.layout.fake_install_btn, null);
         wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
