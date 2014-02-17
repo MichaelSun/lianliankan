@@ -81,7 +81,7 @@ def __walk_replace_file(filename, old, new):
                     #注意，Config文件比较特殊，不做替换
                     if f != 'Config.java':
                         print 'find one file can replace, file : %s/%s' % (parentPath, f)
-                        if filename.endswith('.java'):
+                        if f.endswith('.java'):
                             old = old + '.R'
                             new = new + '.R'
                         myLib.replce_text_in_file('%s/%s' % (parentPath, f), old, new)

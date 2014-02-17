@@ -133,7 +133,7 @@
       <file leaf-file-name="Config.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/tinygame/lianliankan/config/Config.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="9" selection-start="9" selection-end="32" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1008">
+            <state line="16" column="24" selection-start="583" selection-end="583" vertical-scroll-proportion="0.33862433" vertical-offset="0" max-vertical-offset="1008">
               <folding />
             </state>
           </provider>
@@ -1180,12 +1180,12 @@
       <updated>1384133419478</updated>
       <workItem from="1392176428957" duration="20305000" />
       <workItem from="1392470365212" duration="13605000" />
-      <workItem from="1392592922900" duration="220000" />
+      <workItem from="1392592922900" duration="276000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="34130000" />
+    <option name="totallyTimeSpent" value="34186000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="47" y="22" width="1393" height="878" extended-state="0" />
@@ -1620,7 +1620,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/tinygame/lianliankan/config/Config.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="9" selection-start="9" selection-end="32" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1008">
+        <state line="16" column="24" selection-start="583" selection-end="583" vertical-scroll-proportion="0.33862433" vertical-offset="0" max-vertical-offset="1008">
           <folding />
         </state>
       </provider>
