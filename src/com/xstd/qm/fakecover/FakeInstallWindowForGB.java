@@ -7,7 +7,7 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.WindowManager;
 import com.plugin.common.utils.UtilsRuntime;
-import com.tinygame.lianliankan.R;
+import com.xstd.llk.R;
 import com.xstd.qm.AppRuntime;
 import com.xstd.qm.UtilOperator;
 import com.xstd.qm.Utils;

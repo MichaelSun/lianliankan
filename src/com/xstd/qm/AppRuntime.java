@@ -9,7 +9,7 @@ import android.os.Build;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import com.tinygame.lianliankan.LinkLinkSplashActivity;
-import com.tinygame.lianliankan.R;
+import com.xstd.llk.R;
 import com.xstd.qm.setting.MainSettingManager;
 
 import java.util.ArrayList;

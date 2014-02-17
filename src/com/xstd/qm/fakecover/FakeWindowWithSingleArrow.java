@@ -10,9 +10,9 @@ import android.widget.TextView;
 import com.plugin.common.utils.SingleInstanceBase;
 import com.plugin.common.utils.UtilsRuntime;
 import com.umeng.analytics.MobclickAgent;
+import com.xstd.llk.R;
 import com.xstd.qm.*;
 import com.xstd.qm.setting.MainSettingManager;
-import com.tinygame.lianliankan.R;
 
 import java.util.HashMap;
 

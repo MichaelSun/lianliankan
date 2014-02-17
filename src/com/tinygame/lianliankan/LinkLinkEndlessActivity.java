@@ -29,6 +29,7 @@ import com.tinygame.lianliankan.view.LinkLinkSurfaceView;
 import com.tinygame.lianliankan.view.LinkLinkSurfaceView.LLViewActionListener;
 import com.tinygame.lianliankan.view.TimeProgressView;
 import com.tinygame.lianliankan.view.TimeProgressView.TimeProgressListener;
+import com.xstd.llk.R;
 
 public class LinkLinkEndlessActivity extends Activity implements LLViewActionListener
                                             , TimeProgressListener

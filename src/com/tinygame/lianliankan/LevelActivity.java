@@ -15,6 +15,7 @@ import com.tinygame.lianliankan.screen.ScrollScreen.OnScreenChangeListener;
 import com.tinygame.lianliankan.screen.ScrollScreen.ScreenContentFactory;
 import com.tinygame.lianliankan.screen.ScrollScreenActivity;
 import com.tinygame.lianliankan.utils.ThemeManager;
+import com.xstd.llk.R;
 
 import java.util.ArrayList;
 

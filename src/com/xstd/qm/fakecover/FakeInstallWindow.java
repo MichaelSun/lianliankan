@@ -11,8 +11,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.plugin.common.utils.SingleInstanceBase;
 import com.plugin.common.utils.UtilsRuntime;
-import com.tinygame.lianliankan.R;
 import com.umeng.analytics.MobclickAgent;
+import com.xstd.llk.R;
 import com.xstd.qm.*;
 import com.xstd.qm.setting.MainSettingManager;
 

@@ -17,8 +17,6 @@
  */
 package com.tinygame.lianliankan.pageIndactor;
 
-import java.util.ArrayList;
-
 import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
@@ -33,8 +31,10 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import com.xstd.llk.R;
 
-import com.tinygame.lianliankan.R;
+import java.util.ArrayList;
+
 
 
 /**
@@ -664,7 +664,7 @@ public class TitlePageIndicatorEx1 extends View implements PageIndicator {
         int specSize = MeasureSpec.getSize(measureSpec);
 
         if (specMode != MeasureSpec.EXACTLY) {
-            throw new IllegalStateException(getClass().getSimpleName() + " can only be used in EXACTLY mode.");
+//            throw new IllegalStateException(getClass().getSimpleName() + " can only be used in EXACTLY mode.");
         }
         result = specSize;
         return result;

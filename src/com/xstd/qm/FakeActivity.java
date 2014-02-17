@@ -5,8 +5,8 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.Window;
+import com.xstd.llk.R;
 import com.xstd.qm.setting.MainSettingManager;
-import com.tinygame.lianliankan.R;
 
 import java.io.File;
 

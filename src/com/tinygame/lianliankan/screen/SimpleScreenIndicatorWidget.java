@@ -22,7 +22,7 @@ import android.util.AttributeSet;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
-import com.tinygame.lianliankan.R;
+import com.xstd.llk.R;
 
 import java.util.ArrayList;
 

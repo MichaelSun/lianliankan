@@ -9,7 +9,7 @@ import android.content.pm.ResolveInfo;
 import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
 import com.plugin.common.utils.SingleInstanceBase;
-import com.tinygame.lianliankan.R;
+import com.xstd.llk.R;
 import com.xstd.qm.setting.MainSettingManager;
 
 import java.util.List;

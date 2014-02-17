@@ -30,6 +30,7 @@ import com.tinygame.lianliankan.pageIndactor.TitleProvider;
 import com.tinygame.lianliankan.utils.PointsManager;
 import com.tinygame.lianliankan.utils.SoundEffectUtils;
 import com.tinygame.lianliankan.utils.Utils;
+import com.xstd.llk.R;
 
 import java.util.ArrayList;
 import java.util.Calendar;

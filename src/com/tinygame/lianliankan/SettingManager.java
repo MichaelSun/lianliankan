@@ -3,6 +3,7 @@ package com.tinygame.lianliankan;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
+import com.xstd.llk.R;
 
 public class SettingManager {
 

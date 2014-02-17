@@ -28,8 +28,7 @@ import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
-
-import com.tinygame.lianliankan.R;
+import com.xstd.llk.R;
 
 /**
  * Draws circles (one for each view). The current view position is filled and

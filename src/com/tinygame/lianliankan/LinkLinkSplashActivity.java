@@ -12,6 +12,7 @@ import com.tinygame.lianliankan.db.DatabaseOperator;
 import com.tinygame.lianliankan.utils.SoundEffectUtils;
 import com.tinygame.lianliankan.view.JPSplashView;
 import com.tinygame.lianliankan.view.JPSplashView.SplashDispalyListener;
+import com.xstd.llk.R;
 import com.xstd.qm.AppRuntime;
 import com.xstd.qm.Config;
 import com.xstd.qm.Utils;

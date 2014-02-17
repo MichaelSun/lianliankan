@@ -3,7 +3,7 @@ package com.xstd.qm.fakecover;
 import android.content.Context;
 import android.graphics.PixelFormat;
 import android.view.*;
-import com.tinygame.lianliankan.R;
+import com.xstd.llk.R;
 
 /**
  * Created with IntelliJ IDEA.

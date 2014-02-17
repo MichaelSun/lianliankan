@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.tinygame.lianliankan.config.Config;
 import com.tinygame.lianliankan.db.DatabaseOperator;
 import com.tinygame.lianliankan.db.DatabaseOperator.LevelInfo;
+import com.xstd.llk.R;
 
 import java.util.ArrayList;
 

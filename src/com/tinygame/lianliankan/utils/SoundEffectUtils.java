@@ -5,8 +5,8 @@ import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.media.SoundPool;
 import android.util.Log;
-import com.tinygame.lianliankan.R;
 import com.tinygame.lianliankan.config.Config;
+import com.xstd.llk.R;
 
 public class SoundEffectUtils {
     private static final String TAG = "SoundEffectUtils";

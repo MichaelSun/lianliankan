@@ -14,9 +14,8 @@ import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
-
 import com.tinygame.lianliankan.LinkLinkApplication;
-import com.tinygame.lianliankan.R;
+import com.xstd.llk.R;
 
 public class JPSplashView extends RelativeLayout {
     

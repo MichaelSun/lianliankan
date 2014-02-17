@@ -10,13 +10,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.plugin.common.utils.SingleInstanceBase;
 import com.plugin.common.utils.UtilsRuntime;
-import com.xstd.qm.AppRuntime;
-import com.xstd.qm.PLuginManager;
-import com.xstd.qm.UtilOperator;
-import com.xstd.qm.Utils;
+import com.xstd.llk.R;
+import com.xstd.qm.*;
 import com.xstd.qm.setting.MainSettingManager;
-import com.tinygame.lianliankan.R;
-import com.xstd.qm.Config;
 
 /**
  * Created with IntelliJ IDEA.

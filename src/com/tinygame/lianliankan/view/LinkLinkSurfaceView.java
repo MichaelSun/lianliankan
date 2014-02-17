@@ -1,16 +1,7 @@
 package com.tinygame.lianliankan.view;
 
-import java.lang.ref.SoftReference;
-import java.util.ArrayList;
-import java.util.Random;
-
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.Point;
-import android.graphics.Rect;
+import android.graphics.*;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
@@ -19,22 +10,18 @@ import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceHolder.Callback;
 import android.view.SurfaceView;
-
-import com.tinygame.lianliankan.R;
 import com.tinygame.lianliankan.SettingManager;
 import com.tinygame.lianliankan.config.Config;
 import com.tinygame.lianliankan.config.Env;
-import com.tinygame.lianliankan.engine.BlankRoute;
-import com.tinygame.lianliankan.engine.Chart;
-import com.tinygame.lianliankan.engine.ConnectiveInfo;
-import com.tinygame.lianliankan.engine.Direction;
-import com.tinygame.lianliankan.engine.DirectionPath;
-import com.tinygame.lianliankan.engine.Hint;
-import com.tinygame.lianliankan.engine.Tile;
-import com.tinygame.lianliankan.utils.AssetsImageLoader;
+import com.tinygame.lianliankan.engine.*;
 import com.tinygame.lianliankan.utils.SoundEffectUtils;
 import com.tinygame.lianliankan.utils.ThemeManager;
 import com.tinygame.lianliankan.utils.Utils;
+import com.xstd.llk.R;
+
+import java.lang.ref.SoftReference;
+import java.util.ArrayList;
+import java.util.Random;
 
 public class LinkLinkSurfaceView extends SurfaceView implements Callback {
     private static final String TAG = "LinkLinkSurfaceView";

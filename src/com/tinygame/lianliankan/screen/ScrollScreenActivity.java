@@ -17,8 +17,7 @@
 package com.tinygame.lianliankan.screen;
 
 import android.app.Activity;
-
-import com.tinygame.lianliankan.R;
+import com.xstd.llk.R;
 
 public class ScrollScreenActivity extends Activity {
 

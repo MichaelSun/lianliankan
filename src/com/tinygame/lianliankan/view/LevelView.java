@@ -1,8 +1,5 @@
 package com.tinygame.lianliankan.view;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -12,9 +9,11 @@ import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
-
-import com.tinygame.lianliankan.R;
 import com.tinygame.lianliankan.utils.ThemeManager;
+import com.xstd.llk.R;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class LevelView extends View {
     private static final String TAG = "LevelView";

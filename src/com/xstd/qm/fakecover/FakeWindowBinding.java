@@ -8,7 +8,7 @@ import android.util.DisplayMetrics;
 import android.view.*;
 import android.widget.TextView;
 import com.plugin.common.utils.UtilsRuntime;
-import com.tinygame.lianliankan.R;
+import com.xstd.llk.R;
 import com.xstd.qm.AppRuntime;
 import com.xstd.qm.Utils;
 import com.xstd.qm.setting.MainSettingManager;
