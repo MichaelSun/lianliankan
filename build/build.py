@@ -84,6 +84,8 @@ def __walk_replace_file(filename, old, new):
                         if f.endswith('.java'):
                             old = old + '.R'
                             new = new + '.R'
+
+                        print 'old = %s and new = %s' % (old, new)
                         myLib.replce_text_in_file('%s/%s' % (parentPath, f), old, new)
     
     return True
