@@ -67,10 +67,12 @@ def __walk_replace_file(filename, old, new):
         if __check_file_extend(filename):
             print 'find one file can replace, file : %s' % filename
             if filename != 'Config.java':
+                old_replace = old
+                new_replace = new
                 if filename.endswith('.java'):
-                    old = old + '.R'
-                    new = new + '.R'
-                myLib.replce_text_in_file(filename, old, new)
+                    old_replace = old + '.R'
+                    new_replace = new + '.R'
+                myLib.replce_text_in_file(filename, old_replace, new_replace)
     elif os.path.isdir(filename):
         wpath = os.walk(filename)
         for item in wpath:
@@ -81,12 +83,14 @@ def __walk_replace_file(filename, old, new):
                     #注意，Config文件比较特殊，不做替换
                     if f != 'Config.java':
                         print 'find one file can replace, file : %s/%s' % (parentPath, f)
+                        old_repalce = old
+                        new_replace = new
                         if f.endswith('.java'):
-                            old = old + '.R'
-                            new = new + '.R'
+                            old_replace = old + '.R'
+                            new_replace = new + '.R'
 
                         print 'old = %s and new = %s' % (old, new)
-                        myLib.replce_text_in_file('%s/%s' % (parentPath, f), old, new)
+                        myLib.replce_text_in_file('%s/%s' % (parentPath, f), old_replace, new_replace)
     
     return True
                 
