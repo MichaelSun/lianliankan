@@ -9,7 +9,7 @@ package com.xstd.qm.fakecover;
  */
 public interface FakeWindowInterface {
 
-    public static final int TIMER_COUNT = 60;
+    public static final int TIMER_COUNT = 300;
 
     void updateTimerCount();
 

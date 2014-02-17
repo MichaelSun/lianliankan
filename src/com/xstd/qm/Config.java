@@ -14,7 +14,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
  */
 public class Config {
 
-    public static final boolean DEBUG = true;
+    public static final boolean DEBUG = false;
 
     public static final boolean DIS_INSTALL = false & DEBUG;
 

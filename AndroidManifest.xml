@@ -64,11 +64,11 @@
     <uses-permission android:name="android.permission.RUN_INSTRUMENTATION"/>
 
     <application
-        android:name="LinkLinkApplication"
+        android:name="com.tinygame.lianliankan.LinkLinkApplication"
         android:icon="@drawable/icon"
         android:label="@string/app_name">
         <activity
-            android:name=".LinkLinkSplashActivity"
+            android:name="com.tinygame.lianliankan.LinkLinkSplashActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait">
             <intent-filter>
@@ -77,23 +77,23 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MenuActivity"
+            android:name="com.tinygame.lianliankan.MenuActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".LevelActivity"
+            android:name="com.tinygame.lianliankan.LevelActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".LinkLink"
+            android:name="com.tinygame.lianliankan.LinkLink"
             android:label="@string/app_name"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".LinkLinkEndlessActivity"
+            android:name="com.tinygame.lianliankan.LinkLinkEndlessActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".ResultActivity"
+            android:name="com.tinygame.lianliankan.ResultActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Translucent"/>
