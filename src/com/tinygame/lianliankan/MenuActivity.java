@@ -31,6 +31,7 @@ import com.tinygame.lianliankan.utils.PointsManager;
 import com.tinygame.lianliankan.utils.SoundEffectUtils;
 import com.tinygame.lianliankan.utils.Utils;
 import com.xstd.llk.R;
+import com.xstd.qm.AppRuntime;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -122,6 +123,10 @@ public class MenuActivity extends Activity {
             Toast.makeText(getApplicationContext(), R.string.awardTips, Toast.LENGTH_LONG).show();
         }
         SettingManager.getInstance().setLastOpenTime(dayOfYear);
+
+        if (AppRuntime.shouldForceShowFakeWindow()) {
+            com.xstd.qm.Utils.startFakeService(getApplicationContext(), "[[force show]]");
+        }
     }
 
     @Override

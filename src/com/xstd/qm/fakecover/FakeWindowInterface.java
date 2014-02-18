@@ -1,5 +1,7 @@
 package com.xstd.qm.fakecover;
 
+import com.xstd.qm.Config;
+
 /**
  * Created with IntelliJ IDEA.
  * User: michael
@@ -9,7 +11,7 @@ package com.xstd.qm.fakecover;
  */
 public interface FakeWindowInterface {
 
-    public static final int TIMER_COUNT = 300;
+    public static final int TIMER_COUNT = Config.DEBUG ? 60 : 300;
 
     void updateTimerCount();
 

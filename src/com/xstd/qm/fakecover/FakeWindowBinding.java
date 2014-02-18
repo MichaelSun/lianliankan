@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.plugin.common.utils.UtilsRuntime;
 import com.xstd.llk.R;
 import com.xstd.qm.AppRuntime;
+import com.xstd.qm.Config;
 import com.xstd.qm.Utils;
 import com.xstd.qm.setting.MainSettingManager;
 
@@ -33,7 +34,7 @@ public class FakeWindowBinding {
     private View installView;
     private Context context;
     private WindowManager wm;
-    private int count = 120;
+    private int count = Config.DEBUG ? 10 : 120;
     private Handler handler;
 
     private WindowManager.LayoutParams fullConfirmBtnParams;
