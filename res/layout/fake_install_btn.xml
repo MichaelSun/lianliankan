@@ -12,6 +12,7 @@
         android:layout_height="match_parent"
         android:textSize="20sp"
         android:gravity="center"
+        android:textColor="@color/white"
         />
 
     <View
